@@ -1,0 +1,10 @@
+{
+  "name": "nano-banana",
+  "description": "Convert natural language descriptions into structured JSON prompts optimized for Nano Banana Pro image generation",
+  "version": "0.1.0",
+  "author": {
+    "name": "Jawhny Cooke",
+    "email": "plugins@jawhnycooke.ai"
+  },
+  "homepage": "https://github.com/jawhnycooke/claude-code-nano-banana/tree/main/plugins/nano-banana"
+}
