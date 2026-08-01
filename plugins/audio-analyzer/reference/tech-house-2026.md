@@ -82,6 +82,30 @@ essa secao cobre so label/artista, nao BPM/tom.
   quando possivel, validar com `analyze.py report` (analise de audio de verdade) em vez de so
   copiar o metadado da loja.
 
+## Benchmark de loudness MEDIDO (7 faixas de referencia do usuario, coletado 2026-08-01)
+
+Diferente do resto deste documento (que e conhecimento geral + dados de chart), isto foi
+**medido de verdade** via `scripts/analyze.py` (Essentia `LoudnessEBUR128` + `TruePeakDetector`,
+padrao EBU R128 / ITU-R BS.1770) em 7 faixas de referencia que o usuario forneceu (compras dele
+no Beatport, artistas: Alaia & Gallo, Andreas Henneberg/Beth Lydi, Beltran (BR), Bonafique, OMRI.,
+Rafael, SCRIPT). Trata isso como o benchmark mais confiavel deste documento — atualizar se o
+usuario mandar mais faixas de referencia depois.
+
+- **LUFS integrado**: -9.35 a -8.07, media **-8.64 LUFS**. Confirma (e refina pra baixo) a
+  estimativa generica de "-8 a -6 LUFS" que estava aqui antes — na pratica as faixas de
+  referencia ficam mais perto de -9 a -8 do que de -6.
+- **True peak**: media **+0.35 dBTP**, com **6 das 7 faixas ACIMA de 0 dBTP** (uma chegou a
+  +1.43 dBTP). Isso **contradiz a regra comum de mastering de "-1dBTP pra evitar clipping
+  inter-sample"** — na pratica, masters comerciais de tech house/house parecem tolerar (ou nao
+  se preocupar com) true peak acima de 0dB. Nao tratar "-1dBTP" como regra rigida pra esse
+  genero; ainda vale mencionar se uma faixa do usuario estiver MUITO acima disso (tipo +3dBTP+),
+  mas +0.5 a +1dBTP parece normal no mercado real.
+- **Loudness Range (LRA)**: 3.57 a 7.56 LU, media **5.3 LU** — dinamica controlada mas nao
+  brickwalled (LRA abaixo de ~3 seria "guerra do loudness" de verdade; essas faixas tem espaco
+  dinamico real, so nao sao gravacoes acusticas dinamicas).
+- **BPM dessas 7 faixas**: 125-129.8, media 126.97 — consistente com o range do chart (124-133),
+  mas na metade mais baixa/moderada dele.
+
 ## Convencoes de sound design / mix / master do genero
 (conhecimento geral de producao eletronica, nao extraido do chart — usar como ponto de partida,
 nao como regra absoluta)
@@ -101,10 +125,11 @@ nao como regra absoluta)
   central curto, poucos elementos tocando ao mesmo tempo (groove minimalista) comparado a
   outros generos de dance.
 - **Mix**: geralmente mais headroom e dinamica do que EDM mainstage — nao e brickwall.
-  Referencia comum: masters ficam por volta de **-8 a -6 LUFS integrado**, true peak em
-  -1dB, deixando espaco pro DJ misturar sem distorcer.
 - **Masterizacao**: pensada pra streaming/pool de DJ, nao pra "vencer a guerra do loudness" —
-  over-compression mata o groove que e a propria razao de ser do genero.
+  over-compression mata o groove que e a propria razao de ser do genero. **Ver a secao de
+  benchmark medido acima pros numeros reais de LUFS/true peak/LRA** — nao usar "-1dBTP" ou
+  "-8 a -6 LUFS" como regra generica, os dados medidos mostram que a pratica real do mercado
+  e um pouco diferente disso.
 
 ## Como usar isso ao revisar uma faixa do usuario
 

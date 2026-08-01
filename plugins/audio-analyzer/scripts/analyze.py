@@ -50,30 +50,57 @@ def extrai_key_do_nome(name_no_ext):
 
 
 def analisar_audio(filepath):
-    """Roda Essentia no arquivo. Retorna dict com key, scale, key_strength, bpm, bpm_conf, loudness."""
+    """Roda Essentia no arquivo. Retorna dict com key, scale, key_strength, bpm, bpm_conf,
+    lufs_integrated, loudness_range, true_peak_dbtp.
+
+    Loudness e medida via LoudnessEBUR128 (padrao EBU R128 / ITU-R BS.1770 -- o mesmo usado
+    por DAWs, plataformas de streaming e engenheiros de mastering) e TruePeakDetector (dBTP,
+    com oversampling, pra pegar clipping inter-sample que um peak meter comum nao mostra).
+    NAO usar essentia.standard.Loudness() puro -- e uma medida de energia bruta (escala de
+    milhares), nao comparavel com LUFS e inutil pra comparar contra qualquer referencia real.
+    """
+    import math
+    import numpy as np
     import essentia.standard as es
 
-    audio = es.MonoLoader(filename=filepath, sampleRate=44100)()
-    if len(audio) < 1024:
+    mono = es.MonoLoader(filename=filepath, sampleRate=44100)()
+    if len(mono) < 1024:
         return None
 
-    key, scale, strength = es.KeyExtractor()(audio)
+    key, scale, strength = es.KeyExtractor()(mono)
     result = {
         "key": key,
         "scale": scale,
         "key_strength": round(float(strength), 3),
     }
     try:
-        bpm, _, beats_conf, _, _ = es.RhythmExtractor2013()(audio)
+        bpm, _, beats_conf, _, _ = es.RhythmExtractor2013()(mono)
         result["bpm"] = round(float(bpm), 1)
         result["bpm_confidence"] = round(float(beats_conf), 3)
     except Exception:
         result["bpm"] = None
         result["bpm_confidence"] = None
+
     try:
-        result["loudness"] = round(float(es.Loudness()(audio)), 2)
-    except Exception:
-        result["loudness"] = None
+        stereo, sr, channels, _, _, _ = es.AudioLoader(filename=filepath)()
+        if channels == 1:
+            stereo = np.column_stack([stereo[:, 0], stereo[:, 0]])
+        _, _, integrated, lra = es.LoudnessEBUR128(sampleRate=sr)(stereo)
+        result["lufs_integrated"] = round(float(integrated), 2)
+        result["loudness_range_lu"] = round(float(lra), 2)
+
+        left = stereo[:, 0].astype(np.float32)
+        right = stereo[:, 1].astype(np.float32)
+        _, out_l = es.TruePeakDetector()(left)
+        _, out_r = es.TruePeakDetector()(right)
+        peak = max(np.max(np.abs(out_l)), np.max(np.abs(out_r)))
+        result["true_peak_dbtp"] = round(20 * math.log10(peak), 2) if peak > 0 else None
+    except Exception as e:
+        result["lufs_integrated"] = None
+        result["loudness_range_lu"] = None
+        result["true_peak_dbtp"] = None
+        result["loudness_error"] = str(e)
+
     return result
 
 

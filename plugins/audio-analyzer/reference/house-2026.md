@@ -77,8 +77,10 @@ BPM/tom (Traxsource não expõe isso na listagem, só na página individual da f
   Tech House — mais próximo de vocal de disco/soul, refletindo a raiz do genero.
 - **Arranjo**: estrutura similar a Tech House (intro/outro longos pra DJ mix), mas com mais
   espaço pra elementos melódicos/harmônicos no corpo da faixa.
-- **Mix/master**: mesma referência de headroom do Tech House (~-8 a -6 LUFS integrado,
-  true peak -1dB) — não é gênero de loudness war.
+- **Mix/master**: mesma referência de headroom do Tech House — não é gênero de loudness war.
+  Ver [[tech-house-2026.md]] pro benchmark de LUFS/true peak/LRA **medido de verdade** em 7
+  faixas de referência (média -8.64 LUFS integrado, true peak médio +0.35 dBTP — a regra comum
+  de "-1dBTP" não reflete a prática real do mercado nesses dois gêneros).
 
 ## Como usar isso ao revisar uma faixa do usuário
 
