@@ -74,6 +74,17 @@ This is the "like Moises" capability — locally-run source separation using Met
 - First run downloads the model checkpoint (~80-100MB depending on model) to `~/.cache/torch/hub/checkpoints/` — one-time cost per model, cached afterward. `htdemucs_ft` downloads 4 checkpoints (bag of models), more than the ~80MB single-model download.
 - **Always check `df -h ~` before separating multiple tracks or a whole folder** — this is the operation most likely to fill the disk in this plugin. Prefer `--stems 2` (fewer, smaller output files) over `--stems 4`/`6` when the user only needs vocal isolation, not a full multitrack breakdown.
 
+## reference/ — genre benchmark snapshots
+
+`reference/tech-house-2026.md` is a dated snapshot of Beatport's Tech House Top 100 (BPM/key/label
+distribution) plus general genre production conventions (kick/bass/percussion/mix/master targets).
+When the user asks for feedback on a tech house track, read this file first and use it as the
+comparison baseline (their track's BPM/key/loudness from `analyze.py report` against this doc's
+numbers) — don't re-derive genre conventions from scratch each time. It's a snapshot, not eternal
+truth: if it's more than ~2-3 months old, consider re-scraping the current chart before relying on
+it for anything that matters (see the method in the file's header — read-only page browsing, no
+audio downloads, since Beatport's ToS doesn't allow scraping preview audio).
+
 ## Before running at scale
 
 - Large `--mode copy` runs can fill the disk fast (sample libraries are often multiple GB). Check `df -h ~` first and prefer `--mode symlink` when space is tight.
