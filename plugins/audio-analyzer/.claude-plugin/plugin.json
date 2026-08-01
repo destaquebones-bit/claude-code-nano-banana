@@ -1,0 +1,8 @@
+{
+  "name": "audio-analyzer",
+  "description": "Organiza samples de audio por instrumento e detecta tonalidade/BPM/loudness via Essentia",
+  "version": "0.1.0",
+  "author": {
+    "name": "destaquebones-bit"
+  }
+}

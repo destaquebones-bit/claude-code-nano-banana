@@ -16,6 +16,14 @@
       },
       "source": "./plugins/nano-banana",
       "homepage": "https://github.com/jawhnycooke/claude-code-nano-banana/tree/main/plugins/nano-banana"
+    },
+    {
+      "name": "audio-analyzer",
+      "description": "Organize audio samples by instrument and detect musical key/BPM/loudness using Essentia",
+      "author": {
+        "name": "destaquebones-bit"
+      },
+      "source": "./plugins/audio-analyzer"
     }
   ]
 }

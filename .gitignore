@@ -1,1 +1,4 @@
 .claude/settings.local.json
+plugins/audio-analyzer/.venv/
+__pycache__/
+*.pyc
