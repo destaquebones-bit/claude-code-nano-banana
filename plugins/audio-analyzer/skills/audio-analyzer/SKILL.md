@@ -1,11 +1,11 @@
 ---
 name: audio-analyzer
-description: Organize audio samples into instrument subfolders and detect musical key/BPM/loudness using Essentia. Use when the user wants to sort a sample library by instrument, tag samples with their musical key, detect BPM, or otherwise analyze a folder of audio files (kicks, hats, bass loops, synth loops, vocal chops, etc).
+description: Organize audio samples into instrument subfolders, detect musical key/BPM/loudness via Essentia, and separate full songs into instrument stems (vocals/drums/bass/other) via Demucs — a local, Moises-like stem splitter. Use when the user wants to sort a sample library by instrument, tag samples with their musical key, detect BPM, or split a mixed song into isolated vocal/drum/bass/instrumental tracks.
 ---
 
 # Audio Analyzer
 
-Two independent tools, both CLI scripts under `scripts/`. They depend on an isolated venv (Essentia only works with `numpy<2`, which must not be forced onto the user's system Python).
+Three independent tools, all CLI scripts under `scripts/`. They depend on an isolated venv (Essentia only works with `numpy<2`, which must not be forced onto the user's system Python; Demucs/PyTorch live in the same venv for convenience).
 
 ## Setup (once per machine)
 
@@ -13,7 +13,7 @@ Two independent tools, both CLI scripts under `scripts/`. They depend on an isol
 bash "<plugin_dir>/scripts/setup.sh"
 ```
 
-Creates `<plugin_dir>/.venv` with `numpy<2`, `essentia`, `librosa`, `mutagen`. Idempotent — safe to re-run.
+Creates `<plugin_dir>/.venv` with `numpy<2`, `essentia`, `librosa`, `mutagen`, `torch`, `torchaudio`, `demucs`. Idempotent — safe to re-run. This is a heavy install (PyTorch alone is several hundred MB, plus the Demucs model downloads ~80MB on first use) — check `df -h ~` before running setup if disk space looks tight.
 
 Every script call below must activate that venv first:
 
@@ -54,6 +54,22 @@ python3 scripts/analyze.py rename --path ~/Desktop/Samples \
 **Only run key detection on tonal categories** — Baixo, Sintetizador, Cordas, Piano e Teclas, Guitarra, Vocal (the `TONAL_CATEGORIAS` list in `instrument_rules.py`). Kick/Snare/Hat/Percussion/FX are overwhelmingly atonal; running key detection on them produces meaningless labels. `rename` defaults to this list already — only override `--categorias` if the user explicitly wants something else, and warn them if they ask to include percussive categories.
 
 BPM detection (`RhythmExtractor2013`) works on any rhythmic loop but `bpm_confidence` is frequently 0.0 on short one-shots/loops in practice — don't present a BPM as trustworthy without checking that confidence value first.
+
+## separate.py — split a full song into instrument stems (Demucs)
+
+```bash
+python3 scripts/separate.py --input musica.mp3 --output ~/Desktop/Stems --stems 4
+python3 scripts/separate.py --input musica.mp3 --output ~/Desktop/Stems --stems 2   # vocals vs instrumental only
+python3 scripts/separate.py --input pasta_de_musicas/ --output ~/Desktop/Stems --stems 6  # + guitar/piano
+```
+
+This is the "like Moises" capability — locally-run source separation using Meta's Demucs (`htdemucs` model, or `htdemucs_6s` for the 6-stem model). Runs on CPU (works fine on Apple Silicon; no CUDA needed).
+
+- `--stems 2`: vocals / instrumental. `--stems 4` (default): vocals / drums / bass / other. `--stems 6`: adds guitar / piano on top of the 4.
+- Output defaults to **MP3**, not WAV — a 4-stem WAV export can be 250-300MB for a single ~4 minute song (each stem is roughly the size of the original, uncompressed). Pass `--wav` only when the user explicitly needs lossless stems (e.g. for remixing/mastering) and confirm they have the disk space first.
+- Processing speed: roughly real-time to 2x real-time per stem-group on an M-series Mac CPU (a ~6-7 min track took about 4 minutes). Run in the background for anything longer than a couple tracks and report progress rather than blocking.
+- First run downloads the model checkpoint (~80MB for `htdemucs`) to `~/.cache/torch/hub/checkpoints/` — one-time cost, cached afterward.
+- **Always check `df -h ~` before separating multiple tracks or a whole folder** — this is the operation most likely to fill the disk in this plugin. Prefer `--stems 2` (fewer, smaller output files) over `--stems 4`/`6` when the user only needs vocal isolation, not a full multitrack breakdown.
 
 ## Before running at scale
 

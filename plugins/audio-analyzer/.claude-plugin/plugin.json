@@ -1,6 +1,6 @@
 {
   "name": "audio-analyzer",
-  "description": "Organiza samples de audio por instrumento e detecta tonalidade/BPM/loudness via Essentia",
+  "description": "Organiza samples de audio por instrumento, detecta tonalidade/BPM/loudness via Essentia, e separa musicas em stems (vocal/bateria/baixo/resto) via Demucs",
   "version": "0.1.0",
   "author": {
     "name": "destaquebones-bit"

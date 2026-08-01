@@ -2,3 +2,6 @@ numpy<2
 essentia
 librosa
 mutagen
+torch
+torchaudio
+demucs

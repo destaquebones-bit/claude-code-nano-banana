@@ -19,7 +19,7 @@
     },
     {
       "name": "audio-analyzer",
-      "description": "Organize audio samples by instrument and detect musical key/BPM/loudness using Essentia",
+      "description": "Organize audio samples by instrument, detect musical key/BPM/loudness via Essentia, and split songs into instrument stems via Demucs",
       "author": {
         "name": "destaquebones-bit"
       },
