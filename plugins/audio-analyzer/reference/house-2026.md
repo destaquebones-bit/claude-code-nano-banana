@@ -46,6 +46,24 @@ de classicos do que o publico de tech house atual.**
 de fusao latina observada no Tech House ([[tech-house-2026.md]]), confirmando que e uma direcao
 de mercado mais ampla, nao especifica de um genero so.
 
+## Cross-check: Traxsource House Top 100 (mesmo snapshot 2026-08-01)
+
+Mesmo método do cross-check de [[tech-house-2026.md]] — só metadado de label/artista, sem
+BPM/tom (Traxsource não expõe isso na listagem, só na página individual da faixa).
+
+- **Labels em alta no Traxsource House**: Fool's Paradise (4), Soulfuric Deep, There Was Jack,
+  Trois Garçon, Defected, Nervous, Toolroom (3 cada). Defected, Nervous e Toolroom aparecem
+  fortes nos dois sites — labels "seguras" de referência pros dois gêneros.
+- **Overlap de faixas entre plataformas**: "Ritmo Da Rua" (Universal Love, Harry Romero) é #1 no
+  Traxsource House e também charta no Beatport House — sinal forte de hit cross-platform.
+  "Groovejet", "You Don't Want To Think About It", "Phunky" e "Je Suis Music" também aparecem
+  nos dois charts.
+- **Alerta de classificação de gênero inconsistente**: "I Never Knew" (Adam Ten) aparece como
+  **Tech House** no Beatport (posição #3 do chart de Tech House) mas como **House** no
+  Traxsource. Mesma faixa, gêneros diferentes conforme a plataforma — reforça que os limites
+  entre Tech House e House são fluidos na prática, e que rótulo de gênero de uma única loja não
+  é uma verdade absoluta.
+
 ## Convencoes de sound design / mix / master do genero
 (conhecimento geral, complementar ao Tech House — as diferencas sao o que importa aqui)
 

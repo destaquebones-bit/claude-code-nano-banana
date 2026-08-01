@@ -52,6 +52,36 @@ guiro — sobre a base de tech house). Confirma o que ja apareceu nos packs de s
 usuario (Afrobeat Percussion, Latin Tech Terrace etc.) — e uma direcao de mercado real, nao
 so gosto pessoal do usuario.
 
+## Cross-check: Traxsource Tech House Top 100 (mesmo snapshot 2026-08-01)
+
+Coletado do mesmo jeito (beatport.com -> traxsource.com/genre/18/tech-house/top, so leitura
+da pagina). Diferenca importante: **a listagem do Traxsource nao expoe BPM/tom por faixa**
+(so aparece na pagina individual de cada musica) — coletar isso pras 100 faixas exigiria 100
+visitas de pagina, o que e scraping excessivo pra um dado que ja temos via Beatport. Entao
+essa secao cobre so label/artista, nao BPM/tom.
+
+- **Labels em alta no Traxsource** (diferentes do topo do Beatport): Nervous, Toolroom/Toolroom
+  Trax, Little Big Groove Records, Black Box Underground, Hellbent Records, Defected, Wh0 Plays.
+  Nervous e Toolroom aparecem fortes nos dois sites — sao labels "seguras" de referencia.
+- **Artista fora da curva**: **Rick Silva** aparece **7 vezes** no top 100 do Traxsource
+  (posicoes 2, 25, 36, 39, 41, 46, 96) — muito mais que qualquer outro artista em qualquer um
+  dos charts vistos ate agora. Pode ser um produtor extremamente prolifico e em alta agora, ou
+  reflexo de estrategia de lancamento (varias faixas seguidas do mesmo artista sobem chart de
+  plataformas menores mais facil do que no Beatport). Vale ouvir o catalogo dele pra entender
+  o que esta acertando, mas nao tratar como "o som definitivo do genero" so por volume.
+- **Overlap de faixas entre plataformas**: varias faixas aparecem nos dois charts (ex: "Badman
+  Sound" Hannah Wants/Trace, "Gator Boots", "Beat Goes On", "Bounce UR Body", "$MONEY", "Blow Ya
+  Mind", "Take Our Time") — quando uma faixa aparece TOP nos dois sites ao mesmo tempo, e sinal
+  mais forte de que realmente esta em alta no genero (nao so favorecida pelo algoritmo de uma
+  plataforma so).
+- **Alerta de confiabilidade de metadado**: a faixa "Badman Sound" (Hannah Wants, Trace, label
+  Nervous) aparece no Beatport tageada como **156 BPM - C Major**, mas na pagina de faixa do
+  Traxsource aparece como **125 BPM - Cmin (C menor)** — mesma musica, mesma label, mesma data
+  de lancamento (2026-07-17), metadado de BPM e tom **divergente** entre as duas plataformas.
+  Isso e um lembrete real: nao confiar cegamente no BPM/tom que uma unica plataforma mostra —
+  quando possivel, validar com `analyze.py report` (analise de audio de verdade) em vez de so
+  copiar o metadado da loja.
+
 ## Convencoes de sound design / mix / master do genero
 (conhecimento geral de producao eletronica, nao extraido do chart — usar como ponto de partida,
 nao como regra absoluta)
