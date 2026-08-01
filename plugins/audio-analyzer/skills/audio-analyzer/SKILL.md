@@ -76,14 +76,18 @@ This is the "like Moises" capability — locally-run source separation using Met
 
 ## reference/ — genre benchmark snapshots
 
-`reference/tech-house-2026.md` is a dated snapshot of Beatport's Tech House Top 100 (BPM/key/label
-distribution) plus general genre production conventions (kick/bass/percussion/mix/master targets).
-When the user asks for feedback on a tech house track, read this file first and use it as the
-comparison baseline (their track's BPM/key/loudness from `analyze.py report` against this doc's
-numbers) — don't re-derive genre conventions from scratch each time. It's a snapshot, not eternal
-truth: if it's more than ~2-3 months old, consider re-scraping the current chart before relying on
-it for anything that matters (see the method in the file's header — read-only page browsing, no
-audio downloads, since Beatport's ToS doesn't allow scraping preview audio).
+`reference/tech-house-2026.md` and `reference/house-2026.md` are dated snapshots of Beatport's
+Top 100 charts (BPM/key/label distribution) for those two genres, plus general production
+conventions (kick/bass/percussion/mix/master targets). The user follows both genres closely and
+wants production feedback benchmarked against current market data — when they ask for feedback
+on a track, read the file matching that genre first and use it as the comparison baseline
+(their track's BPM/key/loudness from `analyze.py report` against the doc's numbers) — don't
+re-derive genre conventions from scratch each time. These are snapshots, not eternal truth: if
+one is more than ~2-3 months old, consider re-scraping the current chart before relying on it
+for anything that matters (method: read-only page browsing of `beatport.com/genre/<slug>/<id>/top-100`
+via `get_page_text`, no audio downloads — Beatport's ToS doesn't allow scraping preview audio).
+Same process extends to other genres if the user asks — follow the same method and file naming
+(`reference/<genre-slug>-<year>.md`).
 
 ## Before running at scale
 

@@ -11,6 +11,9 @@ master de tech house, para servir de checklist ao revisar faixas do usuario.
 esses numeros pra dar feedback importante numa faixa, considere re-coletar o chart atual se
 esse arquivo tiver mais de ~2-3 meses.
 
+Ver tambem [[house-2026.md]] — mesma metodologia aplicada ao genero House. As duas tem BPM
+parecido (~128-130), mas diferem bastante em harmonia (Tech House ~52% menor, House ~82% menor).
+
 ## O que os dados mostram
 
 ### BPM
