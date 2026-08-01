@@ -63,12 +63,15 @@ python3 scripts/separate.py --input musica.mp3 --output ~/Desktop/Stems --stems 
 python3 scripts/separate.py --input pasta_de_musicas/ --output ~/Desktop/Stems --stems 6  # + guitar/piano
 ```
 
-This is the "like Moises" capability — locally-run source separation using Meta's Demucs (`htdemucs` model, or `htdemucs_6s` for the 6-stem model). Runs on CPU (works fine on Apple Silicon; no CUDA needed).
+This is the "like Moises" capability — locally-run source separation using Meta's Demucs. Runs on CPU (works fine on Apple Silicon; no CUDA needed).
 
 - `--stems 2`: vocals / instrumental. `--stems 4` (default): vocals / drums / bass / other. `--stems 6`: adds guitar / piano on top of the 4.
+- **Runs in max-quality mode by default** (user-requested standard, not a suggestion — keep this default): `--shifts 5 --overlap 0.75`, and model `htdemucs_ft` (the fine-tuned bag-of-4-models, official best-quality option for 4/2 stems) instead of plain `htdemucs`. This costs roughly **5x** the processing time of the fast path. Pass `--fast` only when the user explicitly wants a quick/draft pass instead of quality — don't default to it, and don't silently drop to it to save time.
+- For `--stems 6` there is no fine-tuned variant (`htdemucs_6s` only) — quality gain there comes only from the shifts/overlap boost, not a better base model.
+- **Hard ceiling, be upfront about it**: 6 stems (vocals/drums/bass/guitar/piano/other) is the max granularity Demucs — or any comparable public tool, including what Moises uses — separates today. Synths, strings, brass, electric keys, FX/atmosphere have no dedicated stem and always land in "other". If the user asks for "nothing left in other" or more than 6 instrument tracks, say plainly that it's not achievable with current tooling rather than attempting it silently.
 - Output defaults to **MP3**, not WAV — a 4-stem WAV export can be 250-300MB for a single ~4 minute song (each stem is roughly the size of the original, uncompressed). Pass `--wav` only when the user explicitly needs lossless stems (e.g. for remixing/mastering) and confirm they have the disk space first.
-- Processing speed: roughly real-time to 2x real-time per stem-group on an M-series Mac CPU (a ~6-7 min track took about 4 minutes). Run in the background for anything longer than a couple tracks and report progress rather than blocking.
-- First run downloads the model checkpoint (~80MB for `htdemucs`) to `~/.cache/torch/hub/checkpoints/` — one-time cost, cached afterward.
+- Processing speed at max quality: expect roughly 5x the fast-mode time (fast mode was ~40-60% of real-time per track on an M2 CPU, e.g. a 6-7 min track took ~4 min fast / expect ~15-20 min at max quality). Always run in the background and report progress rather than blocking, especially at max quality.
+- First run downloads the model checkpoint (~80-100MB depending on model) to `~/.cache/torch/hub/checkpoints/` — one-time cost per model, cached afterward. `htdemucs_ft` downloads 4 checkpoints (bag of models), more than the ~80MB single-model download.
 - **Always check `df -h ~` before separating multiple tracks or a whole folder** — this is the operation most likely to fill the disk in this plugin. Prefer `--stems 2` (fewer, smaller output files) over `--stems 4`/`6` when the user only needs vocal isolation, not a full multitrack breakdown.
 
 ## Before running at scale
