@@ -1,7 +1,9 @@
 numpy<2
-essentia
+essentia-tensorflow
 librosa
 mutagen
 torch
 torchaudio
 demucs
+matplotlib
+google-genai

@@ -20,9 +20,23 @@ import sys
 import warnings
 
 warnings.filterwarnings("ignore")
+os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "3")
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from instrument_rules import AUDIO_EXTS, TONAL_CATEGORIAS
+
+MODELS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models")
+
+MOOD_HEADS = {
+    "mood_happy": ("happy", "non_happy"),
+    "mood_aggressive": ("aggressive", "non_aggressive"),
+    "mood_relaxed": ("relaxed", "non_relaxed"),
+    "mood_sad": ("sad", "non_sad"),
+    "mood_party": ("party", "non_party"),
+    "mood_electronic": ("electronic", "non_electronic"),
+    "mood_acoustic": ("acoustic", "non_acoustic"),
+    "danceability": ("danceable", "non_danceable"),
+}
 
 KEY_TOKEN_RE = re.compile(r'^([A-Ga-g])(#|b)?(min|maj|m)?$')
 
@@ -111,6 +125,164 @@ def key_para_notacao_curta(key, scale):
     return letra
 
 
+def analisar_audio_profundo(filepath):
+    """Descritores adicionais (nao criticos de tonalidade/loudness, mas uteis pra
+    caracterizar textura/energia e comparar contra faixas de referencia):
+
+    - spectral_centroid_hz: 'brilho' medio (centro de massa do espectro). Mais alto =
+      mais presenca de agudo/brilho; mais baixo = som mais grave/abafado.
+    - rolloff_85_hz: frequencia abaixo da qual estao 85% da energia. Complementa o
+      centroid pra descrever balanco espectral.
+    - onset_rate: onsets (transientes) por segundo -- proxy de "quao ocupada" a faixa
+      e ritmicamente. Mais alto = mais elementos percussivos/transientes por segundo.
+    - danceability: medida de regularidade ritmica do Essentia (0 a ~3, mais alto =
+      mais "dancavel"/regular).
+    - dynamic_complexity: variacao de loudness ao longo do tempo (nao confundir com
+      loudness_range_lu do EBU R128 -- essa e outra metrica, mais sensivel a mudanca
+      frame a frame).
+    - stereo_correlation: correlacao entre canais L/R (-1 a 1). Perto de 1 = quase mono
+      (pouca informacao estereo); perto de 0 ou negativo = muito largo, risco de
+      problema de compatibilidade mono (cancelamento de fase).
+    """
+    import numpy as np
+    import essentia.standard as es
+
+    mono = es.MonoLoader(filename=filepath, sampleRate=44100)()
+    if len(mono) < 4096:
+        return None
+
+    result = {}
+
+    w = es.Windowing(type="hann")
+    spectrum = es.Spectrum()
+    centroid_algo = es.Centroid(range=22050)
+    rolloff_algo = es.RollOff()
+
+    centroids = []
+    rolloffs = []
+    for frame in es.FrameGenerator(mono, frameSize=2048, hopSize=1024, startFromZero=True):
+        spec = spectrum(w(frame))
+        if np.sum(spec) <= 0:
+            continue
+        centroids.append(centroid_algo(spec))
+        rolloffs.append(rolloff_algo(spec))
+
+    if centroids:
+        result["spectral_centroid_hz"] = round(float(np.mean(centroids)), 1)
+        result["rolloff_85_hz"] = round(float(np.mean(rolloffs)), 1)
+    else:
+        result["spectral_centroid_hz"] = None
+        result["rolloff_85_hz"] = None
+
+    try:
+        _, onset_rate = es.OnsetRate()(mono)
+        result["onset_rate_per_sec"] = round(float(onset_rate), 2)
+    except Exception:
+        result["onset_rate_per_sec"] = None
+
+    try:
+        danceability, _ = es.Danceability()(mono)
+        result["danceability"] = round(float(danceability), 3)
+    except Exception:
+        result["danceability"] = None
+
+    try:
+        dyn_complexity, _ = es.DynamicComplexity()(mono)
+        result["dynamic_complexity"] = round(float(dyn_complexity), 3)
+    except Exception:
+        result["dynamic_complexity"] = None
+
+    try:
+        stereo, sr, channels, _, _, _ = es.AudioLoader(filename=filepath)()
+        if channels >= 2:
+            left = stereo[:, 0].astype(np.float64)
+            right = stereo[:, 1].astype(np.float64)
+            n = min(len(left), len(right))
+            corr = float(np.corrcoef(left[:n], right[:n])[0, 1])
+            result["stereo_correlation"] = round(corr, 3)
+        else:
+            result["stereo_correlation"] = None
+    except Exception:
+        result["stereo_correlation"] = None
+
+    return result
+
+
+def analisar_mood(filepath):
+    """Classificadores de humor/dancabilidade via modelos MusiCNN pre-treinados
+    (essentia-tensorflow, dataset MTG). CONFIABILIDADE LIMITADA -- ver ressalva
+    no SKILL.md: sao classificadores binarios independentes (nao mutuamente
+    exclusivos), alguns treinados em poucas centenas de faixas, e podem
+    contradizer uns aos outros (ex: 'relaxed' e 'aggressive' altos ao mesmo
+    tempo) ou nao generalizar bem pra tech house/house moderno. Usar como MAIS
+    UM sinal, nunca como veredito isolado.
+    """
+    import numpy as np
+    from essentia.standard import MonoLoader, TensorflowPredictMusiCNN, TensorflowPredict2D
+
+    base_model_path = os.path.join(MODELS_DIR, "msd-musicnn-1.pb")
+    if not os.path.isfile(base_model_path):
+        return {"erro": f"modelo nao encontrado em {base_model_path} -- ver scripts/download_models.sh"}
+
+    audio = MonoLoader(filename=filepath, sampleRate=16000, resampleQuality=4)()
+    embedding_model = TensorflowPredictMusiCNN(graphFilename=base_model_path, output="model/dense/BiasAdd")
+    embeddings = embedding_model(audio)
+
+    result = {}
+    for head, (pos_label, neg_label) in MOOD_HEADS.items():
+        head_path = os.path.join(MODELS_DIR, f"{head}-msd-musicnn-1.pb")
+        if not os.path.isfile(head_path):
+            continue
+        model = TensorflowPredict2D(graphFilename=head_path, input="model/Placeholder", output="model/Softmax")
+        predictions = model(embeddings)
+        avg = np.mean(predictions, axis=0)
+        result[pos_label] = round(float(avg[0]), 3)
+    return result
+
+
+def cmd_mood(args):
+    path = os.path.expanduser(args.path)
+    if os.path.isfile(path):
+        arquivos = [path]
+    else:
+        arquivos = [
+            os.path.join(root, f)
+            for root, _, files in os.walk(path)
+            for f in files
+            if f.lower().endswith(AUDIO_EXTS)
+        ]
+
+    resultados = []
+    for fp in arquivos:
+        r = analisar_mood(fp) or {}
+        r["arquivo"] = fp
+        resultados.append(r)
+
+    print(json.dumps(resultados, indent=2, ensure_ascii=False))
+
+
+def cmd_deep(args):
+    path = os.path.expanduser(args.path)
+    if os.path.isfile(path):
+        arquivos = [path]
+    else:
+        arquivos = [
+            os.path.join(root, f)
+            for root, _, files in os.walk(path)
+            for f in files
+            if f.lower().endswith(AUDIO_EXTS)
+        ]
+
+    resultados = []
+    for fp in arquivos:
+        base = analisar_audio(fp) or {}
+        deep = analisar_audio_profundo(fp) or {}
+        r = {**base, **deep, "arquivo": fp}
+        resultados.append(r)
+
+    print(json.dumps(resultados, indent=2, ensure_ascii=False))
+
+
 def cmd_report(args):
     path = os.path.expanduser(args.path)
     if os.path.isfile(path):
@@ -182,6 +354,14 @@ def main():
     p_report = sub.add_parser("report", help="Analisa e imprime resultado em JSON, sem alterar arquivos")
     p_report.add_argument("--path", required=True)
     p_report.set_defaults(func=cmd_report)
+
+    p_deep = sub.add_parser("deep", help="Como 'report', mais descritores de textura/energia (brilho, densidade ritmica, dancabilidade, estereo)")
+    p_deep.add_argument("--path", required=True)
+    p_deep.set_defaults(func=cmd_deep)
+
+    p_mood = sub.add_parser("mood", help="Classificadores de humor/dancabilidade (MusiCNN pre-treinado) -- confiabilidade limitada, ver SKILL.md")
+    p_mood.add_argument("--path", required=True)
+    p_mood.set_defaults(func=cmd_mood)
 
     p_rename = sub.add_parser("rename", help="Renomeia arquivos adicionando a tonalidade no final")
     p_rename.add_argument("--path", required=True)

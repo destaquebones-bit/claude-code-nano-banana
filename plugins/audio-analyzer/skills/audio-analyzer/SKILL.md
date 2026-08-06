@@ -1,11 +1,21 @@
 ---
 name: audio-analyzer
-description: Organize audio samples into instrument subfolders, detect musical key/BPM/loudness via Essentia, and separate full songs into instrument stems (vocals/drums/bass/other) via Demucs — a local, Moises-like stem splitter. Use when the user wants to sort a sample library by instrument, tag samples with their musical key, detect BPM, or split a mixed song into isolated vocal/drum/bass/instrumental tracks.
+description: Organize audio samples into instrument subfolders, detect musical key/BPM/loudness/mood via Essentia (incl. pretrained mood/danceability classifiers), generate spectrogram images to visually inspect a track, separate full songs into instrument stems via Demucs (Moises-like), compare a draft track against reference tracks, and (once a working Gemini key is available) get a real audio-critique from a multimodal model. Use when the user wants to sort a sample library by instrument, tag samples with their key/BPM, split a mixed song into stems, get production feedback on their own track, or otherwise get as close as possible to "critical listening" without native audio perception.
 ---
 
 # Audio Analyzer
 
-Three independent tools, all CLI scripts under `scripts/`. They depend on an isolated venv (Essentia only works with `numpy<2`, which must not be forced onto the user's system Python; Demucs/PyTorch live in the same venv for convenience).
+CLI scripts under `scripts/`, all depending on one isolated venv (Essentia-TensorFlow only
+works with `numpy<2`, which must not be forced onto the user's system Python; Demucs/PyTorch/
+google-genai/matplotlib all live in the same venv for convenience).
+
+**Context on why this plugin looks the way it does**: it started as sample organization +
+key/BPM tagging, then grew stem separation, then genre-benchmark reference docs, then (this
+round) an honest attempt at real "critical listening" capability. The user explicitly asked
+"go as far as you possibly can" on the listening front — the `mood`/`deep`/`compare`/
+`critique_gemini` tools below are the result of that push, each with real, stated limitations.
+Don't undersell them as "just numbers" nor oversell them as true perceptual judgment — be
+specific about what each one actually measures.
 
 ## Setup (once per machine)
 
@@ -13,7 +23,13 @@ Three independent tools, all CLI scripts under `scripts/`. They depend on an iso
 bash "<plugin_dir>/scripts/setup.sh"
 ```
 
-Creates `<plugin_dir>/.venv` with `numpy<2`, `essentia`, `librosa`, `mutagen`, `torch`, `torchaudio`, `demucs`. Idempotent — safe to re-run. This is a heavy install (PyTorch alone is several hundred MB, plus the Demucs model downloads ~80MB on first use) — check `df -h ~` before running setup if disk space looks tight.
+Creates `<plugin_dir>/.venv` with `numpy<2`, `essentia-tensorflow` (not plain `essentia` —
+the TensorFlow-enabled build is required for the `mood` command's pretrained classifiers),
+`librosa`, `mutagen`, `torch`, `torchaudio`, `demucs`, `matplotlib`, `google-genai`. Idempotent
+— safe to re-run. This is a heavy install (PyTorch alone is several hundred MB, plus the
+Demucs model downloads ~80-300MB on first use) — check `df -h ~` before running setup if disk
+space looks tight. The `models/` directory (small pretrained `.pb` files, ~5MB total, used by
+`mood`) is committed to the repo, not downloaded by setup.sh.
 
 Every script call below must activate that venv first:
 
@@ -73,6 +89,96 @@ This is the "like Moises" capability — locally-run source separation using Met
 - Processing speed at max quality: expect roughly 5x the fast-mode time (fast mode was ~40-60% of real-time per track on an M2 CPU, e.g. a 6-7 min track took ~4 min fast / expect ~15-20 min at max quality). Always run in the background and report progress rather than blocking, especially at max quality.
 - First run downloads the model checkpoint (~80-100MB depending on model) to `~/.cache/torch/hub/checkpoints/` — one-time cost per model, cached afterward. `htdemucs_ft` downloads 4 checkpoints (bag of models), more than the ~80MB single-model download.
 - **Always check `df -h ~` before separating multiple tracks or a whole folder** — this is the operation most likely to fill the disk in this plugin. Prefer `--stems 2` (fewer, smaller output files) over `--stems 4`/`6` when the user only needs vocal isolation, not a full multitrack breakdown.
+
+## analyze.py deep — texture/energy descriptors
+
+```bash
+python3 scripts/analyze.py deep --path faixa.wav
+```
+
+Adds to the base `report` output: `spectral_centroid_hz`/`rolloff_85_hz` (brightness —
+higher = more high-frequency presence), `onset_rate_per_sec` (transient density, i.e. how
+busy the track is rhythmically), `danceability` (Essentia's rhythmic-regularity measure, 0
+to ~3), `dynamic_complexity` (frame-to-frame loudness variation — different metric from
+`loudness_range_lu`, more sensitive to short-term change), `stereo_correlation` (-1 to 1;
+near 1 = nearly mono, near 0 or negative = very wide, possible mono-compatibility risk).
+Useful as comparison numbers (this track vs a reference track), not as absolute
+pass/fail thresholds — there's no universal "correct" spectral centroid.
+
+## analyze.py mood — pretrained mood/danceability classifiers (Essentia-TensorFlow)
+
+```bash
+python3 scripts/analyze.py mood --path faixa.wav
+```
+
+Runs the small MusiCNN-based classifiers in `models/` (happy, aggressive, relaxed, sad,
+party, electronic, acoustic, danceable — each a probability 0-1). This is the closest thing
+to qualitative language this plugin can produce **without an external API** — genuinely
+useful as one more signal, but **flag its real limitations to the user every time you use
+it, don't present it as settled fact**:
+- These are independent binary classifiers, not mutually exclusive — a track can (and often
+  does) score high on both `relaxed` and `aggressive` simultaneously. That's not a bug to
+  fix, it's how the models work; don't try to force a single coherent mood label out of them.
+- Some heads are trained on very small datasets (mood_happy: ~300 tracks total). Expect noise,
+  especially on genres underrepresented in that training data.
+- They were trained on a general MTG in-house collection, not tech house/house specifically —
+  don't be surprised if `sad`/`aggressive` come back extreme (near 0 or 1) on a track that a
+  human would call neither. Confidence in the 0.3-0.7 range is more informative than a clean
+  0.0/1.0 split.
+- Models/heads live in `models/*.pb` (~5MB total, already downloaded and committed to the
+  repo — see `analisar_mood()` in `analyze.py` for the exact graph/tensor names if adding a
+  new classification head from https://essentia.upf.edu/models.html; stick to `-msd-musicnn-1`
+  variants for consistency and to keep the embedding extraction shared across heads).
+
+## spectrogram.py — see the audio (no listening tool exists, so look instead)
+
+```bash
+python3 scripts/spectrogram.py --input faixa.wav --output grafico.png
+```
+
+There is no audio-listening tool in this environment. This generates a waveform + log-frequency
+spectrogram PNG — **read the resulting PNG with the Read tool** (Claude reads images) to
+visually inspect arrangement structure (section boundaries, build-ups, silence gaps),
+frequency balance (is there a hot/static low end? missing highs?), and transient density,
+without relying only on the numeric descriptors above. This caught real issues before (e.g.
+a "raw" draft that turned out to be a single 4-minute loop with a static, non-sidechained low
+end, plus a separately-bounced isolated vocal at the tail — all visible at a glance, none of
+it obvious from `report`/`deep` numbers alone). Always describe only what's visually present;
+don't claim to have judged the sound quality from a picture.
+
+## compare.py — draft vs reference tracks
+
+```bash
+python3 scripts/compare.py --target draft.wav --referencias ref1.wav ref2.wav ref3.wav
+python3 scripts/compare.py --target draft.wav --referencias-dir ~/Referencias/
+```
+
+Runs `report` + `deep` + `mood` on the target and every reference file, then prints the
+target's values against the reference set's averages for every numeric field, plus a
+side-by-side for the mood scores. Use this whenever the user has both a draft and a set of
+tracks they consider a quality/style benchmark (their own past hits, purchased references,
+tracks by artists they're targeting for support) — it turns the raw numbers into "your track
+runs brighter/darker/busier than your references" instead of isolated values with no context.
+
+## critique_gemini.py — real audio-informed critique (needs a working API key)
+
+```bash
+GEMINI_API_KEY="..." python3 scripts/critique_gemini.py --input faixa.wav [--duracao 60]
+```
+
+Sends a trimmed audio clip (default first 60s, downsampled to mono 64kbps mp3 via `ffmpeg` to
+keep the request small) to a Gemini model with a production-critique prompt, and prints back
+its actual text response. This is the closest thing to genuine perceptual critique available —
+a real multimodal model processing the waveform, not a metadata/spectral proxy. Known blocker
+as of 2026-08-01: the user's current `GEMINI_API_KEY` returns `401 ACCESS_TOKEN_TYPE_UNSUPPORTED`
+on `generateContent` (both via the REST API directly and the `google-genai` SDK) despite working
+fine for the read-only `ListModels` call — this points to a key that isn't in the standard AI
+Studio format/scope, not a bug in this script. Don't spend time debugging around it further;
+the fix is a fresh key from https://aistudio.google.com/apikey (standard keys start `AIza...`),
+with billing enabled (image/audio-capable models are not on the free tier — see the `nano-banana`
+plugin's history in this same repo for the identical billing issue on image generation). Uses
+direct REST calls (`requests`), not the SDK — that was the more predictable path in this session's
+testing, keep it that way rather than reintroducing the SDK.
 
 ## reference/ — genre benchmark snapshots
 
