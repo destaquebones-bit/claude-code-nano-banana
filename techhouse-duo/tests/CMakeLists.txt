@@ -1,0 +1,30 @@
+cmake_minimum_required(VERSION 3.22)
+project(TechHouseDuoTests VERSION 0.1.0)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Reuses the JUCE checkout the main build already fetched when present, so
+# running the tests doesn't trigger a second clone.
+include(FetchContent)
+FetchContent_Declare(
+    JUCE
+    GIT_REPOSITORY https://github.com/juce-framework/JUCE.git
+    GIT_TAG        7.0.12
+    GIT_SHALLOW    TRUE
+    SOURCE_DIR     ${CMAKE_CURRENT_SOURCE_DIR}/../build/_deps/juce-src
+)
+FetchContent_MakeAvailable(JUCE)
+
+juce_add_console_app(DspTests PRODUCT_NAME "DspTests")
+
+target_sources(DspTests PRIVATE DspTests.cpp)
+
+target_compile_definitions(DspTests PUBLIC
+    JUCE_WEB_BROWSER=0
+    JUCE_USE_CURL=0
+    JUCE_STANDALONE_APPLICATION=1
+    JUCE_DISPLAY_SPLASH_SCREEN=0
+)
+
+target_link_libraries(DspTests PRIVATE juce::juce_dsp juce::juce_core)
