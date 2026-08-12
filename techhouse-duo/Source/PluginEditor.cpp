@@ -3,7 +3,7 @@
 
 namespace
 {
-    constexpr int headerHeight = 42;
+    constexpr int headerHeight = 58;
     constexpr int spectrumHeight = 158;
     constexpr int statusHeight = 44;
     constexpr int spacing = 8;
@@ -94,6 +94,11 @@ TechHouseDuoEditor::TechHouseDuoEditor (TechHouseDuoProcessor& p)
       kickToneSection  (p.apvts, "KICK TONE")
 {
     setLookAndFeel (&lookAndFeel);
+
+    // Embedded rather than read from disk: a plugin cannot rely on any
+    // install-relative path once a DAW has relocated its bundle.
+    sunLogo = juce::ImageCache::getFromMemory (Assets::spectral_sun_logo_png,
+                                                Assets::spectral_sun_logo_pngSize);
 
     modeLabel.setText ("MODE", juce::dontSendNotification);
     modeLabel.setJustificationType (juce::Justification::centredRight);
@@ -209,12 +214,24 @@ void TechHouseDuoEditor::paint (juce::Graphics& g)
     g.setColour (Palette::amber.withAlpha (0.5f));
     g.drawHorizontalLine ((int) header.getBottom() - 1, header.getX(), header.getRight());
 
+    // Spectral Sun mark, then the product name. The mark carries the amber so
+    // the wordmark beside it stays quiet and the two do not compete.
+    int textX = 14;
+    if (sunLogo.isValid())
+    {
+        const int logoHeight = headerHeight - 12;
+        const int logoWidth = juce::roundToInt (logoHeight * sunLogo.getWidth()
+                                                 / (float) juce::jmax (1, sunLogo.getHeight()));
+        g.drawImageWithin (sunLogo, 12, 6, logoWidth, logoHeight,
+                            juce::RectanglePlacement::centred | juce::RectanglePlacement::onlyReduceInSize);
+        textX = 12 + logoWidth + 12;
+    }
+
     g.setColour (Palette::text);
     g.setFont (juce::Font (15.0f, juce::Font::bold));
-    g.drawFittedText ("TECHHOUSE", 14, 0, 110, headerHeight, juce::Justification::centredLeft, 1);
+    g.drawFittedText ("TECHHOUSE", textX, 0, 100, headerHeight, juce::Justification::centredLeft, 1);
     g.setColour (Palette::amber);
-    g.setFont (juce::Font (15.0f, juce::Font::bold));
-    g.drawFittedText ("DUO", 108, 0, 60, headerHeight, juce::Justification::centredLeft, 1);
+    g.drawFittedText ("DUO", textX + 94, 0, 50, headerHeight, juce::Justification::centredLeft, 1);
 }
 
 void TechHouseDuoEditor::resized()
@@ -222,7 +239,7 @@ void TechHouseDuoEditor::resized()
     auto b = getLocalBounds();
 
     auto header = b.removeFromTop (headerHeight).reduced (10, 8);
-    header.removeFromLeft (150); // title
+    header.removeFromLeft (260); // Spectral Sun mark + product name
     linkBox.setBounds (header.removeFromRight (60));
     linkLabel.setBounds (header.removeFromRight (38));
     header.removeFromRight (10);

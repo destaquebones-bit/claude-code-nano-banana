@@ -44,6 +44,15 @@ juce_add_plugin(TechHouseDuo
 
 juce_generate_juce_header(TechHouseDuo)
 
+# The Spectral Sun mark is embedded in the binary rather than loaded from disk:
+# a plugin has no reliable install-relative path to read resources from once a
+# DAW has copied it around.
+juce_add_binary_data(TechHouseDuoAssets
+    HEADER_NAME TechHouseDuoAssets.h
+    NAMESPACE Assets
+    SOURCES Resources/spectral_sun_logo.png
+)
+
 target_sources(TechHouseDuo PRIVATE
     Source/PluginProcessor.cpp
     Source/PluginEditor.cpp
@@ -58,6 +67,7 @@ target_compile_definitions(TechHouseDuo PUBLIC
 
 target_link_libraries(TechHouseDuo
     PRIVATE
+        TechHouseDuoAssets
         juce::juce_audio_utils
         juce::juce_dsp
     PUBLIC

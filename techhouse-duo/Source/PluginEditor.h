@@ -4,6 +4,7 @@
 #include "PluginProcessor.h"
 #include "ui/AnalogLookAndFeel.h"
 #include "ui/Visualisers.h"
+#include "TechHouseDuoAssets.h"
 
 struct KnobControl : public juce::Component
 {
@@ -193,6 +194,8 @@ private:
     std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> modeAttachment, linkAttachment;
 
     juce::TextButton relearnButton { "Relearn notes" };
+
+    juce::Image sunLogo;
 
     SpectrumView spectrum;
     StatusStrip status;
