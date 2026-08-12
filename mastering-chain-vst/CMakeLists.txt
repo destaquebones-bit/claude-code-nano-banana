@@ -6,6 +6,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+# See techhouse-duo/CMakeLists.txt: CI has no DAW to install into, so it turns
+# the post-build copy off.
+option(PLUGIN_COPY_AFTER_BUILD "Copy the built plugin into the system plugin folder" ON)
+
 # JUCE is fetched from source rather than vendored -- keeps this repo free
 # of a multi-hundred-MB framework checkout. First configure will clone it
 # (shallow, pinned tag below); subsequent configures reuse the cached
@@ -32,7 +36,7 @@ juce_add_plugin(MasteringChain
     IS_MIDI_EFFECT              FALSE
     EDITOR_WANTS_KEYBOARD_FOCUS FALSE
     VST3_CATEGORIES             Fx Mastering
-    COPY_PLUGIN_AFTER_BUILD     TRUE
+    COPY_PLUGIN_AFTER_BUILD     ${PLUGIN_COPY_AFTER_BUILD}
 )
 
 juce_generate_juce_header(MasteringChain)

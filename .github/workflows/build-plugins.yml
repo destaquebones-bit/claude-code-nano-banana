@@ -1,0 +1,138 @@
+name: Build plugins
+
+# Produces ready-to-install VST3 bundles for macOS and Windows so the plugins
+# can be installed without a local toolchain. Download them from the "Artifacts"
+# section of a finished run on the Actions tab.
+#
+# macOS note: an artifact downloaded from here is quarantined by Gatekeeper
+# (a locally-compiled build is not), so it must be de-quarantined after
+# unzipping -- see the README for the exact command.
+
+on:
+  push:
+    branches: [main, 'claude/**']
+    paths:
+      - 'techhouse-duo/**'
+      - 'mastering-chain-vst/**'
+      - '.github/workflows/build-plugins.yml'
+  pull_request:
+  workflow_dispatch:
+
+env:
+  JUCE_TAG: 7.0.12
+
+jobs:
+  # Runs first and fast: if the DSP checks fail there is no point producing
+  # installers, so every other job waits on this.
+  dsp-tests:
+    name: DSP tests
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install JUCE Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2-dev libcurl4-openssl-dev libx11-dev \
+            libxcomposite-dev libxcursor-dev libxext-dev libxinerama-dev \
+            libxrandr-dev libxrender-dev libglu1-mesa-dev mesa-common-dev \
+            libfreetype-dev libfontconfig1-dev
+
+      - name: Cache JUCE checkout
+        uses: actions/cache@v4
+        with:
+          path: techhouse-duo/build/_deps
+          key: juce-${{ env.JUCE_TAG }}-tests-${{ runner.os }}
+
+      - name: Configure
+        working-directory: techhouse-duo
+        run: cmake -B build-tests -S tests -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        working-directory: techhouse-duo
+        run: cmake --build build-tests --config Release --parallel
+
+      - name: Run
+        working-directory: techhouse-duo
+        run: ./build-tests/DspTests_artefacts/Release/DspTests
+
+  build:
+    name: ${{ matrix.plugin }} (${{ matrix.label }})
+    needs: dsp-tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        plugin: [techhouse-duo, mastering-chain-vst]
+        include:
+          - os: macos-14
+            label: macOS
+          - os: windows-2022
+            label: Windows
+        exclude: []
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache JUCE checkout
+        uses: actions/cache@v4
+        with:
+          path: ${{ matrix.plugin }}/build/_deps
+          key: juce-${{ env.JUCE_TAG }}-${{ matrix.plugin }}-${{ runner.os }}
+
+      # Universal binary so the plugin loads whether Live runs natively on
+      # Apple Silicon or under Rosetta. An arm64-only build simply does not
+      # appear in a Rosetta host, which looks like a broken install.
+      - name: Configure (macOS)
+        if: runner.os == 'macOS'
+        working-directory: ${{ matrix.plugin }}
+        run: >
+          cmake -B build
+          -DCMAKE_BUILD_TYPE=Release
+          -DPLUGIN_COPY_AFTER_BUILD=OFF
+          -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
+          -DCMAKE_OSX_DEPLOYMENT_TARGET=10.15
+
+      - name: Configure (Windows)
+        if: runner.os == 'Windows'
+        working-directory: ${{ matrix.plugin }}
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DPLUGIN_COPY_AFTER_BUILD=OFF
+
+      - name: Build
+        working-directory: ${{ matrix.plugin }}
+        run: cmake --build build --config Release --parallel
+
+      # ditto rather than zip: it preserves the executable bit and bundle
+      # structure inside the .vst3, which a plain zip round-trip can lose.
+      - name: Package (macOS)
+        if: runner.os == 'macOS'
+        working-directory: ${{ matrix.plugin }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$GITHUB_WORKSPACE/out"
+          VST3=$(find build -maxdepth 5 -name '*.vst3' -type d | head -n 1)
+          if [ -z "$VST3" ]; then echo "No .vst3 produced"; exit 1; fi
+          echo "Packaging $VST3"
+          ditto -c -k --sequesterRsrc --keepParent "$VST3" \
+            "$GITHUB_WORKSPACE/out/${{ matrix.plugin }}-macOS-universal.zip"
+          lipo -archs "$VST3/Contents/MacOS/"* || true
+
+      - name: Package (Windows)
+        if: runner.os == 'Windows'
+        working-directory: ${{ matrix.plugin }}
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path "$env:GITHUB_WORKSPACE/out" | Out-Null
+          $vst3 = Get-ChildItem -Path build -Filter *.vst3 -Recurse -Force |
+                  Select-Object -First 1
+          if (-not $vst3) { throw "No .vst3 produced" }
+          Write-Host "Packaging $($vst3.FullName)"
+          Compress-Archive -Path $vst3.FullName -DestinationPath `
+            "$env:GITHUB_WORKSPACE/out/${{ matrix.plugin }}-Windows-x64.zip" -Force
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.plugin }}-${{ matrix.label }}
+          path: out/*.zip
+          if-no-files-found: error
+          retention-days: 90

@@ -94,12 +94,39 @@ bass pega o dado do kick pertencente exatamente às amostras que está trabalhan
 
 ---
 
-## Build
+## Instalar sem compilar (recomendado)
+
+O GitHub Actions compila pra macOS e Windows a cada push
+(`.github/workflows/build-plugins.yml`).
+
+1. Aba **Actions** do repositório → clique na execução mais recente do workflow
+   "Build plugins"
+2. Role até **Artifacts** → baixe `techhouse-duo-macOS` ou `techhouse-duo-Windows`
+3. Descompacte (tem um `.zip` dentro do `.zip` que o GitHub gera)
+4. Copie o `TechHouse Duo.vst3` pra pasta de plugins:
+   - **macOS**: `~/Library/Audio/Plug-Ins/VST3/`
+   - **Windows**: `C:\Program Files\Common Files\VST3\`
+
+**macOS — passo obrigatório.** Arquivo baixado da internet entra em quarentena do
+Gatekeeper e o Live não carrega (build feito localmente não tem esse problema).
+Rode uma vez depois de copiar:
+
+```bash
+xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/"TechHouse Duo.vst3"
+```
+
+O build do macOS é **universal** (arm64 + x86_64), então funciona com o Live
+nativo em Apple Silicon e sob Rosetta.
+
+## Build local
 
 ```bash
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build --config Release -j
 ```
+
+No macOS, para gerar universal como o CI faz:
+`-DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"`
 
 O JUCE é baixado sozinho na primeira configuração. Saída:
 - `build/TechHouseDuo_artefacts/Release/VST3/TechHouse Duo.vst3`
