@@ -53,3 +53,12 @@ target_sources(ModulationExperiment PRIVATE ModulationExperiment.cpp)
 target_compile_definitions(ModulationExperiment PUBLIC
     JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_STANDALONE_APPLICATION=1 JUCE_DISPLAY_SPLASH_SCREEN=0)
 target_link_libraries(ModulationExperiment PRIVATE juce::juce_dsp juce::juce_core)
+
+# Measures the group delay the cut cascade imposes on a bass note, and what it
+# does to the note's crest factor and attack. Kept alongside the other
+# experiment so both claims stay re-checkable.
+juce_add_console_app(PhaseExperiment PRODUCT_NAME "PhaseExperiment")
+target_sources(PhaseExperiment PRIVATE PhaseExperiment.cpp)
+target_compile_definitions(PhaseExperiment PUBLIC
+    JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_STANDALONE_APPLICATION=1 JUCE_DISPLAY_SPLASH_SCREEN=0)
+target_link_libraries(PhaseExperiment PRIVATE juce::juce_dsp juce::juce_core)

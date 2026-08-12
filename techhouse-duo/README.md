@@ -158,6 +158,57 @@ pressas sobre um plugin que acabou de começar a funcionar na DAW. É o próximo
 passo técnico claro. Ressalva do próprio livro (§4.7, fig. 4.20): nessa forma
 simples a largura de banda varia com a quantidade de corte.
 
+## Fase mínima vs. fase linear: por que a cascata fica como está
+
+O `SpectralTamer` aplica os cortes como até dez biquads sino **em série**. Todos
+são de fase mínima, então cada um contribui com deslocamento de fase, e fase que
+varia com a frequência é *group delay*: parciais da mesma nota saem em instantes
+diferentes. Isso pesa mais aqui do que num EQ comum, por três motivos que são
+consequência do próprio projeto: group delay escala com Q/f0 e este é um plugin
+de graves; o Q sobe com o índice da banda (1,4·k, até 14), e banda estreita é
+banda lenta; e são dez em série, com os atrasos somando.
+
+Nunca tinha sido medido. `tests/PhaseExperiment.cpp` mede — e a conclusão é
+**não mexer**, com uma correção importante de raciocínio no meio do caminho.
+
+O teste filtra a mesma nota duas vezes: pela cascata real, e por um filtro de
+**fase zero com exatamente a mesma resposta de magnitude** (o |H(f)| é extraído
+da resposta ao impulso da própria cascata e aplicado no domínio da frequência).
+As duas retiram energia idêntica nas mesmas frequências, então toda diferença
+entre as saídas é fase e nada mais. Um round-trip de FFT com filtro unitário
+confirma o método a −133,7 dB antes de qualquer número valer.
+
+A diferença de forma de onda entre as duas saiu **grande** — só 2,6 a 22,9 dB
+abaixo do pico da nota. Meu raciocínio inicial estava errado: eu tinha escrito
+que "se a diferença for desprezível, a fase não é problema", o que é verdade,
+mas **não se inverte**. Diferença grande prova apenas que os dois sinais não são
+o mesmo sinal; não prova que soam diferente, porque o ouvido é largamente
+insensível à fase relativa dos harmônicos de um tom sustentado (lei de fase de
+Ohm). Forma de onda é limite superior de audibilidade, não medida dela.
+
+Então a decisão fica com os dois números que são perceptualmente significativos
+independente disso — quando a nota chega, e o que o limiter vê:
+
+| Raiz | Group delay na fundamental | Crest seco → cascata → fase zero |
+|---|---|---|
+| E1 (41 Hz) | 0,69 ms | 7,37 → **7,47** → 5,76 dB |
+| A1 (55 Hz) | 0,52 ms | 7,47 → **7,60** → 5,88 dB |
+| D2 (73 Hz) | 0,39 ms | 7,47 → **7,60** → 5,87 dB |
+| G2 (98 Hz) | 0,29 ms | 7,50 → **7,65** → 5,92 dB |
+| C3 (131 Hz)| 0,22 ms | 7,51 → **7,64** → 5,91 dB |
+
+O atraso da fundamental fica em **0,2–0,7 ms** — irrelevante ao lado dos 40 ms
+de latência que o modo Bass já declara e compensa. Os números feios de group
+delay (−9 ms) aparecem só *nas bandas cortadas*, que são justamente as que
+acabaram de ter o nível reduzido e por isso contribuem pouco para a saída.
+
+E o resultado que resolve a questão prática: a cascata de fase mínima **preserva
+o crest factor** da nota (+0,1 dB), enquanto a versão de fase linear/zero o
+**derruba ~1,6 dB** — a mesma nota chegaria mais achatada no limiter. Ou seja,
+trocar por fase linear não é um upgrade de pureza: pioraria o número que
+importa, e ainda cobraria latência e pre-ringing, que num grave é remédio pior
+que a doença. Fica como está, agora por medição em vez de por omissão.
+
 ## Limitações declaradas
 
 - **Latência de 40ms no modo Bass** (a 48kHz). Rastrear pitch em 40-80Hz exige
@@ -320,6 +371,11 @@ techhouse-duo/
       HarmonicExciter.h        # Chebyshev travado na fundamental
       KickShaper.h             # transiente + encurtamento do rabo de grave
       BandAnalyzer.h           # medição das 8 bandas publicadas
+      TptSvf.h                 # SVF em TPT (validado, ainda não ligado)
       DspCommon.h, ParameterIDs.h
-  tests/DspTests.cpp
+  tests/
+    DspTests.cpp               # a suíte de regressão
+    UiPreview.cpp              # renderiza os visualizadores sem display
+    ModulationExperiment.cpp   # as medições do livro do Zavalishin
+    PhaseExperiment.cpp        # group delay e crest da cascata de cortes
 ```
