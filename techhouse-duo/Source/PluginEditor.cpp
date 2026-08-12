@@ -97,8 +97,10 @@ TechHouseDuoEditor::TechHouseDuoEditor (TechHouseDuoProcessor& p)
 
     // Embedded rather than read from disk: a plugin cannot rely on any
     // install-relative path once a DAW has relocated its bundle.
-    sunLogo = juce::ImageCache::getFromMemory (Assets::spectral_sun_logo_png,
-                                                Assets::spectral_sun_logo_pngSize);
+    sunWordmark = juce::ImageCache::getFromMemory (Assets::spectral_sun_wordmark_png,
+                                                    Assets::spectral_sun_wordmark_pngSize);
+    sunPlate = juce::ImageCache::getFromMemory (Assets::spectral_sun_plate_png,
+                                                 Assets::spectral_sun_plate_pngSize);
 
     modeLabel.setText ("MODE", juce::dontSendNotification);
     modeLabel.setJustificationType (juce::Justification::centredRight);
@@ -161,6 +163,8 @@ TechHouseDuoEditor::TechHouseDuoEditor (TechHouseDuoProcessor& p)
     kickToneSection.addKnob (ParamIDs::kickTopGain, "CLICK GAIN");
     kickToneSection.addKnob (ParamIDs::kickBoxiness, "BOXINESS");
 
+    makerPlate.plate = sunPlate;
+    content.addAndMakeVisible (makerPlate);
     content.addAndMakeVisible (spectrum);
     content.addAndMakeVisible (status);
     for (auto* s : { &globalSection, &tameSection, &duckSection, &noteSection,
@@ -218,15 +222,15 @@ void TechHouseDuoEditor::paint (juce::Graphics& g)
     // Spectral Sun mark, then the product name. The mark carries the amber so
     // the wordmark beside it stays quiet and the two do not compete.
     int textX = 14;
-    if (sunLogo.isValid())
+    if (sunWordmark.isValid())
     {
         // The mark carries the identity on its own; a product wordmark beside
         // it competed with it for the same glance and added nothing the plugin
         // window title does not already say.
         const int logoHeight = headerHeight - 14;
-        const int logoWidth = juce::roundToInt (logoHeight * sunLogo.getWidth()
-                                                 / (float) juce::jmax (1, sunLogo.getHeight()));
-        g.drawImageWithin (sunLogo, 14, 7, logoWidth, logoHeight,
+        const int logoWidth = juce::roundToInt (logoHeight * sunWordmark.getWidth()
+                                                 / (float) juce::jmax (1, sunWordmark.getHeight()));
+        g.drawImageWithin (sunWordmark, 14, 7, logoWidth, logoHeight,
                             juce::RectanglePlacement::centred | juce::RectanglePlacement::onlyReduceInSize);
     }
 }
@@ -264,6 +268,10 @@ void TechHouseDuoEditor::resized()
         s->setBounds (spacing, y, columnWidth, h);
         y += h + spacing;
     }
+
+    constexpr int plateHeight = 66;
+    makerPlate.setBounds (spacing, y, columnWidth, plateHeight);
+    y += plateHeight + spacing;
 
     content.setSize (innerWidth, y);
 }

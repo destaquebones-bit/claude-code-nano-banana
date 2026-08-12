@@ -11,14 +11,14 @@ struct KnobControl : public juce::Component
     KnobControl (juce::AudioProcessorValueTreeState& apvts, const juce::String& paramID, const juce::String& displayName)
     {
         slider.setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
-        slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 58, 14);
+        slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 72, 16);
         slider.setRotaryParameters (juce::MathConstants<float>::pi * 1.25f,
                                      juce::MathConstants<float>::pi * 2.75f, true);
         addAndMakeVisible (slider);
 
         label.setText (displayName, juce::dontSendNotification);
         label.setJustificationType (juce::Justification::centred);
-        label.setFont (juce::Font (9.5f, juce::Font::bold));
+        label.setFont (juce::Font (10.5f, juce::Font::bold));
         label.setColour (juce::Label::textColourId, Palette::textDim);
         addAndMakeVisible (label);
 
@@ -28,7 +28,7 @@ struct KnobControl : public juce::Component
     void resized() override
     {
         auto b = getLocalBounds();
-        label.setBounds (b.removeFromTop (12));
+        label.setBounds (b.removeFromTop (14));
         slider.setBounds (b);
     }
 
@@ -139,8 +139,8 @@ struct Section : public juce::Component
                 + (footer != nullptr ? footerHeight + 6 : 0);
     }
 
-    static constexpr int knobWidth = 70;
-    static constexpr int knobHeight = 78;
+    static constexpr int knobWidth = 90;
+    static constexpr int knobHeight = 98;
 
     juce::AudioProcessorValueTreeState& apvts;
     juce::GroupComponent group;
@@ -166,6 +166,25 @@ struct StatusStrip : public juce::Component
     float transient = 0.0f;
     int learnedNotes = 0, worstHarmonic = -1;
     juce::String linkName = "A";
+};
+
+// Maker's badge at the foot of the panel. A separate component rather than
+// something painted by the editor because it lives inside the scrolling
+// content, below the last section, exactly where the plate sits on a piece of
+// outboard gear.
+struct MakerPlate : public juce::Component
+{
+    void paint (juce::Graphics& g) override
+    {
+        if (! plate.isValid())
+            return;
+        const int h = getHeight() - 8;
+        const int w = juce::roundToInt (h * plate.getWidth() / (float) juce::jmax (1, plate.getHeight()));
+        g.drawImageWithin (plate, (getWidth() - w) / 2, 4, w, h,
+                            juce::RectanglePlacement::centred | juce::RectanglePlacement::onlyReduceInSize);
+    }
+
+    juce::Image plate;
 };
 
 class TechHouseDuoEditor : public juce::AudioProcessorEditor,
@@ -195,8 +214,12 @@ private:
 
     juce::TextButton relearnButton { "Relearn notes" };
 
-    juce::Image sunLogo;
+    // Two marks, used where each one belongs: the silkscreened wordmark reads
+    // as panel labelling in the header, the brass plate as a maker's badge at
+    // the foot of the panel, which is where real gear carries one.
+    juce::Image sunWordmark, sunPlate;
 
+    MakerPlate makerPlate;
     SpectrumView spectrum;
     StatusStrip status;
     DuckMeter duckMeter;

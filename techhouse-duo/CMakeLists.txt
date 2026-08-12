@@ -50,7 +50,8 @@ juce_generate_juce_header(TechHouseDuo)
 juce_add_binary_data(TechHouseDuoAssets
     HEADER_NAME TechHouseDuoAssets.h
     NAMESPACE Assets
-    SOURCES Resources/spectral_sun_logo.png
+    SOURCES Resources/spectral_sun_wordmark.png
+            Resources/spectral_sun_plate.png
 )
 
 target_sources(TechHouseDuo PRIVATE
