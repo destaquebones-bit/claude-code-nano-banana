@@ -41,6 +41,9 @@ public:
         hopSize = juce::jmax (16, windowSize / 8);
 
         buffer.assign ((size_t) windowSize, 0.0f);
+        // Sized here rather than inside analyse(): analyse() runs on the audio
+        // thread, and the first resize there would allocate.
+        linear.assign ((size_t) windowSize, 0.0f);
         diff.assign ((size_t) maxLag + 1, 0.0f);
         cumulative.assign ((size_t) maxLag + 1, 0.0f);
 
@@ -97,7 +100,6 @@ private:
     void analyse()
     {
         // Unwrap the circular buffer into linear order so lag indexing is simple.
-        linear.resize ((size_t) windowSize);
         for (int i = 0; i < windowSize; ++i)
             linear[(size_t) i] = buffer[(size_t) ((writePos + i) % windowSize)];
 
