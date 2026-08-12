@@ -22,6 +22,9 @@ public:
         sampleRate = spec.sampleRate;
         lowSplit.prepare (spec);
         highSplit.prepare (spec);
+        dcBlocker.prepare (spec);
+        dcBlocker.setCoefficients (juce::dsp::IIR::Coefficients<float>::makeHighPass (
+            spec.sampleRate, 20.0, 0.7071));
         onsetFast.prepare (spec.sampleRate);
         onsetFast.setTimes (0.5f, 12.0f);
         onsetSlow.prepare (spec.sampleRate);
@@ -35,6 +38,7 @@ public:
     {
         lowSplit.reset();
         highSplit.reset();
+        dcBlocker.reset();
         onsetFast.reset();
         onsetSlow.reset();
         transientEnv.reset();
@@ -52,6 +56,7 @@ public:
         float tailAmount = 0.0f;     // 0-1, how far the low tail is pulled down
         float tailMs = 120.0f;       // how long the low end is allowed to ring
         float attackAmount = 0.0f;   // -1..1 transient attack cut/boost
+        float drive = 0.0f;          // 0-1 transformer-style saturation, body band only
     };
 
     void setParams (const Params& p)
@@ -64,6 +69,14 @@ public:
         tailCoeff = std::exp (-1.0f / (float) (0.001 * juce::jmax (5.0f, p.tailMs) * sampleRate));
         subGain = DspCommon::dbToGain (p.subGainDb);
         topGain = DspCommon::dbToGain (p.topGainDb);
+
+        driveAmount = juce::jlimit (0.0f, 1.0f, p.drive);
+        driveGain = 1.0f + driveAmount * 7.0f;
+        // A constant operating-point offset, not a signal-dependent one: this
+        // is how a biased valve or transformer stage actually behaves, and it
+        // is what makes the curve clip harder on one half of the wave.
+        driveBias = 0.45f * driveAmount;
+        updateDriveCompensation();
     }
 
     // Detector runs on the mono sum once per sample, before the per-channel
@@ -104,6 +117,27 @@ public:
         float body = 0.0f, top = 0.0f;
         highSplit.split (channel, aboveLow, body, top);
 
+        // Saturation is applied to the body band ONLY, and this is the whole
+        // design of the stage rather than a shortcut:
+        //
+        //  - Driving the sub would generate harmonics straight into the
+        //    150-400 Hz region this plugin exists to clear out, so the sub is
+        //    left untouched and the low end stays exactly as clean as the tail
+        //    control made it.
+        //  - Driving the click band would be the one place aliasing is audible
+        //    (a 3 kHz transient's harmonics land past Nyquist), and it would
+        //    force oversampling and its latency onto a mode that currently
+        //    reports none. The click already has its own gain control; what it
+        //    needs is level, not harmonics.
+        //  - The body band is where kick punch actually lives, and its 2nd and
+        //    3rd harmonics stay comfortably under Nyquist, so this needs no
+        //    oversampling to be clean.
+        //
+        // Saturation is instantaneous, so unlike a compressor it adds weight
+        // without lengthening the tail the shaper just shortened.
+        if (driveAmount > 0.0001f)
+            body = saturateBody (channel, body);
+
         // The tail envelope only touches the low band: shortening the low end
         // without touching the click is exactly the move that stops the kick
         // from covering the bass.
@@ -125,11 +159,74 @@ public:
     float getTailEnvelope() const { return tailEnvelope; }
 
 private:
+    float shapeRaw (float x) const
+    {
+        return std::tanh (x * driveGain + driveBias);
+    }
+
+    // Loudness-matched makeup, measured rather than guessed.
+    //
+    // A closed-form compensation is easy to get wrong: dividing by driveGain
+    // only matches the small-signal slope, and a saturated signal is far
+    // quieter than that predicts (an early version of this lost nearly 5 dB at
+    // high drive). Instead the curve is evaluated over one cycle of a reference
+    // sine here -- once per parameter change, never per sample -- and the
+    // compensation is the ratio of RMS in to RMS out. The DC the bias creates
+    // is subtracted first, because the blocker downstream removes it anyway.
+    //
+    // This matters beyond tidiness: without it, turning Drive up mostly makes
+    // things louder, and louder always sounds better in an A/B. Matching the
+    // level means the knob is judged on what it actually does to the tone.
+    void updateDriveCompensation()
+    {
+        if (driveAmount <= 0.0001f)
+        {
+            driveComp = 1.0f;
+            return;
+        }
+
+        constexpr int points = 256;
+        constexpr float referenceAmplitude = 0.25f;
+
+        float shaped[points];
+        double mean = 0.0, inSum = 0.0;
+        for (int i = 0; i < points; ++i)
+        {
+            const float x = referenceAmplitude
+                * std::sin (juce::MathConstants<float>::twoPi * (float) i / (float) points);
+            shaped[i] = shapeRaw (x);
+            mean += shaped[i];
+            inSum += (double) x * x;
+        }
+        mean /= points;
+
+        double outSum = 0.0;
+        for (int i = 0; i < points; ++i)
+        {
+            const double ac = shaped[i] - mean;
+            outSum += ac * ac;
+        }
+
+        driveComp = outSum > 1.0e-12 ? (float) std::sqrt (inSum / outSum) : 1.0f;
+    }
+
+    // Transformer-style asymmetric soft saturation. Blending by driveAmount
+    // makes the control exactly transparent at zero rather than merely close to
+    // it, which an opt-in colouring stage has to be.
+    float saturateBody (int channel, float x)
+    {
+        float shaped = shapeRaw (x) * driveComp;
+        shaped = dcBlocker.processSample (channel, shaped);
+        return x + driveAmount * (shaped - x);
+    }
+
     double sampleRate = 44100.0;
     Params params;
     DspCommon::LR4Crossover lowSplit, highSplit;
+    DspCommon::StereoIIR dcBlocker;
     DspCommon::OnePoleEnvelope onsetFast, onsetSlow, transientEnv;
     float tailEnvelope = 1.0f, tailCoeff = 0.999f;
     float subGain = 1.0f, topGain = 1.0f, transientStrength = 0.0f;
+    float driveAmount = 0.0f, driveGain = 1.0f, driveBias = 0.0f, driveComp = 1.0f;
     bool gateOpen = false;
 };

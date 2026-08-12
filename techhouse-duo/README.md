@@ -102,6 +102,26 @@ janela, não pesam no binário, e todos os controles ficam consistentes entre si
 nada disso vale para imagens de knob geradas ou fotografadas, que saem numa
 resolução fixa e precisam ser casadas à mão.
 
+## Drive no kick (opcional, desligado por padrão)
+
+O único estágio de saturação analógica do plugin, e só no modo Kick. No bass
+seria contraproducente: saturação **adiciona** harmônicos, muitos deles em
+150-400Hz, que é exatamente a faixa que este plugin existe para limpar.
+
+No kick não há esse conflito, e o desenho é restrito de propósito:
+
+- **Só a banda de corpo.** O sub fica intocado (harmônicos ali cairiam na zona
+  de lama), e o click também (é onde aliasing seria audível, e forçaria
+  sobreamostragem e latência num modo que hoje tem zero). O corpo é onde mora o
+  punch, e seus 2º/3º harmônicos ficam bem abaixo de Nyquist.
+- **Assimétrico**, com deslocamento de ponto de operação constante — é assim que
+  uma válvula ou transformador polarizado se comporta, e é o que gera harmônicos
+  pares além dos ímpares do tanh.
+- **Nivelado em loudness**: a compensação é *medida* rodando uma senoide de
+  referência pela curva a cada mudança de parâmetro, não estimada. Sem isso,
+  subir o Drive só deixaria mais alto — e mais alto sempre ganha num A/B.
+- **Transparente em zero**, por blend explícito.
+
 ## Limitações declaradas
 
 - **Latência de 40ms no modo Bass** (a 48kHz). Rastrear pitch em 40-80Hz exige

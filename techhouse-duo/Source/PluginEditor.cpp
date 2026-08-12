@@ -3,7 +3,7 @@
 
 namespace
 {
-    constexpr int headerHeight = 58;
+    constexpr int headerHeight = 52;
     constexpr int spectrumHeight = 158;
     constexpr int statusHeight = 44;
     constexpr int spacing = 8;
@@ -153,6 +153,7 @@ TechHouseDuoEditor::TechHouseDuoEditor (TechHouseDuoProcessor& p)
     kickShapeSection.addKnob (ParamIDs::kickTailMs, "TAIL LENGTH");
     kickShapeSection.addKnob (ParamIDs::kickAttack, "ATTACK");
     kickShapeSection.addKnob (ParamIDs::kickBassAware, "BASS-AWARE");
+    kickShapeSection.addKnob (ParamIDs::kickDrive, "DRIVE");
 
     kickToneSection.addKnob (ParamIDs::kickSubFreq, "SUB SPLIT");
     kickToneSection.addKnob (ParamIDs::kickSubGain, "SUB GAIN");
@@ -219,19 +220,15 @@ void TechHouseDuoEditor::paint (juce::Graphics& g)
     int textX = 14;
     if (sunLogo.isValid())
     {
-        const int logoHeight = headerHeight - 12;
+        // The mark carries the identity on its own; a product wordmark beside
+        // it competed with it for the same glance and added nothing the plugin
+        // window title does not already say.
+        const int logoHeight = headerHeight - 14;
         const int logoWidth = juce::roundToInt (logoHeight * sunLogo.getWidth()
                                                  / (float) juce::jmax (1, sunLogo.getHeight()));
-        g.drawImageWithin (sunLogo, 12, 6, logoWidth, logoHeight,
+        g.drawImageWithin (sunLogo, 14, 7, logoWidth, logoHeight,
                             juce::RectanglePlacement::centred | juce::RectanglePlacement::onlyReduceInSize);
-        textX = 12 + logoWidth + 12;
     }
-
-    g.setColour (Palette::text);
-    g.setFont (juce::Font (15.0f, juce::Font::bold));
-    g.drawFittedText ("TECHHOUSE", textX, 0, 100, headerHeight, juce::Justification::centredLeft, 1);
-    g.setColour (Palette::amber);
-    g.drawFittedText ("DUO", textX + 94, 0, 50, headerHeight, juce::Justification::centredLeft, 1);
 }
 
 void TechHouseDuoEditor::resized()

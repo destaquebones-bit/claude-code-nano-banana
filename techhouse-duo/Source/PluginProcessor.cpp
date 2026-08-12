@@ -48,6 +48,7 @@ TechHouseDuoProcessor::TechHouseDuoProcessor()
     params.kickAttack    = raw (apvts, ParamIDs::kickAttack);
     params.kickBoxiness  = raw (apvts, ParamIDs::kickBoxiness);
     params.kickBassAware = raw (apvts, ParamIDs::kickBassAware);
+    params.kickDrive     = raw (apvts, ParamIDs::kickDrive);
 
     registration = std::make_unique<Link::Registration> (0, false);
 }
@@ -420,6 +421,7 @@ void TechHouseDuoProcessor::processKickMode (juce::AudioBuffer<float>& buffer, i
     ksP.tailAmount = params.kickTailAmt->load() * 0.01f;
     ksP.tailMs = params.kickTailMs->load();
     ksP.attackAmount = params.kickAttack->load() * 0.01f;
+    ksP.drive = params.kickDrive->load() * 0.01f;
     kickShaper.setParams (ksP);
 
     SpectralTamer::Params boxP;

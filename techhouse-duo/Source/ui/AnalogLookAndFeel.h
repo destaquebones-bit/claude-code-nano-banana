@@ -15,9 +15,14 @@ namespace Palette
     const juce::Colour panelDeep    { 0xff121418 };
     const juce::Colour section      { 0xff22252b };
     const juce::Colour sectionEdge  { 0xff33373f };
-    const juce::Colour metalLight   { 0xff5a616b };
-    const juce::Colour metalDark    { 0xff23262c };
-    const juce::Colour metalRim     { 0xff0e1013 };
+    // Silver hardware on a dark panel, the way an Apollo-style interface reads:
+    // the knob is the bright object and the panel stays out of the way.
+    const juce::Colour metalTop     { 0xfff2f4f6 };
+    const juce::Colour metalUpper   { 0xffd2d7dd };
+    const juce::Colour metalMid     { 0xffa8afb8 };
+    const juce::Colour metalLower   { 0xff767d87 };
+    const juce::Colour metalRim     { 0xff15181c };
+    const juce::Colour pointerDark  { 0xff2a2f36 };
     const juce::Colour amber        { 0xfff0a63c };
     const juce::Colour amberDim     { 0xff7a5a2a };
     const juce::Colour cut          { 0xffe05c4a };
@@ -60,7 +65,7 @@ public:
         auto bounds = juce::Rectangle<int> (x, y, width, height).toFloat().reduced (3.0f);
         const auto centre = bounds.getCentre();
         const float outerRadius = juce::jmin (bounds.getWidth(), bounds.getHeight()) * 0.5f;
-        const float bodyRadius = outerRadius * 0.72f;
+        const float bodyRadius = outerRadius * 0.70f;
         const float angle = startAngle + sliderPos * (endAngle - startAngle);
         const bool enabled = slider.isEnabled();
 
@@ -95,61 +100,70 @@ public:
         g.fillEllipse (juce::Rectangle<float> (bodyRadius * 2.0f, bodyRadius * 2.0f)
                             .withCentre (centre.translated (0.0f, 1.5f)));
 
-        // --- Body: vertical gradient reads as a light from above hitting a
-        // cylinder, which is what makes a flat circle look like a machined knob.
-        juce::ColourGradient body (Palette::metalLight, centre.x, centre.y - bodyRadius,
-                                    Palette::metalDark, centre.x, centre.y + bodyRadius, false);
-        body.addColour (0.55, Palette::metalDark.brighter (0.12f));
+        // --- Body: a four-stop vertical gradient rather than a simple two-stop
+        // one. Real turned aluminium has a bright band near the top, a rapid
+        // falloff through the middle and a slight bounce-light lift at the very
+        // bottom; two stops read as flat plastic, these read as metal.
+        const auto bodyRect = juce::Rectangle<float> (bodyRadius * 2.0f, bodyRadius * 2.0f).withCentre (centre);
+        juce::ColourGradient body (Palette::metalTop, centre.x, centre.y - bodyRadius,
+                                    Palette::metalLower, centre.x, centre.y + bodyRadius, false);
+        body.addColour (0.28, Palette::metalUpper);
+        body.addColour (0.62, Palette::metalMid);
+        body.addColour (0.93, Palette::metalLower.brighter (0.10f));
         g.setGradientFill (body);
-        g.fillEllipse (juce::Rectangle<float> (bodyRadius * 2.0f, bodyRadius * 2.0f).withCentre (centre));
+        g.fillEllipse (bodyRect);
 
-        // --- Brushed-metal grain: faint radial strokes that rotate with the
-        // knob, which is the cue that sells the material and the movement.
+        // --- Machined grain: fine concentric turning marks rotating with the
+        // knob. On a light body these read as darker lines, the opposite of
+        // what worked on the dark version.
         {
-            juce::Graphics::ScopedSaveState state (g);
             juce::Path grain;
-            constexpr int strokes = 56;
+            constexpr int strokes = 72;
             for (int i = 0; i < strokes; ++i)
             {
                 const float a = angle + i * juce::MathConstants<float>::twoPi / strokes;
                 const float c = std::cos (a - juce::MathConstants<float>::halfPi);
                 const float s = std::sin (a - juce::MathConstants<float>::halfPi);
-                grain.startNewSubPath (centre.x + c * bodyRadius * 0.30f, centre.y + s * bodyRadius * 0.30f);
-                grain.lineTo (centre.x + c * bodyRadius * 0.93f, centre.y + s * bodyRadius * 0.93f);
+                grain.startNewSubPath (centre.x + c * bodyRadius * 0.34f, centre.y + s * bodyRadius * 0.34f);
+                grain.lineTo (centre.x + c * bodyRadius * 0.95f, centre.y + s * bodyRadius * 0.95f);
             }
-            g.setColour (juce::Colours::white.withAlpha (0.035f));
-            g.strokePath (grain, juce::PathStrokeType (0.7f));
+            g.setColour (juce::Colours::black.withAlpha (0.055f));
+            g.strokePath (grain, juce::PathStrokeType (0.6f));
         }
 
-        // --- Rim: dark outer edge plus a bright top-left highlight arc.
-        g.setColour (Palette::metalRim);
-        g.drawEllipse (juce::Rectangle<float> (bodyRadius * 2.0f, bodyRadius * 2.0f).withCentre (centre), 1.6f);
+        // --- Rim: a dark seat line so the bright body separates from the panel,
+        // plus a specular arc across the top edge.
+        g.setColour (Palette::metalRim.withAlpha (0.75f));
+        g.drawEllipse (bodyRect, 1.0f);
 
         juce::Path highlight;
-        highlight.addCentredArc (centre.x, centre.y, bodyRadius - 1.0f, bodyRadius - 1.0f, 0.0f,
-                                  juce::MathConstants<float>::pi * 1.15f,
-                                  juce::MathConstants<float>::pi * 1.85f, true);
-        g.setColour (juce::Colours::white.withAlpha (0.18f));
-        g.strokePath (highlight, juce::PathStrokeType (1.2f));
+        highlight.addCentredArc (centre.x, centre.y, bodyRadius - 1.2f, bodyRadius - 1.2f, 0.0f,
+                                  juce::MathConstants<float>::pi * 1.10f,
+                                  juce::MathConstants<float>::pi * 1.90f, true);
+        g.setColour (juce::Colours::white.withAlpha (0.75f));
+        g.strokePath (highlight, juce::PathStrokeType (1.1f));
 
-        // --- Pointer: an inset groove with an amber fill, the part the eye
-        // actually reads the value from.
-        const float pointerLength = bodyRadius * 0.62f;
-        const float pointerWidth = juce::jmax (2.4f, bodyRadius * 0.13f);
+        // --- Pointer: a dark engraved line. On silver the indicator has to be
+        // dark to be legible -- an amber pointer would disappear into the
+        // bright body, so the amber stays on the value arc outside the knob.
+        const float pointerLength = bodyRadius * 0.58f;
+        const float pointerWidth = juce::jmax (1.8f, bodyRadius * 0.11f);
         juce::Path pointer;
-        pointer.addRoundedRectangle (-pointerWidth * 0.5f, -bodyRadius * 0.88f,
+        pointer.addRoundedRectangle (-pointerWidth * 0.5f, -bodyRadius * 0.90f,
                                       pointerWidth, pointerLength, pointerWidth * 0.5f);
-        g.setColour (juce::Colours::black.withAlpha (0.55f));
-        g.fillPath (pointer, juce::AffineTransform::rotation (angle).translated (centre.x, centre.y + 0.8f));
-        g.setColour (enabled ? Palette::amber : Palette::amberDim);
+        g.setColour (juce::Colours::white.withAlpha (0.5f));
+        g.fillPath (pointer, juce::AffineTransform::rotation (angle).translated (centre.x, centre.y + 0.9f));
+        g.setColour (enabled ? Palette::pointerDark : Palette::pointerDark.withAlpha (0.45f));
         g.fillPath (pointer, juce::AffineTransform::rotation (angle).translated (centre.x, centre.y));
 
-        // --- Centre cap.
-        const float capRadius = bodyRadius * 0.24f;
-        juce::ColourGradient cap (Palette::metalDark.brighter (0.25f), centre.x, centre.y - capRadius,
-                                   Palette::metalDark.darker (0.4f), centre.x, centre.y + capRadius, false);
+        // --- Centre cap: slightly darker brushed disc, lit the same way.
+        const float capRadius = bodyRadius * 0.26f;
+        juce::ColourGradient cap (Palette::metalUpper, centre.x, centre.y - capRadius,
+                                   Palette::metalLower.darker (0.15f), centre.x, centre.y + capRadius, false);
         g.setGradientFill (cap);
         g.fillEllipse (juce::Rectangle<float> (capRadius * 2.0f, capRadius * 2.0f).withCentre (centre));
+        g.setColour (Palette::metalRim.withAlpha (0.35f));
+        g.drawEllipse (juce::Rectangle<float> (capRadius * 2.0f, capRadius * 2.0f).withCentre (centre), 0.8f);
     }
 
     void drawComboBox (juce::Graphics& g, int width, int height, bool,

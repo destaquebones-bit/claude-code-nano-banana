@@ -11,6 +11,7 @@
 #include "../Source/dsp/HarmonicExciter.h"
 #include "../Source/dsp/NoteLevelCompensator.h"
 #include "../Source/dsp/KickDucker.h"
+#include "../Source/dsp/KickShaper.h"
 #include "../Source/dsp/LinkBus.h"
 
 #include <cstdio>
@@ -442,6 +443,107 @@ namespace
         }
     }
 
+    void testKickDrive()
+    {
+        std::printf ("\n-- KickShaper drive --\n");
+
+        juce::dsp::ProcessSpec spec { sr, 512, 2 };
+
+        // A body-band tone: this is the band the drive is allowed to touch.
+        const float toneHz = 300.0f;
+        const int n = (int) (1.0 * sr);
+        std::vector<float> tone ((size_t) n);
+        for (int i = 0; i < n; ++i)
+            tone[(size_t) i] = 0.4f * (float) std::sin (2.0 * M_PI * toneHz * i / sr);
+
+        auto run = [&] (float drive)
+        {
+            KickShaper shaper;
+            shaper.prepare (spec);
+            KickShaper::Params p;
+            p.drive = drive;
+            shaper.setParams (p);
+            std::vector<float> out ((size_t) n);
+            for (int i = 0; i < n; ++i)
+            {
+                shaper.processDetector (tone[(size_t) i]);
+                out[(size_t) i] = shaper.processSample (0, tone[(size_t) i]);
+            }
+            return out;
+        };
+
+        const int skip = (int) (0.5 * sr);
+        auto mag = [&] (const std::vector<float>& sig, double hz)
+        {
+            double re = 0.0, im = 0.0;
+            for (int i = skip; i < n; ++i)
+            {
+                const double t = i / sr;
+                re += sig[(size_t) i] * std::cos (2.0 * M_PI * hz * t);
+                im += sig[(size_t) i] * std::sin (2.0 * M_PI * hz * t);
+            }
+            return 2.0 * std::sqrt (re * re + im * im) / (n - skip);
+        };
+
+        auto dry = run (0.0f);
+        auto wet = run (0.8f);
+
+        // Off means off. An opt-in colouring stage that quietly changes the
+        // sound at zero would make every A/B against it dishonest.
+        const double dry2 = mag (dry, toneHz * 2), dry3 = mag (dry, toneHz * 3);
+        check (dry2 < 0.002 && dry3 < 0.002, "drive at 0 adds no harmonics",
+                "h2 " + std::to_string (dry2) + ", h3 " + std::to_string (dry3));
+
+        const double wet2 = mag (wet, toneHz * 2), wet3 = mag (wet, toneHz * 3);
+        check (wet2 > 0.004, "drive adds even harmonics (transformer asymmetry)",
+                "h2 " + std::to_string (wet2));
+        check (wet3 > 0.004, "drive adds odd harmonics", "h3 " + std::to_string (wet3));
+
+        // Gain compensation: driving must change the tone, not just the volume,
+        // or the knob only sounds better because it is louder.
+        auto rms = [&] (const std::vector<float>& sig)
+        {
+            double sum = 0.0;
+            for (int i = skip; i < n; ++i)
+                sum += (double) sig[(size_t) i] * sig[(size_t) i];
+            return std::sqrt (sum / (n - skip));
+        };
+        const double ratioDb = 20.0 * std::log10 (rms (wet) / std::max (1e-9, rms (dry)));
+        check (std::abs (ratioDb) < 3.0, "level stays within 3 dB when driven",
+                std::to_string (ratioDb) + " dB");
+
+        // The sub band must stay clean: harmonics generated down there would
+        // land straight in the mud region this plugin exists to clear.
+        {
+            const float subHz = 50.0f;
+            std::vector<float> sub ((size_t) n);
+            for (int i = 0; i < n; ++i)
+                sub[(size_t) i] = 0.5f * (float) std::sin (2.0 * M_PI * subHz * i / sr);
+
+            KickShaper shaper;
+            shaper.prepare (spec);
+            KickShaper::Params p;
+            p.drive = 1.0f;
+            shaper.setParams (p);
+            std::vector<float> out ((size_t) n);
+            for (int i = 0; i < n; ++i)
+            {
+                shaper.processDetector (sub[(size_t) i]);
+                out[(size_t) i] = shaper.processSample (0, sub[(size_t) i]);
+            }
+            double re = 0.0, im = 0.0;
+            for (int i = skip; i < n; ++i)
+            {
+                const double t = i / sr;
+                re += out[(size_t) i] * std::cos (2.0 * M_PI * subHz * 3 * t);
+                im += out[(size_t) i] * std::sin (2.0 * M_PI * subHz * 3 * t);
+            }
+            const double h3 = 2.0 * std::sqrt (re * re + im * im) / (n - skip);
+            check (h3 < 0.01, "sub band is left clean even at full drive",
+                    "150 Hz content " + std::to_string (h3));
+        }
+    }
+
     void testLinkBus()
     {
         std::printf ("\n-- LinkBus --\n");
@@ -490,6 +592,7 @@ int main()
     testHarmonicExciter();
     testNoteLevelling();
     testKickDucker();
+    testKickDrive();
     testLinkBus();
 
     std::printf ("\n%s (%d failure%s)\n", failures == 0 ? "ALL PASSED" : "FAILURES PRESENT",

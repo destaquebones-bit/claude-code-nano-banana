@@ -161,6 +161,7 @@ private:
         std::atomic<float>* kickAttack = nullptr;
         std::atomic<float>* kickBoxiness = nullptr;
         std::atomic<float>* kickBassAware = nullptr;
+        std::atomic<float>* kickDrive = nullptr;
     } params;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TechHouseDuoProcessor)

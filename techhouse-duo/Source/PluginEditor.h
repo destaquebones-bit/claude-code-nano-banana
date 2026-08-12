@@ -11,14 +11,14 @@ struct KnobControl : public juce::Component
     KnobControl (juce::AudioProcessorValueTreeState& apvts, const juce::String& paramID, const juce::String& displayName)
     {
         slider.setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
-        slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 68, 15);
+        slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 58, 14);
         slider.setRotaryParameters (juce::MathConstants<float>::pi * 1.25f,
                                      juce::MathConstants<float>::pi * 2.75f, true);
         addAndMakeVisible (slider);
 
         label.setText (displayName, juce::dontSendNotification);
         label.setJustificationType (juce::Justification::centred);
-        label.setFont (juce::Font (10.5f, juce::Font::bold));
+        label.setFont (juce::Font (9.5f, juce::Font::bold));
         label.setColour (juce::Label::textColourId, Palette::textDim);
         addAndMakeVisible (label);
 
@@ -28,7 +28,7 @@ struct KnobControl : public juce::Component
     void resized() override
     {
         auto b = getLocalBounds();
-        label.setBounds (b.removeFromTop (13));
+        label.setBounds (b.removeFromTop (12));
         slider.setBounds (b);
     }
 
@@ -139,8 +139,8 @@ struct Section : public juce::Component
                 + (footer != nullptr ? footerHeight + 6 : 0);
     }
 
-    static constexpr int knobWidth = 84;
-    static constexpr int knobHeight = 92;
+    static constexpr int knobWidth = 70;
+    static constexpr int knobHeight = 78;
 
     juce::AudioProcessorValueTreeState& apvts;
     juce::GroupComponent group;

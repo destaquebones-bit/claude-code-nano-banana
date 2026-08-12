@@ -43,6 +43,7 @@ namespace ParamIDs
     static constexpr auto kickAttack   = "kickAttack";
     static constexpr auto kickBoxiness = "kickBoxiness";
     static constexpr auto kickBassAware= "kickBassAware"; // reverse link: step aside for the bass note
+    static constexpr auto kickDrive    = "kickDrive";     // transformer-style saturation, body band only
 
     inline juce::StringArray linkChannelNames()
     {
@@ -111,6 +112,9 @@ namespace ParamIDs
         addFloat (kickAttack, "Attack Shape", Range (-100.0f, 100.0f, 0.1f), 0.0f, "%");
         addFloat (kickBoxiness, "Boxiness Tame", pct(), 30.0f, "%");
         addFloat (kickBassAware, "Bass-Aware Notch", pct(), 0.0f, "%");
+        // Off by default: this plugin's job is to take mud out, so anything
+        // that adds harmonic content has to be opted into deliberately.
+        addFloat (kickDrive, "Drive", pct(), 0.0f, "%");
 
         return { p.begin(), p.end() };
     }
