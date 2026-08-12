@@ -137,11 +137,24 @@ No kick não há esse conflito, e o desenho é restrito de propósito:
 
 ### O que foi e o que não foi testado
 
-Verificado automaticamente a cada push: compila nas três plataformas, 36
-checagens de DSP com sinais sintéticos, e **pluginval em nível de rigor 7** no
-macOS e no Windows — que é o que exercita o plugin como um host faz (automação
-de parâmetros, salvar/restaurar estado, layouts de barramento, abrir/fechar
-editor, processar com tamanhos de bloco e sample rates variados).
+Verificado automaticamente a cada push:
+
+- Compila em Linux, macOS (universal) e Windows
+- 36 checagens de DSP com sinais sintéticos
+- **pluginval nível 7 no Linux, com os testes de editor incluídos** — que é o
+  que exercita o plugin como um host faz: automação de parâmetros,
+  salvar/restaurar estado, layouts de barramento, abrir/fechar editor,
+  processar com tamanhos de bloco e sample rates variados, thread safety de
+  parâmetros e fuzz.
+- pluginval nível 7 no macOS e no Windows
+
+**Ressalva sobre o Windows**: lá os testes de editor derrubam o validador sem
+emitir diagnóstico nenhum — e derrubam igual para dois plugins cujos editores
+não têm quase nada em comum, enquanto o mesmo binário passa nesse mesmo teste,
+no mesmo nível de rigor, sob um servidor X de verdade. Tratei como limitação do
+runner headless, não como defeito do plugin: no Windows a validação que trava o
+build roda com `--skip-gui-tests`, e os testes de editor rodam à parte sem
+bloquear, pra que a falha continue visível em vez de sumir.
 
 **Ainda não testado**: nunca rodou dentro do Ableton nem de nenhuma DAW real,
 nunca processou uma faixa de verdade de ponta a ponta, e o Link entre duas

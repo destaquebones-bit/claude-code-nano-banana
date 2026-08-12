@@ -177,10 +177,20 @@ void TechHouseDuoProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce
     else
     {
         const bool hasSidechain = getBus (true, 1) != nullptr && getBus (true, 1)->isEnabled();
-        juce::AudioBuffer<float> scBuffer;
         if (hasSidechain)
-            scBuffer = getBusBuffer (buffer, true, 1);
-        processBassMode (buffer, hasSidechain ? &scBuffer : nullptr, hostPosition);
+        {
+            // Copy-initialised from getBusBuffer's return value, never
+            // copy-assigned into a default-constructed buffer: AudioBuffer's
+            // copy assignment calls setSize and duplicates the samples, which
+            // is a heap allocation on the audio thread. Initialising here
+            // constructs the non-owning view in place instead.
+            auto sidechainBus = getBusBuffer (buffer, true, 1);
+            processBassMode (buffer, &sidechainBus, hostPosition);
+        }
+        else
+        {
+            processBassMode (buffer, nullptr, hostPosition);
+        }
     }
 
     const float outGain = DspCommon::dbToGain (params.outputGain->load());
