@@ -162,6 +162,24 @@ jobs:
           echo "name=$NAME" >> "$GITHUB_OUTPUT"
           echo "Found $VST3 (product name: $NAME)"
 
+      # Ad-hoc signature and an explicit architecture report.
+      #
+      # The linker already ad-hoc signs arm64 output, so this is belt-and-braces
+      # rather than a known fix -- but an unsigned or broken-signature bundle is
+      # refused outright by macOS on Apple Silicon, and a host that refuses a
+      # plugin at load time usually just omits it from its list with no error,
+      # which is indistinguishable from "not installed". Cheap insurance against
+      # a failure mode that gives the user nothing to go on.
+      - name: Ad-hoc sign and report architectures (macOS)
+        if: runner.os == 'macOS'
+        working-directory: ${{ matrix.plugin }}
+        run: |
+          set -euo pipefail
+          codesign --force --deep --sign - "${{ steps.locate.outputs.vst3 }}"
+          codesign -dv --verbose=2 "${{ steps.locate.outputs.vst3 }}" 2>&1 | head -10
+          echo "architectures in the binary:"
+          lipo -archs "${{ steps.locate.outputs.vst3 }}/Contents/MacOS/"*
+
       # The real gap this closes: everything else in CI proves the code
       # compiles and that the DSP maths is right in isolation. pluginval is the
       # first thing here that exercises the plugin the way a DAW does --
