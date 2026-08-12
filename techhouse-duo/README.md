@@ -148,13 +148,19 @@ Verificado automaticamente a cada push:
   parâmetros e fuzz.
 - pluginval nível 7 no macOS e no Windows
 
-**Ressalva sobre o Windows**: lá os testes de editor derrubam o validador sem
-emitir diagnóstico nenhum — e derrubam igual para dois plugins cujos editores
-não têm quase nada em comum, enquanto o mesmo binário passa nesse mesmo teste,
-no mesmo nível de rigor, sob um servidor X de verdade. Tratei como limitação do
-runner headless, não como defeito do plugin: no Windows a validação que trava o
-build roda com `--skip-gui-tests`, e os testes de editor rodam à parte sem
-bloquear, pra que a falha continue visível em vez de sumir.
+**Duas ressalvas sobre o Windows**, ambas do validador e não do plugin:
+
+1. Os testes de editor derrubam o pluginval sem emitir diagnóstico nenhum — e
+   derrubam igual para dois plugins cujos editores não têm quase nada em comum,
+   enquanto o mesmo binário passa nesse mesmo teste, no mesmo nível de rigor,
+   sob um servidor X de verdade. No Windows a validação que trava o build roda
+   com `--skip-gui-tests`, e os testes de editor rodam à parte sem bloquear, pra
+   que a falha continue visível.
+2. Mesmo passando, o pluginval no Windows imprime `SUCCESS`, marca todas as
+   seções como concluídas, e **mesmo assim sai com código 1**. O mesmo código
+   sai com 0 no Linux e no macOS. Por isso o veredito no Windows é lido da
+   saída do próprio pluginval (`FAILED` presente ou `SUCCESS` ausente = falha),
+   não do código de saída — uma falha de verdade continua quebrando o build.
 
 **Ainda não testado**: nunca rodou dentro do Ableton nem de nenhuma DAW real,
 nunca processou uma faixa de verdade de ponta a ponta, e o Link entre duas
