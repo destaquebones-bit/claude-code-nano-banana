@@ -362,6 +362,34 @@ void TechHouseDuoProcessor::processBassMode (juce::AudioBuffer<float>& buffer,
 
     juce::ignoreUnused (mudEnergy);
 
+    // --- Detail for the visualisers ---
+    const int shownBands = harmonicTamer.getNumBands();
+    for (int b = 0; b < uiMaxBands; ++b)
+    {
+        const bool active = b < shownBands;
+        uiBandFreq[(size_t) b].store (active ? harmonicTamer.getBandCentre (b) : 0.0f);
+        uiBandLevelDb[(size_t) b].store (active ? harmonicTamer.getBandLevelDb (b) : -120.0f);
+        uiBandCutDb[(size_t) b].store (active ? harmonicTamer.getBandReductionDb (b) : 0.0f);
+    }
+    uiNumBands.store (shownBands);
+
+    for (int b = 0; b < Link::numBands; ++b)
+    {
+        uiDuckDb[(size_t) b].store (ducker.getBandDuckDb (b));
+        uiKickBandDb[(size_t) b].store (ducker.getBandSidechainDb (b));
+    }
+
+    if (++noteMapPublishCounter >= 6)
+    {
+        noteMapPublishCounter = 0;
+        for (int n = 0; n < 128; ++n)
+        {
+            uiNoteLevelDb[(size_t) n].store (noteComp.getNoteLevelDb (n));
+            uiNoteObs[(size_t) n].store (noteComp.getNoteObservations (n));
+        }
+        uiNoteAverageDb.store (noteComp.getAverageLevelDb());
+    }
+
     uiFundamentalHz.store (f0);
     uiPitchConfidence.store (confidence);
     uiMaxTameDb.store (juce::jmax (harmonicTamer.getMaxReductionDb(), staticTamer.getMaxReductionDb()));
@@ -493,6 +521,24 @@ void TechHouseDuoProcessor::processKickMode (juce::AudioBuffer<float>& buffer, i
     }
 
     kickTamer.updateReductions (1.0f, numSamples);
+
+    // Kick mode drives the same visualiser from its own fixed grid, so the
+    // spectrum view shows the kick's boxiness cuts rather than going blank.
+    const int shownBands = kickTamer.getNumBands();
+    for (int b = 0; b < uiMaxBands; ++b)
+    {
+        const bool active = b < shownBands;
+        uiBandFreq[(size_t) b].store (active ? kickTamer.getBandCentre (b) : 0.0f);
+        uiBandLevelDb[(size_t) b].store (active ? kickTamer.getBandLevelDb (b) : -120.0f);
+        uiBandCutDb[(size_t) b].store (active ? kickTamer.getBandReductionDb (b) : 0.0f);
+    }
+    uiNumBands.store (shownBands);
+
+    for (int b = 0; b < Link::numBands; ++b)
+    {
+        uiDuckDb[(size_t) b].store (0.0f);
+        uiKickBandDb[(size_t) b].store (kickAnalyzer.getBandDb (b));
+    }
 
     uiTransient.store (kickShaper.getTransientStrength());
     uiMaxTameDb.store (kickTamer.getMaxReductionDb());

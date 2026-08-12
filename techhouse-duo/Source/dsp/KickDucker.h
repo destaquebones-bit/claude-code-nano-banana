@@ -52,10 +52,13 @@ public:
     struct Params
     {
         float amount = 0.0f;       // 0-1
-        float thresholdDb = -40.0f;
+        float thresholdDb = -40.0f; // kick level below this ducks nothing at all
         float maxDuckDb = 12.0f;
         float attackMs = 1.5f;
         float releaseMs = 90.0f;
+        // How far below the kick's own peak band a band has to sit before it
+        // stops being ducked. This is what sets the *shape* of the duck curve.
+        float shapeRangeDb = 20.0f;
     };
 
     void setParams (const Params& p)
@@ -91,10 +94,29 @@ public:
         if (sampleRate <= 0.0)
             return;
 
+        // Ducking is driven by the *shape* of the kick's spectrum relative to
+        // its own peak band, not by each band's absolute level over a
+        // threshold. With an absolute test, every band carrying any real energy
+        // runs far past the threshold and pins at maxDuckDb, so all eight bands
+        // duck by the same amount -- which is full-band sidechain ducking wearing
+        // a multiband costume, and throws away the entire reason for doing this
+        // per band. Measuring each band against the peak instead produces the
+        // inverse of the kick's own EQ curve: bands where the kick really lives
+        // get pulled down, bands where it barely exists are left alone.
+        float peakDb = -120.0f;
+        for (int b = 0; b < Link::numBands; ++b)
+            peakDb = juce::jmax (peakDb, sidechainDb[b]);
+
+        // Overall gate so that between kicks nothing is ducked at all.
+        const float gate = juce::jlimit (0.0f, 1.0f, (peakDb - params.thresholdDb) / 12.0f);
+        const float range = juce::jmax (3.0f, params.shapeRangeDb);
+
         for (int b = 0; b < Link::numBands; ++b)
         {
-            const float over = juce::jmax (0.0f, sidechainDb[b] - params.thresholdDb);
-            const float target = juce::jlimit (0.0f, params.maxDuckDb, over * params.amount);
+            const float belowPeak = sidechainDb[b] - peakDb;   // <= 0
+            const float prominence = juce::jlimit (0.0f, 1.0f, 1.0f + belowPeak / range);
+            const float target = juce::jlimit (0.0f, params.maxDuckDb,
+                                                params.amount * params.maxDuckDb * prominence * gate);
             duckDb[b] = smoother[b].processOverSamples (target, samplesElapsed);
 
             duckFilter[b].setCoefficients (juce::dsp::IIR::Coefficients<float>::makePeakFilter (

@@ -100,6 +100,33 @@ public:
 
     int getCurrentNote() const { return currentNote; }
 
+    // Read access to the learned table so the UI can draw which notes of the
+    // bassline sit high or low -- the measurement is the useful part even when
+    // the correction itself is turned down.
+    float getNoteLevelDb (int note) const
+    {
+        return (note >= 0 && note < numNotes) ? noteLevelDb[note] : 0.0f;
+    }
+
+    int getNoteObservations (int note) const
+    {
+        return (note >= 0 && note < numNotes) ? observations[note] : 0;
+    }
+
+    float getAverageLevelDb() const
+    {
+        double sum = 0.0;
+        int n = 0;
+        for (int i = 0; i < numNotes; ++i)
+        {
+            if (observations[i] < minObservations)
+                continue;
+            sum += noteLevelDb[i];
+            ++n;
+        }
+        return n > 0 ? (float) (sum / n) : 0.0f;
+    }
+
 private:
     void updateLearning (float fundamentalHz, float confidence, float envDb)
     {

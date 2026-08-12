@@ -28,3 +28,19 @@ target_compile_definitions(DspTests PUBLIC
 )
 
 target_link_libraries(DspTests PRIVATE juce::juce_dsp juce::juce_core)
+
+# Renders the visualisers offscreen with data from the real DSP modules. Needs
+# juce_gui_basics for the paint routines, but no display: JUCE's software
+# renderer draws straight into a juce::Image.
+juce_add_console_app(UiPreview PRODUCT_NAME "UiPreview")
+
+target_sources(UiPreview PRIVATE UiPreview.cpp)
+
+target_compile_definitions(UiPreview PUBLIC
+    JUCE_WEB_BROWSER=0
+    JUCE_USE_CURL=0
+    JUCE_STANDALONE_APPLICATION=1
+    JUCE_DISPLAY_SPLASH_SCREEN=0
+)
+
+target_link_libraries(UiPreview PRIVATE juce::juce_dsp juce::juce_gui_basics)

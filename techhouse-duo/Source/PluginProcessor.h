@@ -68,6 +68,25 @@ public:
     // Set from the editor's "Relearn" button; consumed by the audio thread.
     std::atomic<bool> requestNoteRelearn { false };
 
+    // Per-band and per-note detail for the visualisers. The DSP already
+    // computes all of this to do its job; publishing it is what lets the user
+    // see *which* harmonic is being cut and *which* notes sit high, instead of
+    // only being told a single "gain reduction" number.
+    static constexpr int uiMaxBands = SpectralTamer::maxBands;
+    std::array<std::atomic<float>, uiMaxBands> uiBandFreq {};
+    std::array<std::atomic<float>, uiMaxBands> uiBandLevelDb {};
+    std::array<std::atomic<float>, uiMaxBands> uiBandCutDb {};
+    std::atomic<int> uiNumBands { 0 };
+
+    std::array<std::atomic<float>, Link::numBands> uiDuckDb {};
+    std::array<std::atomic<float>, Link::numBands> uiKickBandDb {};
+
+    // 128 stores per refresh is wasteful every block, so the note table is
+    // republished on a slower cadence than the rest.
+    std::array<std::atomic<float>, 128> uiNoteLevelDb {};
+    std::array<std::atomic<int>, 128> uiNoteObs {};
+    std::atomic<float> uiNoteAverageDb { 0.0f };
+
 private:
     void processBassMode (juce::AudioBuffer<float>&, const juce::AudioBuffer<float>* sidechain, int64_t hostPosition);
     void processKickMode (juce::AudioBuffer<float>&, int64_t hostPosition);
@@ -106,6 +125,7 @@ private:
     // frame per sample.
     static constexpr int publishInterval = 64;
     int publishCounter = 0;
+    int noteMapPublishCounter = 0;
 
     struct ParamPtrs
     {

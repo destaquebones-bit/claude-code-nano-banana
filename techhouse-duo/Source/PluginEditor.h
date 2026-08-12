@@ -2,18 +2,23 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
+#include "ui/AnalogLookAndFeel.h"
+#include "ui/Visualisers.h"
 
 struct KnobControl : public juce::Component
 {
     KnobControl (juce::AudioProcessorValueTreeState& apvts, const juce::String& paramID, const juce::String& displayName)
     {
         slider.setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
-        slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 72, 16);
+        slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 68, 15);
+        slider.setRotaryParameters (juce::MathConstants<float>::pi * 1.25f,
+                                     juce::MathConstants<float>::pi * 2.75f, true);
         addAndMakeVisible (slider);
 
         label.setText (displayName, juce::dontSendNotification);
         label.setJustificationType (juce::Justification::centred);
-        label.setFont (juce::Font (11.0f));
+        label.setFont (juce::Font (10.5f, juce::Font::bold));
+        label.setColour (juce::Label::textColourId, Palette::textDim);
         addAndMakeVisible (label);
 
         attachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment> (apvts, paramID, slider);
@@ -22,7 +27,7 @@ struct KnobControl : public juce::Component
     void resized() override
     {
         auto b = getLocalBounds();
-        label.setBounds (b.removeFromTop (14));
+        label.setBounds (b.removeFromTop (13));
         slider.setBounds (b);
     }
 
@@ -31,6 +36,10 @@ struct KnobControl : public juce::Component
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> attachment;
 };
 
+// A titled panel holding toggles, a grid of knobs, and optionally a visualiser
+// belonging to that stage -- the ducking meter sits inside the ducking panel,
+// the note map inside the levelling panel, so a control and the picture of what
+// it does are never in different parts of the window.
 struct Section : public juce::Component
 {
     Section (juce::AudioProcessorValueTreeState& state, const juce::String& title) : apvts (state)
@@ -54,66 +63,107 @@ struct Section : public juce::Component
         toggleAttachments.add (new juce::AudioProcessorValueTreeState::ButtonAttachment (apvts, paramID, *b));
     }
 
+    void setExtra (juce::Component* component, int height)
+    {
+        extra = component;
+        extraHeight = height;
+        if (extra != nullptr)
+            addAndMakeVisible (extra);
+    }
+
+    void setFooter (juce::Component* component, int height)
+    {
+        footer = component;
+        footerHeight = height;
+        if (footer != nullptr)
+            addAndMakeVisible (footer);
+    }
+
     void resized() override
     {
         auto b = getLocalBounds();
         group.setBounds (b);
-        b.removeFromTop (22);
-        b.reduce (8, 6);
+        b.removeFromTop (16);
+        b.reduce (10, 8);
 
         if (! toggles.isEmpty())
         {
-            auto row = b.removeFromTop (22);
+            auto row = b.removeFromTop (20);
             const int w = row.getWidth() / toggles.size();
             for (auto* t : toggles)
                 t->setBounds (row.removeFromLeft (w));
+            b.removeFromTop (4);
         }
 
-        juce::Grid grid;
-        grid.autoFlow = juce::Grid::AutoFlow::row;
-        for (int i = 0; i < columns; ++i)
-            grid.templateColumns.add (juce::Grid::TrackInfo (juce::Grid::Px (86)));
-        grid.autoRows = juce::Grid::TrackInfo (juce::Grid::Px (92));
-        grid.columnGap = juce::Grid::Px (4);
-        grid.rowGap = juce::Grid::Px (4);
-        for (auto* k : knobs)
-            grid.items.add (juce::GridItem (*k));
-        grid.performLayout (b);
+        if (! knobs.isEmpty())
+        {
+            const int columns = juce::jmax (1, b.getWidth() / knobWidth);
+            const int rows = (knobs.size() + columns - 1) / columns;
+            auto grid = b.removeFromTop (rows * knobHeight);
+            for (int r = 0; r < rows; ++r)
+            {
+                auto row = grid.removeFromTop (knobHeight);
+                for (int c = 0; c < columns; ++c)
+                {
+                    const int index = r * columns + c;
+                    if (index >= knobs.size())
+                        break;
+                    knobs[index]->setBounds (row.removeFromLeft (knobWidth).reduced (2));
+                }
+            }
+        }
+
+        if (extra != nullptr)
+        {
+            b.removeFromTop (4);
+            extra->setBounds (b.removeFromTop (extraHeight));
+        }
+
+        if (footer != nullptr)
+        {
+            b.removeFromTop (6);
+            footer->setBounds (b.removeFromTop (footerHeight).removeFromLeft (140));
+        }
     }
 
-    int getPreferredHeight() const
+    int getPreferredHeight (int availableWidth) const
     {
-        const int rows = (knobs.size() + columns - 1) / columns;
-        return 22 + (toggles.isEmpty() ? 0 : 24) + rows * 96 + 14;
+        const int usable = juce::jmax (knobWidth, availableWidth - 20);
+        const int columns = juce::jmax (1, usable / knobWidth);
+        const int rows = knobs.isEmpty() ? 0 : (knobs.size() + columns - 1) / columns;
+        return 16 + 16
+                + (toggles.isEmpty() ? 0 : 24)
+                + rows * knobHeight
+                + (extra != nullptr ? extraHeight + 4 : 0)
+                + (footer != nullptr ? footerHeight + 6 : 0);
     }
 
-    static constexpr int columns = 4;
+    static constexpr int knobWidth = 84;
+    static constexpr int knobHeight = 92;
+
     juce::AudioProcessorValueTreeState& apvts;
     juce::GroupComponent group;
     juce::OwnedArray<KnobControl> knobs;
     juce::OwnedArray<juce::ToggleButton> toggles;
     juce::OwnedArray<juce::AudioProcessorValueTreeState::ButtonAttachment> toggleAttachments;
+    juce::Component* extra = nullptr;
+    juce::Component* footer = nullptr;
+    int extraHeight = 0, footerHeight = 0;
 };
 
-// The honest-diagnosis panel: rather than only moving gain reduction around
-// silently, it names which of the muddy-bass causes is actually present.
-struct DiagnosisPanel : public juce::Component
+// Compact status strip: link state plus a plain-language verdict. The detail
+// that used to live here as text is now drawn by the visualisers, so this only
+// has to say what a picture cannot.
+struct StatusStrip : public juce::Component
 {
     void paint (juce::Graphics&) override;
 
     bool kickMode = false;
     bool partnerPresent = false;
     bool usingSidechain = false;
-    float fundamentalHz = 0.0f;
-    float confidence = 0.0f;
-    float tameDb = 0.0f;
-    float duckDb = 0.0f;
-    float noteSpreadDb = 0.0f;
-    float noteCompDb = 0.0f;
-    int currentNote = -1;
-    int learnedNotes = 0;
-    int worstHarmonic = -1;
+    float tameDb = 0.0f, duckDb = 0.0f, noteSpreadDb = 0.0f, noteCompDb = 0.0f;
     float transient = 0.0f;
+    int learnedNotes = 0, worstHarmonic = -1;
     juce::String linkName = "A";
 };
 
@@ -130,8 +180,10 @@ public:
 private:
     void timerCallback() override;
     void applyModeVisibility();
+    void refreshVisualisers();
 
     TechHouseDuoProcessor& processorRef;
+    AnalogLookAndFeel lookAndFeel;
 
     juce::Viewport viewport;
     juce::Component content;
@@ -142,7 +194,10 @@ private:
 
     juce::TextButton relearnButton { "Relearn notes" };
 
-    DiagnosisPanel diagnosis;
+    SpectrumView spectrum;
+    StatusStrip status;
+    DuckMeter duckMeter;
+    NoteMap noteMap;
 
     Section globalSection, tameSection, duckSection, noteSection, exciteSection;
     Section kickShapeSection, kickToneSection;

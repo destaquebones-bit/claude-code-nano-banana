@@ -79,6 +79,29 @@ bass pega o dado do kick pertencente exatamente às amostras que está trabalhan
 
 ---
 
+## Interface
+
+Três visualizadores, todos alimentados por dados que o DSP já calculava e antes
+jogava fora — o plugin sabia qual harmônico estava cortando e reportava só um
+número.
+
+- **Espectro harmônico** — grade em escala log com as barras posicionadas nos
+  harmônicos da nota rastreada. As barras **se movem com a linha de baixo**; o
+  corte aplicado é desenhado em vermelho, retirado do topo da barra. A zona de
+  lama (200-400Hz) fica marcada permanentemente.
+- **Medidor de ducking** — uma barra por banda do Link. Mostra a energia do kick
+  em cinza e o abaixamento em vermelho, deixando visível que só as bandas onde o
+  kick vive são puxadas pra baixo.
+- **Mapa de notas** — desvio de nível de cada nota em relação à média da linha.
+  Barra alta e vermelha = a nota que está saindo do lugar. É o problema do
+  "one-note bass" mostrado como figura em vez de um número.
+
+Knobs, painéis e indicadores são **desenhados em código** (`ui/AnalogLookAndFeel.h`),
+não bitmaps: ficam nítidos em qualquer escala de tela e em qualquer tamanho de
+janela, não pesam no binário, e todos os controles ficam consistentes entre si —
+nada disso vale para imagens de knob geradas ou fotografadas, que saem numa
+resolução fixa e precisam ser casadas à mão.
+
 ## Limitações declaradas
 
 - **Latência de 40ms no modo Bass** (a 48kHz). Rastrear pitch em 40-80Hz exige
@@ -152,10 +175,30 @@ cmake --build build-tests -j
 ressonância acertando qual harmônico, pureza harmônica do exciter, o nivelamento
 por nota, e o endereçamento por posição do LinkBus.
 
-Esses testes já pegaram um bug real: os envelopes de suavização rodavam a cada
+Para ver os visualizadores com dados reais (o app standalone silencia a entrada
+de áudio, então na tela eles aparecem vazios):
+
+```bash
+cmake --build build-tests --target UiPreview
+./build-tests/UiPreview_artefacts/Release/UiPreview preview.png
+```
+
+Roda uma linha de baixo sintética pelos módulos de verdade e renderiza os três
+visualizadores num PNG, sem precisar de display.
+
+Esses testes já pegaram dois bugs reais. O primeiro: os envelopes de suavização rodavam a cada
 bloco mas com coeficientes calculados por amostra, então um ataque de 5ms virava
 2,5s num buffer de 512. `OnePoleEnvelope::processOverSamples` corrige, e há um
 teste de regressão comparando buffers de 64 e 1024 amostras.
+
+O segundo apareceu ao renderizar o medidor de ducking pela primeira vez: com o
+limiar absoluto original, toda banda com energia real passava tão longe do
+limiar que grudava no máximo — as oito bandas abaixavam igual, ou seja, ducking
+full-band fantasiado de multibanda, justamente o que este módulo existe para
+evitar. Agora o ducking segue a **forma** do espectro do kick relativa ao pico
+dele (curva inversa de EQ), e três checagens travam isso: silêncio não abaixa
+nada, o abaixamento difere entre bandas, e as bandas graves abaixam mais que as
+agudas.
 
 ## Estrutura
 

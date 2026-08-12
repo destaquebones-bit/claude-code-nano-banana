@@ -3,94 +3,102 @@
 
 namespace
 {
-    constexpr int contentWidth = 620;
+    constexpr int headerHeight = 42;
+    constexpr int spectrumHeight = 158;
+    constexpr int statusHeight = 44;
     constexpr int spacing = 8;
-    constexpr int diagnosisHeight = 132;
 }
 
-void DiagnosisPanel::paint (juce::Graphics& g)
+void StatusStrip::paint (juce::Graphics& g)
 {
-    g.setColour (juce::Colour (0xff17181c));
-    g.fillRoundedRectangle (getLocalBounds().toFloat(), 6.0f);
+    auto bounds = getLocalBounds().toFloat();
+    g.setColour (Palette::panelDeep);
+    g.fillRoundedRectangle (bounds, 5.0f);
+    g.setColour (Palette::sectionEdge);
+    g.drawRoundedRectangle (bounds.reduced (0.5f), 5.0f, 1.0f);
 
-    auto area = getLocalBounds().reduced (12, 10);
-    int y = area.getY();
+    auto area = bounds.reduced (10.0f, 6.0f);
 
-    auto line = [&] (const juce::String& text, juce::Colour colour, float size)
-    {
-        g.setColour (colour);
-        g.setFont (size);
-        g.drawFittedText (text, area.getX(), y, area.getWidth(), 17, juce::Justification::centredLeft, 1);
-        y += 17;
-    };
+    // Link state gets a lamp rather than a sentence: it is the one thing that
+    // silently invalidates everything else on screen if it is wrong.
+    const auto lampColour = partnerPresent ? Palette::good
+                                            : (usingSidechain ? Palette::amber : Palette::textDim);
+    auto lamp = juce::Rectangle<float> (9.0f, 9.0f).withCentre ({ area.getX() + 5.0f, area.getY() + 8.0f });
+    g.setColour (lampColour.withAlpha (0.25f));
+    g.fillEllipse (lamp.expanded (3.0f));
+    g.setColour (lampColour);
+    g.fillEllipse (lamp);
 
-    const auto white = juce::Colours::white;
-    const auto dim = juce::Colours::white.withAlpha (0.55f);
-    const auto good = juce::Colour (0xff5fd38a);
-    const auto warn = juce::Colour (0xffe6b34a);
-
-    // Link status first: if the pair isn't actually talking, nothing else on
-    // this panel means what the user thinks it means.
+    juce::String linkText;
     if (partnerPresent)
-        line ("Link " + linkName + ": connected to " + juce::String (kickMode ? "Bass" : "Kick") + " instance", good, 13.0f);
+        linkText = "LINK " + linkName + " connected to " + juce::String (kickMode ? "Bass" : "Kick");
     else if (usingSidechain)
-        line ("Link " + linkName + ": no partner - using sidechain input", warn, 13.0f);
+        linkText = "LINK " + linkName + " no partner - using sidechain input";
     else
-        line ("Link " + linkName + ": waiting for a " + juce::String (kickMode ? "Bass" : "Kick") + " instance", dim, 13.0f);
+        linkText = "LINK " + linkName + " waiting for a " + juce::String (kickMode ? "Bass" : "Kick") + " instance";
+
+    g.setColour (lampColour);
+    g.setFont (juce::Font (11.0f, juce::Font::bold));
+    g.drawFittedText (linkText, (int) area.getX() + 16, (int) area.getY(),
+                       (int) area.getWidth() - 16, 14, juce::Justification::centredLeft, 1);
+
+    // Second line: the plain-language verdict, the thing the pictures above
+    // cannot state outright.
+    juce::String verdict;
+    juce::Colour verdictColour = Palette::textDim;
 
     if (kickMode)
     {
-        line (juce::String::formatted ("Transient: %.0f%%    Boxiness cut: -%.1f dB", transient * 100.0f, tameDb), white, 13.0f);
-        line (partnerPresent
-                  ? "Bass-Aware Notch can follow the bass note."
-                  : "Add a Bass instance on the same Link to enable Bass-Aware Notch.",
-              dim, 12.0f);
-        return;
+        verdict = juce::String::formatted ("Transient %.0f%%    Boxiness cut -%.1f dB", transient * 100.0f, tameDb);
+        if (! partnerPresent)
+            verdict += "    (add a Bass instance to enable Bass-Aware)";
     }
-
-    // --- Bass mode diagnosis ---
-    if (confidence > 0.5f && fundamentalHz > 0.0f)
-        line (juce::String::formatted ("Note: %s (%.1f Hz)   confidence %.0f%%",
-                                        DspCommon::midiNoteName (DspCommon::freqToMidiNote (fundamentalHz)).toRawUTF8(),
-                                        fundamentalHz, confidence * 100.0f), white, 13.0f);
-    else
-        line ("Note: tracking... (note-aware cuts fade out while unsure)", dim, 13.0f);
-
-    line (juce::String::formatted ("Resonance cut: -%.1f dB    Kick ducking: -%.1f dB", tameDb, duckDb), white, 13.0f);
-
-    if (worstHarmonic >= 0)
-        line (juce::String::formatted ("Worst offender: harmonic %d of the current note", worstHarmonic + 1), warn, 12.0f);
-    else
-        line ("No harmonic standing out right now.", dim, 12.0f);
-
-    if (learnedNotes >= 2)
+    else if (learnedNotes >= 2 && noteSpreadDb > 3.0f)
     {
-        const bool uneven = noteSpreadDb > 3.0f;
-        line (juce::String::formatted ("Note balance: %.1f dB spread across %d notes%s  (now %+.1f dB)",
-                                        noteSpreadDb, learnedNotes,
-                                        uneven ? "  <- one-note bass" : "",
-                                        noteCompDb),
-              uneven ? warn : good, 12.0f);
+        verdict = juce::String::formatted ("One-note bass: %.1f dB spread across %d notes  (correcting %+.1f dB)",
+                                            noteSpreadDb, learnedNotes, noteCompDb);
+        verdictColour = Palette::cut;
+    }
+    else if (worstHarmonic >= 0)
+    {
+        verdict = juce::String::formatted ("Harmonic %d is resonant - cutting %.1f dB", worstHarmonic + 1, tameDb);
+        verdictColour = Palette::amber;
+    }
+    else if (duckDb > 0.5f)
+    {
+        verdict = juce::String::formatted ("Making room for the kick - up to %.1f dB", duckDb);
+        verdictColour = Palette::amber;
     }
     else
     {
-        line ("Note balance: learning (play a few bars of the bassline)", dim, 12.0f);
+        verdict = learnedNotes >= 2 ? "Bassline is even, nothing standing out."
+                                     : "Learning the bassline - play a few bars.";
+        verdictColour = learnedNotes >= 2 ? Palette::good : Palette::textDim;
     }
+
+    g.setColour (verdictColour);
+    g.setFont (11.5f);
+    g.drawFittedText (verdict, (int) area.getX() + 16, (int) area.getY() + 15,
+                       (int) area.getWidth() - 16, 14, juce::Justification::centredLeft, 1);
 }
 
 TechHouseDuoEditor::TechHouseDuoEditor (TechHouseDuoProcessor& p)
     : AudioProcessorEditor (&p),
       processorRef (p),
       globalSection    (p.apvts, "GLOBAL"),
-      tameSection      (p.apvts, "RESONANCE TAMING (note-aware)"),
-      duckSection      (p.apvts, "KICK DUCKING (spectral)"),
+      tameSection      (p.apvts, "RESONANCE TAMING  -  note-aware"),
+      duckSection      (p.apvts, "KICK DUCKING  -  spectral"),
       noteSection      (p.apvts, "NOTE LEVELLING"),
-      exciteSection    (p.apvts, "HARMONIC EXCITE (translation)"),
+      exciteSection    (p.apvts, "HARMONIC EXCITE  -  translation"),
       kickShapeSection (p.apvts, "KICK SHAPE"),
       kickToneSection  (p.apvts, "KICK TONE")
 {
-    modeLabel.setText ("Mode", juce::dontSendNotification);
+    setLookAndFeel (&lookAndFeel);
+
+    modeLabel.setText ("MODE", juce::dontSendNotification);
     modeLabel.setJustificationType (juce::Justification::centredRight);
+    modeLabel.setFont (juce::Font (10.0f, juce::Font::bold));
+    modeLabel.setColour (juce::Label::textColourId, Palette::textDim);
     addAndMakeVisible (modeLabel);
     modeBox.addItemList ({ "Bass", "Kick" }, 1);
     addAndMakeVisible (modeBox);
@@ -98,8 +106,10 @@ TechHouseDuoEditor::TechHouseDuoEditor (TechHouseDuoProcessor& p)
         p.apvts, ParamIDs::mode, modeBox);
     modeBox.onChange = [this] { applyModeVisibility(); };
 
-    linkLabel.setText ("Link", juce::dontSendNotification);
+    linkLabel.setText ("LINK", juce::dontSendNotification);
     linkLabel.setJustificationType (juce::Justification::centredRight);
+    linkLabel.setFont (juce::Font (10.0f, juce::Font::bold));
+    linkLabel.setColour (juce::Label::textColourId, Palette::textDim);
     addAndMakeVisible (linkLabel);
     linkBox.addItemList (ParamIDs::linkChannelNames(), 1);
     addAndMakeVisible (linkBox);
@@ -109,45 +119,47 @@ TechHouseDuoEditor::TechHouseDuoEditor (TechHouseDuoProcessor& p)
     globalSection.addToggle (ParamIDs::linkEnable, "Link");
     globalSection.addToggle (ParamIDs::listenMode, "Listen");
     globalSection.addToggle (ParamIDs::bypass, "Bypass");
-    globalSection.addKnob (ParamIDs::inputHpf, "Input HPF");
-    globalSection.addKnob (ParamIDs::dryWet, "Dry/Wet");
-    globalSection.addKnob (ParamIDs::outputGain, "Output");
+    globalSection.addKnob (ParamIDs::inputHpf, "INPUT HPF");
+    globalSection.addKnob (ParamIDs::dryWet, "DRY/WET");
+    globalSection.addKnob (ParamIDs::outputGain, "OUTPUT");
 
-    tameSection.addKnob (ParamIDs::tameDepth, "Depth");
-    tameSection.addKnob (ParamIDs::tameTolerance, "Tolerance");
-    tameSection.addKnob (ParamIDs::tameMaxCut, "Max Cut");
-    tameSection.addKnob (ParamIDs::tameRelease, "Release");
-    tameSection.addKnob (ParamIDs::harmonicCount, "Harmonics");
-    tameSection.addKnob (ParamIDs::mudDepth, "Mud (fixed)");
+    tameSection.addKnob (ParamIDs::tameDepth, "DEPTH");
+    tameSection.addKnob (ParamIDs::tameTolerance, "TOLERANCE");
+    tameSection.addKnob (ParamIDs::tameMaxCut, "MAX CUT");
+    tameSection.addKnob (ParamIDs::tameRelease, "RELEASE");
+    tameSection.addKnob (ParamIDs::harmonicCount, "HARMONICS");
+    tameSection.addKnob (ParamIDs::mudDepth, "MUD FIXED");
 
-    duckSection.addKnob (ParamIDs::duckAmount, "Amount");
-    duckSection.addKnob (ParamIDs::duckThreshold, "Threshold");
-    duckSection.addKnob (ParamIDs::duckRelease, "Release");
+    duckSection.addKnob (ParamIDs::duckAmount, "AMOUNT");
+    duckSection.addKnob (ParamIDs::duckThreshold, "THRESHOLD");
+    duckSection.addKnob (ParamIDs::duckRelease, "RELEASE");
+    duckSection.setExtra (&duckMeter, 62);
 
-    noteSection.addKnob (ParamIDs::noteCompAmount, "Levelling");
-    addAndMakeVisible (relearnButton);
+    noteSection.addKnob (ParamIDs::noteCompAmount, "LEVELLING");
+    noteSection.setExtra (&noteMap, 76);
+    noteSection.setFooter (&relearnButton, 24);
     relearnButton.onClick = [this] { processorRef.requestNoteRelearn.store (true); };
 
-    exciteSection.addKnob (ParamIDs::exciteAmount, "Amount");
-    exciteSection.addKnob (ParamIDs::exciteBalance, "Even/Odd");
-    exciteSection.addKnob (ParamIDs::monoBelow, "Mono Below");
+    exciteSection.addKnob (ParamIDs::exciteAmount, "AMOUNT");
+    exciteSection.addKnob (ParamIDs::exciteBalance, "EVEN/ODD");
+    exciteSection.addKnob (ParamIDs::monoBelow, "MONO BELOW");
 
-    kickShapeSection.addKnob (ParamIDs::kickTailAmt, "Tail Tighten");
-    kickShapeSection.addKnob (ParamIDs::kickTailMs, "Tail Length");
-    kickShapeSection.addKnob (ParamIDs::kickAttack, "Attack");
-    kickShapeSection.addKnob (ParamIDs::kickBassAware, "Bass-Aware");
+    kickShapeSection.addKnob (ParamIDs::kickTailAmt, "TAIL TIGHTEN");
+    kickShapeSection.addKnob (ParamIDs::kickTailMs, "TAIL LENGTH");
+    kickShapeSection.addKnob (ParamIDs::kickAttack, "ATTACK");
+    kickShapeSection.addKnob (ParamIDs::kickBassAware, "BASS-AWARE");
 
-    kickToneSection.addKnob (ParamIDs::kickSubFreq, "Sub Split");
-    kickToneSection.addKnob (ParamIDs::kickSubGain, "Sub Gain");
-    kickToneSection.addKnob (ParamIDs::kickTopFreq, "Click Split");
-    kickToneSection.addKnob (ParamIDs::kickTopGain, "Click Gain");
-    kickToneSection.addKnob (ParamIDs::kickBoxiness, "Boxiness");
+    kickToneSection.addKnob (ParamIDs::kickSubFreq, "SUB SPLIT");
+    kickToneSection.addKnob (ParamIDs::kickSubGain, "SUB GAIN");
+    kickToneSection.addKnob (ParamIDs::kickTopFreq, "CLICK SPLIT");
+    kickToneSection.addKnob (ParamIDs::kickTopGain, "CLICK GAIN");
+    kickToneSection.addKnob (ParamIDs::kickBoxiness, "BOXINESS");
 
-    content.addAndMakeVisible (diagnosis);
+    content.addAndMakeVisible (spectrum);
+    content.addAndMakeVisible (status);
     for (auto* s : { &globalSection, &tameSection, &duckSection, &noteSection,
                       &exciteSection, &kickShapeSection, &kickToneSection })
         content.addAndMakeVisible (s);
-    content.addAndMakeVisible (relearnButton);
 
     addAndMakeVisible (viewport);
     viewport.setViewedComponent (&content, false);
@@ -155,14 +167,15 @@ TechHouseDuoEditor::TechHouseDuoEditor (TechHouseDuoProcessor& p)
 
     applyModeVisibility();
     setResizable (true, true);
-    setResizeLimits (460, 420, 1100, 1600);
-    setSize (contentWidth + 24, 720);
-    startTimerHz (20);
+    setResizeLimits (560, 480, 1200, 1800);
+    setSize (720, 800);
+    startTimerHz (24);
 }
 
 TechHouseDuoEditor::~TechHouseDuoEditor()
 {
     stopTimer();
+    setLookAndFeel (nullptr);
 }
 
 void TechHouseDuoEditor::applyModeVisibility()
@@ -174,7 +187,6 @@ void TechHouseDuoEditor::applyModeVisibility()
     duckSection.setVisible (! kickMode);
     noteSection.setVisible (! kickMode);
     exciteSection.setVisible (! kickMode);
-    relearnButton.setVisible (! kickMode);
     kickShapeSection.setVisible (kickMode);
     kickToneSection.setVisible (kickMode);
 
@@ -183,46 +195,113 @@ void TechHouseDuoEditor::applyModeVisibility()
 
 void TechHouseDuoEditor::paint (juce::Graphics& g)
 {
-    g.fillAll (juce::Colour (0xff232529));
+    juce::ColourGradient bg (Palette::panel, 0.0f, 0.0f,
+                              Palette::panelDeep, 0.0f, (float) getHeight(), false);
+    g.setGradientFill (bg);
+    g.fillAll();
+
+    // Header plate, with a hairline to separate it from the scrolling body.
+    auto header = getLocalBounds().removeFromTop (headerHeight).toFloat();
+    juce::ColourGradient plate (Palette::section, 0.0f, header.getY(),
+                                 Palette::section.darker (0.35f), 0.0f, header.getBottom(), false);
+    g.setGradientFill (plate);
+    g.fillRect (header);
+    g.setColour (Palette::amber.withAlpha (0.5f));
+    g.drawHorizontalLine ((int) header.getBottom() - 1, header.getX(), header.getRight());
+
+    g.setColour (Palette::text);
+    g.setFont (juce::Font (15.0f, juce::Font::bold));
+    g.drawFittedText ("TECHHOUSE", 14, 0, 110, headerHeight, juce::Justification::centredLeft, 1);
+    g.setColour (Palette::amber);
+    g.setFont (juce::Font (15.0f, juce::Font::bold));
+    g.drawFittedText ("DUO", 108, 0, 60, headerHeight, juce::Justification::centredLeft, 1);
 }
 
 void TechHouseDuoEditor::resized()
 {
     auto b = getLocalBounds();
 
-    auto header = b.removeFromTop (34).reduced (10, 4);
-    modeLabel.setBounds (header.removeFromLeft (46));
-    modeBox.setBounds (header.removeFromLeft (96));
-    header.removeFromLeft (14);
-    linkLabel.setBounds (header.removeFromLeft (40));
-    linkBox.setBounds (header.removeFromLeft (64));
+    auto header = b.removeFromTop (headerHeight).reduced (10, 8);
+    header.removeFromLeft (150); // title
+    linkBox.setBounds (header.removeFromRight (60));
+    linkLabel.setBounds (header.removeFromRight (38));
+    header.removeFromRight (10);
+    modeBox.setBounds (header.removeFromRight (90));
+    modeLabel.setBounds (header.removeFromRight (44));
 
     viewport.setBounds (b);
 
-    const int innerWidth = juce::jmax (300, viewport.getWidth() - viewport.getScrollBarThickness());
-    auto area = juce::Rectangle<int> (spacing, spacing, innerWidth - 2 * spacing, 0);
+    const int innerWidth = juce::jmax (320, viewport.getWidth() - viewport.getScrollBarThickness());
+    const int columnWidth = innerWidth - 2 * spacing;
     int y = spacing;
 
-    diagnosis.setBounds (area.getX(), y, area.getWidth(), diagnosisHeight);
-    y += diagnosisHeight + spacing;
+    spectrum.setBounds (spacing, y, columnWidth, spectrumHeight);
+    y += spectrumHeight + spacing;
+
+    status.setBounds (spacing, y, columnWidth, statusHeight);
+    y += statusHeight + spacing;
 
     for (auto* s : { &globalSection, &tameSection, &duckSection, &noteSection,
                       &exciteSection, &kickShapeSection, &kickToneSection })
     {
         if (! s->isVisible())
             continue;
-        const int h = s->getPreferredHeight();
-        s->setBounds (area.getX(), y, area.getWidth(), h);
+        const int h = s->getPreferredHeight (columnWidth);
+        s->setBounds (spacing, y, columnWidth, h);
         y += h + spacing;
-
-        if (s == &noteSection && relearnButton.isVisible())
-        {
-            relearnButton.setBounds (area.getX() + 8, y, 130, 24);
-            y += 24 + spacing;
-        }
     }
 
     content.setSize (innerWidth, y);
+}
+
+void TechHouseDuoEditor::refreshVisualisers()
+{
+    const bool kickMode = processorRef.isKickMode();
+    const float confidence = processorRef.uiPitchConfidence.load();
+    const float f0 = processorRef.uiFundamentalHz.load();
+
+    spectrum.numBands = juce::jmin (SpectrumView::maxBands, processorRef.uiNumBands.load());
+    spectrum.noteAware = ! kickMode && confidence > 0.5f && f0 > 0.0f;
+    spectrum.fundamentalHz = f0;
+    spectrum.noteName = spectrum.noteAware
+        ? DspCommon::midiNoteName (DspCommon::freqToMidiNote (f0))
+        : juce::String ("--");
+
+    for (int b = 0; b < SpectrumView::maxBands; ++b)
+    {
+        spectrum.bandFreq[b] = processorRef.uiBandFreq[(size_t) b].load();
+        spectrum.bandLevelDb[b] = processorRef.uiBandLevelDb[(size_t) b].load();
+        spectrum.bandCutDb[b] = processorRef.uiBandCutDb[(size_t) b].load();
+    }
+    spectrum.repaint();
+
+    for (int b = 0; b < Link::numBands; ++b)
+    {
+        duckMeter.duckDb[b] = processorRef.uiDuckDb[(size_t) b].load();
+        duckMeter.kickBandDb[b] = processorRef.uiKickBandDb[(size_t) b].load();
+    }
+    if (duckMeter.isShowing())
+        duckMeter.repaint();
+
+    // Note map: collect the learned notes, sorted by pitch, expressed as a
+    // deviation from the average so the picture is about balance, not level.
+    if (noteMap.isShowing())
+    {
+        const float average = processorRef.uiNoteAverageDb.load();
+        int count = 0;
+        for (int n = 0; n < 128 && count < NoteMap::maxEntries; ++n)
+        {
+            if (processorRef.uiNoteObs[(size_t) n].load() < 3)
+                continue;
+            noteMap.notes[count].midiNote = n;
+            noteMap.notes[count].deviationDb = processorRef.uiNoteLevelDb[(size_t) n].load() - average;
+            noteMap.notes[count].name = DspCommon::midiNoteName (n);
+            ++count;
+        }
+        noteMap.noteCount = count;
+        noteMap.currentNote = processorRef.uiCurrentNote.load();
+        noteMap.repaint();
+    }
 }
 
 void TechHouseDuoEditor::timerCallback()
@@ -231,19 +310,18 @@ void TechHouseDuoEditor::timerCallback()
     if (kickMode != lastKickMode)
         applyModeVisibility();
 
-    diagnosis.kickMode = kickMode;
-    diagnosis.partnerPresent = processorRef.uiPartnerPresent.load();
-    diagnosis.usingSidechain = processorRef.uiUsingSidechain.load();
-    diagnosis.fundamentalHz = processorRef.uiFundamentalHz.load();
-    diagnosis.confidence = processorRef.uiPitchConfidence.load();
-    diagnosis.tameDb = processorRef.uiMaxTameDb.load();
-    diagnosis.duckDb = processorRef.uiMaxDuckDb.load();
-    diagnosis.noteSpreadDb = processorRef.uiNoteSpreadDb.load();
-    diagnosis.noteCompDb = processorRef.uiNoteCompDb.load();
-    diagnosis.currentNote = processorRef.uiCurrentNote.load();
-    diagnosis.learnedNotes = processorRef.uiLearnedNotes.load();
-    diagnosis.worstHarmonic = processorRef.uiWorstHarmonic.load();
-    diagnosis.transient = processorRef.uiTransient.load();
-    diagnosis.linkName = ParamIDs::linkChannelNames()[linkBox.getSelectedItemIndex()];
-    diagnosis.repaint();
+    status.kickMode = kickMode;
+    status.partnerPresent = processorRef.uiPartnerPresent.load();
+    status.usingSidechain = processorRef.uiUsingSidechain.load();
+    status.tameDb = processorRef.uiMaxTameDb.load();
+    status.duckDb = processorRef.uiMaxDuckDb.load();
+    status.noteSpreadDb = processorRef.uiNoteSpreadDb.load();
+    status.noteCompDb = processorRef.uiNoteCompDb.load();
+    status.transient = processorRef.uiTransient.load();
+    status.learnedNotes = processorRef.uiLearnedNotes.load();
+    status.worstHarmonic = processorRef.uiWorstHarmonic.load();
+    status.linkName = ParamIDs::linkChannelNames()[juce::jmax (0, linkBox.getSelectedItemIndex())];
+    status.repaint();
+
+    refreshVisualisers();
 }

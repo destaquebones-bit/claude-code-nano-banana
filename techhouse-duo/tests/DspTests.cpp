@@ -10,6 +10,7 @@
 #include "../Source/dsp/SpectralTamer.h"
 #include "../Source/dsp/HarmonicExciter.h"
 #include "../Source/dsp/NoteLevelCompensator.h"
+#include "../Source/dsp/KickDucker.h"
 #include "../Source/dsp/LinkBus.h"
 
 #include <cstdio>
@@ -363,6 +364,84 @@ namespace
                 std::to_string (comp.getCompensationDb()) + " dB");
     }
 
+    // A short kick with a fast pitch drop: energy concentrated low, very little
+    // above a few hundred Hz -- the shape the ducker is supposed to trace.
+    std::vector<float> makeKick (float seconds)
+    {
+        const int n = (int) (seconds * sr);
+        std::vector<float> out ((size_t) n, 0.0f);
+        for (int i = 0; i < n; ++i)
+        {
+            const double t = i / sr;
+            const double phase = 2.0 * M_PI * (55.0 * t + 40.0 * (1.0 - std::exp (-t * 25.0)) / 25.0);
+            out[(size_t) i] = (float) (0.9 * std::exp (-t * 14.0) * std::sin (phase));
+        }
+        return out;
+    }
+
+    void testKickDucker()
+    {
+        std::printf ("\n-- KickDucker --\n");
+
+        juce::dsp::ProcessSpec spec { sr, 512, 2 };
+
+        auto run = [&] (KickDucker& ducker, const std::vector<float>& signal, int blockSize = 128)
+        {
+            const int n = (int) signal.size();
+            for (int start = 0; start < n; start += blockSize)
+            {
+                const int count = std::min (blockSize, n - start);
+                for (int i = 0; i < count; ++i)
+                    ducker.processSidechainSample (signal[(size_t) (start + i)]);
+                ducker.updateDucking (count);
+            }
+        };
+
+        // Silence must duck nothing, or the bass is permanently thinned.
+        {
+            KickDucker ducker;
+            ducker.prepare (spec);
+            KickDucker::Params p;
+            p.amount = 1.0f;
+            ducker.setParams (p);
+            run (ducker, std::vector<float> ((size_t) (0.2 * sr), 0.0f));
+            check (ducker.getMaxDuckDb() < 0.1f, "no ducking on silence",
+                    std::to_string (ducker.getMaxDuckDb()) + " dB");
+        }
+
+        // The whole justification for per-band ducking is that it does NOT duck
+        // everything equally. Before the shape-based rewrite every band pinned
+        // at the maximum, which is full-band ducking in disguise -- this locks
+        // the corrected behaviour in.
+        {
+            KickDucker ducker;
+            ducker.prepare (spec);
+            KickDucker::Params p;
+            p.amount = 0.7f;
+            p.thresholdDb = -40.0f;
+            p.maxDuckDb = 12.0f;
+            ducker.setParams (p);
+            run (ducker, makeKick (0.12f));
+
+            float lowSum = 0.0f, highSum = 0.0f;
+            float lo = 1.0e9f, hi = -1.0e9f;
+            for (int b = 0; b < Link::numBands; ++b)
+            {
+                const float d = ducker.getBandDuckDb (b);
+                lo = std::min (lo, d);
+                hi = std::max (hi, d);
+                (b < 4 ? lowSum : highSum) += d;
+            }
+
+            check (hi > 1.0f, "ducks where the kick lives",
+                    "max " + std::to_string (hi) + " dB");
+            check (hi - lo > 2.0f, "duck differs across bands (not full-band in disguise)",
+                    "spread " + std::to_string (hi - lo) + " dB");
+            check (lowSum > highSum, "ducks the low bands more than the high ones",
+                    "low " + std::to_string (lowSum) + " vs high " + std::to_string (highSum));
+        }
+    }
+
     void testLinkBus()
     {
         std::printf ("\n-- LinkBus --\n");
@@ -410,6 +489,7 @@ int main()
     testSpectralTamer();
     testHarmonicExciter();
     testNoteLevelling();
+    testKickDucker();
     testLinkBus();
 
     std::printf ("\n%s (%d failure%s)\n", failures == 0 ? "ALL PASSED" : "FAILURES PRESENT",
