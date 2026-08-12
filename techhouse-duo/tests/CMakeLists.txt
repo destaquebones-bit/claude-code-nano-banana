@@ -44,3 +44,12 @@ target_compile_definitions(UiPreview PUBLIC
 )
 
 target_link_libraries(UiPreview PRIVATE juce::juce_dsp juce::juce_gui_basics)
+
+# One-off measurement backing the switch from direct-form filters to the book's
+# TPT structure. Kept in the tree so the claim can be re-checked rather than
+# taken on trust.
+juce_add_console_app(ModulationExperiment PRODUCT_NAME "ModulationExperiment")
+target_sources(ModulationExperiment PRIVATE ModulationExperiment.cpp)
+target_compile_definitions(ModulationExperiment PUBLIC
+    JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_STANDALONE_APPLICATION=1 JUCE_DISPLAY_SPLASH_SCREEN=0)
+target_link_libraries(ModulationExperiment PRIVATE juce::juce_dsp juce::juce_core)

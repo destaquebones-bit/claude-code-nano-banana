@@ -122,6 +122,42 @@ No kick não há esse conflito, e o desenho é restrito de propósito:
   subir o Drive só deixaria mais alto — e mais alto sempre ganha num A/B.
 - **Transparente em zero**, por blend explícito.
 
+## O que o livro do Zavalishin acrescentou (e o que não)
+
+*The Art of VA Filter Design* (rev. 2.1.0, distribuído livremente pelo autor)
+foi lido procurando melhorias reais. Três hipóteses foram testadas, e **duas
+foram rejeitadas pela medição** — as duas que eu esperava que fossem valer.
+
+**1. Direct form vs. TPT sob modulação (§3.11) — rejeitado.**
+O livro afirma que uma estrutura direct-form "produz saltos não suavizados na
+saída em resposta a saltos no valor do cutoff", enquanto no TPT "os saltos são
+suavizados pelo integrador". Isso descreve exatamente o que este plugin faz:
+re-sintonizar os filtros nos harmônicos da nota a cada mudança de nota. Medido
+com sinal constante e só o filtro mudando (`tests/ModulationExperiment.cpp`),
+o salto ficou entre 0,10x e 0,35x do passo em regime nos dois casos — ou seja,
+**nenhum dos dois injeta descontinuidade**, e em um dos cenários o TPT ficou
+até um pouco pior nessa métrica. O efeito é real na teoria e desprezível aqui.
+
+**2. Antialiasing por antiderivada (§6.13) — implementado, medido, revertido.**
+`y[n] = (F(x[n]) − F(x[n−1])) / (x[n] − x[n−1])` reduz aliasing de waveshaping
+sem sobreamostragem e sem latência. Medido na curva de Drive do kick: **0,0 dB
+de ganho abaixo de 3 kHz**, e 3,3 dB só em 5 kHz. Como o Drive age apenas na
+banda de corpo (120–1500 Hz), a técnica não entrega nada onde é usada, e custa
+um `log` e um `exp` por amostra. Removido. Confirma, aliás, que a decisão
+original de restringir o Drive à banda de corpo já resolvia o problema.
+
+**3. SVF em TPT + band-shelving (§4.4 e §4.7) — vale, por outro motivo.**
+As equações do livro deram uma implementação correta de filtro sino com estado
+fixo (`Source/dsp/TptSvf.h`): dois floats de integrador em vez de um objeto de
+coeficientes. Isso **elimina a alocação por bloco** que a API de Coefficients do
+JUCE faz na thread de áudio — um problema real que já estava identificado, e
+que não tem nada a ver com o argumento do livro sobre modulação. O componente
+está no repositório e validado, mas **ainda não está ligado no plugin**: trocar
+os filtros é uma refatoração que atravessa cinco módulos e não vale fazer às
+pressas sobre um plugin que acabou de começar a funcionar na DAW. É o próximo
+passo técnico claro. Ressalva do próprio livro (§4.7, fig. 4.20): nessa forma
+simples a largura de banda varia com a quantidade de corte.
+
 ## Limitações declaradas
 
 - **Latência de 40ms no modo Bass** (a 48kHz). Rastrear pitch em 40-80Hz exige

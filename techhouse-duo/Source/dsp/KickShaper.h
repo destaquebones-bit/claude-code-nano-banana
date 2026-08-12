@@ -164,6 +164,14 @@ private:
         return std::tanh (x * driveGain + driveBias);
     }
 
+    // Antiderivative antialiasing (Zavalishin section 6.13) was implemented
+    // here and then removed after measuring it: see tests/ModulationExperiment.
+    // Folded partials sit at the noise floor anywhere below about 3 kHz, and
+    // this stage only drives the body band, so the technique bought 0.0 dB
+    // where it is actually used and 3.3 dB only at 5 kHz -- a frequency this
+    // stage deliberately never touches. It costs a log and an exp per sample,
+    // so it is not worth carrying. It would become worth revisiting if Drive
+    // were ever extended to the click band.
     // Loudness-matched makeup, measured rather than guessed.
     //
     // A closed-form compensation is easy to get wrong: dividing by driveGain
