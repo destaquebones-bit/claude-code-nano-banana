@@ -1,4 +1,4 @@
-# TechHouse Duo
+# SS BUMBO
 
 Um plugin VST3, dois modos que **conversam entre si**: uma instância no kick, uma
 no bass, e elas trocam análise diretamente — sem rotear sidechain no Ableton.
@@ -101,6 +101,70 @@ não bitmaps: ficam nítidos em qualquer escala de tela e em qualquer tamanho de
 janela, não pesam no binário, e todos os controles ficam consistentes entre si —
 nada disso vale para imagens de knob geradas ou fotografadas, que saem numa
 resolução fixa e precisam ser casadas à mão.
+
+![Painel do SS BUMBO](docs/ui-preview.png)
+
+Essa imagem é gerada por `tests/UiPreview`, e os controles nela são
+`juce::Slider` / `ToggleButton` / `ComboBox` de verdade desenhados pelo
+LookAndFeel do plugin — não uma maquete. Se um controle parece errado aí, ele
+parece errado na DAW.
+
+### A regra de geometria: nada é retângulo
+
+A revisão atual saiu de painéis com borda para superfícies moldadas. A regra é
+literal — **nenhum elemento é um retângulo simples**:
+
+- **Cards** com raio grande e **sem contorno de 1px**. A separação vem de um
+  fio de luz na curva de cima e de sombra embaixo, do jeito que uma superfície
+  moldada se destaca do fundo — não do jeito que se desenha uma caixa em volta
+  de uma região.
+- **Todo controle é pílula**: combo boxes e botões têm raio igual à metade da
+  altura.
+- **Checkbox virou switch deslizante.** Era o elemento mais quadrado que a tela
+  tinha, e a posição do botãozinho comunica ligado/desligado mais rápido que um
+  tique. A parte que desliza é metálica, igual aos knobs, então o painel inteiro
+  lê como um conjunto só de hardware.
+- **Títulos de seção acima do card**, em caixa alta espaçada com um ponto âmbar,
+  em vez de furados na borda. Nada fica cercado: o olho agrupa pelo formato do
+  card e pela proximidade do título.
+- **Visualizadores rebaixados** em vez de emoldurados — um readout deve parecer
+  uma janela cortada no painel.
+- O espaço entre cards subiu de 8 para 12px. Sem contorno, o vão é a única coisa
+  separando um grupo do seguinte.
+
+O fundo é um campo de gradiente: cast frio no topo, um sol quente largo logo
+**abaixo da borda inferior**, e vinheta nos cantos. A paleta e a posição da luz
+vieram de uma imagem de referência gerada com **Nano Banana 2** (3:4). A imagem
+não foi embutida no binário — o fundo é reproduzido em código a partir dela, o
+que também significa que ele reflui em qualquer tamanho de janela em vez de
+esticar um bitmap. Uma primeira versão colocou o sol *dentro* do quadro com o
+triplo da intensidade e ele lavou de quente os readouts de baixo, deixando-os
+sujos em vez de iluminados; a luz precisa chegar de fora do quadro para o fundo
+continuar sendo fundo.
+
+## Tudo começa em zero
+
+Carregar o plugin **não muda nada no som** até você mexer num knob. Todos os
+knobs de quantidade nascem em 0.
+
+Isso tem um custo e vale dizer qual: numa primeira carga o plugin soa idêntico a
+bypass, então ele precisa ser ajustado em vez de se demonstrar sozinho. O que se
+ganha é que nada é feito com o seu áudio sem você ter pedido — com defaults que
+processam, uma mixagem pode ser alterada por um plugin que você só abriu para
+olhar, e a alteração fica invisível porque esteve lá desde o primeiro compasso.
+
+Dois parâmetros não podem ser literalmente zero, porque são filtros sempre
+ativos sem posição de desligado. Cada um fica no extremo em que faz menos:
+`Input HPF` em 10 Hz e `Mono Below` em 20 Hz.
+
+Parâmetros de **forma** (tolerâncias, splits, releases, tail length, contagem de
+harmônicos) mantêm valores musicais. Eles não são quantidades — decidem *como* um
+estágio age depois que a quantidade sobe, e uma frequência de corte zerada seria
+sem sentido em vez de neutra.
+
+Como um plugin zerado é indistinguível de um plugin que falhou ao carregar, a
+barra de status diz na cara: *"All controls at zero — the bass is passing through
+untouched."*
 
 ## Drive no kick (opcional, desligado por padrão)
 
@@ -279,7 +343,7 @@ entra e o Live não carrega sem rodar `xattr` antes. O zip
 nesse caso rode depois:
 
 ```bash
-xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/"TechHouse Duo.vst3"
+xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/"SS BUMBO.vst3"
 ```
 
 O build do macOS é **universal** (arm64 + x86_64), então funciona com o Live
@@ -294,7 +358,7 @@ pra `C:\Program Files\Common Files\VST3\`.
 ### Depois de instalar
 
 No Ableton: `Preferences → Plug-Ins`, confirme que VST3 está ligado, clique em
-**Rescan**. O plugin aparece como **TechHouse Duo**.
+**Rescan**. O plugin aparece como **SS BUMBO**.
 
 ## Build local
 
@@ -307,8 +371,8 @@ No macOS, para gerar universal como o CI faz:
 `-DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"`
 
 O JUCE é baixado sozinho na primeira configuração. Saída:
-- `build/TechHouseDuo_artefacts/Release/VST3/TechHouse Duo.vst3`
-- `build/TechHouseDuo_artefacts/Release/Standalone/TechHouse Duo`
+- `build/TechHouseDuo_artefacts/Release/VST3/SS BUMBO.vst3`
+- `build/TechHouseDuo_artefacts/Release/Standalone/SS BUMBO`
 
 O `.vst3` já é copiado pra pasta do sistema (`~/Library/Audio/Plug-Ins/VST3/` no
 macOS, `C:\Program Files\Common Files\VST3\` no Windows, `~/.vst3/` no Linux).

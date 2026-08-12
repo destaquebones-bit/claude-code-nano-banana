@@ -3,21 +3,21 @@
 
 namespace
 {
-    constexpr int headerHeight = 52;
-    constexpr int spectrumHeight = 158;
-    constexpr int statusHeight = 44;
-    constexpr int spacing = 8;
+    constexpr int headerHeight = 56;
+    constexpr int spectrumHeight = 164;
+    constexpr int statusHeight = 48;
+    // Generous, and deliberately so: the cards no longer have outlines, so the
+    // gap between them is the only thing separating one group of controls from
+    // the next. Too tight and the panel reads as one undivided field.
+    constexpr int spacing = 12;
 }
 
 void StatusStrip::paint (juce::Graphics& g)
 {
-    auto bounds = getLocalBounds().toFloat();
-    g.setColour (Palette::panelDeep);
-    g.fillRoundedRectangle (bounds, 5.0f);
-    g.setColour (Palette::sectionEdge);
-    g.drawRoundedRectangle (bounds.reduced (0.5f), 5.0f, 1.0f);
+    auto bounds = getLocalBounds().toFloat().reduced (1.0f, 0.0f);
+    UiStyle::drawCard (g, bounds, UiStyle::cardRadius, 0.26f);
 
-    auto area = bounds.reduced (10.0f, 6.0f);
+    auto area = bounds.reduced (14.0f, 6.0f);
 
     // Link state gets a lamp rather than a sentence: it is the one thing that
     // silently invalidates everything else on screen if it is wrong.
@@ -47,7 +47,13 @@ void StatusStrip::paint (juce::Graphics& g)
     juce::String verdict;
     juce::Colour verdictColour = Palette::textDim;
 
-    if (kickMode)
+    if (allAmountsZero)
+    {
+        verdict = kickMode ? "All controls at zero - the kick is passing through untouched."
+                            : "All controls at zero - the bass is passing through untouched.";
+        verdictColour = Palette::textDim;
+    }
+    else if (kickMode)
     {
         verdict = juce::String::formatted ("Transient %.0f%%    Boxiness cut -%.1f dB", transient * 100.0f, tameDb);
         if (! partnerPresent)
@@ -205,23 +211,30 @@ void TechHouseDuoEditor::applyModeVisibility()
 
 void TechHouseDuoEditor::paint (juce::Graphics& g)
 {
-    juce::ColourGradient bg (Palette::panel, 0.0f, 0.0f,
-                              Palette::panelDeep, 0.0f, (float) getHeight(), false);
-    g.setGradientFill (bg);
-    g.fillAll();
+    UiStyle::paintBackdrop (g, getLocalBounds().toFloat());
 
-    // Header plate, with a hairline to separate it from the scrolling body.
+    // Header: no plate and no hairline under it. The old version drew a filled
+    // rectangle with a hard amber rule along the bottom, which put a box across
+    // the top of the window. Here the header is only a slightly lifted wash that
+    // fades out downward, plus a short amber mark that stops well before the
+    // edges, so the eye reads a zone rather than a border.
     auto header = getLocalBounds().removeFromTop (headerHeight).toFloat();
-    juce::ColourGradient plate (Palette::section, 0.0f, header.getY(),
-                                 Palette::section.darker (0.35f), 0.0f, header.getBottom(), false);
-    g.setGradientFill (plate);
+    juce::ColourGradient wash (juce::Colours::white.withAlpha (0.035f), 0.0f, header.getY(),
+                                juce::Colours::transparentBlack, 0.0f, header.getBottom(), false);
+    g.setGradientFill (wash);
     g.fillRect (header);
-    g.setColour (Palette::amber.withAlpha (0.5f));
-    g.drawHorizontalLine ((int) header.getBottom() - 1, header.getX(), header.getRight());
+
+    const float markInset = 14.0f;
+    juce::ColourGradient rule (Palette::amber.withAlpha (0.0f), header.getX() + markInset, 0.0f,
+                                Palette::amber.withAlpha (0.0f), header.getRight() - markInset, 0.0f, false);
+    rule.addColour (0.18, Palette::amber.withAlpha (0.34f));
+    rule.addColour (0.55, Palette::amber.withAlpha (0.10f));
+    g.setGradientFill (rule);
+    g.fillRect (juce::Rectangle<float> (header.getX() + markInset, header.getBottom() - 1.0f,
+                                         header.getWidth() - 2.0f * markInset, 1.0f));
 
     // Spectral Sun mark, then the product name. The mark carries the amber so
     // the wordmark beside it stays quiet and the two do not compete.
-    int textX = 14;
     if (sunWordmark.isValid())
     {
         // The mark carries the identity on its own; a product wordmark beside
@@ -343,6 +356,29 @@ void TechHouseDuoEditor::timerCallback()
     status.learnedNotes = processorRef.uiLearnedNotes.load();
     status.worstHarmonic = processorRef.uiWorstHarmonic.load();
     status.linkName = ParamIDs::linkChannelNames()[juce::jmax (0, linkBox.getSelectedItemIndex())];
+
+    // Only the amounts belonging to the active mode count. Shape parameters
+    // (splits, tolerances, release times) are excluded deliberately: they hold
+    // musical values by default and are inert while their amount is zero, so
+    // including them would never let the message appear.
+    {
+        auto amount = [this] (const char* id)
+        {
+            auto* p = processorRef.apvts.getRawParameterValue (id);
+            return p != nullptr ? std::abs (p->load()) : 0.0f;
+        };
+
+        const float total = kickMode
+            ? amount (ParamIDs::kickTailAmt) + amount (ParamIDs::kickAttack)
+                + amount (ParamIDs::kickBoxiness) + amount (ParamIDs::kickBassAware)
+                + amount (ParamIDs::kickDrive) + amount (ParamIDs::kickSubGain)
+                + amount (ParamIDs::kickTopGain)
+            : amount (ParamIDs::tameDepth) + amount (ParamIDs::mudDepth)
+                + amount (ParamIDs::noteCompAmount) + amount (ParamIDs::duckAmount)
+                + amount (ParamIDs::exciteAmount);
+
+        status.allAmountsZero = total < 0.01f;
+    }
     status.repaint();
 
     refreshVisualisers();

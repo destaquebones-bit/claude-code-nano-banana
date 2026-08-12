@@ -23,12 +23,14 @@ struct SpectrumView : public juce::Component
     {
         auto bounds = getLocalBounds().toFloat();
 
-        juce::ColourGradient bg (Palette::panelDeep, 0.0f, bounds.getY(),
-                                  Palette::panelDeep.darker (0.5f), 0.0f, bounds.getBottom(), false);
-        g.setGradientFill (bg);
-        g.fillRoundedRectangle (bounds, 6.0f);
-        g.setColour (Palette::sectionEdge);
-        g.drawRoundedRectangle (bounds.reduced (0.5f), 6.0f, 1.0f);
+        // Recessed rather than outlined: a readout should look like a window cut
+        // into the panel, and a drawn border would put another rectangle on a
+        // screen that no longer has any.
+        UiStyle::drawWell (g, bounds, UiStyle::cardRadius);
+        juce::ColourGradient depth (juce::Colours::black.withAlpha (0.35f), 0.0f, bounds.getY(),
+                                     juce::Colours::transparentBlack, 0.0f, bounds.getCentreY(), false);
+        g.setGradientFill (depth);
+        g.fillRoundedRectangle (bounds, UiStyle::cardRadius);
 
         auto plot = bounds.reduced (10.0f, 8.0f);
         plot.removeFromBottom (14.0f); // frequency ruler
@@ -159,10 +161,7 @@ struct DuckMeter : public juce::Component
     void paint (juce::Graphics& g) override
     {
         auto bounds = getLocalBounds().toFloat();
-        g.setColour (Palette::panelDeep);
-        g.fillRoundedRectangle (bounds, 5.0f);
-        g.setColour (Palette::sectionEdge);
-        g.drawRoundedRectangle (bounds.reduced (0.5f), 5.0f, 1.0f);
+        UiStyle::drawWell (g, bounds, 10.0f);
 
         auto area = bounds.reduced (8.0f, 6.0f);
         auto labelRow = area.removeFromBottom (12.0f);
@@ -214,10 +213,7 @@ struct NoteMap : public juce::Component
     void paint (juce::Graphics& g) override
     {
         auto bounds = getLocalBounds().toFloat();
-        g.setColour (Palette::panelDeep);
-        g.fillRoundedRectangle (bounds, 5.0f);
-        g.setColour (Palette::sectionEdge);
-        g.drawRoundedRectangle (bounds.reduced (0.5f), 5.0f, 1.0f);
+        UiStyle::drawWell (g, bounds, 10.0f);
 
         auto area = bounds.reduced (8.0f, 6.0f);
         auto labelRow = area.removeFromBottom (12.0f);

@@ -162,6 +162,11 @@ struct StatusStrip : public juce::Component
     bool kickMode = false;
     bool partnerPresent = false;
     bool usingSidechain = false;
+    // Every processing amount now starts at zero, so a fresh instance is
+    // genuinely inaudible. Without saying so, that is indistinguishable from a
+    // plugin that has failed to load -- the meters move, the spectrum draws, and
+    // nothing happens to the sound. The strip states it instead.
+    bool allAmountsZero = false;
     float tameDb = 0.0f, duckDb = 0.0f, noteSpreadDb = 0.0f, noteCompDb = 0.0f;
     float transient = 0.0f;
     int learnedNotes = 0, worstHarmonic = -1;

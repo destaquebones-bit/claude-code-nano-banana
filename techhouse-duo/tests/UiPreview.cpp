@@ -183,6 +183,97 @@ namespace
         g.setOrigin (area.getPosition());
         component.paintEntireComponent (g, false);
     }
+
+    // A real card of real controls, so the redesign can be judged rather than
+    // described. These are actual juce::Slider / ToggleButton / ComboBox /
+    // TextButton instances drawn through the plugin's LookAndFeel, not mock-ups
+    // of them -- if a control looks wrong here it looks wrong in the DAW.
+    struct ControlCard : public juce::Component
+    {
+        ControlCard()
+        {
+            group.setText ("RESONANCE TAMING  -  note-aware");
+            addAndMakeVisible (group);
+
+            struct Spec { const char* name; double lo, hi, value; };
+            const Spec specs[] = {
+                { "DEPTH",     0.0,  100.0,   0.0 },   // zeroed, as it now ships
+                { "TOLERANCE", 0.0,   12.0,   3.0 },
+                { "MAX CUT",   0.0,   24.0,  10.0 },
+                { "OUTPUT",  -24.0,   24.0,  -4.5 },   // bipolar: fills from centre
+            };
+
+            for (const auto& s : specs)
+            {
+                auto* k = new juce::Slider();
+                k->setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
+                k->setTextBoxStyle (juce::Slider::TextBoxBelow, false, 72, 16);
+                k->setRotaryParameters (juce::MathConstants<float>::pi * 1.25f,
+                                         juce::MathConstants<float>::pi * 2.75f, true);
+                k->setRange (s.lo, s.hi, 0.01);
+                k->setValue (s.value, juce::dontSendNotification);
+                addAndMakeVisible (k);
+                knobs.add (k);
+
+                auto* l = new juce::Label();
+                l->setText (s.name, juce::dontSendNotification);
+                l->setJustificationType (juce::Justification::centred);
+                l->setFont (juce::Font (10.5f, juce::Font::bold));
+                l->setColour (juce::Label::textColourId, Palette::textDim);
+                addAndMakeVisible (l);
+                labels.add (l);
+            }
+
+            // One of each state, so the switch reads in both positions.
+            const char* toggleNames[] = { "Link", "Listen", "Bypass" };
+            const bool toggleStates[] = { true, false, false };
+            for (int i = 0; i < 3; ++i)
+            {
+                auto* t = new juce::ToggleButton (toggleNames[i]);
+                t->setToggleState (toggleStates[i], juce::dontSendNotification);
+                addAndMakeVisible (t);
+                toggles.add (t);
+            }
+
+            modeBox.addItemList ({ "Bass", "Kick" }, 1);
+            modeBox.setSelectedId (1, juce::dontSendNotification);
+            addAndMakeVisible (modeBox);
+            addAndMakeVisible (button);
+        }
+
+        void resized() override
+        {
+            auto b = getLocalBounds();
+            group.setBounds (b);
+            b.removeFromTop (16);
+            b.reduce (12, 10);
+
+            auto row = b.removeFromTop (22);
+            const int tw = row.getWidth() / 5;
+            for (auto* t : toggles)
+                t->setBounds (row.removeFromLeft (tw));
+            row.removeFromLeft (8);
+            modeBox.setBounds (row.removeFromLeft (86).reduced (0, 1));
+            row.removeFromLeft (8);
+            button.setBounds (row.removeFromLeft (110).reduced (0, 1));
+
+            b.removeFromTop (8);
+            auto grid = b.removeFromTop (98);
+            for (int i = 0; i < knobs.size(); ++i)
+            {
+                auto cell = grid.removeFromLeft (92).reduced (2);
+                labels[i]->setBounds (cell.removeFromTop (14));
+                knobs[i]->setBounds (cell);
+            }
+        }
+
+        juce::GroupComponent group;
+        juce::OwnedArray<juce::Slider> knobs;
+        juce::OwnedArray<juce::Label> labels;
+        juce::OwnedArray<juce::ToggleButton> toggles;
+        juce::ComboBox modeBox;
+        juce::TextButton button { "Relearn notes" };
+    };
 }
 
 int main (int argc, char** argv)
@@ -202,19 +293,44 @@ int main (int argc, char** argv)
     fillDuckMeter (duckMeter);
     fillNoteMap (noteMap);
 
+    ControlCard controls;
+
     constexpr int width = 700;
     constexpr int pad = 12;
+    constexpr int headerH = 56, cardH = 160;
     constexpr int spectrumH = 170, duckH = 70, noteH = 84, captionH = 18;
-    const int height = pad + captionH + spectrumH + pad + captionH + duckH + pad + captionH + noteH + pad;
+    const int height = headerH + pad + cardH + pad
+                        + captionH + spectrumH + pad + captionH + duckH + pad + captionH + noteH + pad;
 
     juce::Image image (juce::Image::ARGB, width, height, true);
     juce::Graphics g (image);
 
-    juce::ColourGradient bg (Palette::panel, 0.0f, 0.0f, Palette::panelDeep, 0.0f, (float) height, false);
-    g.setGradientFill (bg);
-    g.fillAll();
+    // The real backdrop, not a stand-in: the cards have no outlines any more, so
+    // they can only be judged against the field they actually sit on.
+    UiStyle::paintBackdrop (g, juce::Rectangle<float> (0.0f, 0.0f, (float) width, (float) height));
 
-    int y = pad;
+    {
+        auto header = juce::Rectangle<float> (0.0f, 0.0f, (float) width, (float) headerH);
+        juce::ColourGradient wash (juce::Colours::white.withAlpha (0.035f), 0.0f, header.getY(),
+                                    juce::Colours::transparentBlack, 0.0f, header.getBottom(), false);
+        g.setGradientFill (wash);
+        g.fillRect (header);
+
+        juce::ColourGradient rule (Palette::amber.withAlpha (0.0f), 14.0f, 0.0f,
+                                    Palette::amber.withAlpha (0.0f), (float) width - 14.0f, 0.0f, false);
+        rule.addColour (0.18, Palette::amber.withAlpha (0.34f));
+        rule.addColour (0.55, Palette::amber.withAlpha (0.10f));
+        g.setGradientFill (rule);
+        g.fillRect (juce::Rectangle<float> (14.0f, header.getBottom() - 1.0f, (float) width - 28.0f, 1.0f));
+
+        g.setColour (Palette::text);
+        g.setFont (juce::Font (17.0f, juce::Font::bold));
+        UiStyle::drawTracked (g, "SS BUMBO", { 16, 0, 300, headerH }, 3.0f);
+    }
+
+    int y = headerH + pad;
+    renderInto (g, controls, { pad, y, width - 2 * pad, cardH });
+    y += cardH + pad;
     auto caption = [&] (const juce::String& text)
     {
         g.setColour (Palette::amber);

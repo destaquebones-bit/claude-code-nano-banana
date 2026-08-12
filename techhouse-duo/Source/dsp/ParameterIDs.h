@@ -74,35 +74,58 @@ namespace ParamIDs
             p.push_back (std::make_unique<juce::AudioParameterBool> (juce::ParameterID (id, 1), name, def));
         };
 
+        // EVERY PROCESSING AMOUNT STARTS AT ZERO.
+        //
+        // Loading the plugin changes nothing about the sound until a knob is
+        // moved. That is a deliberate choice and it costs something: a first
+        // load now sounds identical to bypass, so the plugin has to be dialled
+        // in rather than demonstrating itself. What it buys is that nothing is
+        // ever done to the audio that the user did not ask for -- with defaults
+        // that process, a mix can be changed by a plugin the user only meant to
+        // look at, and the change is invisible because it was there from the
+        // first bar.
+        //
+        // Two parameters cannot literally be zero, because they are always-on
+        // filters with no off position, so each is parked at the end of its
+        // range where it does the least:
+        //   inputHpf   at 10 Hz, below anything audible on a bass;
+        //   monoBelow  at 20 Hz, so effectively no stereo is collapsed.
+        //
+        // Shape parameters (tolerances, splits, release times, tail length,
+        // harmonic count) keep musical values. They are not amounts -- they
+        // decide *how* a stage acts once its amount is raised, and a zeroed
+        // crossover frequency or a zero-length release would be meaningless
+        // rather than neutral.
+
         // Global
         p.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID (mode, 1), "Mode", juce::StringArray { "Bass", "Kick" }, 0));
         p.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID (linkChannel, 1), "Link Channel", linkChannelNames(), 0));
         addBool (linkEnable, "Link Enable", true);
-        addFloat (inputHpf, "Input HPF", freq (10.0f, 60.0f), 22.0f, "Hz");
+        addFloat (inputHpf, "Input HPF", freq (10.0f, 60.0f), 10.0f, "Hz");
         addFloat (outputGain, "Output", Range (-24.0f, 24.0f, 0.01f), 0.0f, "dB");
         addFloat (dryWet, "Dry/Wet", pct(), 100.0f, "%");
         addBool (listenMode, "Listen (removed only)", false);
         addBool (bypass, "Bypass", false);
 
-        // Bass
-        addFloat (tameDepth, "Tame Depth", pct(), 55.0f, "%");
+        // Bass -- every amount at zero
+        addFloat (tameDepth, "Tame Depth", pct(), 0.0f, "%");
         addFloat (tameTolerance, "Tame Tolerance", Range (0.0f, 12.0f, 0.01f), 3.0f, "dB");
         addFloat (tameMaxCut, "Tame Max Cut", Range (0.0f, 24.0f, 0.01f), 10.0f, "dB");
         addFloat (tameRelease, "Tame Release", Range (20.0f, 400.0f, 0.1f, 0.5f), 90.0f, "ms");
         p.push_back (std::make_unique<juce::AudioParameterInt> (
             juce::ParameterID (harmonicCount, 1), "Harmonics Tracked", 3, 10, 8));
-        addFloat (mudDepth, "Mud Control", pct(), 35.0f, "%");
+        addFloat (mudDepth, "Mud Control", pct(), 0.0f, "%");
         addFloat (noteCompAmount, "Note Levelling", pct(), 0.0f, "%");
-        addFloat (duckAmount, "Kick Ducking", pct(), 50.0f, "%");
+        addFloat (duckAmount, "Kick Ducking", pct(), 0.0f, "%");
         addFloat (duckThreshold, "Duck Threshold", Range (-60.0f, -10.0f, 0.1f), -40.0f, "dB");
         addFloat (duckRelease, "Duck Release", Range (20.0f, 400.0f, 0.1f, 0.5f), 90.0f, "ms");
         addFloat (exciteAmount, "Harmonic Excite", pct(), 0.0f, "%");
         addFloat (exciteBalance, "Excite Balance", pct(), 50.0f, "%");
-        addFloat (monoBelow, "Mono Below", freq (20.0f, 300.0f), 120.0f, "Hz");
+        addFloat (monoBelow, "Mono Below", freq (20.0f, 300.0f), 20.0f, "Hz");
 
-        // Kick
+        // Kick -- every amount at zero
         addFloat (kickSubFreq, "Sub/Body Split", freq (60.0f, 300.0f), 120.0f, "Hz");
         addFloat (kickTopFreq, "Body/Click Split", freq (600.0f, 6000.0f), 1500.0f, "Hz");
         addFloat (kickSubGain, "Sub Gain", Range (-18.0f, 12.0f, 0.01f), 0.0f, "dB");
@@ -110,10 +133,8 @@ namespace ParamIDs
         addFloat (kickTailAmt, "Tail Tighten", pct(), 0.0f, "%");
         addFloat (kickTailMs, "Tail Length", Range (20.0f, 600.0f, 0.1f, 0.5f), 130.0f, "ms");
         addFloat (kickAttack, "Attack Shape", Range (-100.0f, 100.0f, 0.1f), 0.0f, "%");
-        addFloat (kickBoxiness, "Boxiness Tame", pct(), 30.0f, "%");
+        addFloat (kickBoxiness, "Boxiness Tame", pct(), 0.0f, "%");
         addFloat (kickBassAware, "Bass-Aware Notch", pct(), 0.0f, "%");
-        // Off by default: this plugin's job is to take mud out, so anything
-        // that adds harmonic content has to be opted into deliberately.
         addFloat (kickDrive, "Drive", pct(), 0.0f, "%");
 
         return { p.begin(), p.end() };

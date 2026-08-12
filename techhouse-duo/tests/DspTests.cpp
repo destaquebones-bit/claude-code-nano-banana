@@ -585,7 +585,7 @@ namespace
 
 int main()
 {
-    std::printf ("TechHouse Duo - DSP checks (sample rate %.0f Hz)\n", sr);
+    std::printf ("SS BUMBO - DSP checks (sample rate %.0f Hz)\n", sr);
 
     testPitchTracker();
     testSpectralTamer();

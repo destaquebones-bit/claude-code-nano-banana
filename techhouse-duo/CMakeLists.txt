@@ -32,7 +32,7 @@ juce_add_plugin(TechHouseDuo
     PLUGIN_MANUFACTURER_CODE    Dbtb
     PLUGIN_CODE                 Thdu
     FORMATS                     VST3 Standalone
-    PRODUCT_NAME                "TechHouse Duo"
+    PRODUCT_NAME                "SS BUMBO"
     IS_SYNTH                    FALSE
     NEEDS_MIDI_INPUT            FALSE
     NEEDS_MIDI_OUTPUT           FALSE
