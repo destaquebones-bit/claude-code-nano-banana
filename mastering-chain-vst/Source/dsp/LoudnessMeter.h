@@ -1,6 +1,6 @@
 #pragma once
 #include "DspCommon.h"
-#include <deque>
+#include <vector>
 
 // Approximate LUFS + true-peak metering for the output stage.
 //
@@ -28,6 +28,7 @@ public:
             sampleRate, 38.0, 0.5));
 
         blockSamples = juce::jmax (1, (int) std::round (sampleRate * 0.1)); // 100ms blocks
+        blockHistory.prepare (36000); // ~1 hour of 100ms blocks
         reset();
     }
 
@@ -109,9 +110,7 @@ private:
     void finalizeBlock()
     {
         const double meanPower = blockSumSq / juce::jmax (1, blockCount);
-        blockHistory.push_back (meanPower);
-        if (blockHistory.size() > 36000) // ~1 hour of 100ms blocks safety cap
-            blockHistory.pop_front();
+        blockHistory.push (meanPower);
 
         blockSumSq = 0.0;
         blockCount = 0;
@@ -124,8 +123,9 @@ private:
         // Integrated, with the standard two-stage BS.1770 gating.
         double sum = 0.0;
         int n = 0;
-        for (auto power : blockHistory)
+        for (int i = 0; i < blockHistory.size(); ++i)
         {
+            const double power = blockHistory[i];
             if (powerToLufs (power) > -70.0f)
             {
                 sum += power;
@@ -142,8 +142,9 @@ private:
 
         double sum2 = 0.0;
         int n2 = 0;
-        for (auto power : blockHistory)
+        for (int i = 0; i < blockHistory.size(); ++i)
         {
+            const double power = blockHistory[i];
             if (powerToLufs (power) > relativeThreshold)
             {
                 sum2 += power;
@@ -157,20 +158,54 @@ private:
     {
         if (blockHistory.empty())
             return 0.0;
-        const int n = juce::jmin ((int) blockHistory.size(), nBlocks);
+        const int n = juce::jmin (blockHistory.size(), nBlocks);
         double sum = 0.0;
         for (int i = 0; i < n; ++i)
-            sum += blockHistory[blockHistory.size() - 1 - (size_t) i];
+            sum += blockHistory[blockHistory.size() - 1 - i];
         return sum / n;
     }
 
     double sampleRate = 44100.0;
     DspCommon::StereoIIR kWeightShelf, kWeightHighPass;
 
+    // Fixed-capacity ring instead of a std::deque. The old version pushed a
+    // block-power value roughly ten times a second and popped from the front
+    // once full -- both allocating or freeing deque chunks on the audio thread.
+    // The cap was already an hour of blocks, so it may as well be allocated
+    // once in prepare() and reused.
+    struct History
+    {
+        std::vector<double> data;
+        int head = 0, count = 0;
+
+        void prepare (int capacity) { data.assign ((size_t) juce::jmax (1, capacity), 0.0); clear(); }
+        void clear() { head = 0; count = 0; }
+        int size() const { return count; }
+        bool empty() const { return count == 0; }
+        int capacity() const { return (int) data.size(); }
+
+        // Index 0 is the oldest retained block.
+        double operator[] (int i) const { return data[(size_t) ((head + i) % capacity())]; }
+
+        void push (double value)
+        {
+            if (count == capacity())
+            {
+                data[(size_t) head] = value;
+                head = (head + 1) % capacity();
+            }
+            else
+            {
+                data[(size_t) ((head + count) % capacity())] = value;
+                ++count;
+            }
+        }
+    };
+
     int blockSamples = 4410;
     double blockSumSq = 0.0;
     int blockCount = 0;
-    std::deque<double> blockHistory;
+    History blockHistory;
 
     float momentaryLufs = -70.0f, shortTermLufs = -70.0f, integratedLufs = -70.0f;
 

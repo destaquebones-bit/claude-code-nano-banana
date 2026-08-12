@@ -1,6 +1,6 @@
 #pragma once
 #include "DspCommon.h"
-#include <deque>
+#include <vector>
 
 // Stereo-linked lookahead brickwall limiter -- the final safety stage that
 // guarantees the ceiling is never crossed (the whole point of putting a
@@ -24,7 +24,7 @@ public:
         }
         writePos = 0;
         sampleCounter = 0;
-        gainDbWindow.clear();
+        gainDbWindow.prepare (lookaheadSamples + 2);
         envelope.prepare (sampleRate);
         envelope.reset (0.0f);
     }
@@ -80,10 +80,10 @@ public:
         // an increasing sequence of values, so the front is always the
         // window's minimum in O(1) amortized per sample.
         while (! gainDbWindow.empty() && gainDbWindow.back().second >= neededGainDb)
-            gainDbWindow.pop_back();
-        gainDbWindow.emplace_back (sampleCounter, neededGainDb);
-        while (gainDbWindow.front().first <= sampleCounter - lookaheadSamples)
-            gainDbWindow.pop_front();
+            gainDbWindow.popBack();
+        gainDbWindow.pushBack (sampleCounter, neededGainDb);
+        while (! gainDbWindow.empty() && gainDbWindow.front().first <= sampleCounter - lookaheadSamples)
+            gainDbWindow.popFront();
 
         const float windowMinDb = gainDbWindow.front().second;
         const float smoothedDb = envelope.process (windowMinDb);
@@ -122,6 +122,44 @@ private:
     float ceilingLinear = 0.891f;
     float driveGain = 1.0f;
 
-    std::deque<std::pair<int64_t, float>> gainDbWindow;
+    // Fixed-capacity circular deque, sized once in prepare(). A std::deque
+    // here allocated and freed chunks while running -- on the audio thread,
+    // driven by signal content, which is the worst possible time for it. The
+    // window can never hold more than one entry per lookahead sample, so the
+    // capacity is known up front and the ring never needs to grow.
+    struct MonotonicWindow
+    {
+        std::vector<std::pair<int64_t, float>> data;
+        int head = 0, count = 0;
+
+        void prepare (int capacity)
+        {
+            data.assign ((size_t) juce::jmax (1, capacity), { 0, 0.0f });
+            clear();
+        }
+
+        void clear() { head = 0; count = 0; }
+        bool empty() const { return count == 0; }
+        int capacity() const { return (int) data.size(); }
+
+        const std::pair<int64_t, float>& front() const { return data[(size_t) head]; }
+        const std::pair<int64_t, float>& back() const
+        {
+            return data[(size_t) ((head + count - 1) % capacity())];
+        }
+
+        void popFront() { head = (head + 1) % capacity(); --count; }
+        void popBack() { --count; }
+
+        void pushBack (int64_t position, float value)
+        {
+            if (count == capacity())
+                popFront(); // cannot happen given the sizing, but never overrun
+            data[(size_t) ((head + count) % capacity())] = { position, value };
+            ++count;
+        }
+    };
+
+    MonotonicWindow gainDbWindow;
     DspCommon::OnePoleEnvelope envelope;
 };
