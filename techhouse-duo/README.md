@@ -135,24 +135,42 @@ No kick não há esse conflito, e o desenho é restrito de propósito:
   este método. Tech house é quase sempre monofônico, por isso a aposta.
 - Não é modelagem de circuito nem cópia de nenhum plugin comercial.
 
+### O que foi e o que não foi testado
+
+Verificado automaticamente a cada push: compila nas três plataformas, 36
+checagens de DSP com sinais sintéticos, e **pluginval em nível de rigor 7** no
+macOS e no Windows — que é o que exercita o plugin como um host faz (automação
+de parâmetros, salvar/restaurar estado, layouts de barramento, abrir/fechar
+editor, processar com tamanhos de bloco e sample rates variados).
+
+**Ainda não testado**: nunca rodou dentro do Ableton nem de nenhuma DAW real,
+nunca processou uma faixa de verdade de ponta a ponta, e o Link entre duas
+instâncias nunca foi exercitado ao vivo num host — só a estrutura de dados foi
+testada em unidade. Considere a primeira sessão no Live como o teste de
+verdade.
+
 ---
 
-## Instalar sem compilar (recomendado)
+## Instalar
 
-O GitHub Actions compila pra macOS e Windows a cada push
-(`.github/workflows/build-plugins.yml`).
+O GitHub Actions compila, **valida** e empacota pra macOS e Windows a cada push
+(`.github/workflows/build-plugins.yml`). Aba **Actions** → execução mais recente
+de "Build plugins" → seção **Artifacts**.
 
-1. Aba **Actions** do repositório → clique na execução mais recente do workflow
-   "Build plugins"
-2. Role até **Artifacts** → baixe `techhouse-duo-macOS` ou `techhouse-duo-Windows`
-3. Descompacte (tem um `.zip` dentro do `.zip` que o GitHub gera)
-4. Copie o `TechHouse Duo.vst3` pra pasta de plugins:
-   - **macOS**: `~/Library/Audio/Plug-Ins/VST3/`
-   - **Windows**: `C:\Program Files\Common Files\VST3\`
+### macOS — use o instalador
 
-**macOS — passo obrigatório.** Arquivo baixado da internet entra em quarentena do
-Gatekeeper e o Live não carrega (build feito localmente não tem esse problema).
-Rode uma vez depois de copiar:
+Baixe `techhouse-duo-macOS`, descompacte e abra o
+`techhouse-duo-macOS-Installer.pkg`.
+
+O `.pkg` não é assinado, então na primeira vez: **clique com o botão direito no
+arquivo → Abrir** (duplo clique é bloqueado pelo Gatekeeper). Depois é só seguir
+o instalador.
+
+Use o instalador em vez do zip por um motivo concreto: o que um `.pkg` instala
+**não** entra em quarentena, enquanto um `.vst3` que você descompacta na mão
+entra e o Live não carrega sem rodar `xattr` antes. O zip
+(`techhouse-duo-macOS-VST3.zip`) continua disponível se preferir copiar à mão —
+nesse caso rode depois:
 
 ```bash
 xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/"TechHouse Duo.vst3"
@@ -160,6 +178,17 @@ xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/"TechHouse Duo.vst3
 
 O build do macOS é **universal** (arm64 + x86_64), então funciona com o Live
 nativo em Apple Silicon e sob Rosetta.
+
+### Windows
+
+Baixe `techhouse-duo-Windows` e rode o `techhouse-duo-Windows-Installer.exe`
+(pede elevação, instala em `Common Files\VST3`). Ou use o zip e copie o `.vst3`
+pra `C:\Program Files\Common Files\VST3\`.
+
+### Depois de instalar
+
+No Ableton: `Preferences → Plug-Ins`, confirme que VST3 está ligado, clique em
+**Rescan**. O plugin aparece como **TechHouse Duo**.
 
 ## Build local
 

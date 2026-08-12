@@ -1,12 +1,14 @@
 name: Build plugins
 
-# Produces ready-to-install VST3 bundles for macOS and Windows so the plugins
-# can be installed without a local toolchain. Download them from the "Artifacts"
-# section of a finished run on the Actions tab.
+# Produces installers and ready-to-drop-in VST3 bundles for macOS and Windows,
+# and validates the built plugin with pluginval before publishing anything.
 #
-# macOS note: an artifact downloaded from here is quarantined by Gatekeeper
-# (a locally-compiled build is not), so it must be de-quarantined after
-# unzipping -- see the README for the exact command.
+# Download from the "Artifacts" section of a finished run on the Actions tab.
+#
+# macOS note: the .pkg installer is the recommended route. A plain .vst3
+# downloaded as a zip is quarantined by Gatekeeper (a locally-compiled build is
+# not) and has to be de-quarantined by hand; a payload installed by a .pkg is
+# not, so the installer removes that step entirely.
 
 on:
   push:
@@ -20,6 +22,7 @@ on:
 
 env:
   JUCE_TAG: 7.0.12
+  PLUGIN_VERSION: 1.0.0
 
 jobs:
   # Runs first and fast: if the DSP checks fail there is no point producing
@@ -69,7 +72,6 @@ jobs:
             label: macOS
           - os: windows-2022
             label: Windows
-        exclude: []
     steps:
       - uses: actions/checkout@v4
 
@@ -101,38 +103,119 @@ jobs:
         working-directory: ${{ matrix.plugin }}
         run: cmake --build build --config Release --parallel
 
-      # ditto rather than zip: it preserves the executable bit and bundle
-      # structure inside the .vst3, which a plain zip round-trip can lose.
-      - name: Package (macOS)
+      - name: Locate built VST3
+        id: locate
+        shell: bash
+        working-directory: ${{ matrix.plugin }}
+        run: |
+          set -euo pipefail
+          VST3=$(find build -maxdepth 5 -name '*.vst3' | head -n 1)
+          if [ -z "$VST3" ]; then echo "No .vst3 produced"; exit 1; fi
+          NAME=$(basename "$VST3" .vst3)
+          echo "vst3=$VST3" >> "$GITHUB_OUTPUT"
+          echo "name=$NAME" >> "$GITHUB_OUTPUT"
+          echo "Found $VST3 (product name: $NAME)"
+
+      # The real gap this closes: everything else in CI proves the code
+      # compiles and that the DSP maths is right in isolation. pluginval is the
+      # first thing here that exercises the plugin the way a DAW does --
+      # parameter automation, state save/restore, bus layouts, editor
+      # open/close, processing with varied block sizes and sample rates.
+      - name: Validate with pluginval (macOS)
+        if: runner.os == 'macOS'
+        working-directory: ${{ matrix.plugin }}
+        run: |
+          set -euo pipefail
+          curl -sSL -o pluginval.zip \
+            https://github.com/Tracktion/pluginval/releases/latest/download/pluginval_macOS.zip
+          unzip -q pluginval.zip
+          ./pluginval.app/Contents/MacOS/pluginval \
+            --strictness-level 7 \
+            --validate "${{ steps.locate.outputs.vst3 }}"
+
+      - name: Validate with pluginval (Windows)
+        if: runner.os == 'Windows'
+        working-directory: ${{ matrix.plugin }}
+        shell: pwsh
+        run: |
+          Invoke-WebRequest -Uri "https://github.com/Tracktion/pluginval/releases/latest/download/pluginval_Windows.zip" -OutFile pluginval.zip
+          Expand-Archive -Path pluginval.zip -DestinationPath pluginval -Force
+          $exe = Get-ChildItem -Path pluginval -Filter pluginval.exe -Recurse | Select-Object -First 1
+          & $exe.FullName --strictness-level 7 --validate "${{ steps.locate.outputs.vst3 }}"
+          if ($LASTEXITCODE -ne 0) { throw "pluginval failed" }
+
+      # A .pkg payload is not quarantined once installed, unlike a .vst3 the
+      # user unzips themselves -- which is the whole reason to ship one.
+      - name: Build installer (macOS)
         if: runner.os == 'macOS'
         working-directory: ${{ matrix.plugin }}
         run: |
           set -euo pipefail
           mkdir -p "$GITHUB_WORKSPACE/out"
-          VST3=$(find build -maxdepth 5 -name '*.vst3' -type d | head -n 1)
-          if [ -z "$VST3" ]; then echo "No .vst3 produced"; exit 1; fi
-          echo "Packaging $VST3"
-          ditto -c -k --sequesterRsrc --keepParent "$VST3" \
-            "$GITHUB_WORKSPACE/out/${{ matrix.plugin }}-macOS-universal.zip"
-          lipo -archs "$VST3/Contents/MacOS/"* || true
+          STAGING="$RUNNER_TEMP/pkgroot"
+          rm -rf "$STAGING" && mkdir -p "$STAGING"
+          cp -R "${{ steps.locate.outputs.vst3 }}" "$STAGING/"
+          pkgbuild \
+            --root "$STAGING" \
+            --identifier "com.spectralsun.${{ matrix.plugin }}" \
+            --version "${{ env.PLUGIN_VERSION }}" \
+            --install-location "/Library/Audio/Plug-Ins/VST3" \
+            "$GITHUB_WORKSPACE/out/${{ matrix.plugin }}-macOS-Installer.pkg"
+          # ditto, not zip: it preserves the executable bit and bundle structure
+          # inside the .vst3, which a plain zip round-trip can lose.
+          ditto -c -k --sequesterRsrc --keepParent "${{ steps.locate.outputs.vst3 }}" \
+            "$GITHUB_WORKSPACE/out/${{ matrix.plugin }}-macOS-VST3.zip"
+          lipo -archs "${{ steps.locate.outputs.vst3 }}/Contents/MacOS/"* || true
 
-      - name: Package (Windows)
+      - name: Build installer (Windows)
         if: runner.os == 'Windows'
         working-directory: ${{ matrix.plugin }}
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path "$env:GITHUB_WORKSPACE/out" | Out-Null
-          $vst3 = Get-ChildItem -Path build -Filter *.vst3 -Recurse -Force |
-                  Select-Object -First 1
-          if (-not $vst3) { throw "No .vst3 produced" }
-          Write-Host "Packaging $($vst3.FullName)"
-          Compress-Archive -Path $vst3.FullName -DestinationPath `
-            "$env:GITHUB_WORKSPACE/out/${{ matrix.plugin }}-Windows-x64.zip" -Force
+          $vst3 = Resolve-Path "${{ steps.locate.outputs.vst3 }}"
+          $name = "${{ steps.locate.outputs.name }}"
+
+          Compress-Archive -Path $vst3 -DestinationPath `
+            "$env:GITHUB_WORKSPACE/out/${{ matrix.plugin }}-Windows-VST3.zip" -Force
+
+          # Built as an array rather than a PowerShell here-string: a here-string
+          # needs its closing "@ at column zero, which cannot exist inside an
+          # indented YAML block scalar.
+          $iss = @(
+            '[Setup]',
+            "AppName=$name",
+            'AppVersion=${{ env.PLUGIN_VERSION }}',
+            'AppPublisher=Spectral Sun',
+            'DefaultDirName={commoncf64}\VST3',
+            'DisableDirPage=yes',
+            'DisableProgramGroupPage=yes',
+            'PrivilegesRequired=admin',
+            "OutputDir=$env:GITHUB_WORKSPACE\out",
+            'OutputBaseFilename=${{ matrix.plugin }}-Windows-Installer',
+            'Compression=lzma2',
+            'SolidCompression=yes',
+            '',
+            '[Files]',
+            "Source: `"$vst3\*`"; DestDir: `"{app}\$name.vst3`"; Flags: recursesubdirs createallsubdirs ignoreversion"
+          ) -join "`r`n"
+          $issPath = "$env:RUNNER_TEMP\installer.iss"
+          Set-Content -Path $issPath -Value $iss -Encoding UTF8
+
+          $iscc = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
+          if (Test-Path $iscc) {
+            & $iscc $issPath
+            if ($LASTEXITCODE -ne 0) { throw "Inno Setup failed" }
+          } else {
+            # Not fatal: the zip above is still a complete, working install, so
+            # a missing Inno Setup should not fail the whole build.
+            Write-Warning "Inno Setup not found on this runner - shipping the zip only"
+          }
 
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.plugin }}-${{ matrix.label }}
-          path: out/*.zip
+          path: out/*
           if-no-files-found: error
           retention-days: 90
