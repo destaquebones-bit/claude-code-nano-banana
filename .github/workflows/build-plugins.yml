@@ -303,3 +303,55 @@ jobs:
           path: out/*
           if-no-files-found: error
           retention-days: 90
+
+  # Republishes every successful build to a single "latest" release.
+  #
+  # Actions artifacts are genuinely hard to find: they live at the bottom of a
+  # run summary page, behind the Actions tab, and only appear at all once you
+  # are signed in. A release is one stable URL with the installers as direct
+  # downloads, which is what someone installing the plugin actually needs.
+  publish:
+    name: Publish downloads
+    needs: build
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Flatten and list
+        run: |
+          mkdir -p release
+          find artifacts -type f \( -name '*.pkg' -o -name '*.exe' -o -name '*.zip' \) -exec cp {} release/ \;
+          ls -la release/
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest build
+          prerelease: true
+          fail_on_unmatched_files: true
+          body: |
+            Instaladores gerados automaticamente do commit mais recente.
+
+            **macOS** — baixe `techhouse-duo-macOS-Installer.pkg`, depois
+            **clique com o botao direito no arquivo e escolha Abrir** (duplo
+            clique e bloqueado porque o pacote nao e assinado). Instala em
+            `/Library/Audio/Plug-Ins/VST3/`. Build universal: funciona no
+            Live nativo em Apple Silicon e sob Rosetta.
+
+            **Windows** — rode `techhouse-duo-Windows-Installer.exe`.
+            Instala em `Common Files\VST3`.
+
+            Depois: Ableton -> Preferences -> Plug-Ins -> Rescan. O plugin
+            aparece como **TechHouse Duo**.
+
+            Os `.zip` sao alternativas para quem prefere copiar o `.vst3` a
+            mao. No macOS, um `.vst3` copiado assim fica em quarentena e o
+            Live nao carrega ate rodar:
+            `xattr -dr com.apple.quarantine "<caminho do .vst3>"`.
+            O instalador nao tem esse problema.
+          files: release/*
