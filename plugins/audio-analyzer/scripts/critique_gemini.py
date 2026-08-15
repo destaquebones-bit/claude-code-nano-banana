@@ -56,7 +56,7 @@ def main():
     ap.add_argument("--input", required=True)
     ap.add_argument("--duracao", type=int, default=60, help="segundos a enviar (default 60, pra manter payload pequeno)")
     ap.add_argument("--pergunta", default=DEFAULT_PERGUNTA)
-    ap.add_argument("--model", default="gemini-2.5-flash")
+    ap.add_argument("--model", default="gemini-3.1-flash-lite")
     args = ap.parse_args()
 
     api_key = os.environ.get("GEMINI_API_KEY")

@@ -160,7 +160,7 @@ tracks they consider a quality/style benchmark (their own past hits, purchased r
 tracks by artists they're targeting for support) — it turns the raw numbers into "your track
 runs brighter/darker/busier than your references" instead of isolated values with no context.
 
-## critique_gemini.py — real audio-informed critique (needs a working API key)
+## critique_gemini.py — real audio-informed critique (working as of 2026-08-15)
 
 ```bash
 GEMINI_API_KEY="..." python3 scripts/critique_gemini.py --input faixa.wav [--duracao 60]
@@ -169,15 +169,26 @@ GEMINI_API_KEY="..." python3 scripts/critique_gemini.py --input faixa.wav [--dur
 Sends a trimmed audio clip (default first 60s, downsampled to mono 64kbps mp3 via `ffmpeg` to
 keep the request small) to a Gemini model with a production-critique prompt, and prints back
 its actual text response. This is the closest thing to genuine perceptual critique available —
-a real multimodal model processing the waveform, not a metadata/spectral proxy. Known blocker
-as of 2026-08-01: the user's current `GEMINI_API_KEY` returns `401 ACCESS_TOKEN_TYPE_UNSUPPORTED`
-on `generateContent` (both via the REST API directly and the `google-genai` SDK) despite working
-fine for the read-only `ListModels` call — this points to a key that isn't in the standard AI
-Studio format/scope, not a bug in this script. Don't spend time debugging around it further;
-the fix is a fresh key from https://aistudio.google.com/apikey (standard keys start `AIza...`),
-with billing enabled (image/audio-capable models are not on the free tier — see the `nano-banana`
-plugin's history in this same repo for the identical billing issue on image generation). Uses
-direct REST calls (`requests`), not the SDK — that was the more predictable path in this session's
+a real multimodal model processing the waveform, not a metadata/spectral proxy.
+
+**Status (2026-08-15): confirmed working**, model defaults to `gemini-3.1-flash-lite`. The
+original blocker (a key returning `401 ACCESS_TOKEN_TYPE_UNSUPPORTED`) was resolved when the
+user generated a new key — that same new key also works for `nano-banana` image generation.
+Model names on this API drift fast: `gemini-2.5-flash` and `gemini-2.5-flash-lite` both 404
+("no longer available to new users") even though they were valid weeks earlier — if the default
+model 404s again, pass `--model <name>` with something from `curl .../v1beta/models?key=$KEY`
+(prefer names without a version-locked date/number, e.g. `-latest` or `-lite` variants, they
+get remapped forward instead of hard-deprecated). A `503 UNAVAILABLE` is transient server load,
+not a code problem — just retry.
+
+**Treat its output as opinion, not measurement** — it already contradicted the `tech-house-audio`
+skill's actual measured data once (recommended "aggressive sidechain" on a track whose ducking
+was independently measured at 1.4dB, well within the genre's normal 1.5-5.1dB range). When its
+critique conflicts with a number the `tech-house-audio` skill already measured, say so explicitly
+to the user rather than silently picking one — the measured number is the more trustworthy one,
+but the disagreement itself is often the useful part to surface.
+
+Uses direct REST calls (`requests`), not the SDK — that was the more predictable path in this session's
 testing, keep it that way rather than reintroducing the SDK.
 
 ## reference/ — genre benchmark snapshots
