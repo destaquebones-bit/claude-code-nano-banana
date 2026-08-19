@@ -55,3 +55,57 @@ Target subreddit: **r/House** (believed viable, not yet posted to; genre-matched
 > *(Video is a fan recording, not mine — posting because the story felt more worth sharing than the footage quality.)*
 
 Note: video file lives locally on Jhonatan's machine (`~/Downloads`), not in this repo — text is ready, attach the clip manually when posting. Next in rotation after this: 'Space of Sound' / LAB theCLUB, Madrid.
+
+---
+
+## 2026-08-19
+
+**Sequence step: 1 — r/House reciprocity comments (prerequisite for r/House self-post, which is step 2).**
+
+### Context / why this step
+
+Per the updated vetted-subreddit landscape (2026-08-18 status check), r/TechHouseBrasil (the subreddit Jhonatan founded) was banned by Reddit admins for Content Policy Rule 2 (spam/manipulation) within hours of creation — almost certainly triggered by rapid-fire same-day activity on a 0-day-old account (founding a sub + posting + scheduling posts, all in one day). **r/TechHouseBrasil is no longer a destination.** No re-founding is proposed here; if it's ever revisited, the account must first show a long, spread-out history of normal activity, and any future founding + first posts must be spread across many separate days, never hours.
+
+Current status: r/PromoteYourMusic used successfully 2026-08-18 (track "90'S") — on 1-week cooldown until ~2026-08-25. r/techhouseproduction already had a news post + a technical comment on 2026-08-18 — at a healthy daily ceiling there, no more today. That leaves **r/House (172k members)** as next target. r/House's rule 5 requires reciprocity (genuinely engaging with others' music) before self-promotion — Jhonatan has not built that credit yet, so today's action is the reciprocity step, not a self-post.
+
+### Research limitation (read before using)
+
+This environment cannot fetch reddit.com directly (fetch tool is blocked for reddit.com and old.reddit.com) and browser/login use is off-limits by task rules anyway. That means I could not pull live, specific r/House thread titles/usernames to target today. Instead, below are two **adaptable comment templates** — genuinely engaged, non-promotional, no link, no mention of Spectral Sun — plus instructions for Jhonatan to pick the actual posts himself in under 5 minutes.
+
+**How to pick targets (manual, ~5 min):** Open r/House, sort by "New" or "Rising," and pick 2 posts that are actual original-track shares by other producers (not memes, not "ID this track" requests, not news). Actually listen to ~30–60 seconds of each before commenting — fill in the bracketed specifics below so the comment reads as genuine (it needs to be genuine — that's the entire point of reciprocity credit).
+
+**Comment template A (for a groove/bassline-driven track):**
+
+> This has a great pocket — the [bassline/groove] sits really well against the [drums/percussion]. Reminds me a bit of [reference artist/era] but with its own character. What did you use for the [specific sound, e.g. bassline/chords]? Saving this one.
+
+**Comment template B (for a melodic/vocal-forward track):**
+
+> Really like the vibe on this — the [vocal chop/lead/pad] hook is the kind of thing that gets stuck in your head in a good way. Curious how you arranged the buildup into the drop, it flows naturally. Following for more.
+
+Do NOT include any link, any mention of Spectral Sun, or any "check out mine too" — that defeats the purpose and reads as transactional, which is exactly what rule 5 is trying to filter out. Comment as a listener, full stop.
+
+### Also prepared today: r/House self-post draft (step 2 — do NOT post until reciprocity credit from the comments above is established; realistically a day or more after the comments, not same-day)
+
+Track: **"Mind Gone State"** (Tech House) — free download via Hypeddit gate (no strings attached): https://hypeddit.com/iel6vv — stream on SoundCloud: https://soundcloud.com/spectralsunmusic/mind-gone-state. Cover art + 15s vertical video exist locally (not in this repo) — attach manually when posting.
+
+> **Title:** Free download, no strings attached — my new tech house track "Mind Gone State" (feedback welcome)
+>
+> **Body:**
+>
+> Hey r/House — Brazilian tech house producer here, going by Spectral Sun. Just finished a new track called "Mind Gone State" and I'm giving it away as a free download, no email-list traps or catch, just a straightforward Hypeddit gate: https://hypeddit.com/iel6vv
+>
+> If you'd rather stream first: https://soundcloud.com/spectralsunmusic/mind-gone-state
+>
+> It's a rolling, groove-first tech house cut — built more around the bassline and percussion than big drops. Would genuinely love feedback from people here, especially on the low end and the arrangement — always trying to get better at keeping a groove interesting for 5+ minutes without it feeling repetitive.
+>
+> Thanks for listening either way.
+
+Note: English used (r/House is a general English-language international community, not Portuguese-first like r/techhouseproduction).
+
+### Next in sequence after this
+
+1. ✅ (in progress) r/House reciprocity comments — draft ready above, needs Jhonatan to pick real target posts and paste.
+2. r/House self-post — draft ready above, hold until reciprocity comments have been up for at least a day.
+3. Locate + comment in r/edmproduction's current weekly feedback thread (check the sub's pinned/sticky posts, or sort-by-new + search "feedback thread" — thread rotates weekly, no fixed URL).
+4. Locate + comment in r/TechnoProduction's current weekly feedback thread (same method).
+5. Re-check r/PromoteYourMusic cooldown (~1 week from 2026-08-18, so ~2026-08-25).
