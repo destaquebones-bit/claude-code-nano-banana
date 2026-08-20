@@ -104,3 +104,5 @@ I cannot browse Reddit from this environment (research-and-draft-only, no browse
 - Do the reciprocity comments (1a) first, ideally same session as or shortly before the self-post (1b), so the account has a visible pattern of engaging with others, not just promoting itself.
 - This is the only Reddit action queued for today per the daily volume cap — no other subs today.
 - Cover art / 15s vertical video exist locally on Jhonatan's machine, not in this repo — attach manually if the self-post format allows an image/video.
+
+**Approval: Jhonatan approved this draft ("Aprovado") on 2026-08-20.** This routine has no Reddit posting capability (research-and-draft-only, no login/browser) — the reciprocity comments and self-post above still need to be posted manually. Once posted, note it at the top of tomorrow's entry so the next run advances to Step 2 (r/House self-post) or beyond rather than re-suggesting Step 1.
