@@ -55,3 +55,52 @@ Target subreddit: **r/House** (believed viable, not yet posted to; genre-matched
 > *(Video is a fan recording, not mine — posting because the story felt more worth sharing than the footage quality.)*
 
 Note: video file lives locally on Jhonatan's machine (`~/Downloads`), not in this repo — text is ready, attach the clip manually when posting. Next in rotation after this: 'Space of Sound' / LAB theCLUB, Madrid.
+
+---
+
+## 2026-08-20
+
+**Landscape update since last entry (superseding parts of the "Standing reference" above — not editing that block, just flagging what's changed):**
+- r/TechHouseBrasil, the subreddit Jhonatan founded on 2026-08-18, was **banned by Reddit admins** within hours (Content Policy Rule 2, spam/manipulation) — almost certainly triggered by same-day account creation + sub founding + posting + scheduling, all on a 0-day-old account. It no longer exists. Not a candidate to re-found soon; if revisited later, first requirement is spreading founding + first posts across many separate days.
+- r/PromoteYourMusic: used successfully for track "90'S" on 2026-08-18. 1-week cooldown in effect — do not reuse until ~2026-08-25.
+- r/techhouseproduction: 1 news post + 1 technical comment already made on 2026-08-18 — at a healthy daily cap there, no further action needed for now.
+- The track now being promoted going forward is **"Mind Gone State"** (Tech House) — free download via Hypeddit gate (https://hypeddit.com/iel6vv), also on SoundCloud (https://soundcloud.com/spectralsunmusic/mind-gone-state). Cover art + 15s vertical video exist locally, not in this repo.
+- New priority sequence for upcoming days: (1) r/House reciprocity comments → (2) r/House self-post → (3) locate + comment in r/edmproduction weekly feedback thread → (4) locate + comment in r/TechnoProduction weekly feedback thread → (5) re-check r/PromoteYourMusic cooldown.
+
+**Today's step: Step 1 — r/House reciprocity building (prerequisite) + Step 2 draft prepared in parallel**
+
+r/House (172k members) has no blanket self-promo ban, but rule 5 requires reciprocity — sharing/commenting on other people's music before/alongside your own. Jhonatan has zero reciprocity credit there yet, so today's action is two-part: build that credit first, with the self-post text drafted and ready for as soon as reciprocity is in place (same day or next, Jhonatan's call).
+
+### 1a. Reciprocity comments — action needed, not fully draftable in advance
+
+I cannot browse Reddit from this environment (research-and-draft-only, no browser), so I can't pull real, current r/House track posts to comment on with specific detail — and a comment needs specific detail or it reads as bot/spam, which defeats the entire point of rule 5. Ready-to-adapt templates below; **Jhonatan should open r/House, find 2 recent tech house/house track posts he genuinely likes, actually listen, and swap in real specifics before posting** — do not paste these verbatim.
+
+> **Template A (fuller feedback comment):**
+> "This has a really solid groove — the low end sits nicely and it doesn't overstay its welcome. [swap in a real detail — e.g. the breakdown, the vocal chop, the hi-hat pattern] really pulled me in. What are you running for [a specific element you actually noticed]? Following for more, this is really nice work."
+>
+> **Template B (shorter appreciation + question):**
+> "Been on a house kick lately and this scratched the itch — solid pocket, mix feels balanced. Is this out anywhere to follow/stream, or still WIP? Would love to hear more from you."
+
+### 1b. r/House self-post — ready to paste (post once reciprocity comments are in, per rule 5)
+
+> **Title:** [Tech House] Mind Gone State — free download, no strings attached
+>
+> **Body:**
+>
+> Hey r/House,
+>
+> Sharing a tech house track I've been working on called "Mind Gone State" — it's a free download, no cost, just wanted to get it in front of more people who might actually be into this sound.
+>
+> SoundCloud: https://soundcloud.com/spectralsunmusic/mind-gone-state
+> Free download: https://hypeddit.com/iel6vv
+>
+> I'm Jhonatan, producing as Spectral Sun out of Brazil. This one leans into a driving, rolling groove — built it with peak-time sets in mind but there's a bit of a hypnotic edge to it too. Genuinely open to feedback if something's off in the mix, not just looking for plays.
+>
+> Also always digging for new tech house/house to check out, so if you've got something out drop it below — happy to give it a listen and share thoughts.
+>
+> Cheers!
+
+**Notes:**
+- Do the reciprocity comments (1a) first, ideally same session as or shortly before the self-post (1b), so the account has a visible pattern of engaging with others, not just promoting itself.
+- This is the only Reddit action queued for today per the daily volume cap — no other subs today.
+- Cover art / 15s vertical video exist locally on Jhonatan's machine, not in this repo — attach manually if the self-post format allows an image/video.
