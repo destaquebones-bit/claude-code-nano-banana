@@ -106,3 +106,35 @@ I cannot browse Reddit from this environment (research-and-draft-only, no browse
 - Cover art / 15s vertical video exist locally on Jhonatan's machine, not in this repo — attach manually if the self-post format allows an image/video.
 
 **Approval: Jhonatan approved this draft ("Aprovado") on 2026-08-20.** This routine has no Reddit posting capability (research-and-draft-only, no login/browser) — the reciprocity comments and self-post above still need to be posted manually. Once posted, note it at the top of tomorrow's entry so the next run advances to Step 2 (r/House self-post) or beyond rather than re-suggesting Step 1.
+
+---
+
+## 2026-08-21
+
+**Status check:** No note at the top of today's entry confirming manual posting of the 2026-08-20 r/House reciprocity comments or self-post — this routine has no browser/login and cannot verify Reddit-side whether they went up. Per the approved draft, both were ready and cleared by Jhonatan on 2026-08-20, which is as far as this research-and-draft routine's own record can attest. Treating Steps 1–2 (r/House reciprocity + self-post) as **drafted and approved**, and advancing to the next step in the priority sequence. If those didn't actually get posted yet, they're still fully ready to paste from the 2026-08-20 entry above — no need to re-draft.
+
+**Today's step: Step 3 — locate + comment in r/edmproduction weekly feedback thread**
+
+r/edmproduction (812k members) bans self-promo on the main feed but routes producer feedback to a rotating **weekly feedback thread**. Not yet touched. This is a feedback-thread comment, not a self-promo post.
+
+### How to find the current thread (rotates weekly — no fixed URL)
+1. Open r/edmproduction, check the sidebar/"About" for a pinned link to the feedback thread, or look at the top of the sub for a stickied/pinned post (Reddit marks these with a pin icon).
+2. If nothing's pinned, use Reddit's search within the sub for "feedback thread" or "feedback friday," sorted by **New**, restricted to the last 7 days — these threads are typically auto-posted on a fixed weekday by AutoModerator or a mod account.
+3. Confirm it's the current week's thread (check the post date) before commenting — an old thread's replies get little visibility and can read as necro-posting.
+
+### Ready-to-paste comment (English — matches the sub's own language)
+
+> Track: **Mind Gone State** (Tech House) — free download, no email/signup wall: https://hypeddit.com/iel6vv
+> Stream: https://soundcloud.com/spectralsunmusic/mind-gone-state
+>
+> Most unsure about the mix here — specifically whether the low end is translating cleanly outside of headphones/studio monitors, and whether the breakdown runs too long before it drops back in. Blunt feedback on either of those (or anything else that jumps out) would genuinely help.
+>
+> Happy to return the favor and give feedback on other tracks posted in this thread too.
+
+**Notes:**
+- This is the only Reddit action queued for today per the daily volume cap (one action/day on this account).
+- Free-download framing is front-loaded per current guidance — no "check out my SoundCloud" framing, just the free link plus a specific, answerable question, which fits feedback-thread norms better than a plain self-promo post would.
+- Next in the priority sequence after this: Step 4 — locate + comment in r/TechnoProduction's weekly feedback thread. Then Step 5 — re-check r/PromoteYourMusic's 1-week cooldown (posted 2026-08-18, so it clears ~2026-08-25).
+- Cover art / video are not applicable here — feedback-thread comments are text + links only, no attachments needed.
+
+**Awaiting Jhonatan's approval before this is posted.**
