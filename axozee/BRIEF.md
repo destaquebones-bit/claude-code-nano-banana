@@ -8,16 +8,17 @@ Atualizado a cada rodada de trabalho.
 | Item | Situação |
 |---|---|
 | Referências (camisetas Totanka, no Google Drive) | ✅ **Lidas** — 13 peças analisadas, DNA em `REFERENCIAS-TOTANKA.md` |
-| Identidade visual da AXOZEE (logo, paleta, tipografia) | ❌ **Não está no Drive** — só as pastas TOTANKA e MKT DIGITAL. Precisa ser enviada |
+| Identidade visual da AXOZEE | ✅ **Brand Book V1 recebido** (22/08) — resumo em `MARCA.md`, PDF em `marca/` |
 | Posicionamento | Definido: mistura dos três eixos (música eletrônica, urbano/streetwear, lifestyle) |
-| Rodada 1 — conceito | ✅ **Entregue** — 6 modelos em `COLECAO-01.md` + lookbook `lookbook-capsula-01.html` |
-| Rodada 1 — arte final | ✅ **6 mockups gerados em 2K** em `axozee/artes/` (Nano Banana Pro) |
+| Cápsula 01 "ASFALTO × SELVA" | ✅ **6 peças** em `COLECAO-01.md`, mockups em `artes/`, lookbook em `lookbook-capsula-01.html` |
+| Rodada "Night Shift" (pré-brand book) | ⛔ Descartada — motivo em `artes/_descartadas/LEIA-ME.md` |
+
 
 ## Contexto da marca
 
-- **AXOZEE** — marca de Jhonatan Mandato (também produtor de tech house sob o nome
-  *Spectral Sun*). Domínio `axozee.com.br` registrado em 13/08/2026 (Registro.br →
-  Cloudflare → VPS KingHost). O site ainda não resolve DNS externamente.
+- **AXOZEE** — streetwear unissex de Jhonatan Mandato, sócio da Destaque Bonés e Confecções.
+  Conceito **ASFALTO × SELVA**, "o aço que se move" (ver `MARCA.md`). Domínio `axozee.com.br`
+  registrado em 13/08/2026 (Registro.br → Cloudflare → VPS KingHost); ainda não resolve DNS.
 - **Posicionamento definido pelo Jhonatan:** "um pouco dos três" — a linha deve
   transitar entre:
   1. **Música eletrônica** — universo tech house / rave / festival / cultura de pista;
@@ -66,12 +67,12 @@ Tudo versionado aqui: `axozee/referencias/`, `axozee/artes/`, `axozee/mockups/`.
 
 ## Bloqueios atuais
 
-1. **Arquivos de identidade da AXOZEE** — procurados em 22/08/2026 no Google Drive
-   (só as pastas TOTANKA e MKT DIGITAL), no Canva (nenhum design com "axozee"), nos anexos
-   do Gmail e no sistema de arquivos desta sessão. **Não foram encontrados.** Esta sessão
-   roda em container remoto na nuvem, não na máquina do Jhonatan — o único jeito de trazer
-   os arquivos é subir no Drive, anexar no chat, ou rodar o Claude Code localmente.
-2. ~~Geração de imagem~~ — resolvido: chave do Gemini fornecida, artes geradas com
-   Nano Banana Pro em 2K. Comandos em `GERACAO.md`.
+1. **Garra da peça S-01** — o mockup entregou um rasgo largo de fera; o brand device são
+   quatro lâminas finas, curvas e escalonadas. Regerar.
+2. **Escolha das peças** — quais das seis vão para arte final e quais entram na rodada 2.
+3. **Tipografia definitiva** — o manual ainda usa faces de sistema; decidir entre a rota
+   didone e a glífica flarada antes de licenciar e converter o wordmark em curvas.
+
+~~Identidade~~ e ~~geração de imagem~~ — resolvidos em 22/08/2026.
 
 O Google Drive já está conectado e funcionando (resolvido em 22/08/2026).
