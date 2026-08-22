@@ -11,7 +11,7 @@ Atualizado a cada rodada de trabalho.
 | Identidade visual da AXOZEE (logo, paleta, tipografia) | ❌ **Não está no Drive** — só as pastas TOTANKA e MKT DIGITAL. Precisa ser enviada |
 | Posicionamento | Definido: mistura dos três eixos (música eletrônica, urbano/streetwear, lifestyle) |
 | Rodada 1 — conceito | ✅ **Entregue** — 6 modelos em `COLECAO-01.md` + lookbook `lookbook-capsula-01.html` |
-| Rodada 1 — arte final | ⏳ Bloqueada por ferramenta de geração — ver `GERACAO.md` |
+| Rodada 1 — arte final | ✅ **6 mockups gerados em 2K** em `axozee/artes/` (Nano Banana Pro) |
 
 ## Contexto da marca
 
@@ -66,9 +66,12 @@ Tudo versionado aqui: `axozee/referencias/`, `axozee/artes/`, `axozee/mockups/`.
 
 ## Bloqueios atuais
 
-1. **Arquivos de identidade da AXOZEE** — não existem no Drive. Enviar logo, paleta e
-   tipografia (ou anexar no chat) para fechar o monograma da peça 06 e as assinaturas.
-2. **Geração de imagem** — artlist sem créditos; Gemini acessível mas sem chave de API.
-   Detalhes e comandos em `GERACAO.md`.
+1. **Arquivos de identidade da AXOZEE** — procurados em 22/08/2026 no Google Drive
+   (só as pastas TOTANKA e MKT DIGITAL), no Canva (nenhum design com "axozee"), nos anexos
+   do Gmail e no sistema de arquivos desta sessão. **Não foram encontrados.** Esta sessão
+   roda em container remoto na nuvem, não na máquina do Jhonatan — o único jeito de trazer
+   os arquivos é subir no Drive, anexar no chat, ou rodar o Claude Code localmente.
+2. ~~Geração de imagem~~ — resolvido: chave do Gemini fornecida, artes geradas com
+   Nano Banana Pro em 2K. Comandos em `GERACAO.md`.
 
 O Google Drive já está conectado e funcionando (resolvido em 22/08/2026).
