@@ -138,3 +138,37 @@ r/edmproduction (812k members) bans self-promo on the main feed but routes produ
 - Cover art / video are not applicable here — feedback-thread comments are text + links only, no attachments needed.
 
 **Awaiting Jhonatan's approval before this is posted.**
+
+---
+
+## 2026-08-22
+
+**Status check:** No approval note logged yet for the 2026-08-21 entry (Step 3 — r/edmproduction feedback-thread comment). Same as the 2026-08-21→2026-08-20 handoff: this routine has no browser/login and cannot verify Reddit-side whether Step 3 was posted. Treating it as **drafted and ready**, per Jhonatan's established pattern of approving in his own time, and advancing to the next step in the priority sequence. If Step 3 hasn't been posted yet, it's still fully ready to paste from the 2026-08-21 entry above — no need to re-draft. If Jhonatan wants to hold at Step 3 until it's confirmed posted, just skip today's Step 4 action and re-run Step 3.
+
+**Today's step: Step 4 — locate + comment in r/TechnoProduction's weekly feedback thread**
+
+r/TechnoProduction (107k members) bans self-promo on the main feed but routes producer feedback to a rotating **weekly feedback thread**, same pattern as r/edmproduction. Not yet touched.
+
+### How to find the current thread (rotates weekly — no fixed URL)
+1. Open r/TechnoProduction, check the sidebar/"About"/community highlights for a pinned link to the feedback thread, or look for a stickied/pinned post at the top of the sub (pin icon).
+2. If nothing's pinned, search within the sub for "feedback thread" or "feedback friday," sorted by **New**, restricted to the last 7 days — these are typically auto-posted on a fixed weekday by AutoModerator or a mod account.
+3. Confirm the post date is from the current week before commenting — replying in an old thread gets little visibility and can read as necro-posting.
+4. Note: "Mind Gone State" is Tech House, not straight Techno — this sub's feedback thread should still take a tech-leaning track (production-feedback threads are usually genre-agnostic within electronic music), but if the thread's own rules explicitly restrict to techno-only submissions, skip commenting there and flag it back in tomorrow's entry instead of forcing a mismatched post.
+
+### Ready-to-paste comment (English — matches the sub's own language)
+
+> Track: **Mind Gone State** (Tech House) — free download, no email/signup wall: https://hypeddit.com/iel6vv
+> Stream: https://soundcloud.com/spectralsunmusic/mind-gone-state
+>
+> Know this leans more tech house than straight techno, hope that's fair game here — mostly looking for a gut check on the low end (does it translate outside headphones/monitors?) and whether the breakdown drags before it drops back in. Any other rough edges you catch are welcome too.
+>
+> Happy to listen and give feedback on other tracks posted in this thread as well.
+
+**Notes:**
+- This is the only Reddit action queued for today per the daily volume cap (one action/day on this brand-new account).
+- Free-download framing stays front-loaded, no bare "check out my SoundCloud" phrasing — consistent with the approach used for r/edmproduction on 2026-08-21.
+- Added an explicit genre-fit caveat in the comment itself since Mind Gone State is tech house, not pure techno, and this sub's name is techno-specific — reduces risk of the comment reading as off-topic even if the thread itself is genre-agnostic.
+- Next in the priority sequence after this: Step 5 — re-check r/PromoteYourMusic's 1-week cooldown (posted 2026-08-18, cleared ~2026-08-25 — so it should be actionable again in ~3 days, around 2026-08-25).
+- Cover art / video are not applicable here — feedback-thread comments are text + links only, no attachments needed.
+
+**Awaiting Jhonatan's approval before this is posted.**
