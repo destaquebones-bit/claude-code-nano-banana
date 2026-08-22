@@ -7,10 +7,11 @@ Atualizado a cada rodada de trabalho.
 
 | Item | Situação |
 |---|---|
-| Referências (camisetas Totanka, no Google Drive) | **Pendente** — conector do Google Drive não instalado nesta conta |
-| Identidade visual da AXOZEE (logo, paleta, tipografia) | **Pendente** — Jhonatan confirmou que os arquivos existem; falta acesso |
+| Referências (camisetas Totanka, no Google Drive) | ✅ **Lidas** — 13 peças analisadas, DNA em `REFERENCIAS-TOTANKA.md` |
+| Identidade visual da AXOZEE (logo, paleta, tipografia) | ❌ **Não está no Drive** — só as pastas TOTANKA e MKT DIGITAL. Precisa ser enviada |
 | Posicionamento | Definido: mistura dos três eixos (música eletrônica, urbano/streetwear, lifestyle) |
-| Rodada 1 de artes | Não iniciada — depende das referências e do logo |
+| Rodada 1 — conceito | ✅ **Entregue** — 6 modelos em `COLECAO-01.md` + lookbook `lookbook-capsula-01.html` |
+| Rodada 1 — arte final | ⏳ Bloqueada por ferramenta de geração — ver `GERACAO.md` |
 
 ## Contexto da marca
 
@@ -63,10 +64,11 @@ Fontes: totanka.com.br (loja), linha oversized, exemplo "Camiseta Oversized 2 Be
 
 Tudo versionado aqui: `axozee/referencias/`, `axozee/artes/`, `axozee/mockups/`.
 
-## Bloqueio atual
+## Bloqueios atuais
 
-O Google Drive **não é um dos conectores instalados** nesta conta. Conectores ativos:
-artlist, Canva, Gmail, Google Calendar, HyperFrames, Supermetrics, Windsor.ai, GitHub.
+1. **Arquivos de identidade da AXOZEE** — não existem no Drive. Enviar logo, paleta e
+   tipografia (ou anexar no chat) para fechar o monograma da peça 06 e as assinaturas.
+2. **Geração de imagem** — artlist sem créditos; Gemini acessível mas sem chave de API.
+   Detalhes e comandos em `GERACAO.md`.
 
-Para desbloquear: claude.ai → Settings → Connectors → adicionar **Google Drive** e
-habilitar nesta conversa. Alternativa: anexar as imagens direto no chat.
+O Google Drive já está conectado e funcionando (resolvido em 22/08/2026).
