@@ -1,0 +1,513 @@
+<title>AXOZEE Night Shift</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600&family=Oswald:wght@500;700&family=Pinyon+Script&family=Special+Elite&family=UnifrakturMaguntia&family=Zilla+Slab:wght@500;600&display=swap">
+
+<style>
+  :root{
+    --ink:#0b0b0d;
+    --ground:#141416;
+    --ground-2:#1c1c1f;
+    --line:#2e2e33;
+    --cru:#ece4d4;
+    --cru-dim:#a8a294;
+    --mostarda:#c9a063;
+    --laranja:#c2571f;
+    --prata:#b6bbc0;
+    --preto-peca:#17171a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--cru);
+    font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px 96px}
+
+  /* ---------- topo ---------- */
+  header{
+    border-bottom:1px solid var(--line);
+    padding:72px 0 40px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .eyebrow{
+    font-family:"Special Elite",Courier,monospace;
+    font-size:12px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--mostarda);
+  }
+  h1{
+    font-family:"Anton",Impact,sans-serif;
+    font-weight:400;
+    font-size:clamp(48px,9vw,104px);
+    line-height:.92;
+    letter-spacing:.01em;
+    margin:0;
+    text-wrap:balance;
+    text-transform:uppercase;
+  }
+  h1 em{
+    font-style:normal;
+    color:transparent;
+    -webkit-text-stroke:2px var(--cru);
+  }
+  .lede{max-width:62ch;color:var(--cru-dim);margin:0}
+  .meta{
+    display:flex;flex-wrap:wrap;gap:8px 28px;
+    font-family:"Special Elite",Courier,monospace;
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cru-dim);
+  }
+
+  /* ---------- família ---------- */
+  .familia{padding-top:64px}
+  .familia-cab{
+    display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+    border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:32px;
+  }
+  .familia-cab h2{
+    font-family:"Oswald",sans-serif;font-weight:700;text-transform:uppercase;
+    letter-spacing:.06em;font-size:24px;margin:0;
+  }
+  .familia-cab p{margin:0;color:var(--cru-dim);font-size:14px}
+
+  /* ---------- peça ---------- */
+  .peca{
+    display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);
+    gap:40px;align-items:start;
+    padding:36px 0;border-bottom:1px solid var(--line);
+  }
+  @media (max-width:860px){.peca{grid-template-columns:1fr;gap:28px}}
+
+  .palco{
+    position:relative;background:var(--ground);border:1px solid var(--line);
+    padding:18px;
+  }
+  .palco figcaption{
+    font-family:"Special Elite",Courier,monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--cru-dim);margin-top:10px;display:block;
+  }
+  .tee{position:relative;width:100%;aspect-ratio:400/420}
+  .tee svg{width:100%;height:100%;display:block}
+  .print{
+    position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;
+    pointer-events:none;
+  }
+  /* área útil de estampa dentro do corpo da camiseta */
+  .print > .area{
+    width:46%;margin-top:6%;
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+  }
+  .area.larga{width:56%}
+
+  /* ---------- tratamentos de estampa ---------- */
+  .stencil{
+    font-family:"Oswald",sans-serif;font-weight:700;text-transform:uppercase;
+    color:var(--mostarda);line-height:1;letter-spacing:.04em;
+  }
+  .stencil .l1{font-size:13px;letter-spacing:.18em}
+  .stencil .l2{font-size:34px;letter-spacing:.02em;margin:4px 0}
+  .stencil .l3{font-size:9px;letter-spacing:.22em}
+  .rule{height:2px;width:100%;background:var(--mostarda);opacity:.85}
+  .rule.fina{height:1px;opacity:.6}
+
+  .gotico{font-family:"UnifrakturMaguntia",serif;color:var(--cru);line-height:1.25}
+  .gotico.frase{font-size:13px;max-width:22ch}
+  .gotico.tag{font-size:11px;letter-spacing:.04em}
+
+  .arco{position:relative;width:100%;height:64px}
+  .arco span{
+    position:absolute;left:50%;top:100%;transform-origin:50% 0;
+    font-family:"Anton",Impact,sans-serif;font-size:30px;text-transform:uppercase;
+    color:transparent;-webkit-text-stroke:1.4px var(--cru);
+  }
+
+  .cidades{
+    font-family:"Zilla Slab",Georgia,serif;font-weight:600;color:var(--laranja);
+    font-size:13px;line-height:2;letter-spacing:.06em;text-transform:uppercase;
+  }
+  .worldwide{
+    font-family:"Oswald",sans-serif;font-weight:700;font-size:11px;
+    letter-spacing:.3em;color:var(--cru);text-transform:uppercase;
+  }
+
+  .script{
+    font-family:"Pinyon Script",cursive;font-size:40px;line-height:.9;
+    color:var(--cru);
+  }
+  .script.creme{color:#e8d9b8}
+
+  .patch{
+    border:1px solid #6b5b3e;background:#f4eddd;color:#1a1a1a;
+    padding:8px 14px;display:flex;flex-direction:column;gap:2px;align-items:center;
+  }
+  .patch .nome{font-family:"UnifrakturMaguntia",serif;font-size:20px;line-height:1}
+  .patch .sub{
+    font-family:"Special Elite",Courier,monospace;font-size:7.5px;
+    letter-spacing:.18em;text-transform:uppercase;
+  }
+
+  .bordado{
+    font-family:"Pinyon Script",cursive;font-size:22px;color:#d8d0be;
+    opacity:.85;
+  }
+
+  /* ---------- ficha ---------- */
+  .ficha h3{
+    font-family:"Anton",Impact,sans-serif;font-weight:400;text-transform:uppercase;
+    font-size:30px;line-height:1;letter-spacing:.02em;margin:0 0 4px;
+  }
+  .ficha .codigo{
+    font-family:"Special Elite",Courier,monospace;font-size:11px;letter-spacing:.2em;
+    color:var(--mostarda);text-transform:uppercase;
+  }
+  .ficha p{color:var(--cru-dim);max-width:60ch}
+  dl{
+    display:grid;grid-template-columns:auto 1fr;gap:6px 20px;margin:20px 0 0;
+    font-size:14px;
+  }
+  dt{
+    font-family:"Special Elite",Courier,monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--cru-dim);padding-top:3px;
+  }
+  dd{margin:0}
+  .texto-estampa{
+    margin-top:20px;border-left:2px solid var(--mostarda);padding:2px 0 2px 16px;
+    font-family:"Special Elite",Courier,monospace;font-size:12.5px;line-height:1.9;
+    letter-spacing:.06em;white-space:pre-line;color:var(--cru);
+    overflow-x:auto;
+  }
+
+  /* ---------- rodapé ---------- */
+  .fechamento{
+    margin-top:72px;background:var(--ground);border:1px solid var(--line);padding:32px;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .fechamento h2{
+    font-family:"Oswald",sans-serif;font-weight:700;text-transform:uppercase;
+    letter-spacing:.06em;font-size:20px;margin:0;
+  }
+  .fechamento ol{margin:0;padding-left:20px;color:var(--cru-dim);display:grid;gap:10px}
+  .fechamento strong{color:var(--cru)}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Axozee · cápsula 01 · rodada de conceito</span>
+    <h1>Night<br><em>Shift</em></h1>
+    <p class="lede">Seis modelos construídos sobre o DNA das camisetas da Totanka que estão no Drive — oversized preta e crua, estampa que conta história, tipografia de época — com o repertório trocado para o que a AXOZEE tem de próprio: noite, pista, som e uma rota de festivais que é real.</p>
+    <div class="meta">
+      <span>Esquemas de aplicação</span>
+      <span>Tipografia final</span>
+      <span>Arte ilustrada: a gerar</span>
+    </div>
+  </header>
+
+  <section class="familia">
+    <div class="familia-cab">
+      <h2>Família A — Rave</h2>
+      <p>O eixo música eletrônica. Cartaz e frase.</p>
+    </div>
+
+    <article class="peca">
+      <figure class="palco">
+        <div class="tee" data-base="preta">
+          <svg viewBox="0 0 400 420" aria-hidden="true">
+            <path class="corpo" d="M120,25 L80,45 L25,120 L85,155 L92,390 Q200,404 308,390 L315,155 L375,120 L320,45 L280,25 Q200,80 120,25 Z"/>
+            <path class="gola" d="M120,25 Q200,80 280,25" fill="none"/>
+          </svg>
+          <div class="print">
+            <div class="area">
+              <div class="stencil">
+                <div class="l1">Axozee Stadium</div>
+                <div class="rule"></div>
+                <div class="l2">909</div>
+                <div class="l1">vs</div>
+                <div class="l2">303</div>
+                <div class="rule fina"></div>
+                <div class="l3">Night Shift Collection</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption>01 · frente · base preta</figcaption>
+      </figure>
+      <div class="ficha">
+        <span class="codigo">A-01</span>
+        <h3>Axozee Stadium</h3>
+        <p>O cartaz de luta vintage da referência, com os lutadores trocados pelas duas máquinas que definem o som: a TR-909 e a TB-303. Lê como pôster de boxe para quem é de fora e como declaração de gênero para quem é de dentro.</p>
+        <dl>
+          <dt>Base</dt><dd>Preta oversized, molecotton</dd>
+          <dt>Posição</dt><dd>Peito inteiro — sem estampa nas costas</dd>
+          <dt>Técnica</dt><dd>Silk envelhecido craquelado, tinta bege-mostarda</dd>
+          <dt>Tipografia</dt><dd>Condensada estêncil desgastada</dd>
+        </dl>
+        <div class="texto-estampa">AXOZEE STADIUM
+909 vs 303
+— NIGHT SHIFT COLLECTION —</div>
+      </div>
+    </article>
+
+    <article class="peca">
+      <figure class="palco">
+        <div class="tee" data-base="preta">
+          <svg viewBox="0 0 400 420" aria-hidden="true">
+            <path class="corpo" d="M120,25 L80,45 L25,120 L85,155 L92,390 Q200,404 308,390 L315,155 L375,120 L320,45 L280,25 Q200,80 120,25 Z"/>
+            <path class="gola" d="M120,32 Q200,58 280,32" fill="none"/>
+            <g class="raios" aria-hidden="true">
+              <polyline points="150,250 138,282 152,278 140,318"/>
+              <polyline points="250,248 262,280 248,276 260,316"/>
+              <polyline points="200,300 190,330 204,326 194,360"/>
+            </g>
+          </svg>
+          <div class="print">
+            <div class="area larga">
+              <div class="arco" data-arco="AXOZEE"></div>
+              <div class="gotico tag">electronic stuff</div>
+              <div class="gotico frase">the night belongs to those who never stopped dancing</div>
+            </div>
+          </div>
+        </div>
+        <figcaption>02 · costas · base preta</figcaption>
+      </figure>
+      <div class="ficha">
+        <span class="codigo">A-02</span>
+        <h3>After Hours</h3>
+        <p>A estrutura clássica da referência — arco collegiate só de contorno, frase gótica centralizada, raios descendo por trás — com a frase virada para a noite em vez do esporte. É a peça-herói da cápsula.</p>
+        <dl>
+          <dt>Base</dt><dd>Preta oversized</dd>
+          <dt>Posição</dt><dd>Costas inteiras + monograma na nuca</dd>
+          <dt>Técnica</dt><dd>Silk off-white, alto relevo no arco</dd>
+          <dt>Tipografia</dt><dd>Collegiate vazada + blackletter</dd>
+        </dl>
+        <div class="texto-estampa">AXOZEE
+electronic stuff
+
+the night belongs
+to those who
+never stopped dancing</div>
+      </div>
+    </article>
+  </section>
+
+  <section class="familia">
+    <div class="familia-cab">
+      <h2>Família B — Urbano</h2>
+      <p>O eixo streetwear. Rota e gravura.</p>
+    </div>
+
+    <article class="peca">
+      <figure class="palco">
+        <div class="tee" data-base="preta">
+          <svg viewBox="0 0 400 420" aria-hidden="true">
+            <path class="corpo" d="M120,25 L80,45 L25,120 L85,155 L92,390 Q200,404 308,390 L315,155 L375,120 L320,45 L280,25 Q200,80 120,25 Z"/>
+            <path class="gola" d="M120,32 Q200,58 280,32" fill="none"/>
+            <g class="escudos">
+              <path d="M110,170 h58 l10,14 v58 l-39,26 -39,-26 v-58 z"/>
+              <path d="M232,170 h58 l10,14 v58 l-39,26 -39,-26 v-58 z"/>
+              <text x="139" y="216" text-anchor="middle">AXO</text>
+              <text x="261" y="216" text-anchor="middle">ZEE</text>
+            </g>
+          </svg>
+          <div class="print">
+            <div class="area">
+              <div class="cidades">São Paulo<br>Madri<br>Belgrado<br>Berlim<br>Ibiza<br>Toronto</div>
+              <div class="worldwide">World Wide</div>
+            </div>
+          </div>
+        </div>
+        <figcaption>03 · costas · base preta</figcaption>
+      </figure>
+      <div class="ficha">
+        <span class="codigo">B-03</span>
+        <h3>World Tour</h3>
+        <p>Mesmo mecanismo da peça Route 66 da referência: escudos de rodovia desgastados nas laterais e a lista em laranja no meio. A diferença é que aqui a rota é verdadeira — são as cidades onde a música já tocou. A peça só funciona porque a lista não é decoração.</p>
+        <dl>
+          <dt>Base</dt><dd>Preta oversized</dd>
+          <dt>Posição</dt><dd>Costas inteiras</dd>
+          <dt>Técnica</dt><dd>Escudos em branco craquelado + lista em laranja queimado</dd>
+          <dt>Tipografia</dt><dd>Serifada estreita, versal</dd>
+        </dl>
+        <div class="texto-estampa">AXOZEE  (escudos, esq. e dir.)
+
+SÃO PAULO / MADRI / BELGRADO
+BERLIM / IBIZA / TORONTO
+
+WORLD WIDE</div>
+      </div>
+    </article>
+
+    <article class="peca">
+      <figure class="palco">
+        <div class="tee" data-base="preta">
+          <svg viewBox="0 0 400 420" aria-hidden="true">
+            <path class="corpo" d="M120,25 L80,45 L25,120 L85,155 L92,390 Q200,404 308,390 L315,155 L375,120 L320,45 L280,25 Q200,80 120,25 Z"/>
+            <path class="gola" d="M120,25 Q200,80 280,25" fill="none"/>
+            <g class="halftone" aria-hidden="true"></g>
+          </svg>
+          <div class="print">
+            <div class="area larga">
+              <div class="script creme">Axozee</div>
+              <div class="gotico tag">night shift</div>
+            </div>
+          </div>
+        </div>
+        <figcaption>04 · frente · base preta · gravura a gerar</figcaption>
+      </figure>
+      <div class="ficha">
+        <span class="codigo">B-04</span>
+        <h3>Santos da Madrugada</h3>
+        <p>A gravura barroca de querubins da referência, reinterpretada: os anjos usam fones e as nuvens carregam caixas de som. Sacro encontrando pista. O campo pontilhado no esquema marca onde entra a gravura em halftone prata — essa arte precisa ser gerada.</p>
+        <dl>
+          <dt>Base</dt><dd>Preta oversized</dd>
+          <dt>Posição</dt><dd>Peito inteiro</dd>
+          <dt>Técnica</dt><dd>Halftone prata + script creme em alto relevo por cima</dd>
+          <dt>Tipografia</dt><dd>Caligráfica com contorno duplo</dd>
+        </dl>
+        <div class="texto-estampa">Axozee
+night shift</div>
+      </div>
+    </article>
+  </section>
+
+  <section class="familia">
+    <div class="familia-cab">
+      <h2>Família C — Lifestyle</h2>
+      <p>O eixo limpo. Patch e monograma.</p>
+    </div>
+
+    <article class="peca">
+      <figure class="palco">
+        <div class="tee" data-base="cru">
+          <svg viewBox="0 0 400 420" aria-hidden="true">
+            <path class="corpo" d="M120,25 L80,45 L25,120 L85,155 L92,390 Q200,404 308,390 L315,155 L375,120 L320,45 L280,25 Q200,80 120,25 Z"/>
+            <path class="gola" d="M120,25 Q200,80 280,25" fill="none"/>
+            <rect class="etiqueta" x="176" y="332" width="30" height="42" rx="2"/>
+          </svg>
+          <div class="print">
+            <div class="area">
+              <div class="patch">
+                <span class="nome">Axozee Daily</span>
+                <span class="sub">Night Shift Collection</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption>05 · frente · base crua · patch + etiqueta na barra</figcaption>
+      </figure>
+      <div class="ficha">
+        <span class="codigo">C-05</span>
+        <h3>Axozee Daily</h3>
+        <p>Cópia estrutural direta do box logo da referência: patch aplicado com moldura no peito e etiqueta externa costurada na barra. É a peça de entrada — a que vende volume e ensina o nome da marca sem pedir nada do cliente.</p>
+        <dl>
+          <dt>Base</dt><dd>Offwhite / cru, oversized</dd>
+          <dt>Posição</dt><dd>Patch no peito + etiqueta externa na barra</dd>
+          <dt>Técnica</dt><dd>Patch bordado com moldura</dd>
+          <dt>Tipografia</dt><dd>Blackletter + typewriter em versalete</dd>
+        </dl>
+        <div class="texto-estampa">Axozee Daily
+NIGHT SHIFT COLLECTION</div>
+      </div>
+    </article>
+
+    <article class="peca">
+      <figure class="palco">
+        <div class="tee" data-base="cru">
+          <svg viewBox="0 0 400 420" aria-hidden="true">
+            <path class="corpo" d="M120,25 L80,45 L25,120 L85,155 L92,390 Q200,404 308,390 L315,155 L375,120 L320,45 L280,25 Q200,80 120,25 Z"/>
+            <path class="gola" d="M120,25 Q200,80 280,25" fill="none"/>
+            <g class="monograma">
+              <path d="M236,196 l14,-34 14,34 z"/>
+              <path d="M243,190 h14" />
+            </g>
+            <rect class="etiqueta" x="176" y="332" width="30" height="42" rx="2"/>
+          </svg>
+          <div class="print"></div>
+        </div>
+        <figcaption>06 · frente · base crua e preta · bordado tom sobre tom</figcaption>
+      </figure>
+      <div class="ficha">
+        <span class="codigo">C-06</span>
+        <h3>Monograma A</h3>
+        <p>No lugar do "T" em forma de bigorna da referência, um <strong>A</strong> construído como cone de alto-falante — a letra e o objeto na mesma forma. Bordado tom sobre tom, sem silk. É a peça que mais depende dos arquivos de identidade: o desenho final do monograma tem que sair do logo oficial.</p>
+        <dl>
+          <dt>Base</dt><dd>Crua e preta, modelagem regular premium</dd>
+          <dt>Posição</dt><dd>Peito esquerdo + etiqueta na barra</dd>
+          <dt>Técnica</dt><dd>Bordado fino tom sobre tom</dd>
+          <dt>Depende de</dt><dd>Logo oficial da AXOZEE</dd>
+        </dl>
+      </div>
+    </article>
+  </section>
+
+  <section class="fechamento">
+    <h2>Para fechar a rodada</h2>
+    <ol>
+      <li><strong>Logo da AXOZEE.</strong> Não está no Drive — só a pasta TOTANKA e uma peça solta em MKT DIGITAL. Sem ele, o monograma da peça 06 e as assinaturas seguem provisórios.</li>
+      <li><strong>Arte ilustrada.</strong> A gravura dos anjos, os escudos desgastados e as texturas de silk envelhecido precisam ser geradas — falta chave da API do Gemini nesta sessão, ou créditos no artlist.</li>
+      <li><strong>Escolha das peças.</strong> Diga quais das seis seguem para arte final e quais entram na rodada 2 (serpente tom sobre tom, retrato serigrafado, camiseta de release do "Mind Gone State").</li>
+    </ol>
+  </section>
+</div>
+
+<style>
+  /* cores das peças, aplicadas pelo atributo data-base */
+  .tee[data-base="preta"] .corpo{fill:var(--preto-peca);stroke:#34343a;stroke-width:2}
+  .tee[data-base="preta"] .gola{stroke:#3f3f47;stroke-width:7;stroke-linecap:round}
+  .tee[data-base="cru"] .corpo{fill:var(--cru);stroke:#c4bba6;stroke-width:2}
+  .tee[data-base="cru"] .gola{stroke:#d8cfb9;stroke-width:7;stroke-linecap:round}
+  .raios polyline{fill:none;stroke:var(--cru);stroke-width:1.6;opacity:.75}
+  .escudos path{fill:none;stroke:var(--cru);stroke-width:2.5;opacity:.9}
+  .escudos text{
+    font-family:"Oswald",sans-serif;font-weight:700;font-size:20px;
+    fill:var(--cru);letter-spacing:.06em;opacity:.9;
+  }
+  .halftone circle{fill:var(--prata);opacity:.55}
+  .monograma path{fill:none;stroke:#c9c0aa;stroke-width:3;stroke-linejoin:round}
+  .etiqueta{fill:#2a2a30;stroke:#4a4a52;stroke-width:1}
+  .tee[data-base="cru"] .etiqueta{fill:#22222a;stroke:#111}
+</style>
+
+<script>
+  // arco collegiate: distribui as letras ao longo de um arco
+  document.querySelectorAll("[data-arco]").forEach(function (el) {
+    var texto = el.dataset.arco;
+    var letras = texto.split("");
+    var raio = 150;
+    var abertura = 62; // graus totais do arco
+    var passo = abertura / (letras.length - 1);
+    letras.forEach(function (letra, i) {
+      var ang = -abertura / 2 + passo * i;
+      var span = document.createElement("span");
+      span.textContent = letra;
+      span.style.transform =
+        "translateX(-50%) rotate(" + ang + "deg) translateY(-" + raio + "px)";
+      el.appendChild(span);
+    });
+  });
+
+  // campo de halftone que marca onde entra a gravura
+  document.querySelectorAll(".halftone").forEach(function (g) {
+    var ns = "http://www.w3.org/2000/svg";
+    var cx = 200, cy = 250, raioMax = 88;
+    for (var anel = 1; anel <= 6; anel++) {
+      var r = (raioMax / 6) * anel;
+      var qtd = anel * 7;
+      for (var i = 0; i < qtd; i++) {
+        var ang = (2 * Math.PI * i) / qtd;
+        var c = document.createElementNS(ns, "circle");
+        c.setAttribute("cx", (cx + Math.cos(ang) * r).toFixed(1));
+        c.setAttribute("cy", (cy + Math.sin(ang) * r * 0.92).toFixed(1));
+        c.setAttribute("r", (2.6 - anel * 0.28).toFixed(2));
+        g.appendChild(c);
+      }
+    }
+  });
+</script>
