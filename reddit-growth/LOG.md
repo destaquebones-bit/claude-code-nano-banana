@@ -172,3 +172,21 @@ r/TechnoProduction (107k members) bans self-promo on the main feed but routes pr
 - Cover art / video are not applicable here — feedback-thread comments are text + links only, no attachments needed.
 
 **Awaiting Jhonatan's approval before this is posted.**
+
+---
+
+## 2026-08-23
+
+**Status check:** No approval note logged yet for the 2026-08-22 entry (Step 4 — r/TechnoProduction feedback-thread comment). Same as prior handoffs: this routine has no browser/login and cannot verify Reddit-side whether Step 4 was posted. Treating it as **drafted and ready**, per Jhonatan's established pattern of approving in his own time, and advancing to the next step in the priority sequence. If Steps 3 and/or 4 haven't been posted yet, they're still fully ready to paste from the 2026-08-21 and 2026-08-22 entries above — no need to re-draft either.
+
+**Today's step: Step 5 — re-check r/PromoteYourMusic's 1-week cooldown**
+
+r/PromoteYourMusic was last used successfully on 2026-08-18 (track "90'S"), with a ~1-week cooldown before reuse. That puts the earliest reuse date at **2026-08-25**.
+
+- Today is 2026-08-23 — **cooldown has NOT cleared yet.** 2 days remain.
+- Result: no new self-promo draft is due today. This was the last item in the current priority sequence (r/House reciprocity → r/House self-post → r/edmproduction feedback → r/TechnoProduction feedback → r/PromoteYourMusic recheck), and it isn't actionable yet, so there is nothing new to prepare for approval today.
+- No other subreddit in the current vetted landscape is available as a substitute action right now: r/edmproduction and r/TechnoProduction feedback-thread comments are already drafted (Steps 3–4, awaiting approval/posting); r/Techno, r/electronicmusic, r/tech_house, r/AdvancedProduction, and r/TechnoProduction's main feed are all self-promo-banned and not candidates for a standalone post; r/Techhouse is dead; r/FreeMusic/r/RoyaltyFreeMusic/r/NoCopyrightSounds are the wrong audience. Manufacturing an extra action today would violate the "quality/reciprocity over volume" rule this log has followed since 2026-08-18 (the r/TechHouseBrasil ban), so none is drafted.
+
+**Next automated step:** re-run this check on/after **2026-08-25**. If the cooldown has cleared by then, draft a fresh r/PromoteYourMusic self-post for "Mind Gone State" (same free-download framing as the r/House draft in the 2026-08-20 entry, adapted to r/PromoteYourMusic's "JUST MUSIC, no advertising your brand" house style). If Jhonatan has by then confirmed Steps 1–4 are all posted, that's also a good moment for him to note it here so future entries stop re-stating the "no confirmation yet" status check.
+
+**Nothing awaiting approval from today's entry** — Steps 3 (r/edmproduction) and 4 (r/TechnoProduction) from 2026-08-21 and 2026-08-22 remain the most recent ready-to-paste drafts, if not already posted.
