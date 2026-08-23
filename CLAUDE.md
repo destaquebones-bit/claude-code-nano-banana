@@ -33,7 +33,8 @@ medição como julgamento estético. Nenhum número diz se a música é boa.
 - Alvo declarado: **Solid Grooves, Hot Creations, Hellbent**
   - Defected foi trazido uma vez como referência e **não serve** — é house vocal
     mainstream, com estética de master oposta. Avisar antes de usar como alvo.
-- **Ableton Live**, plugins **Waves** + nativos
+- **Ableton Live**, plugins **Waves**, **FabFilter** (Pro-Q 4, Pro-C 2, Pro-L 2,
+  Saturn 2) + nativos
 - Escreve em português, em caixa alta, direto ao ponto. Responda em português.
 
 ### Como ele trabalha
@@ -115,6 +116,47 @@ resolveu o subsônico — esse trabalho está concluído.
 
 Itens rebaixados por medição: escurecer o topo, e harmônicos do baixo.
 
+## Estado da faixa THAT'S FREE (v1, colab)
+
+6:02, 126,8 BPM, **192 compassos exatos**. Faixa diferente da HISTORY e com
+diagnóstico diferente — não reaproveite as conclusões de lá.
+
+| Medida | Valor | Referências |
+|---|---|---|
+| LUFS integrado | −12,14 | −7,6 a −8,9 |
+| True peak | −0,89 | alvo −1,0 |
+| PSR | 11,38 | 8,1 a 9,6 |
+| f0 do baixo | **57,8 Hz** | 41,7 a 51,0 |
+| Ducking | **2,9 dB** | 1,5 a 5,1 — **dentro** |
+| Correlação < 120 Hz | 0,999 | mono, ok |
+| Bandas dentro da faixa | **12 de 29** | HISTORY tinha 6 |
+
+**Resolvido em relação à HISTORY:** ducking dentro da faixa, fundamental na
+oitava certa, 2f0 mais rico que o das três referências, **buraco de 504 Hz
+fechado** (−0,0, dentro), estrutura fechada com outro despido nos últimos ~40 s.
+
+**O que sobrou, concentrado num ponto só:**
+
+| Frequência | Fora por |
+|---|---|
+| 126 Hz | **+9,5 dB** |
+| 100 Hz | +9,1 dB |
+| 79 Hz | +7,4 dB |
+| 63 Hz | +4,8 dB |
+| 25 Hz | +4,4 dB |
+| 317 Hz | −2,7 dB |
+| 400 Hz | −2,5 dB |
+
+**Causa: 2f0 (≈116 Hz) está +1,2 dB MAIS ALTO que a fundamental.** Diferença
+crítica em relação à HISTORY: lá a fundamental morava em 88–98 Hz e cortar
+teria apagado o grave. **Aqui a fundamental está a 57,8 Hz, então cortar
+110–130 Hz é seguro** — é harmônico, não fundamental. Verifique isso sempre
+antes de repetir a recomendação de corte.
+
+**Não está masterizada.** −12,14 LUFS e PSR 11,38 são de mixdown, não de master.
+Limitar só depois de resolver os 126 Hz — limitar antes é gastar headroom
+levantando o excesso.
+
 ## Como corrigir a si mesmo
 
 Este projeto já teve várias conclusões derrubadas pela medição seguinte. Isso é o
@@ -181,6 +223,7 @@ rejeitar o que não se comprova.
 - v1 vs v2, o que mudou — `.../eedfb972-4551-4ef8-a232-c4d31607a27c`
 - Diagnóstico do baixo — `.../6e8aff75-6bab-4181-affb-460eab1a6d0b`
 - Bandas de tolerância dos três — `.../488e96cf-438c-4bd5-bd20-27655fb51dc4`
+- THAT'S FREE v1, análise completa — `.../bf0af573-48c4-46f3-ae57-66fe1cf50ad9`
 
 Ao publicar revisão de um desses, **republicar no mesmo caminho de arquivo** para
 manter a URL, em vez de criar artefato novo.
