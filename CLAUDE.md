@@ -153,6 +153,22 @@ teria apagado o grave. **Aqui a fundamental está a 57,8 Hz, então cortar
 110–130 Hz é seguro** — é harmônico, não fundamental. Verifique isso sempre
 antes de repetir a recomendação de corte.
 
+**Tônica: A#/Bb, modo indefinido.** A fundamental do baixo (57,8 Hz) é A#1, e o
+croma corrigido põe A# em 18,8% — quase o dobro da segunda colocada. Mas a terça
+maior (D, 7,1%) e a menor (C#, 7,4%) estão empatadas: **a faixa não tem terça.**
+Qualquer elemento novo que toque D ou C# escolhe o modo pela produção inteira.
+Tônica + quinta (A# + F) é a saída sem cor.
+
+**Afinação global −15 cents, com confiança baixa** (o pico da curva é raso,
+score 0,023). Não afirme; peça para conferir de ouvido antes de programar
+sintetizador novo.
+
+**Ocupação por banda, 250 Hz a 8 kHz** (dB abaixo da banda mais alta): a mais
+vazia é **315–400 Hz (−8,7)**, seguida de 400–500 e 800–1000 (−4,7). A mais
+cheia é 5–6,3 kHz (0,0) — chimbais. Elemento novo entra em 315–500 Hz, com
+passa-altas em 220 Hz (fora do platô de 126 Hz) e passa-baixas em 4,5 kHz.
+F4 (349 Hz) e A#4 (466 Hz) caem exatamente nos dois buracos.
+
 **Não está masterizada.** −12,14 LUFS e PSR 11,38 são de mixdown, não de master.
 Limitar só depois de resolver os 126 Hz — limitar antes é gastar headroom
 levantando o excesso.
@@ -224,6 +240,7 @@ rejeitar o que não se comprova.
 - Diagnóstico do baixo — `.../6e8aff75-6bab-4181-affb-460eab1a6d0b`
 - Bandas de tolerância dos três — `.../488e96cf-438c-4bd5-bd20-27655fb51dc4`
 - THAT'S FREE v1, análise completa — `.../bf0af573-48c4-46f3-ae57-66fe1cf50ad9`
+- THAT'S FREE, arp seco (sintetizador, patch, lugar no espectro) — `.../19c4f463-435c-400a-b0bf-e716c9e263c1`
 
 Ao publicar revisão de um desses, **republicar no mesmo caminho de arquivo** para
 manter a URL, em vez de criar artefato novo.
