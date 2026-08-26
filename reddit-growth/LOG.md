@@ -241,3 +241,24 @@ r/PromoteYourMusic was last used successfully on 2026-08-18 (track "90'S"), with
 - This completes the current 5-step priority sequence (r/House reciprocity → r/House self-post → r/edmproduction feedback → r/TechnoProduction feedback → r/PromoteYourMusic recheck/repost). Once Jhonatan confirms which of Steps 1–5 have actually been posted, the next entry should shift from "assume drafted-and-ready" status checks to either: (a) fresh follow-up actions in subs already used (respecting cooldowns), or (b) vetting new candidate subreddits not yet in the landscape. Flagging this explicitly so tomorrow's run doesn't just loop Step 5 indefinitely now that it's been actioned once.
 
 **Awaiting Jhonatan's approval before this is posted.**
+
+---
+
+## 2026-08-26
+
+**Status check:** Same as every prior handoff — no approval/confirmation note has ever been added to this log for Steps 1–5 (r/House reciprocity comments + self-post, r/edmproduction feedback comment, r/TechnoProduction feedback comment, r/PromoteYourMusic repost). This routine has no browser/login and cannot verify Reddit-side whether *any* of the five ready-to-paste drafts from 2026-08-20 through 2026-08-25 have actually been posted. That's six consecutive days of drafting with zero ground-truth confirmation.
+
+**Sequence status: the full 5-step priority order given for this project (r/House reciprocity → r/House self-post → r/edmproduction feedback → r/TechnoProduction feedback → r/PromoteYourMusic cooldown recheck) is now complete as of the 2026-08-25 entry.** There is no sixth item in that list — every subreddit in the current vetted landscape that isn't self-promo-banned, dead, or wrong-audience has a ready draft sitting in this log.
+
+**Today's step: no new draft manufactured — flagging the confirmation gap instead of guessing forward.**
+
+Reasoning for not inventing a "next" action today:
+- Continuing past Step 5 means either (a) repeating an already-drafted sub on its own cadence (r/House self-post ~1x/week, r/edmproduction/r/TechnoProduction feedback threads which rotate weekly, r/PromoteYourMusic's next cooldown), or (b) vetting a brand-new subreddit not yet in the landscape. Both are reasonable next moves in the abstract, but doing either safely requires knowing what's actually live on Reddit right now — and that's exactly the fact this routine cannot observe.
+- Guessing wrong in either direction has real cost: assuming a draft was posted when it wasn't means under-posting and losing momentum; assuming a draft was posted and drafting a "next cycle" on top of it when it actually wasn't risks stacking multiple queued self-promo posts for Jhonatan to fire off all at once — the exact same pattern (rapid same-day activity on a young account) that got r/TechHouseBrasil banned on 2026-08-18.
+- So: holding here, consistent with "quality/reciprocity over volume," rather than manufacturing a sixth step from an exhausted list.
+
+**What's needed to unblock:** Jhonatan (or whoever reviews this log) should add one line at the top of a future entry — or reply directly — stating which of the five queued drafts (2026-08-20 reciprocity comments + self-post, 2026-08-21 r/edmproduction comment, 2026-08-22 r/TechnoProduction comment, 2026-08-25 r/PromoteYourMusic repost) have actually gone up on Reddit. Once that's known:
+- Any drafts *not yet posted* are still fully usable verbatim from their original entries — no re-drafting needed.
+- Once all five are confirmed posted, the natural next actions in rough priority are: (1) r/PromoteYourMusic next eligible ~2026-09-01 (7-day cooldown from the 2026-08-25 post); (2) a fresh comment in whichever of r/edmproduction's or r/TechnoProduction's weekly feedback threads is current that week (both rotate, so a new thread likely exists by now); (3) a repeat r/House self-post only if there's genuinely new material/update to share, respecting the sub's reciprocity norm each time.
+
+**Nothing awaiting approval from today's entry.** The five drafts already logged (2026-08-20, 2026-08-21, 2026-08-22, 2026-08-25) remain the most recent ready-to-paste material if any are still unposted.
