@@ -124,13 +124,13 @@ def scene():
             if dot(e,(mid[0]-1.5,mid[1]-2.4,0))<0: e=scal(e,-1)
             P.append(([(p[0],p[1],0),(q[0],q[1],0),(q[0],q[1],2.6),(p[0],p[1],2.6)],e,RAY,INK,"0.7",False))
     # front wall modules + TV + door
-    for x0 in (0.30,0.90,1.50): box(x0,x0+0.60,0,0.10,1.00,2.20,RAY)
-    box(0.96,2.04,0,0.08,0.34,0.95,DK)
+    for x0 in (0.30,0.90,1.50): box(x0,x0+0.60,0,0.10,1.15,2.35,RAY)
+    box(0.96,2.04,0,0.08,0.50,1.11,MUTE)
     quad([(2.12,0.01,0),(3.0,0.01,0),(3.0,0.01,2.1),(2.12,0.01,2.1)],(0,1,0),WOOD,WOOD,"1.6")
     box(2.20,2.80,0.02,0.07,0.70,1.90,DK)          # painel preto existente na porta
     # side mirror modules (10 cm gap) + existing 5 cm panels + skylines
-    box(0.10,0.20,1.02,1.62,0.60,1.80,RAY)
-    box(2.80,2.90,1.02,1.62,0.60,1.80,RAY)
+    box(0.10,0.20,0.90,1.50,0.55,1.75,RAY)
+    box(2.80,2.90,0.90,1.50,0.55,1.75,RAY)
     box(0.10,0.15,1.70,2.30,0.65,1.85,DK)
     box(2.85,2.90,1.70,2.30,0.65,1.85,DK)
     box(0.00,0.15,3.00,3.60,1.00,1.60,MDF)
@@ -149,17 +149,16 @@ def scene():
                    (fc[0]+0.58*ca+0.08*sa,fc[1]+0.58*sa-0.08*ca,2.33)],(0,0,-1),FLAG,FLAG,"0.8",False))
     box(1.47,1.53,2.17,2.23,2.33,2.6,MUTE)
     # desk + monitors
-    box(0.60,2.40,1.00,1.60,0.72,0.75,WOOD)
-    for lx in (0.66,2.34):
-        box(lx-0.03,lx+0.03,1.06,1.12,0,0.72,WOOD); box(lx-0.03,lx+0.03,1.48,1.54,0,0.72,WOOD)
-    for cx in (0.95,2.05):
-        box(cx-0.20,cx+0.20,0.62,1.02,0,0.04,DK)
-        box(cx-0.035,cx+0.035,0.78,0.85,0.04,1.05,DK)
-        box(cx-0.10,cx+0.10,0.70,0.95,1.05,1.35,DK)
+    box(0.55,2.45,0.70,1.30,0.72,0.75,WOOD)
+    for lx in (0.61,2.39):
+        box(lx-0.03,lx+0.03,0.76,0.82,0,0.72,WOOD); box(lx-0.03,lx+0.03,1.18,1.24,0,0.72,WOOD)
+    for cx in (1.12,1.88):
+        box(cx-0.15,cx+0.15,0.70,0.98,0.75,0.875,DK)
+        box(cx-0.085,cx+0.085,0.70,0.922,0.875,1.16,DK)
     # chair
-    box(1.34,1.66,1.95,2.30,0.42,0.47,MUTE)
-    box(1.36,1.64,2.24,2.30,0.47,1.00,MUTE)
-    box(1.48,1.52,2.10,2.14,0,0.42,MUTE)
+    box(1.34,1.66,1.65,2.00,0.42,0.47,MUTE)
+    box(1.36,1.64,1.94,2.00,0.47,1.00,MUTE)
+    box(1.48,1.52,1.80,1.84,0,0.42,MUTE)
     # rear: curtain, glass, gobo, shelf, painting
     quad([(0.45,4.79,0),(2.55,4.79,0),(2.55,4.79,2.1),(0.45,4.79,2.1)],(0,-1,0),GLASS,"var(--glass)","1.2")
     for i in range(13):
@@ -174,19 +173,19 @@ def scene():
 VIEWS=[
  ("V1", (1.50,4.30,1.58),(1.50,0.0,0.92),58,
   "VISTA 1 &#183; PAREDE FRONTAL, DO PONTO DE ESCUTA",
-  "3 m&#243;dulos de 1,00 a 2,20 m &#183; TV centrada, topo em 0,95 &#183; monitores em pedestais, baffle a 0,95 m da parede",
-  [((1.20,0.10,1.90),0,44,"3 m&#243;dulos 0,60 &#215; 1,20 &#183; 100 mm","var(--ray)","middle"),
-   ((1.50,0.08,0.72),0,56,"TV centrada, topo em 0,95","var(--felt)","middle"),
+  "3 m&#243;dulos de 1,15 a 2,35 m &#183; TV centrada, topo em 1,10 &#183; monitores na bancada, baffle a 0,92 m da parede",
+  [((1.20,0.10,2.05),0,44,"3 m&#243;dulos &#183; z 1,15 a 2,35","var(--ray)","middle"),
+   ((1.50,0.08,0.80),0,56,"TV centrada, topo em 1,10","var(--felt)","middle"),
    ((0.21,0.21,1.10),26,0,"bass trap de canto","var(--ray)","start"),
    ((1.25,2.60,0.01),0,20,"tapete 2 &#215; 3","var(--mdf)","middle")]),
  ("V2", (0.26,2.20,1.58),(3.00,2.60,0.95),72,
   "VISTA 2 &#183; PAREDE DIREITA",
-  "M&#243;dulo do ponto-espelho em y = 1,32 &#183; painel de 5 cm afastado 10 cm &#183; skyline em y = 3,30",
-  [((2.80,1.32,1.20),0,62,"m&#243;dulo 100 mm &#183; y = 1,32","var(--ray)","middle"),
+  "M&#243;dulo do ponto-espelho em y = 1,20 &#183; painel de 5 cm afastado 10 cm &#183; skyline em y = 3,30",
+  [((2.80,1.20,1.15),0,62,"m&#243;dulo 100 mm &#183; y = 1,20","var(--ray)","middle"),
    ((2.87,2.00,1.25),0,62,"painel de 5 cm, 10 cm de ar","var(--felt)","middle"),
    ((2.92,3.30,1.30),0,66,"skyline &#183; y = 3,30","var(--mdf)","middle"),
    ((2.82,4.15,0.60),0,30,"estante","var(--wood)","middle")]),
- ("V3", (1.50,1.32,1.52),(1.50,4.80,0.88),72,
+ ("V3", (1.50,1.22,1.45),(1.50,4.80,0.88),72,
   "VISTA 3 &#183; FUNDO DE VIDRO, DA CADEIRA",
   "O que voc&#234; v&#234; ao virar a cadeira &#183; cortina blackout do teto ao ch&#227;o e o gobo m&#243;vel na frente do vidro",
   [((1.50,4.68,1.95),0,40,"cortina blackout, teto ao ch&#227;o","var(--mute)","middle"),
@@ -195,7 +194,7 @@ VIEWS=[
  ("V4", (2.74,2.45,1.58),(0.0,2.55,1.02),74,
   "VISTA 4 &#183; PAREDE ESQUERDA",
   "A parede que n&#227;o aparece em nenhuma foto &#183; mesmo tratamento do lado direito, nas mesmas cotas",
-  [((0.20,1.32,1.20),0,62,"m&#243;dulo 100 mm &#183; y = 1,32","var(--ray)","middle"),
+  [((0.20,1.20,1.15),0,62,"m&#243;dulo 100 mm &#183; y = 1,20","var(--ray)","middle"),
    ((0.13,2.00,1.25),0,62,"painel de 5 cm, 10 cm de ar","var(--felt)","middle"),
    ((0.08,3.30,1.30),0,66,"skyline &#183; y = 3,30","var(--mdf)","middle"),
    ((0.21,0.21,1.10),-22,0,"bass trap de canto","var(--ray)","end")]),
