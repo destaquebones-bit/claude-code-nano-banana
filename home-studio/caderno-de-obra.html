@@ -1709,6 +1709,32 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
     <h3>Separação</h3>
     <p>A cota do projeto é <strong>1,10 m</strong> entre os tweeters (x = 0,95 e 2,05), com você a 0,95 m à frente do plano dos baffles — isso fecha o triângulo em 60°. Meça de centro de tweeter a centro de tweeter, não de borda a borda da caixa.</p>
 
+    <h3>A cadeia com a bancada a 0,70 m</h3>
+    <p>Com a borda de trás da mesa a 0,70 m da parede e a HS5 em cima dela, a caixa tem 0,222 m de profundidade — o baffle cai em <strong>≈0,92 m</strong>. Refazendo tudo a partir daí:</p>
+
+    <div class="tw"><table>
+      <thead><tr><th>Cota</th><th class="n">Valor</th><th>Efeito</th></tr></thead>
+      <tbody>
+        <tr><td>Borda de trás da bancada</td><td class="n">0,70 m</td><td>medida sua</td></tr>
+        <tr><td>Baffle do monitor</td><td class="n">≈0,92 m</td><td>caixa encostada na borda de trás</td></tr>
+        <tr><td>Cancelamento de fronteira frontal</td><td class="n ok">93 Hz</td><td>fora dos médios-graves</td></tr>
+        <tr><td>Ponto de escuta (60°)</td><td class="n ok">1,87 m</td><td>39% do comprimento</td></tr>
+        <tr><td>Ponto-espelho lateral</td><td class="n">y = 1,29 m</td><td>centre o módulo em 1,30</td></tr>
+        <tr><td>Reflexão de teto e piso</td><td class="n">y = 1,40 m</td><td>a nuvem de 0,95 a 1,55 cobre</td></tr>
+        <tr><td>Espelho da parede frontal</td><td class="n">x = 1,13 e 1,87</td><td>na altura do tweeter</td></tr>
+      </tbody>
+    </table></div>
+    <p>Ou seja: <strong>0,70 m é uma boa cota</strong>. Todo o tratamento do projeto continua valendo, com ajustes de centímetros.</p>
+
+    <div class="note"><b>Mas meça a profundidade da mesa — é ela que decide se você consegue sentar no lugar certo.</b> Sua orelha precisa ficar 0,95 m à frente do baffle, e quem senta numa mesa fica com a orelha uns 0,28 m atrás da borda da frente. Igualando as duas coisas: <strong>profundidade necessária = 0,222 + 0,95 − 0,28 = 0,89 m</strong>. Com uma mesa de 0,60 m, sua orelha sentada normalmente cai em ~1,58 m em vez de 1,87, e o triângulo abre de 60° para <strong>82°</strong> — buraco no centro e agudo dependente de milímetros de cabeça.</div>
+
+    <p>Três saídas, em ordem de preferência:</p>
+    <ul class="plain">
+      <li><strong>Mesa de ~0,90 m de profundidade.</strong> Os monitores ocupam os 0,25 m do fundo e sobram 0,65 m de mesa útil. Tudo cai no lugar sem mais nada.</li>
+      <li><strong>Mesa de volta a 1,00 m com pedestais de chão.</strong> A borda da frente vai para 1,60 e sua orelha cai naturalmente em 1,88 sentado normalmente na mesa. É a razão pela qual pedestal resolve mais que só tirar o monitor da mesa.</li>
+      <li><strong>Sentar 0,30 m afastado da borda.</strong> Funciona e custa zero, mas você vai ter que se inclinar para digitar.</li>
+    </ul>
+
     <h3>O que a HS5 alcança nesta sala</h3>
     <p>A HS5 é −3 dB em <strong>~70 Hz</strong>. Olhe a régua modal do levantamento: o empilhamento de 66 + 71,5 Hz cai <em>exatamente</em> nesse ponto. Ou seja, a região onde a sala é mais caótica é a mesma onde o monitor já está caindo — o grave vai parecer fraco e inconsistente ao mesmo tempo, e é fácil culpar o monitor pelo que é a sala.</p>
     <p>Duas consequências práticas: os bass traps e a absorção da parede frontal deixam de ser refinamento e viram o que torna a última oitava utilizável — o cancelamento de fronteira de 90 Hz do baffle a 0,95 m cai bem dentro dela. E abaixo de 70 Hz você está cego: confira o sub em fone e em referência, sempre. Se depois de medir a faixa de 80 a 100 Hz ainda estiver morta, afastar os monitores mais 15 a 20 cm da parede leva o cancelamento para ~75 Hz. Mas isso é ajuste com medida na mão, não chute.</p>
