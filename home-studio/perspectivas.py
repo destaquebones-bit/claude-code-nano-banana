@@ -124,8 +124,9 @@ def scene():
             if dot(e,(mid[0]-1.5,mid[1]-2.4,0))<0: e=scal(e,-1)
             P.append(([(p[0],p[1],0),(q[0],q[1],0),(q[0],q[1],2.6),(p[0],p[1],2.6)],e,RAY,INK,"0.7",False))
     # front wall modules + TV + door
-    for x0 in (0.30,0.90,1.50): box(x0,x0+0.60,0,0.10,1.15,2.35,RAY)
-    box(0.96,2.04,0,0.08,0.50,1.11,MUTE)
+    for x0 in (0.30,0.90,1.50):
+        box(x0,x0+0.60,0,0.10,1.40,2.00,RAY); box(x0,x0+0.60,0,0.10,2.00,2.60,RAY)
+    box(0.96,2.04,0,0.08,0.80,1.40,MUTE)
     quad([(2.12,0.01,0),(3.0,0.01,0),(3.0,0.01,2.1),(2.12,0.01,2.1)],(0,1,0),WOOD,WOOD,"1.6")
     box(2.20,2.80,0.02,0.07,0.70,1.90,DK)          # painel preto existente na porta
     # side mirror modules (10 cm gap) + existing 5 cm panels + skylines
@@ -173,9 +174,9 @@ def scene():
 VIEWS=[
  ("V1", (1.50,4.30,1.58),(1.50,0.0,0.92),58,
   "VISTA 1 &#183; PAREDE FRONTAL, DO PONTO DE ESCUTA",
-  "3 m&#243;dulos de 1,15 a 2,35 m &#183; TV centrada, topo em 1,10 &#183; monitores na bancada, baffle a 0,92 m da parede",
-  [((1.20,0.10,2.05),0,44,"3 m&#243;dulos &#183; z 1,15 a 2,35","var(--ray)","middle"),
-   ((1.50,0.08,0.80),0,56,"TV centrada, topo em 1,10","var(--felt)","middle"),
+  "6 m&#243;dulos de 1,40 a 2,60 m &#183; TV de 0,80 a 1,40 &#183; monitores na bancada, baffle a 0,92 m da parede",
+  [((1.20,0.10,2.25),0,44,"6 m&#243;dulos 0,60 &#215; 0,60 &#183; z 1,40 a 2,60","var(--ray)","middle"),
+   ((1.50,0.08,1.10),0,56,"TV &#183; 0,80 a 1,40","var(--felt)","middle"),
    ((0.21,0.21,1.10),26,0,"bass trap de canto","var(--ray)","start"),
    ((1.25,2.60,0.01),0,20,"tapete 2 &#215; 3","var(--mdf)","middle")]),
  ("V2", (0.26,2.20,1.58),(3.00,2.60,0.95),72,
