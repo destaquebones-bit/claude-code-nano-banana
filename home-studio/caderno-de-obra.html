@@ -428,15 +428,15 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
       <thead><tr><th>Item</th><th class="n">Qtd</th><th>Observação</th></tr></thead>
       <tbody>
         <tr><td>Pedestal de monitor de chão <em>(opcional)</em></td><td class="n">2</td><td>tweeter a 1,20 m. Dá para dispensar mantendo os monitores na bancada — ver seção 08</td></tr>
-        <tr><td>Microfone de medição USB</td><td class="n">1</td><td>UMIK-1 ou similar; o REW é gratuito</td></tr>
+        <tr><td>Microfone de medição <em>(você já tem)</em></td><td class="n ok">—</td><td>Behringer ECM8000 na sua interface; o REW é gratuito</td></tr>
         <tr><td>Máscara PFF2</td><td class="n">5</td><td rowspan="3" style="white-space:normal">obrigatório ao cortar e manusear lã de rocha — a fibra irrita pele, olhos e vias aéreas</td></tr>
         <tr><td>Luvas e óculos de proteção</td><td class="n">1 par cada</td></tr>
         <tr><td>Camisa de manga comprida descartável</td><td class="n">1</td></tr>
       </tbody>
     </table></div>
 
-    <div class="tot"><span>Obra completa, sem pedestais nem microfone</span><b>R$ 3.000 – 5.250</b></div>
-    <div class="tot" style="border-top:1px solid var(--rule)"><span>Com pedestais e microfone de medição</span><b>R$ 4.300 – 7.750</b></div>
+    <div class="tot"><span>Obra completa, sem pedestais</span><b>R$ 3.000 – 5.250</b></div>
+    <div class="tot" style="border-top:1px solid var(--rule)"><span>Com pedestais de chão</span><b>R$ 3.400 – 6.250</b></div>
     <p style="font-family:var(--mono); font-size:12px; color:var(--mute); margin-top:14px">Ordem de grandeza para conferir na sua região — o preço da lã de rocha e do tecido acústico varia muito entre fornecedores. As quantidades é que estão fechadas.</p>
   </div>
 </section>
@@ -1273,7 +1273,7 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
         <tr><td>Cortina blackout ≥ 400 g/m²</td><td>3 mantas de mudança penduradas em pregas atrás da cortina atual</td><td class="n">≈R$ 350</td><td>−1,7 sabin e fica feio; totalmente reversível</td></tr>
         <tr><td>Gobo móvel com rodízios</td><td>Arara de roupa + 2 mantas de mudança</td><td class="n">≈R$ 280</td><td>equivalente, e você guarda no armário</td></tr>
         <tr><td>Pedestais de monitor</td><td>Blocos de concreto + tampo de MDF + massa de calafetar no topo</td><td class="n">≈R$ 400</td><td>nada — o que importa é massa e desacoplamento</td></tr>
-        <tr><td>Microfone UMIK-1</td><td>ECM8000 na interface que você já tem</td><td class="n">≈R$ 600</td><td>calibração genérica em vez de individual; para achar modo, resolve</td></tr>
+        <tr><td>Microfone UMIK-1</td><td class="ok">ECM8000 — já está aí</td><td class="n ok">≈R$ 1.000</td><td>sem arquivo de calibração individual, mas abaixo de 300 Hz, que é o que interessa aqui, ele é confiável</td></tr>
         <tr><td>Quadro de sarrafo nos módulos de parede</td><td>Painel rígido embrulhado direto no tecido, sem quadro</td><td class="n">≈R$ 250</td><td>borda frágil; não faça isso na nuvem nem no gobo, que ficam pendurados</td></tr>
         <tr><td>Manta sob o tapete</td><td>Cobertor grosso velho, dobrado</td><td class="n">≈R$ 150</td><td>funciona; só escorrega mais</td></tr>
       </tbody>
@@ -1387,6 +1387,9 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
   </div>
   <div class="wrap">
     <p>Esta fase sozinha vale mais que qualquer painel da lista. Faça antes de comprar nada — inclusive porque ela define se a nuvem cabe.</p>
+
+    <div class="warn"><b>E, já que o ECM8000 está aí: varra a sala antes de encostar em qualquer coisa.</b> Depois que o primeiro painel subir, o "antes" acabou para sempre. Vinte minutos de varredura agora confirmam ou derrubam o diagnóstico inteiro — o nó de 71,5 Hz na cadeira, o empilhamento de 66–72, o aglomerado de 107–114, o RT de 0,93 s. Tudo isso saiu de foto e de conta; medida é o que transforma em fato. E é o que vai te dizer, depois, se o dinheiro fez o que devia. Salve o arquivo com a data no nome.</div>
+
     <ol class="steps">
       <li><div><b>Meça quatro coisas.</b> Pé-direito real. Centro do ventilador, medido da parede frontal. Diâmetro da varredura das pás. Distância da parede frontal até sua orelha, sentado como você senta.
         <div class="cut">se o centro do ventilador der menos de 2,05 m <span>→ a nuvem não cabe; pule para recuar o ventilador</span></div></div></li>
@@ -1548,13 +1551,16 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 
   <div class="plate" style="margin-top:44px">
     <div class="phase">
-      <div class="phase__tag"><span class="phase__n">FASE 4</span><h3>Medir</h3><span class="phase__cost">≈R$ 900 – 1.500</span></div>
+      <div class="phase__tag"><span class="phase__n">FASE 4</span><h3>Medir</h3><span class="phase__cost">R$ 0 — o microfone já está aí</span></div>
     </div>
   </div>
   <div class="wrap">
     <ol class="steps">
-      <li><div><b>Microfone de medição USB + REW</b> (o software é gratuito). Microfone no ponto de escuta, na altura exata da orelha, apontado para o teto se o arquivo de calibração for de campo difuso.</div></li>
-      <li><div><b>Varredura de cada monitor separado, depois os dois juntos.</b> Olhe a resposta até 300 Hz, o waterfall e o ETC.</div></li>
+      <li><div><b>Monte o rig.</b> ECM8000 na interface com <strong>+48V ligado</strong> — ele é condensador, sem phantom não sai sinal. REW no MacBook. Microfone em pedestal no ponto de escuta exato, na altura da orelha, <strong>apontado para o monitor</strong> que está tocando.
+        <div class="cut">sem arquivo de calibração individual <span>· o ECM8000 não vem com um. Abaixo de 300 Hz ele é confiável; acima de 8 kHz não confie nele para julgar o monitor</span></div></div></li>
+      <li><div><b>Referência de tempo.</b> Sem ela o ETC não vale nada. Use um cabo de <em>loopback</em> da saída 2 para a entrada 2, ou a opção de referência acústica do REW. Ajuste o ganho para a varredura picar em torno de −12 dBFS.</div></li>
+      <li><div><b>Varra cada monitor sozinho, depois os dois juntos.</b> 20 Hz a 20 kHz. Ninguém na sala durante a varredura — seu corpo no caminho muda a medida.</div></li>
+      <li><div><b>O que olhar, nesta ordem:</b> resposta de 20 a 300 Hz com suavização de 1/6 de oitava (procure o nó de 71,5 Hz e o empilhamento de 66–72); <em>waterfall</em> ou espectrograma (caudas longas em 107–114 Hz); RT60 (a estimativa era 0,93 s); e o ETC, para ver as primeiras reflexões chegando em 2,5 e 4,5 ms.</div></li>
       <li><div><b>Ajuste fino da cadeira.</b> Meça em y = 1,75 / 1,85 / 1,90 / 1,95 / 2,05 m e fique com a que der a resposta mais lisa entre 40 e 120 Hz. É o ajuste mais barato e mais eficaz que sobrou.</div></li>
       <li><div><b>Só depois pense em EQ.</b> Correção eletrônica conserta pico, não conserta nulo — energia que a sala cancelou não volta com ganho. Tudo que dava para resolver com geometria e absorção já foi resolvido nas fases anteriores.</div></li>
     </ol>
