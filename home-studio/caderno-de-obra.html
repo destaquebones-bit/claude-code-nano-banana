@@ -1673,9 +1673,10 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 
     <h3>Em pé ou deitados, nesta sala</h3>
     <p><strong>Em pé.</strong> E aqui o motivo não é o argumento genérico de manual — é uma conta desta sala.</p>
-    <p>Num alto-falante de duas vias, os dois drivers interferem entre si na região do cruzamento, perto de <strong>2 kHz</strong> na HS. Essa interferência acontece <em>no plano que contém os dois drivers</em>, e cava um cancelamento entre <strong>43° e 55°</strong> fora do eixo, dependendo do espaçamento. Você não escolhe se existe; escolhe só para onde ela aponta.</p>
+    <p>Num alto-falante de duas vias, os dois drivers interferem entre si na região do cruzamento, perto de <strong>2 kHz</strong> na HS. Essa interferência acontece <em>no plano que contém os dois drivers</em>, e cava um cancelamento fora do eixo. Você não escolhe se existe; escolhe só para onde ela aponta.</p>
+    <p>Na HS5 dá para fechar o número: cruzamento em <strong>2 kHz</strong> (λ = 17,1 cm) e centro do woofer a <strong>12 cm</strong> do centro do tweeter. O primeiro nulo fica em sen θ = λ/2d = 0,715, ou seja <strong>45,6° fora do eixo</strong>.</p>
 
-    <div class="note"><b>E nesta sala ela aponta para a bancada.</b> Com o baffle a 0,95 m da parede, tweeter a 1,20 m, tampo a 0,75 m e sua orelha a 1,90 m, o ponto de reflexão da bancada cai em y = 1,42 m — e o raio sai do tweeter a <strong>43,5° abaixo da horizontal</strong>. Em pé, é exatamente ali que o cancelamento do cruzamento fica. O monitor deixa de mandar energia de 2 kHz para o tampo da mesa, de graça, sem tratar nada. Deitado, esse cancelamento gira para o plano horizontal e a mesa recebe a energia inteira.</div>
+    <div class="note"><b>E nesta sala ela aponta para a bancada.</b> Com o baffle a 0,95 m da parede, tweeter a 1,20 m, tampo a 0,75 m e sua orelha a 1,90 m, o ponto de reflexão da bancada cai em y = 1,42 m — e o raio sai do tweeter a <strong>43,5° abaixo da horizontal</strong>. O nulo da HS5 em pé está em 45,6°. <strong>Dois graus de diferença.</strong> Em pé, o monitor deixa de mandar 2 kHz para o tampo da mesa sozinho, sem tratar nada. Deitado, esse cancelamento gira para o plano horizontal e a mesa recebe a energia inteira. Não é coincidência conveniente — é a razão de a orientação vertical ser padrão em qualquer sala com mesa na frente.</div>
 
     <p>O mesmo vale para cima. A reflexão do teto sai a 71° e o seu teto tem um ventilador limitando o tamanho da nuvem — qualquer coisa que reduza a energia mandada para lá conta. Deitado, o monitor irradia verticalmente como um driver só: largo, sem cancelamento nenhum, jogando cruzamento no tampo e no teto ao mesmo tempo.</p>
 
@@ -1683,7 +1684,30 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 
     <p><strong>Uma ressalva honesta:</strong> no eixo, apontado para a sua orelha, os dois jeitos medem igual. O ganho está no campo refletido e na consistência fora do eixo. É real, é de graça, mas não espere a diferença de virar a chave — espere a mesa e o teto pararem de devolver 2 kHz.</p>
 
-    <div class="note"><b>Ao girar, confira a altura de novo.</b> Em pé o tweeter sobe para perto do topo da caixa. Numa HS7 (332 mm de altura, tweeter a ~262 mm da base), bancada a 0,75 + o caixote de ~0,20 já põe o tweeter em <strong>1,22 m</strong> — praticamente na mira, <strong>sem o calço triangular</strong>. Numa HS5 (285 mm, tweeter a ~225 mm da base) o mesmo caixote dá ~1,16 m, e você compensa com um calço fino. Meça a sua e me diga o modelo que eu fecho a cota.</div>
+    <h3>A cota fechada da HS5</h3>
+    <p>A HS5 tem 285 mm de altura e o tweeter a <strong>225 mm da base</strong>. Medindo a foto, o caixote preto tem ~22 cm e o calço triangular ~12 cm. Somando sobre uma bancada de 0,75 m:</p>
+
+    <div class="tw"><table>
+      <thead><tr><th>Empilhamento</th><th class="n">Como está</th><th class="n">Sem o calço</th></tr></thead>
+      <tbody>
+        <tr><td>Tampo da bancada</td><td class="n">0,750</td><td class="n">0,750</td></tr>
+        <tr><td>Caixote preto</td><td class="n">+0,223</td><td class="n">+0,223</td></tr>
+        <tr><td>Calço triangular</td><td class="n bad">+0,116</td><td class="n ok">—</td></tr>
+        <tr><td>Base da caixa até o tweeter</td><td class="n">+0,225</td><td class="n">+0,225</td></tr>
+        <tr><td><strong>Altura do tweeter</strong></td><td class="n bad">1,31 m</td><td class="n ok">1,198 m</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="note"><b>Tire o calço.</b> Só isso põe o tweeter em 1,198 m — 2 mm da mira. O calço existia para compensar a caixa deitada; em pé ele sobra, e sobrando ele deixa o tweeter 11 cm acima da sua orelha, o que joga o eixo do agudo por cima da sua cabeça e muda o ângulo da reflexão da bancada. Confira o número na sua bancada: se ela não tiver 0,75 m, o alvo é a altura da <em>sua</em> orelha sentado, e o caixote sozinho entrega 0,448 m acima do tampo.</div>
+
+    <p>Sem o calço você também perde a inclinação — e não faz falta. Com o tweeter na altura exata da orelha e a mesma cota nos dois, não há o que inclinar no plano vertical. O que você precisa é de <em>toe-in horizontal</em>: gire cada caixa apontando para a sua cabeça. E no lugar do calço entra o isolamento de verdade, que é o que ele nunca foi.</p>
+
+    <h3>Separação</h3>
+    <p>Na foto os tweeters estão a <strong>~0,92 m</strong> um do outro. A cota do projeto é <strong>1,10 m</strong> (x = 0,95 e 2,05), com você a 0,95 m à frente do plano dos baffles. Abra mais 18 cm e o triângulo fecha em 60°. Do jeito que está, para manter 60° você teria que sentar a 0,80 m dos monitores — perto demais da parede frontal e do nó de 71,5 Hz.</p>
+
+    <h3>O que a HS5 alcança nesta sala</h3>
+    <p>A HS5 é −3 dB em <strong>~70 Hz</strong>. Olhe a régua modal do levantamento: o empilhamento de 66 + 71,5 Hz cai <em>exatamente</em> nesse ponto. Ou seja, a região onde a sala é mais caótica é a mesma onde o monitor já está caindo — o grave vai parecer fraco e inconsistente ao mesmo tempo, e é fácil culpar o monitor pelo que é a sala.</p>
+    <p>Duas consequências práticas: os bass traps e a absorção da parede frontal deixam de ser refinamento e viram o que torna a última oitava utilizável — o cancelamento de fronteira de 90 Hz do baffle a 0,95 m cai bem dentro dela. E abaixo de 70 Hz você está cego: confira o sub em fone e em referência, sempre. Se depois de medir a faixa de 80 a 100 Hz ainda estiver morta, afastar os monitores mais 15 a 20 cm da parede leva o cancelamento para ~75 Hz. Mas isso é ajuste com medida na mão, não chute.</p>
 
     <h3>Pode manter na bancada?</h3>
     <p><strong>Pode</strong> — e sai mais barato. Mas atenção a uma consequência: com o monitor em cima do caixote em cima da mesa, o baffle recua para ~1,30 m da parede, e para manter os 60° você teria que sentar em 2,25 m — que é justo onde fica o nó de 107 Hz. Por isso, se os monitores ficam na bancada, <strong>a mesa tem que voltar para 0,70 m da parede</strong>, não 1,00.</p>
@@ -1710,9 +1734,10 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
     <h3>O preço de ficar na bancada, e como pagar barato</h3>
     <ul class="plain">
       <li><strong>O caixote preto provavelmente é oco.</strong> Caixa vazia embaixo de monitor vira ressonador: ela toca junto, num tom só, e você escuta isso como grave inflado numa nota específica. Encha de areia seca bem socada, ou troque por massa maciça — meia placa de concreto de calçada empilhada resolve por uns R$ 20 e é mais pesada que qualquer pedestal barato.</li>
-      <li><strong>O calço triangular não é isolador.</strong> Metal encostado em madeira transmite tudo. Ponha um material realmente macio entre o monitor e o apoio: espuma de alta densidade, um mouse pad grosso dobrado, ou massa de calafetar em quatro pontos. Com o monitor em pé, provavelmente o calço sai de cena e você ganha a altura certa de graça.</li>
+      <li><strong>No lugar do calço, isolamento de verdade.</strong> Metal encostado em madeira transmite tudo. Entre a caixa e o caixote entra algo realmente macio: espuma de alta densidade, um mouse pad grosso dobrado, ou massa de calafetar em quatro pontos. Isso some com a vibração que hoje vai direto para o tampo.</li>
       <li><strong>A bancada vira refletor.</strong> Com o monitor apoiado nela, a superfície entre você e o cone devolve som pelo tampo. Incline os monitores 5 a 8° para baixo, mirando a orelha, e ponha o feltro de 0,40 × 1,20 m na faixa central — os dois já estavam na lista.</li>
-      <li><strong>Tire o pedestal de microfone de cima da bancada.</strong> Na foto ele está no meio do caminho, entre os monitores. Um tubo de metal vertical no eixo do centro fantasma é refletor de médio-agudo em cima do ponto mais sensível da imagem estéreo.</li>
+      <li><strong>Tire o pedestal de microfone de cima da bancada.</strong> Ele continua ali entre os monitores. Um tubo de metal vertical no eixo do centro fantasma é refletor de médio-agudo em cima do ponto mais sensível da imagem estéreo.</li>
+      <li><strong>Feche a caixa de tomada aberta</strong> na parede frontal. Não é acústica, é segurança — e uma cavidade aberta na parede também é um pequeno ressoador.</li>
     </ul>
 
     <div class="note"><b>Resumo.</b> Gire para a vertical de qualquer jeito — isso é decidido. Depois escolha: mesa a 1,00 m com os monitores em pedestais dentro do vão (o que a sua mesa já permite), ou mesa de volta a 0,70 m com os monitores no caixote em cima dela. As duas fecham 60° e mesmo SBIR. A segunda custa zero e entrega uns 95% da primeira, desde que você encha o caixote e troque o calço por algo macio.</div>
