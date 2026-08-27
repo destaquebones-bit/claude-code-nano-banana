@@ -1,0 +1,897 @@
+<title>Sala 3 × 4,8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+
+<style>
+:root{
+  --paper:#EDEEEA; --surface:#F8F8F5; --sunk:#E3E4DE;
+  --ink:#16181C; --body:#2E3138; --mute:#6F7169; --rule:#D3D4CD;
+  --mdf:#B5762F; --mdf-soft:#EADCC4;
+  --felt:#1D1F24; --felt-line:#1D1F24;
+  --flag:#A2372E; --flag-soft:#F0DBD7;
+  --ray:#2C6B69; --ray-soft:#D8E6E4;
+  --glass:#7FA7A8; --glass-fill:#DCE9E9;
+  --wood:#8A5A32;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+:root:not([data-theme="light"]){ @media (prefers-color-scheme:dark){
+  --paper:#0F1114; --surface:#171A1E; --sunk:#101317;
+  --ink:#EAEAE4; --body:#C4C7C1; --mute:#8B8E86; --rule:#2B2F35;
+  --mdf:#D4964F; --mdf-soft:#4B3A22;
+  --felt:#3F434B; --felt-line:#5A5F69;
+  --flag:#DE7264; --flag-soft:#43231E;
+  --ray:#65AFA9; --ray-soft:#1E3634;
+  --glass:#5E8E90; --glass-fill:#1E3436;
+  --wood:#A5734A;
+}}
+:root[data-theme="dark"]{
+  --paper:#0F1114; --surface:#171A1E; --sunk:#101317;
+  --ink:#EAEAE4; --body:#C4C7C1; --mute:#8B8E86; --rule:#2B2F35;
+  --mdf:#D4964F; --mdf-soft:#4B3A22;
+  --felt:#3F434B; --felt-line:#5A5F69;
+  --flag:#DE7264; --flag-soft:#43231E;
+  --ray:#65AFA9; --ray-soft:#1E3634;
+  --glass:#5E8E90; --glass-fill:#1E3436;
+  --wood:#A5734A;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--body);
+  font-family:var(--serif); font-size:17px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--display); font-variation-settings:"wdth" 112; color:var(--ink); text-wrap:balance; margin:0; line-height:1.06}
+p{margin:0}
+strong{font-weight:600; color:var(--ink)}
+em{font-style:italic}
+a{color:var(--mdf)}
+:focus-visible{outline:2px solid var(--mdf); outline-offset:3px}
+
+.wrap{max-width:66ch; margin:0 auto; padding:0 24px}
+.plate{max-width:1160px; margin:0 auto; padding:0 24px}
+
+/* ---- title block ---- */
+.stamp{border-bottom:1px solid var(--rule); background:var(--surface)}
+.stamp__in{max-width:1160px; margin:0 auto; padding:56px 24px 0}
+.eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--mdf); margin:0 0 18px}
+.stamp h1{font-size:clamp(2.6rem,8vw,4.6rem); font-weight:800; font-variation-settings:"wdth" 118; letter-spacing:-.02em}
+.lede{font-size:1.22rem; line-height:1.5; color:var(--body); max-width:52ch; margin-top:20px}
+.specs{display:grid; grid-template-columns:repeat(auto-fit,minmax(148px,1fr)); gap:0; margin:44px 0 0; border-top:1px solid var(--rule)}
+.specs>div{padding:14px 16px 16px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule)}
+.specs>div:last-child{border-right:none}
+.specs dt{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--mute)}
+.specs dd{margin:5px 0 0; font-family:var(--display); font-variation-settings:"wdth" 108; font-weight:600; font-size:1.22rem; color:var(--ink); font-variant-numeric:tabular-nums}
+.specs dd .q{font-size:.72em; font-weight:500; color:var(--mute)}
+
+/* ---- sections ---- */
+section{padding:64px 0 0}
+section:last-child{padding-bottom:96px}
+.head{display:flex; align-items:baseline; gap:16px; border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:28px}
+.head__n{font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--mdf); white-space:nowrap; padding-bottom:3px}
+.head h2{font-size:clamp(1.5rem,3.4vw,2.1rem); font-weight:700; letter-spacing:-.01em}
+.wrap p + p{margin-top:1.05em}
+.wrap h3{font-family:var(--display); font-variation-settings:"wdth" 104; font-size:1.02rem; font-weight:700; letter-spacing:.01em; margin:2.1em 0 .5em}
+
+/* ---- drawings ---- */
+.dw{background:var(--surface); border:1px solid var(--rule); border-radius:2px; padding:18px 18px 12px; margin:0}
+.dw svg{display:block; width:100%; height:auto}
+.dw__cap{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-top:12px; border-top:1px solid var(--rule); padding-top:9px}
+.grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px}
+.stack{display:grid; gap:18px}
+.side{display:grid; grid-template-columns:minmax(320px,1.35fr) minmax(240px,1fr); gap:26px; align-items:start}
+@media (max-width:860px){ .side{grid-template-columns:1fr} }
+
+/* ---- key legend ---- */
+.key{font-family:var(--mono); font-size:12.5px; line-height:1.5; margin:0; display:grid; gap:7px}
+.key div{display:grid; grid-template-columns:22px 1fr; gap:9px; align-items:start}
+.key b{display:flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; background:var(--ink); color:var(--surface); font-size:10.5px; font-weight:600; font-family:var(--mono)}
+.key span{color:var(--body); padding-top:1px}
+.key .sw{width:20px; height:20px; border-radius:2px; border:1px solid var(--rule)}
+.keyhead{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute); margin:0 0 12px; border-bottom:1px solid var(--rule); padding-bottom:7px}
+.key + .keyhead{margin-top:26px}
+
+/* ---- tables ---- */
+.tw{overflow-x:auto; border:1px solid var(--rule); border-radius:2px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-family:var(--mono); font-size:12.5px; font-variant-numeric:tabular-nums}
+th,td{text-align:left; padding:9px 14px; border-bottom:1px solid var(--rule); white-space:nowrap}
+thead th{font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); font-weight:500; background:var(--sunk)}
+tbody tr:last-child td{border-bottom:none}
+td.n{text-align:right}
+td:first-child{white-space:normal; color:var(--ink)}
+.bad{color:var(--flag); font-weight:600}
+.ok{color:var(--ray); font-weight:600}
+
+/* ---- callout ---- */
+.note{border-left:3px solid var(--mdf); background:var(--surface); padding:16px 20px; font-size:.95rem; margin:1.6em 0}
+.note b{font-family:var(--display); font-variation-settings:"wdth" 104; font-weight:700}
+
+/* ---- action list ---- */
+.acts{display:grid; gap:2px; margin:0; counter-reset:act}
+.act{display:grid; grid-template-columns:52px 1fr; gap:20px; background:var(--surface); border:1px solid var(--rule); padding:20px 22px; align-items:start}
+.act__n{font-family:var(--display); font-variation-settings:"wdth" 118; font-weight:800; font-size:2rem; line-height:.9; color:var(--mdf); font-variant-numeric:tabular-nums}
+.act h4{font-size:1.06rem; font-weight:700; margin-bottom:6px}
+.act p{font-size:.95rem}
+.act__meta{font-family:var(--mono); font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--mute); margin-top:10px; display:flex; gap:16px; flex-wrap:wrap}
+.act__meta i{font-style:normal; color:var(--flag)}
+.act__meta i.g{color:var(--ray)}
+
+ul.plain{margin:1.1em 0; padding-left:1.15em}
+ul.plain li{margin-bottom:.5em}
+ul.plain li::marker{color:var(--mdf)}
+
+/* ---- svg shared ---- */
+svg text{font-family:var(--mono); fill:var(--mute)}
+.s-wall{fill:none; stroke:var(--ink); stroke-width:9}
+.s-wall-e{fill:none; stroke:var(--ink); stroke-width:6}
+.s-hair{fill:none; stroke:var(--rule); stroke-width:1}
+.s-dim{fill:none; stroke:var(--mute); stroke-width:.9}
+.s-dimt{font-size:10px; fill:var(--mute)}
+.s-lbl{font-size:10px; fill:var(--body)}
+.s-felt{fill:var(--felt); stroke:var(--felt-line); stroke-width:.8}
+.s-mdf{fill:var(--mdf); opacity:.92}
+.s-mdf-l{fill:var(--mdf-soft); stroke:var(--mdf); stroke-width:.9}
+.s-wood{fill:none; stroke:var(--wood); stroke-width:2.4}
+.s-woodf{fill:var(--wood); opacity:.22}
+.s-glass{fill:var(--glass-fill); stroke:var(--glass); stroke-width:1.4}
+.s-ray{fill:none; stroke:var(--ray); stroke-width:1.5; stroke-linejoin:round}
+.s-rayd{fill:none; stroke:var(--ray); stroke-width:1.2; stroke-dasharray:5 3.5}
+.s-raypt{fill:var(--ray)}
+.s-flag{fill:none; stroke:var(--flag); stroke-width:1.3; stroke-dasharray:6 4}
+.s-flagf{fill:var(--flag)}
+.s-flagt{font-size:10px; fill:var(--flag); font-weight:600}
+.s-axis{fill:none; stroke:var(--mute); stroke-width:1; stroke-dasharray:12 4 2 4}
+.s-obj{fill:var(--sunk); stroke:var(--mute); stroke-width:1}
+.s-dark{fill:var(--felt); stroke:var(--felt-line); stroke-width:.8}
+.s-ghost{fill:none; stroke:var(--mute); stroke-width:1; stroke-dasharray:4 3}
+.s-fill-surf{fill:var(--surface)}
+.s-key circle{fill:var(--ink)}
+.s-key text{fill:var(--surface); font-size:10px; font-weight:600; text-anchor:middle}
+.s-kn circle{fill:var(--mdf)}
+.s-kn text{fill:var(--surface); font-size:10px; font-weight:600; text-anchor:middle}
+@media (prefers-reduced-motion:no-preference){}
+</style>
+
+<header class="stamp">
+  <div class="stamp__in">
+    <p class="eyebrow">Levantamento fotogramétrico · Home studio · Ago 2026</p>
+    <h1>Sala 3 × 4,8</h1>
+    <p class="lede">Leitura das cinco fotos, cruzada com as medidas reais: planta, quatro elevações, corte longitudinal e o diagnóstico acústico que a geometria já entrega antes de qualquer microfone.</p>
+    <dl class="specs">
+      <div><dt>Largura</dt><dd>3,00 m</dd></div>
+      <div><dt>Comprimento</dt><dd>4,80 m</dd></div>
+      <div><dt>Pé-direito</dt><dd>2,60 m <span class="q">est.</span></dd></div>
+      <div><dt>Volume</dt><dd>37,4 m³</dd></div>
+      <div><dt>Superfície</dt><dd>69,4 m²</dd></div>
+      <div><dt>Proporção</dt><dd>1,85 : 1,15 : 1</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main>
+
+<section id="leitura">
+  <div class="wrap">
+    <div class="head"><span class="head__n">01</span><h2>Como a sala se forma</h2></div>
+
+    <p>A sala é um retângulo estreito e comprido: <strong>3,00 m de frente por 4,80 m de fundo</strong>. O sistema de escuta está montado na parede curta de 3,00 m, disparando ao longo do eixo comprido — que é a orientação correta e o único acerto estrutural que não precisa de discussão.</p>
+
+    <p>Percorrendo as paredes no sentido horário, a partir de quem está sentado olhando para a TV:</p>
+
+    <h3>Parede frontal (3,00 m) — foto 1 e 5</h3>
+    <p>TV de ~48" fixada na parede, dois monitores sobre isoladores em cima da bancada, e dois painéis de MDF ripado (tipo <em>skyline</em>) fixados na parede logo atrás de cada monitor. A bancada corre da esquerda até encostar no batente. <strong>O terço direito dessa parede é a porta de madeira</strong> — 0,88 m de vão, dobradiça no canto, abrindo para dentro. É essa porta que empurra todo o sistema para a esquerda.</p>
+
+    <h3>Parede direita (4,80 m) — foto 2</h3>
+    <p>Dois painéis pretos de tecido, aparentemente 0,60 × 1,20 m e finos (~5 cm), montados rentes à parede. Depois deles, no terço do fundo, o quadro da árvore e a estante com bonés, livros e o toca-discos.</p>
+
+    <h3>Parede de fundo (3,00 m) — foto 3 e 4</h3>
+    <p>Cortina cinza leve, translúcida, num varão simples — e <strong>atrás dela a porta de vidro</strong>. Isso é o dado mais pesado do levantamento: a parede inteira atrás da posição de escuta é uma superfície rígida, plana, que devolve praticamente toda a energia acima de 300 Hz e vaza tudo abaixo disso. A cortina, do jeito que está, absorve só agudo — abaixo de 1 kHz ela é acusticamente invisível. Há furos de parafuso na parede acima do varão, de alguma fixação anterior.</p>
+
+    <h3>Parede esquerda (4,80 m) — parcial</h3>
+    <p>Só aparece de raspão na foto 1: um painel preto junto ao canto frontal e o gancho do fone logo depois. No canto do fundo, na foto 3, estão <strong>dois difusores de MDF encostados na parede, ainda não instalados</strong>. O miolo dessa parede — de ~1,0 m a ~4,2 m — não foi fotografado; está marcado como não documentado nos desenhos.</p>
+
+    <div class="note"><b>Precisão do levantamento.</b> As cotas de parede vêm da sua medida (3,00 × 4,80). As posições internas foram tiradas por escala das fotos, usando o vão da porta (0,88 m) e o painel preto (0,60 m) como réguas. As mais confiáveis são as da parede frontal; as menos confiáveis são a distância de escuta e as posições dos painéis na parede direita — estão marcadas com <span style="font-family:var(--mono)">≈</span>.</div>
+  </div>
+</section>
+
+<section id="des01">
+  <div class="plate">
+    <div class="head"><span class="head__n">DES. 01</span><h2>Planta baixa — estado atual</h2></div>
+    <div class="side">
+      <div class="dw">
+<svg viewBox="0 0 700 760" role="img" aria-label="Planta baixa da sala 3 por 4,8 metros com posição de móveis, tratamento acústico e trajetos de primeira reflexão">
+
+  <!-- dim chains -->
+  <g class="s-dim">
+    <line x1="170" y1="66" x2="170" y2="104"/><line x1="530" y1="66" x2="530" y2="104"/>
+    <line x1="170" y1="72" x2="530" y2="72"/>
+    <line x1="112" y1="110" x2="112" y2="686"/>
+    <line x1="106" y1="110" x2="164" y2="110"/><line x1="106" y1="686" x2="164" y2="686"/>
+    <line x1="146" y1="110" x2="146" y2="254"/><line x1="140" y1="254" x2="164" y2="254"/>
+    <line x1="238.4" y1="88" x2="238.4" y2="100"/><line x1="386" y1="88" x2="386" y2="100"/>
+    <line x1="174.5" y1="88" x2="174.5" y2="100"/><line x1="525.5" y1="88" x2="525.5" y2="100"/>
+    <line x1="174.5" y1="94" x2="525.5" y2="94"/>
+  </g>
+  <text class="s-dimt" x="350" y="66" text-anchor="middle">3,00</text>
+  <text class="s-dimt" x="206" y="91" text-anchor="middle">0,57</text>
+  <text class="s-dimt" x="312" y="91" text-anchor="middle">1,23</text>
+  <text class="s-dimt" x="456" y="91" text-anchor="middle">1,20</text>
+  <text class="s-dimt" x="106" y="398" text-anchor="middle" transform="rotate(-90 106 398)">4,80</text>
+  <text class="s-dimt" x="140" y="182" text-anchor="middle" transform="rotate(-90 140 182)">≈1,20</text>
+
+  <!-- room -->
+  <rect class="s-wall" x="170" y="110" width="360" height="576"/>
+
+  <!-- axes -->
+  <line class="s-axis" x1="350" y1="96" x2="350" y2="700"/>
+  <line class="s-flag" x1="312.8" y1="110" x2="312.8" y2="300"/>
+  <g class="s-dim"><line x1="312.8" y1="330" x2="350" y2="330"/><line x1="312.8" y1="322" x2="312.8" y2="338"/><line x1="350" y1="322" x2="350" y2="338"/></g>
+  <text class="s-flagt" x="331" y="352" text-anchor="middle">Δ 0,31 m</text>
+
+  <!-- front wall: diffusers, TV, desk -->
+  <rect class="s-mdf" x="208.4" y="110" width="57.6" height="8"/>
+  <rect class="s-mdf" x="364.4" y="110" width="52.8" height="8"/>
+  <rect class="s-obj" x="210.8" y="114" width="216" height="68" opacity=".55"/>
+  <rect class="s-dark" x="230" y="112" width="129.6" height="10"/>
+
+  <!-- door -->
+  <rect class="s-fill-surf" x="424.4" y="104.5" width="105.6" height="11"/>
+  <path class="s-ghost" d="M424.4 110 A105.6 105.6 0 0 0 530 215.6"/>
+  <line class="s-wood" x1="530" y1="110" x2="530" y2="215.6"/>
+  <line class="s-wood" x1="424.4" y1="104" x2="424.4" y2="116"/>
+
+  <!-- monitors -->
+  <rect class="s-dark" x="226.4" y="122" width="24" height="30"/>
+  <rect class="s-dark" x="374" y="122" width="24" height="30"/>
+
+  <!-- laptop on desk -->
+  <rect class="s-obj" x="296" y="140" width="34" height="6"/>
+
+  <!-- reflection rays -->
+  <polyline class="s-ray" points="238.4,137 174.5,185 312.8,254"/>
+  <polyline class="s-ray" points="386,137 525.5,192.7 312.8,254"/>
+  <circle class="s-raypt" cx="174.5" cy="185" r="3.6"/>
+  <circle class="s-raypt" cx="525.5" cy="192.7" r="3.6"/>
+  <line class="s-rayd" x1="238.4" y1="137" x2="312.8" y2="254"/>
+  <line class="s-rayd" x1="386" y1="137" x2="312.8" y2="254"/>
+  <text class="s-lbl" x="190" y="176" fill="var(--ray)">2,5 ms · −5 dB</text>
+  <text class="s-lbl" x="520" y="184" text-anchor="end" fill="var(--ray)">5,9 ms · −9 dB</text>
+
+  <!-- chair + listener -->
+  <path class="s-obj" d="M288 268 h50 a6 6 0 0 1 6 6 v40 a6 6 0 0 1-6 6 h-50 a6 6 0 0 1-6-6 v-40 a6 6 0 0 1 6-6z"/>
+  <circle cx="312.8" cy="254" r="12" fill="var(--ink)"/>
+  <circle cx="312.8" cy="254" r="17" fill="none" stroke="var(--ink)" stroke-width="1" opacity=".35"/>
+
+  <!-- left wall panel + hook -->
+  <rect class="s-felt" x="174.5" y="116" width="8" height="72"/>
+  <circle cx="179" cy="208" r="4" fill="none" stroke="var(--mute)" stroke-width="1.4"/>
+
+  <!-- right wall panels -->
+  <rect class="s-felt" x="517.5" y="194" width="8" height="72"/>
+  <rect class="s-felt" x="517.5" y="338" width="8" height="72"/>
+
+  <!-- shelf -->
+  <rect class="s-obj" x="483.5" y="554" width="42" height="108"/>
+  <line class="s-hair" x1="483.5" y1="600" x2="525.5" y2="600"/>
+
+  <!-- ceiling light -->
+  <circle class="s-ghost" cx="350" cy="374" r="13"/>
+  <line class="s-ghost" x1="337" y1="374" x2="363" y2="374"/>
+
+  <!-- loose diffusers -->
+  <rect class="s-mdf-l" x="176" y="630" width="36" height="22"/>
+  <rect class="s-mdf-l" x="176" y="656" width="36" height="22"/>
+
+  <!-- curtain -->
+  <path d="M194 668 q9 -9 18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0" fill="none" stroke="var(--mute)" stroke-width="2"/>
+
+  <!-- glass door -->
+  <rect class="s-glass" x="224" y="681" width="252" height="9"/>
+  <g stroke="var(--glass)" stroke-width="1">
+    <line x1="248" y1="681" x2="238" y2="690"/><line x1="300" y1="681" x2="290" y2="690"/>
+    <line x1="352" y1="681" x2="342" y2="690"/><line x1="404" y1="681" x2="394" y2="690"/>
+    <line x1="456" y1="681" x2="446" y2="690"/>
+  </g>
+
+  <!-- wall labels -->
+  <text class="s-dimt" x="350" y="130" text-anchor="middle" letter-spacing="1.4" opacity=".8">PAREDE FRONTAL</text>
+  <text class="s-dimt" x="350" y="716" text-anchor="middle" letter-spacing="1.4" fill="var(--glass)">PAREDE DE FUNDO · PORTA DE VIDRO</text>
+  <text class="s-dimt" x="160" y="470" text-anchor="middle" transform="rotate(-90 160 470)" letter-spacing="1.4" opacity=".8">PAREDE ESQUERDA</text>
+  <text class="s-dimt" x="546" y="470" text-anchor="middle" transform="rotate(-90 546 470)" letter-spacing="1.4" opacity=".8">PAREDE DIREITA</text>
+  <text class="s-dimt" x="350" y="736" text-anchor="middle" opacity=".65">escala 1:100 · norte do desenho = frente da sala</text>
+
+  <!-- keys -->
+  <g class="s-key">
+    <g><circle cx="295" cy="133" r="8.5"/><text x="295" y="136.5">1</text></g>
+    <g><circle cx="410" cy="140" r="8.5"/><text x="410" y="143.5">2</text></g>
+    <g><circle cx="238.4" cy="168" r="8.5"/><text x="238.4" y="171.5">3</text></g>
+    <g><circle cx="268" cy="140" r="8.5"/><text x="268" y="143.5">4</text></g>
+    <g><circle cx="283" cy="238" r="8.5"/><text x="283" y="241.5">5</text></g>
+    <g><circle cx="477" cy="148" r="8.5"/><text x="477" y="151.5">6</text></g>
+    <g><circle cx="198" cy="152" r="8.5"/><text x="198" y="155.5">7</text></g>
+    <g><circle cx="502" cy="230" r="8.5"/><text x="502" y="233.5">7</text></g>
+    <g><circle cx="502" cy="374" r="8.5"/><text x="502" y="377.5">7</text></g>
+    <g><circle cx="466" cy="608" r="8.5"/><text x="466" y="611.5">8</text></g>
+    <g><circle cx="250" cy="650" r="8.5"/><text x="250" y="653.5">9</text></g>
+    <g><circle cx="350" cy="662" r="8.5"/><text x="350" y="665.5">10</text></g>
+    <g><circle cx="228" cy="608" r="8.5"/><text x="228" y="611.5">11</text></g>
+    <g><circle cx="378" cy="392" r="8.5"/><text x="378" y="395.5">12</text></g>
+  </g>
+</svg>
+        <p class="dw__cap">Planta baixa · estado atual · cotas em metros</p>
+      </div>
+
+      <div>
+        <p class="keyhead">Legenda</p>
+        <div class="key">
+          <div><b>1</b><span>TV ≈48" (1,08 × 0,61 m) fixada na parede</span></div>
+          <div><b>2</b><span>Difusor MDF ripado ≈0,45 × 0,50 m — dois, um atrás de cada monitor</span></div>
+          <div><b>3</b><span>Monitor sobre isolador, apoiado na bancada</span></div>
+          <div><b>4</b><span>Bancada ≈1,80 × 0,60 m, encostada na parede frontal</span></div>
+          <div><b>5</b><span>Posição de escuta (estimada)</span></div>
+          <div><b>6</b><span>Porta de madeira, vão 0,88 m, abre para dentro</span></div>
+          <div><b>7</b><span>Painel de tecido preto ≈0,60 × 1,20 × 0,05 m — três identificados</span></div>
+          <div><b>8</b><span>Estante: bonés, livros, toca-discos</span></div>
+          <div><b>9</b><span>Cortina leve, translúcida</span></div>
+          <div><b>10</b><span>Porta de vidro — parede de fundo inteira</span></div>
+          <div><b>11</b><span>Dois difusores MDF encostados, não instalados</span></div>
+          <div><b>12</b><span>Luminária de teto (posição aproximada)</span></div>
+        </div>
+
+        <p class="keyhead">Linhas</p>
+        <div class="key">
+          <div><span class="sw" style="background:var(--surface);border-color:var(--mute);border-style:dashed"></span><span>Eixo geométrico da sala (x = 1,50 m)</span></div>
+          <div><span class="sw" style="background:var(--surface);border-color:var(--flag);border-style:dashed"></span><span>Eixo do sistema de escuta (x = 1,19 m)</span></div>
+          <div><span class="sw" style="background:var(--ray-soft);border-color:var(--ray)"></span><span>Trajeto de primeira reflexão lateral</span></div>
+          <div><span class="sw" style="background:var(--mdf-soft);border-color:var(--mdf)"></span><span>MDF cru / difusor</span></div>
+          <div><span class="sw" style="background:var(--felt);border-color:var(--felt-line)"></span><span>Absorvedor de tecido</span></div>
+          <div><span class="sw" style="background:var(--glass-fill);border-color:var(--glass)"></span><span>Vidro</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="des02">
+  <div class="plate">
+    <div class="head"><span class="head__n">DES. 02</span><h2>Elevações A–D</h2></div>
+    <div class="grid2">
+
+      <div class="dw">
+<svg viewBox="0 0 400 330" role="img" aria-label="Elevação A: parede frontal com TV, dois monitores, difusores de MDF, bancada e porta">
+  <line class="s-hair" x1="46" y1="44" x2="344" y2="44"/>
+  <line class="s-hair" x1="46" y1="278" x2="344" y2="278"/>
+  <rect class="s-wall-e" x="60" y="44" width="270" height="234"/>
+
+  <rect class="s-mdf-l" x="88.8" y="143.9" width="43.2" height="45"/>
+  <rect class="s-mdf-l" x="205.8" y="143.9" width="39.6" height="45"/>
+  <g stroke="var(--mdf)" stroke-width="1.6">
+    <line x1="93" y1="188.9" x2="93" y2="160"/><line x1="99" y1="188.9" x2="99" y2="150"/>
+    <line x1="105" y1="188.9" x2="105" y2="168"/><line x1="111" y1="188.9" x2="111" y2="152"/>
+    <line x1="117" y1="188.9" x2="117" y2="174"/><line x1="123" y1="188.9" x2="123" y2="157"/>
+    <line x1="210" y1="188.9" x2="210" y2="162"/><line x1="216" y1="188.9" x2="216" y2="149"/>
+    <line x1="222" y1="188.9" x2="222" y2="171"/><line x1="228" y1="188.9" x2="228" y2="154"/>
+    <line x1="234" y1="188.9" x2="234" y2="176"/><line x1="240" y1="188.9" x2="240" y2="160"/>
+  </g>
+
+  <rect class="s-dark" x="105" y="118.7" width="97.2" height="54.9"/>
+  <rect x="108" y="121.7" width="91.2" height="48.9" fill="var(--glass)" opacity=".35"/>
+
+  <rect class="s-woodf" x="250.8" y="89" width="79.2" height="189"/>
+  <rect class="s-wood" x="250.8" y="89" width="79.2" height="189"/>
+  <rect class="s-dark" x="256" y="94" width="69" height="184"/>
+  <circle cx="263" cy="188" r="3" fill="var(--mdf)"/>
+
+  <rect class="s-obj" x="90.6" y="210.5" width="162" height="5"/>
+  <line class="s-hair" x1="96" y1="215.5" x2="96" y2="278"/>
+  <line class="s-hair" x1="247" y1="215.5" x2="247" y2="278"/>
+
+  <rect class="s-dark" x="100.3" y="185.3" width="22" height="25"/>
+  <rect class="s-dark" x="101.3" y="158.3" width="20" height="27"/>
+  <circle cx="111.3" cy="173" r="5.5" fill="none" stroke="var(--paper)" stroke-width="1.6"/>
+  <rect class="s-dark" x="211" y="185.3" width="22" height="25"/>
+  <rect class="s-dark" x="212" y="158.3" width="20" height="27"/>
+  <circle cx="222" cy="173" r="5.5" fill="none" stroke="var(--paper)" stroke-width="1.6"/>
+
+  <polygon class="s-obj" points="152,180 182,180 186,208 156,208"/>
+  <rect class="s-obj" x="152" y="207" width="36" height="4"/>
+  <line class="s-hair" x1="141" y1="210.5" x2="141" y2="176"/>
+  <circle class="s-obj" cx="141" cy="173" r="4"/>
+  <rect class="s-obj" x="207" y="203" width="34" height="8"/>
+
+  <line class="s-rayd" x1="60" y1="168.2" x2="330" y2="168.2" opacity=".8"/>
+  <text class="s-dimt" x="336" y="166" fill="var(--ray)">eixo do tweeter ≈1,22 m</text>
+
+  <g class="s-dim">
+    <line x1="60" y1="296" x2="60" y2="310"/><line x1="250.8" y1="296" x2="250.8" y2="310"/><line x1="330" y1="296" x2="330" y2="310"/>
+    <line x1="60" y1="303" x2="330" y2="303"/>
+  </g>
+  <text class="s-dimt" x="155" y="300" text-anchor="middle">2,12</text>
+  <text class="s-dimt" x="290" y="300" text-anchor="middle">0,88</text>
+  <text class="s-dimt" x="60" y="36" letter-spacing="1.4">A · PAREDE FRONTAL — 3,00 m</text>
+  <text class="s-dimt" x="52" y="161" text-anchor="middle" transform="rotate(-90 52 161)">2,60</text>
+  <text class="s-dimt" x="330" y="325" text-anchor="end" opacity=".65">vista de dentro da sala</text>
+</svg>
+        <p class="dw__cap">Elevação A · parede frontal</p>
+      </div>
+
+      <div class="dw">
+<svg viewBox="0 0 400 330" role="img" aria-label="Elevação C: parede de fundo com porta de vidro, cortina e varão">
+  <line class="s-hair" x1="46" y1="44" x2="344" y2="44"/>
+  <line class="s-hair" x1="46" y1="278" x2="344" y2="278"/>
+  <rect class="s-wall-e" x="60" y="44" width="270" height="234"/>
+
+  <rect class="s-glass" x="100.5" y="89" width="189" height="189"/>
+  <line x1="195" y1="89" x2="195" y2="278" stroke="var(--glass)" stroke-width="2"/>
+  <g stroke="var(--glass)" stroke-width="1" opacity=".7">
+    <line x1="120" y1="89" x2="100.5" y2="112"/><line x1="150" y1="89" x2="100.5" y2="147"/>
+    <line x1="180" y1="89" x2="100.5" y2="182"/><line x1="215" y1="89" x2="195" y2="112"/>
+    <line x1="245" y1="89" x2="195" y2="147"/><line x1="275" y1="89" x2="195" y2="182"/>
+  </g>
+
+  <rect x="82.5" y="71" width="110" height="207" fill="var(--mute)" opacity=".3"/>
+  <rect x="197" y="71" width="110.5" height="207" fill="var(--mute)" opacity=".3"/>
+  <g stroke="var(--mute)" stroke-width="1" opacity=".65">
+    <line x1="98" y1="73" x2="98" y2="278"/><line x1="120" y1="73" x2="120" y2="278"/>
+    <line x1="142" y1="73" x2="142" y2="278"/><line x1="164" y1="73" x2="164" y2="278"/>
+    <line x1="212" y1="73" x2="212" y2="278"/><line x1="234" y1="73" x2="234" y2="278"/>
+    <line x1="256" y1="73" x2="256" y2="278"/><line x1="278" y1="73" x2="278" y2="278"/>
+  </g>
+
+  <line x1="73.5" y1="66.5" x2="316.5" y2="66.5" stroke="var(--mute)" stroke-width="3.4"/>
+  <circle cx="73.5" cy="66.5" r="3.6" fill="var(--mute)"/><circle cx="316.5" cy="66.5" r="3.6" fill="var(--mute)"/>
+  <g fill="var(--mute)" opacity=".8">
+    <circle cx="109.5" cy="53" r="2"/><circle cx="195" cy="53" r="2"/><circle cx="294" cy="53" r="2"/>
+  </g>
+  <text class="s-dimt" x="195" y="46" text-anchor="middle" opacity=".8">furos de fixação anterior</text>
+
+  <rect class="s-obj" x="60" y="179" width="18" height="99"/>
+  <polygon class="s-mdf-l" points="294,278 306,224 318,224 306,278"/>
+  <polygon class="s-mdf-l" points="308,278 320,226 330,226 318,278"/>
+
+  <g class="s-dim">
+    <line x1="60" y1="296" x2="60" y2="310"/><line x1="330" y1="296" x2="330" y2="310"/><line x1="60" y1="303" x2="330" y2="303"/>
+  </g>
+  <text class="s-dimt" x="195" y="300" text-anchor="middle">3,00</text>
+  <text class="s-dimt" x="60" y="36" letter-spacing="1.4">C · PAREDE DE FUNDO — 3,00 m</text>
+  <text class="s-dimt" x="52" y="161" text-anchor="middle" transform="rotate(-90 52 161)">2,60</text>
+  <text class="s-dimt" x="66" y="325" opacity=".65">canto direito</text>
+  <text class="s-dimt" x="330" y="325" text-anchor="end" opacity=".65">canto esquerdo</text>
+</svg>
+        <p class="dw__cap">Elevação C · parede de fundo (espelhada — vista de dentro)</p>
+      </div>
+    </div>
+
+    <div class="stack" style="margin-top:18px">
+      <div class="dw">
+<svg viewBox="0 0 560 330" role="img" aria-label="Elevação B: parede direita com dois painéis pretos, quadro e estante">
+  <line class="s-hair" x1="36" y1="44" x2="496" y2="44"/>
+  <line class="s-hair" x1="36" y1="278" x2="496" y2="278"/>
+  <rect class="s-wall-e" x="50" y="44" width="432" height="234"/>
+
+  <rect class="s-woodf" x="50" y="89" width="7" height="189"/>
+  <rect class="s-felt" x="113" y="107" width="54" height="108"/>
+  <rect class="s-felt" x="221" y="107" width="54" height="108"/>
+
+  <rect class="s-wood" x="369.5" y="93.5" width="90" height="67.5"/>
+  <rect x="373" y="97" width="83" height="60.5" fill="var(--ray)" opacity=".45"/>
+  <path d="M414 157.5 q-4 -22 6 -34 q6 -8 2 -16" fill="none" stroke="var(--mdf)" stroke-width="2.2"/>
+  <circle cx="437" cy="112" r="9" fill="var(--mdf)" opacity=".85"/>
+
+  <rect class="s-obj" x="383" y="179" width="81" height="99"/>
+  <line class="s-hair" x1="383" y1="228.5" x2="464" y2="228.5"/>
+  <g fill="var(--mute)" opacity=".75">
+    <path d="M392 179 q7 -8 14 0z"/><path d="M410 179 q7 -8 14 0z"/><path d="M428 179 q7 -8 14 0z"/><path d="M446 179 q7 -8 14 0z"/>
+  </g>
+  <g class="s-hair" stroke="var(--mute)">
+    <line x1="390" y1="240" x2="390" y2="262"/><line x1="394" y1="240" x2="394" y2="262"/>
+    <line x1="398" y1="240" x2="398" y2="262"/><line x1="402" y1="240" x2="402" y2="262"/>
+  </g>
+  <rect class="s-obj" x="418" y="250" width="40" height="12"/>
+  <circle cx="438" cy="256" r="3.4" fill="none" stroke="var(--mute)"/>
+
+  <g class="s-dim">
+    <line x1="50" y1="296" x2="50" y2="310"/><line x1="482" y1="296" x2="482" y2="310"/><line x1="50" y1="303" x2="482" y2="303"/>
+    <line x1="113" y1="220" x2="113" y2="236"/><line x1="167" y1="220" x2="167" y2="236"/><line x1="113" y1="229" x2="167" y2="229"/>
+    <line x1="221" y1="220" x2="221" y2="236"/><line x1="275" y1="220" x2="275" y2="236"/><line x1="221" y1="229" x2="275" y2="229"/>
+  </g>
+  <text class="s-dimt" x="266" y="300" text-anchor="middle">4,80</text>
+  <text class="s-dimt" x="140" y="248" text-anchor="middle">≈0,60</text>
+  <text class="s-dimt" x="248" y="248" text-anchor="middle">≈0,60</text>
+  <text class="s-dimt" x="50" y="36" letter-spacing="1.4">B · PAREDE DIREITA — 4,80 m</text>
+  <text class="s-dimt" x="42" y="161" text-anchor="middle" transform="rotate(-90 42 161)">2,60</text>
+  <text class="s-dimt" x="56" y="325" opacity=".65">canto frontal · batente da porta</text>
+  <text class="s-dimt" x="482" y="325" text-anchor="end" opacity=".65">canto de fundo</text>
+  <text class="s-dimt" x="140" y="98" text-anchor="middle" opacity=".8">painéis: posição ≈ (estimada por foto)</text>
+</svg>
+        <p class="dw__cap">Elevação B · parede direita</p>
+      </div>
+
+      <div class="dw">
+<svg viewBox="0 0 560 330" role="img" aria-label="Elevação D: parede esquerda, parcialmente não documentada">
+  <defs>
+    <pattern id="hatchD" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="9" stroke="var(--mute)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <line class="s-hair" x1="36" y1="44" x2="496" y2="44"/>
+  <line class="s-hair" x1="36" y1="278" x2="496" y2="278"/>
+  <rect class="s-wall-e" x="50" y="44" width="432" height="234"/>
+
+  <rect x="104" y="44" width="288" height="234" fill="url(#hatchD)" opacity=".22"/>
+  <rect x="104" y="44" width="288" height="234" fill="none" stroke="var(--mute)" stroke-width="1" stroke-dasharray="6 4"/>
+  <rect x="180" y="146" width="136" height="30" fill="var(--surface)"/>
+  <text class="s-dimt" x="248" y="159" text-anchor="middle" letter-spacing="1.2">TRECHO NÃO</text>
+  <text class="s-dimt" x="248" y="171" text-anchor="middle" letter-spacing="1.2">DOCUMENTADO — 3,20 m</text>
+
+  <rect class="s-felt" x="423.5" y="107" width="54" height="117"/>
+  <path d="M402 140 a10 10 0 0 1 20 0" fill="none" stroke="var(--mute)" stroke-width="2"/>
+  <rect x="399" y="139" width="6" height="11" rx="2" fill="var(--mute)"/>
+  <rect x="419" y="139" width="6" height="11" rx="2" fill="var(--mute)"/>
+
+  <polygon class="s-mdf-l" points="54.5,278 66,224 78,224 66.5,278"/>
+  <polygon class="s-mdf-l" points="68,278 79,226 90.5,226 79,278"/>
+
+  <g class="s-dim">
+    <line x1="50" y1="296" x2="50" y2="310"/><line x1="482" y1="296" x2="482" y2="310"/><line x1="50" y1="303" x2="482" y2="303"/>
+  </g>
+  <text class="s-dimt" x="266" y="300" text-anchor="middle">4,80</text>
+  <text class="s-dimt" x="50" y="36" letter-spacing="1.4">D · PAREDE ESQUERDA — 4,80 m</text>
+  <text class="s-dimt" x="42" y="161" text-anchor="middle" transform="rotate(-90 42 161)">2,60</text>
+  <text class="s-dimt" x="56" y="325" opacity=".65">canto de fundo · difusores encostados</text>
+  <text class="s-dimt" x="482" y="325" text-anchor="end" opacity=".65">canto frontal · painel + gancho do fone</text>
+</svg>
+        <p class="dw__cap">Elevação D · parede esquerda (espelhada — vista de dentro)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="des03">
+  <div class="plate">
+    <div class="head"><span class="head__n">DES. 03</span><h2>Corte longitudinal e régua modal</h2></div>
+    <div class="dw">
+<svg viewBox="0 0 700 470" role="img" aria-label="Corte longitudinal da sala mostrando trajetos de reflexão do teto, da TV e da porta de vidro, e as posições dos nós modais">
+  <rect class="s-wall" x="60" y="60" width="576" height="312"/>
+
+  <rect class="s-dark" x="62" y="159.6" width="10" height="73.2"/>
+  <rect class="s-obj" x="60" y="282" width="72" height="6"/>
+  <line class="s-hair" x1="126" y1="288" x2="126" y2="372"/>
+  <rect class="s-dark" x="88" y="248.4" width="16" height="33.6"/>
+  <rect class="s-dark" x="90" y="212.4" width="12" height="36"/>
+  <circle cx="96" cy="246" r="4" fill="none" stroke="var(--paper)" stroke-width="1.4"/>
+
+  <path class="s-obj" d="M204 316 h44 a5 5 0 0 1 5 5 v46 h-54 v-46 a5 5 0 0 1 5-5z"/>
+  <rect class="s-obj" x="244" y="252" width="9" height="66" rx="4"/>
+  <circle cx="204" cy="214" r="14" fill="var(--ink)"/>
+  <path d="M199 228 q5 6 10 0 l14 8 v54 h-38 v-54z" fill="var(--ink)" opacity=".55"/>
+
+  <g stroke="var(--mute)" stroke-width="2" opacity=".8">
+    <line x1="620" y1="96" x2="620" y2="372"/><line x1="626" y1="96" x2="626" y2="372"/>
+  </g>
+  <rect class="s-glass" x="628" y="120" width="8" height="252"/>
+
+  <polyline class="s-ray" points="102,225.6 152.6,60 204,228"/>
+  <circle class="s-raypt" cx="152.6" cy="60" r="3.6"/>
+  <text class="s-lbl" x="158" y="80" fill="var(--ray)">teto · 5,4 ms · −9 dB</text>
+
+  <polyline class="s-ray" points="98,246 72,243 204,240" opacity=".9"/>
+  <circle class="s-raypt" cx="72" cy="243" r="3.6"/>
+  <text class="s-lbl" x="86" y="262" fill="var(--ray)">TV · 1,3 ms</text>
+
+  <polyline class="s-ray" points="102,214 620,206 204,220" opacity=".9"/>
+  <circle class="s-raypt" cx="620" cy="206" r="3.6"/>
+  <text class="s-lbl" x="612" y="196" text-anchor="end" fill="var(--ray)">vidro do fundo · 20,5 ms · −18 dB</text>
+
+  <line class="s-rayd" x1="102" y1="225.6" x2="204" y2="228" opacity=".9"/>
+
+  <g class="s-dim"><line x1="120" y1="46" x2="120" y2="56"/><line x1="192" y1="46" x2="192" y2="56"/><line x1="120" y1="51" x2="192" y2="51"/></g>
+  <text class="s-dimt" x="156" y="42" text-anchor="middle" fill="var(--ray)">zona da nuvem de teto</text>
+
+  <line class="s-flag" x1="204" y1="60" x2="204" y2="440"/>
+  <line class="s-rayd" x1="288" y1="60" x2="288" y2="440" stroke="var(--ray)"/>
+  <text class="s-flagt" x="200" y="392" text-anchor="end">escuta atual ≈1,20 m</text>
+  <text class="s-lbl" x="294" y="392" fill="var(--ray)">38% = 1,82 m</text>
+
+  <g class="s-dim">
+    <line x1="60" y1="452" x2="60" y2="464"/><line x1="636" y1="452" x2="636" y2="464"/><line x1="60" y1="458" x2="636" y2="458"/>
+  </g>
+  <text class="s-dimt" x="348" y="454" text-anchor="middle">4,80</text>
+
+  <line class="s-hair" x1="60" y1="400" x2="636" y2="400"/>
+  <line class="s-hair" x1="60" y1="418" x2="636" y2="418"/>
+  <line class="s-hair" x1="60" y1="436" x2="636" y2="436"/>
+  <g stroke="var(--flag)" stroke-width="2.6">
+    <line x1="204" y1="393" x2="204" y2="407"/><line x1="492" y1="393" x2="492" y2="407"/>
+    <line x1="156" y1="411" x2="156" y2="425"/><line x1="348" y1="411" x2="348" y2="425"/><line x1="540" y1="411" x2="540" y2="425"/>
+    <line x1="132" y1="429" x2="132" y2="443"/><line x1="276" y1="429" x2="276" y2="443"/><line x1="420" y1="429" x2="420" y2="443"/><line x1="564" y1="429" x2="564" y2="443"/>
+  </g>
+  <text class="s-dimt" x="644" y="404">71,5 Hz</text>
+  <text class="s-dimt" x="644" y="422">107,2 Hz</text>
+  <text class="s-dimt" x="644" y="440">142,9 Hz</text>
+  <text class="s-dimt" x="52" y="404" text-anchor="end">2ª</text>
+  <text class="s-dimt" x="52" y="422" text-anchor="end">3ª</text>
+  <text class="s-dimt" x="52" y="440" text-anchor="end">4ª</text>
+  <text class="s-dimt" x="60" y="382" letter-spacing="1.2">RÉGUA MODAL — NÓS DE PRESSÃO NO EIXO DO COMPRIMENTO</text>
+
+  <text class="s-dimt" x="60" y="52" letter-spacing="1.4">CORTE LONGITUDINAL — 4,80 × 2,60 m</text>
+  <text class="s-dimt" x="52" y="216" text-anchor="middle" transform="rotate(-90 52 216)">2,60</text>
+  <text class="s-dimt" x="66" y="368" opacity=".7">parede frontal</text>
+  <text class="s-dimt" x="614" y="368" text-anchor="end" opacity=".7">porta de vidro</text>
+</svg>
+      <p class="dw__cap">Corte longitudinal · trajetos de reflexão e nós modais axiais</p>
+    </div>
+  </div>
+
+  <div class="wrap" style="margin-top:34px">
+    <div class="note"><b>O achado mais duro do levantamento.</b> A 1,20 m da parede frontal, a cadeira está sentada <em>exatamente</em> em cima do nó de pressão do segundo modo de comprimento — 71,5 Hz. Nessa frequência a sala tem pressão zero ali. Não é ajuste de EQ, não é o monitor: é geometria. Toda nota que cai perto de ré♭1/ré1 desaparece nessa cadeira e reaparece dois passos atrás.</div>
+  </div>
+</section>
+
+<section id="diag">
+  <div class="wrap">
+    <div class="head"><span class="head__n">02</span><h2>Diagnóstico</h2></div>
+    <p>Com 37,4 m³ e RT estimado em ~0,45 s, a frequência de Schroeder fica perto de <strong>220 Hz</strong>. Abaixo disso a sala não tem campo difuso — tem modos individuais, e são eles que mandam. Acima disso mandam as reflexões primárias.</p>
+  </div>
+
+  <div class="plate" style="margin-top:26px">
+    <p class="keyhead">Modos axiais (Hz)</p>
+    <div class="tw"><table>
+      <thead><tr><th>Eixo</th><th class="n">Dimensão</th><th class="n">1ª</th><th class="n">2ª</th><th class="n">3ª</th><th>Observação</th></tr></thead>
+      <tbody>
+        <tr><td>Comprimento</td><td class="n">4,80 m</td><td class="n">35,7</td><td class="n">71,5</td><td class="n">107,2</td><td>nó da 2ª ordem na cadeira</td></tr>
+        <tr><td>Largura</td><td class="n">3,00 m</td><td class="n">57,2</td><td class="n">114,3</td><td class="n">171,5</td><td>—</td></tr>
+        <tr><td>Altura</td><td class="n">2,60 m</td><td class="n">66,0</td><td class="n">131,9</td><td class="n">197,9</td><td>66,0 + 71,5 empilham em ~68 Hz</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-family:var(--mono); font-size:12px; color:var(--mute); margin-top:10px">Buraco modal entre 35,7 e 57,2 Hz — nada sustenta a região de 40–55 Hz, onde mora o corpo do bumbo. Aglomerado em 107–114 Hz.</p>
+
+    <p class="keyhead">Reflexões de primeira ordem — posição atual</p>
+    <div class="tw"><table>
+      <thead><tr><th>Trajeto</th><th>Ponto de reflexão</th><th class="n">Atraso</th><th class="n">Nível</th><th>Consequência</th></tr></thead>
+      <tbody>
+        <tr><td>Parede esquerda</td><td>0,63 m da frente</td><td class="n bad">2,5 ms</td><td class="n bad">−5 dB</td><td>comb com nulos a 200 / 600 / 1000 Hz</td></tr>
+        <tr><td>Parede direita</td><td>0,69 m da frente</td><td class="n">6,0 ms</td><td class="n">−9 dB</td><td>4 dB e 3,5 ms de diferença do lado esquerdo</td></tr>
+        <tr><td>TV (plano frontal)</td><td>0,10 m da parede</td><td class="n bad">1,3 ms</td><td class="n">forte em 200–800 Hz</td><td>comb de ~800 Hz de passo a partir de 400 Hz</td></tr>
+        <tr><td>Teto</td><td>0,77 m da frente</td><td class="n">5,4 ms</td><td class="n">−9 dB</td><td>sem tratamento nenhum</td></tr>
+        <tr><td>Porta de vidro</td><td>3,60 m atrás</td><td class="n">20,5 ms</td><td class="n">−18 dB</td><td>eco discreto, quase sem absorção</td></tr>
+      </tbody>
+    </table></div>
+
+    <p class="keyhead">Cancelamento por fronteira (SBIR)</p>
+    <div class="tw"><table>
+      <thead><tr><th>Fronteira</th><th class="n">Distância</th><th class="n">Nulo</th><th>Observação</th></tr></thead>
+      <tbody>
+        <tr><td>Parede frontal (baffle)</td><td class="n">0,35 m</td><td class="n bad">245 Hz</td><td>bem no meio da região dos graves-médios</td></tr>
+        <tr><td>Parede esquerda (monitor E)</td><td class="n">0,57 m</td><td class="n">150 Hz</td><td rowspan="2" style="white-space:normal">nulos diferentes nos dois lados = timbre diferente em cada canal</td></tr>
+        <tr><td>Parede direita (monitor D)</td><td class="n">1,20 m</td><td class="n">71 Hz</td></tr>
+        <tr><td>Piso (tweeter a 1,22 m)</td><td class="n">1,22 m</td><td class="n">70 Hz</td><td>reforça o buraco do modo de 71,5 Hz</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="wrap" style="margin-top:34px">
+    <h3>O que a geometria já condena</h3>
+    <ul class="plain">
+      <li><strong>Assimetria de 31 cm.</strong> O eixo do sistema está em x = 1,19 m e o da sala em x = 1,50 m. A porta empurrou tudo para a esquerda. O monitor esquerdo tem parede a 0,57 m; o direito, a 1,20 m. Imagem estéreo puxada e centro fantasma instável.</li>
+      <li><strong>Triângulo aberto demais.</strong> Separação de 1,23 m contra uma distância de escuta de ~0,85 m no eixo — isso dá 70–76°, contra os 60° de referência. Buraco no centro e agudo dependente de milímetros de cabeça.</li>
+      <li><strong>A TV é o pior refletor da sala.</strong> Uma superfície plana e rígida de ~0,66 m², a 25 cm atrás dos monitores, com a borda inferior na altura do tweeter. Não dá para tratar a parede frontal ignorando ela.</li>
+      <li><strong>Os difusores estão no lugar errado.</strong> Um difusor precisa de campo formado — na prática, 1 m no mínimo, idealmente 3× a maior dimensão do painel. A 20 cm da fonte, aqueles ripados de MDF não difundem: refletem, com a coloração de um pente de ripas. Eles são bons; estão só na parede errada.</li>
+      <li><strong>Zero controle de grave.</strong> Nenhum canto tratado. Os três painéis pretos somam ~2,2 m² de absorção de 5 cm numa sala de 69 m² de superfície — 3% de cobertura, e nada abaixo de ~300 Hz. Montados rentes à parede, perdem metade do que poderiam fazer nos médios-graves.</li>
+      <li><strong>Vidro atrás da cabeça.</strong> ~4,4 m² de superfície com coeficiente de absorção próximo de zero acima de 250 Hz, coberta por uma cortina translúcida que só pega agudo. É também o ponto de vazamento de som da sala inteira.</li>
+      <li><strong>A tampa do MacBook</strong> fica aberta bem no eixo entre os monitores, inclinada. É um refletor de médio no centro exato da imagem estéreo.</li>
+    </ul>
+
+    <h3>O que já está certo</h3>
+    <ul class="plain">
+      <li>Disparar no eixo comprido da sala — decisão estrutural correta.</li>
+      <li>Proporção 1,85 : 1,15 : 1 é saudável; não há dimensão degenerada.</li>
+      <li>Monitores desacoplados da bancada por isoladores.</li>
+      <li>O painel da parede esquerda cai quase em cima do ponto-espelho (0,63 m). Foi sorte ou bom ouvido, mas está certo.</li>
+      <li>A estante cheia de livros e bonés, no fundo da parede direita, é difusão acidental — e funciona.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="des04">
+  <div class="plate">
+    <div class="head"><span class="head__n">DES. 04</span><h2>Planta proposta</h2></div>
+    <div class="side">
+      <div class="dw">
+<svg viewBox="0 0 700 760" role="img" aria-label="Planta proposta com sistema recentrado, bass traps de canto, absorção frontal, painéis laterais nos pontos-espelho, nuvem de teto e difusores na parede esquerda">
+  <g class="s-dim">
+    <line x1="170" y1="66" x2="170" y2="104"/><line x1="530" y1="66" x2="530" y2="104"/><line x1="170" y1="72" x2="530" y2="72"/>
+    <line x1="112" y1="110" x2="112" y2="686"/>
+    <line x1="106" y1="110" x2="164" y2="110"/><line x1="106" y1="686" x2="164" y2="686"/>
+    <line x1="146" y1="110" x2="146" y2="338"/><line x1="140" y1="338" x2="164" y2="338"/>
+    <line x1="284" y1="88" x2="284" y2="100"/><line x1="416" y1="88" x2="416" y2="100"/>
+    <line x1="174.5" y1="88" x2="174.5" y2="100"/><line x1="525.5" y1="88" x2="525.5" y2="100"/>
+    <line x1="174.5" y1="94" x2="525.5" y2="94"/>
+  </g>
+  <text class="s-dimt" x="350" y="66" text-anchor="middle">3,00</text>
+  <text class="s-dimt" x="229" y="91" text-anchor="middle">0,95</text>
+  <text class="s-dimt" x="350" y="91" text-anchor="middle">1,10</text>
+  <text class="s-dimt" x="471" y="91" text-anchor="middle">0,95</text>
+  <text class="s-dimt" x="106" y="398" text-anchor="middle" transform="rotate(-90 106 398)">4,80</text>
+  <text class="s-dimt" x="140" y="224" text-anchor="middle" transform="rotate(-90 140 224)">1,90</text>
+
+  <rect class="s-wall" x="170" y="110" width="360" height="576"/>
+  <line class="s-axis" x1="350" y1="96" x2="350" y2="700"/>
+
+  <!-- bass traps -->
+  <g fill="var(--ray)" fill-opacity=".3" stroke="var(--ray)" stroke-width="1.6">
+    <polygon points="174.5,114.5 210.5,114.5 174.5,150.5"/>
+    <polygon points="525.5,114.5 489.5,114.5 525.5,150.5"/>
+    <polygon points="174.5,681.5 210.5,681.5 174.5,645.5"/>
+    <polygon points="525.5,681.5 489.5,681.5 525.5,645.5"/>
+  </g>
+
+  <!-- front wall absorption + movable panel over door -->
+  <rect x="206" y="110" width="216" height="12" fill="var(--ray)" fill-opacity=".3" stroke="var(--ray)" stroke-width="1.4"/>
+  <rect x="424.4" y="124" width="105.6" height="12" fill="var(--ray)" fill-opacity=".15" stroke="var(--ray)" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <path class="s-ghost" d="M424.4 110 A105.6 105.6 0 0 0 530 215.6"/>
+  <line class="s-wood" x1="530" y1="110" x2="530" y2="215.6"/>
+  <rect class="s-dark" x="230" y="112" width="129.6" height="8" opacity=".55"/>
+
+  <!-- side panels at mirror points -->
+  <rect x="174.5" y="232.4" width="12" height="72" fill="var(--ray)" fill-opacity=".3" stroke="var(--ray)" stroke-width="1.4"/>
+  <rect x="513.5" y="232.4" width="12" height="72" fill="var(--ray)" fill-opacity=".3" stroke="var(--ray)" stroke-width="1.4"/>
+
+  <!-- ceiling cloud -->
+  <rect x="278" y="209" width="144" height="144" fill="none" stroke="var(--ray)" stroke-width="1.4" stroke-dasharray="8 5"/>
+  <text class="s-lbl" x="350" y="200" text-anchor="middle" fill="var(--ray)">nuvem de teto 1,20 × 1,20</text>
+
+  <!-- desk + monitors -->
+  <rect class="s-obj" x="236" y="230" width="228" height="72" opacity=".55"/>
+  <rect class="s-ghost" x="266" y="200" width="36" height="28"/>
+  <rect class="s-ghost" x="398" y="200" width="36" height="28"/>
+  <rect class="s-dark" x="272" y="194" width="24" height="30"/>
+  <rect class="s-dark" x="404" y="194" width="24" height="30"/>
+
+  <!-- rays -->
+  <polyline class="s-ray" points="284,224 174.5,268.2 350,338"/>
+  <polyline class="s-ray" points="416,224 525.5,268.2 350,338"/>
+  <circle class="s-raypt" cx="174.5" cy="268.2" r="3.6"/>
+  <circle class="s-raypt" cx="525.5" cy="268.2" r="3.6"/>
+  <line class="s-rayd" x1="284" y1="224" x2="350" y2="338"/>
+  <line class="s-rayd" x1="416" y1="224" x2="350" y2="338"/>
+  <path d="M330 300 a44 44 0 0 0 40 0" fill="none" stroke="var(--ray)" stroke-width="1.2"/>
+  <text class="s-lbl" x="350" y="292" text-anchor="middle" fill="var(--ray)">60°</text>
+  <text class="s-lbl" x="192" y="262" fill="var(--ray)">4,5 ms · −7,6 dB</text>
+  <text class="s-lbl" x="508" y="262" text-anchor="end" fill="var(--ray)">4,5 ms · −7,6 dB</text>
+
+  <!-- listener -->
+  <path class="s-obj" d="M326 352 h48 a6 6 0 0 1 6 6 v40 a6 6 0 0 1-6 6 h-48 a6 6 0 0 1-6-6 v-40 a6 6 0 0 1 6-6z"/>
+  <circle cx="350" cy="338" r="12" fill="var(--ink)"/>
+  <circle cx="350" cy="338" r="17" fill="none" stroke="var(--ink)" stroke-width="1" opacity=".35"/>
+
+  <!-- reused MDF diffusers on left wall rear -->
+  <rect class="s-mdf" x="174.5" y="494" width="10" height="54"/>
+  <rect class="s-mdf" x="174.5" y="566" width="10" height="54"/>
+  <text class="s-lbl" x="192" y="546" fill="var(--mdf)">4 difusores MDF</text>
+  <text class="s-lbl" x="192" y="558" fill="var(--mdf)">(2 empilhados em cada)</text>
+
+  <!-- existing shelf kept -->
+  <rect class="s-obj" x="483.5" y="554" width="42" height="108"/>
+  <line class="s-hair" x1="483.5" y1="600" x2="525.5" y2="600"/>
+
+  <!-- heavy curtain + movable gobo + glass -->
+  <path d="M188 660 q9 -11 18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0 t18 0" fill="none" stroke="var(--ray)" stroke-width="3"/>
+  <rect x="266" y="636" width="168" height="12" fill="var(--ray)" fill-opacity=".15" stroke="var(--ray)" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text class="s-lbl" x="350" y="628" text-anchor="middle" fill="var(--ray)">gobo móvel (só na hora de mixar)</text>
+  <rect class="s-glass" x="224" y="681" width="252" height="9"/>
+  <g stroke="var(--glass)" stroke-width="1">
+    <line x1="248" y1="681" x2="238" y2="690"/><line x1="300" y1="681" x2="290" y2="690"/>
+    <line x1="352" y1="681" x2="342" y2="690"/><line x1="404" y1="681" x2="394" y2="690"/>
+    <line x1="456" y1="681" x2="446" y2="690"/>
+  </g>
+
+  <text class="s-dimt" x="350" y="716" text-anchor="middle" fill="var(--glass)">PORTA DE VIDRO — SUPERFÍCIE INTOCÁVEL</text>
+  <text class="s-dimt" x="350" y="736" text-anchor="middle" opacity=".65">escala 1:100 · verde = intervenção nova · cinza = mobiliário mantido</text>
+</svg>
+        <p class="dw__cap">Planta proposta · sistema recentrado e tratamento por prioridade</p>
+      </div>
+
+      <div>
+        <p class="keyhead">Comparativo</p>
+        <div class="tw"><table>
+          <thead><tr><th>Parâmetro</th><th class="n">Hoje</th><th class="n">Proposto</th></tr></thead>
+          <tbody>
+            <tr><td>Eixo do sistema</td><td class="n bad">1,19 m</td><td class="n ok">1,50 m</td></tr>
+            <tr><td>Separação</td><td class="n">1,23 m</td><td class="n">1,10 m</td></tr>
+            <tr><td>Ângulo do triângulo</td><td class="n bad">≈72°</td><td class="n ok">60°</td></tr>
+            <tr><td>Baffle → parede frontal</td><td class="n">0,35 m</td><td class="n">0,95 m</td></tr>
+            <tr><td>SBIR frontal</td><td class="n bad">245 Hz</td><td class="n ok">90 Hz</td></tr>
+            <tr><td>SBIR lateral E / D</td><td class="n bad">150 / 71 Hz</td><td class="n ok">90 / 90 Hz</td></tr>
+            <tr><td>Posição de escuta</td><td class="n bad">1,20 m (25%)</td><td class="n ok">1,90 m (40%)</td></tr>
+            <tr><td>Nó de 71,5 Hz</td><td class="n bad">em cima</td><td class="n ok">0,70 m longe</td></tr>
+            <tr><td>1ª reflexão E</td><td class="n">2,5 ms · −5 dB</td><td class="n ok">4,5 ms · −7,6 dB</td></tr>
+            <tr><td>1ª reflexão D</td><td class="n">6,0 ms · −9 dB</td><td class="n ok">4,5 ms · −7,6 dB</td></tr>
+            <tr><td>Ponto-espelho lateral</td><td class="n">0,63 / 0,69 m</td><td class="n ok">1,32 m nos dois</td></tr>
+            <tr><td>Reflexão de teto</td><td class="n">0,77 m</td><td class="n">1,42 m</td></tr>
+          </tbody>
+        </table></div>
+
+        <p class="keyhead">Por que 1,90 m e não 1,82 m</p>
+        <p style="font-size:.92rem">A regra dos 38% dá 1,82 m — que cai quase em cima do nó da 4ª ordem (142,9 Hz, nó em 1,80 m). Comece em 1,90 m e ajuste na faixa de 1,75 a 2,05 m com uma varredura medida. A cadeira é o controle de grave mais barato da sala.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plano">
+  <div class="plate">
+    <div class="head"><span class="head__n">03</span><h2>Plano de ação, em ordem de retorno</h2></div>
+    <div class="acts">
+
+      <div class="act"><div class="act__n">1</div><div>
+        <h4>Recentrar o sistema e recuar a cadeira</h4>
+        <p>Monitores em x = 0,95 m e 2,05 m, baffle a 0,95 m da parede frontal, tweeter a 1,20 m, ouvinte em x = 1,50 m e y = 1,90 m. Com a bancada a partir de 1,00 m, tudo passa longe do arco da porta (raio 0,88 m), então a porta continua abrindo normalmente. Trave a porta fechada enquanto mixa.</p>
+        <div class="act__meta"><span>Custo <i class="g">R$ 0</i></span><span>Tempo <i class="g">1 tarde</i></span><span>Ganho <i class="g">o maior de todos</i></span></div>
+      </div></div>
+
+      <div class="act"><div class="act__n">2</div><div>
+        <h4>Bass traps nos quatro cantos verticais</h4>
+        <p>Do piso ao teto, atravessando o canto a 45°, com lã de rocha de 50 mm / 64 kg/m³ em camada dupla (100 mm) ou preenchimento tipo <em>superchunk</em> de 0,30 m de cateto. Comece pelos dois cantos frontais. É a única coisa nesta sala que age abaixo de 100 Hz, onde estão o nó de 71,5 Hz e o empilhamento de 66–72 Hz.</p>
+        <div class="act__meta"><span>≈10,4 m lineares</span><span>Prioridade <i>crítica</i></span></div>
+      </div></div>
+
+      <div class="act"><div class="act__n">3</div><div>
+        <h4>Trocar difusor por absorção na parede frontal</h4>
+        <p>Tire os dois ripados de MDF de trás dos monitores. No lugar, 100 mm de absorção (ou 50 mm com 50 mm de ar atrás) cobrindo o trecho livre de ~0,30 a 2,10 m, contornando a TV. Os quatro MDFs vão para o terço traseiro da parede esquerda, empilhados dois a dois — lá eles ficam a mais de 1,4 m do ouvinte e finalmente difundem, fazendo par com a estante e o quadro do lado direito.</p>
+        <div class="act__meta"><span>Reaproveita o que já existe</span><span>Prioridade <i>alta</i></span></div>
+      </div></div>
+
+      <div class="act"><div class="act__n">4</div><div>
+        <h4>Pontos-espelho laterais, simétricos</h4>
+        <p>Centro em y = 1,32 m nas duas paredes, altura central 1,20 m, painel de 0,60 × 1,20 m com 100 mm — ou os pretos que você já tem, remontados <strong>com 5 a 10 cm de ar atrás</strong>, o que praticamente dobra a absorção deles nos médios-graves. Confirme os pontos com o truque do espelho: alguém desliza um espelho pela parede, você senta e marca onde enxerga o cone do monitor.</p>
+        <div class="act__meta"><span>2 painéis</span><span>Prioridade <i>alta</i></span></div>
+      </div></div>
+
+      <div class="act"><div class="act__n">5</div><div>
+        <h4>Nuvem de teto</h4>
+        <p>1,20 × 1,20 m com 100 mm, suspensa 15 cm do teto, centrada em y = 1,42 m — no meio do caminho entre monitor e cabeça. O teto hoje é a maior superfície rígida sem nenhum tratamento, e devolve a 5,4 ms.</p>
+        <div class="act__meta"><span>1 nuvem</span><span>Prioridade <i>alta</i></span></div>
+      </div></div>
+
+      <div class="act"><div class="act__n">6</div><div>
+        <h4>Resolver a parede de vidro sem furar o vidro</h4>
+        <p>Cortina blackout pesada (≥400 g/m², franzimento 2:1, afastada 10–15 cm do vidro, indo do teto ao chão e transbordando 20 cm de cada lado) substituindo a cinza translúcida — é o absorvedor prático ali. Some a isso um gobo móvel de 1,40 × 1,60 m que você posiciona na frente do vidro só na hora de mixar e encosta na parede quando não está. As faixas de alvenaria ao lado e acima do vão do vidro aceitam painel fixo.</p>
+        <div class="act__meta"><span>Nada é fixado no vidro</span><span>Prioridade <i>média</i></span></div>
+      </div></div>
+
+      <div class="act"><div class="act__n">7</div><div>
+        <h4>Limpar o eixo entre os monitores</h4>
+        <p>Feche ou abaixe a tampa do MacBook durante a escuta crítica (use a TV como tela), tire o pedestal de microfone e a caixa acrílica de cima da bancada, e ponha um feltro grosso na faixa central da bancada — com a mesa na nova posição, o ponto de reflexão dela cai em y ≈ 1,44 m, bem no meio do tampo. Inclinar os monitores 5–8° para baixo também tira a mesa do caminho.</p>
+        <div class="act__meta"><span>Custo <i class="g">quase zero</i></span><span>Prioridade <i>média</i></span></div>
+      </div></div>
+
+      <div class="act"><div class="act__n">8</div><div>
+        <h4>Medir antes e depois</h4>
+        <p>REW com um microfone de medição (UMIK-1 ou equivalente): varredura na posição nova, resposta em frequência até 300 Hz, waterfall e ETC. Sem isso não dá para saber se o trap acertou o modo certo, e a régua modal do DES. 03 vira só teoria.</p>
+        <div class="act__meta"><span>Depois das etapas 1–5</span><span>Prioridade <i class="g">verificação</i></span></div>
+      </div></div>
+
+    </div>
+  </div>
+</section>
+
+<section id="faltando">
+  <div class="wrap">
+    <div class="head"><span class="head__n">04</span><h2>O que falta para fechar o desenho</h2></div>
+    <p>Cinco coisas travam a precisão do levantamento. Nenhuma muda o diagnóstico, mas todas mudam as cotas:</p>
+    <ul class="plain">
+      <li><strong>Pé-direito real.</strong> Usei 2,60 m. Se for 2,70 ou 2,80, os modos de altura mudam e o empilhamento em ~68 Hz pode sumir ou piorar.</li>
+      <li><strong>Foto da parede esquerda inteira.</strong> É o trecho marcado como não documentado no DES. 02 — 3,20 m dos quais eu não sei nada, e é justamente onde vão os difusores no plano proposto.</li>
+      <li><strong>O piso.</strong> Não aparece em nenhuma foto. Porcelanato e tapete grosso dão RT bem diferentes, e o RT é o que define a frequência de Schroeder.</li>
+      <li><strong>Distância de escuta medida.</strong> Estimei 1,20 m por escala fotográfica; é o número menos confiável de todos e o mais importante do diagnóstico. Uma trena da parede frontal até a orelha resolve.</li>
+      <li><strong>Espessura e dimensão reais dos painéis pretos</strong> e a largura do vão de vidro. Assumi 0,60 × 1,20 × 0,05 m e 2,10 m de vão.</li>
+    </ul>
+    <p>Me manda esses cinco e eu refaço a planta com cotas fechadas, incluindo a lista de corte dos bass traps e a metragem exata de lã.</p>
+  </div>
+</section>
+
+</main>
