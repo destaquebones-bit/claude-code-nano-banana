@@ -1706,6 +1706,35 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 
     <p>O calço não inclina o suficiente para ser problema, mas ele também não isola nada: metal em madeira transmite tudo. Entre o bloco e o calço, ou entre o calço e a caixa, entra algo realmente macio — espuma de alta densidade, mouse pad grosso dobrado, ou massa de calafetar em quatro pontos. E o que você precisa mesmo é de <em>toe-in horizontal</em>: gire cada caixa apontando para a sua cabeça.</p>
 
+    <h3>As chaves atrás da HS5</h3>
+    <p>São três: <strong>LEVEL</strong>, <strong>HIGH TRIM</strong> (±2 dB acima de 2 kHz) e <strong>ROOM CONTROL</strong> (0 / −2 / −4 dB abaixo de 500 Hz). Para esta sala, nesta posição:</p>
+
+    <div class="tw"><table>
+      <thead><tr><th>Controle</th><th>Posição</th><th>Motivo</th></tr></thead>
+      <tbody>
+        <tr><td>ROOM CONTROL</td><td class="ok">0 dB</td><td>ele existe para compensar ganho de parede. Com o baffle a 0,92 m da frente e 0,95 m das laterais, você não está nem encostado nem no canto — não há ganho para compensar</td></tr>
+        <tr><td>HIGH TRIM</td><td class="ok">0 dB</td><td>a sala é viva, mas você escuta a 0,95 m: o agudo que chega é quase todo direto. Cortar 2 dB no direto enquanto o campo refletido continua brilhante faz você mixar mais brilhante ainda</td></tr>
+        <tr><td>LEVEL</td><td class="ok">igual nos dois, calibrado</td><td>qualquer diferença entre os lados desloca o centro fantasma</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="warn"><b>ROOM CONTROL não conserta modo nem nulo.</b> Ele é uma prateleira larga abaixo de 500 Hz. Os problemas desta sala são estreitos e dependentes de posição: o nó de 71,5 Hz, o empilhamento de 66–72 Hz, o cancelamento de fronteira de 90 Hz. Se você usar a chave para "tirar o boom", vai emagrecer a região inteira e continuar com os buracos no mesmo lugar. Bass trap resolve; chave não.</div>
+
+    <p>A regra geral das três: <strong>elas são para casos extremos, não para ajuste fino.</strong> Deixe em 0 agora, faça o tratamento, meça, e só então mexa — e mexa com medida na mão, não por palpite. Se depois de tudo pronto você precisar de −2 no HIGH TRIM, o que está errado é a quantidade de absorção de agudo na sala, não o monitor.</p>
+
+    <h3>Calibrar o LEVEL</h3>
+    <p>Faça uma vez e marque o botão com fita. Depois disso o volume do dia a dia sai pelo knob da interface, nunca mais pelos monitores.</p>
+    <ol class="steps">
+      <li><div><b>Interface no nível de trabalho.</b> Saída de monitor em ~2/3 do curso — nem no talo, nem no começo.</div></li>
+      <li><div><b>Ruído rosa em −20 dBFS RMS</b>, só no canal esquerdo. Medidor de SPL no ponto de escuta, ponderação C, resposta lenta (app de celular serve).</div></li>
+      <li><div><b>Ajuste o LEVEL do monitor esquerdo</b> até ler <strong>79 dB SPL</strong>. Repita no direito, sozinho, até o mesmo número. Os dois juntos devem dar ~82 dB.</div></li>
+      <li><div><b>Confira o centro.</b> Toque algo em mono. A imagem tem que colar exatamente no meio. Se puxar para um lado, ajuste um dos LEVEL em passos mínimos até centrar — seu ouvido é mais preciso que o app aqui.</div></li>
+      <li><div><b>Marque os dois botões</b> com um pontinho de fita e não encoste mais.</div></li>
+    </ol>
+    <p style="font-family:var(--mono); font-size:12px; color:var(--mute)">App de celular tem ±3 dB de erro no valor absoluto, mas é confiável para <em>comparar</em> os dois lados — que é o que importa. Se você não tiver medidor, pule direto para o passo 4: deixe os dois LEVEL no mesmo ponto do curso e centre pelo mono.</p>
+
+    <p>Duas coisas de instalação que combinam com isso: a HS5 tem <strong>port traseiro</strong> — os 0,70 m de parede atrás dela estão de bom tamanho, mas nunca encoste. E se um dia sobrar zumbido de terra, ele quase sempre vem do cabo, não das chaves.</p>
+
     <h3>Separação</h3>
     <p>A cota do projeto é <strong>1,10 m</strong> entre os tweeters (x = 0,95 e 2,05), com você a 0,95 m à frente do plano dos baffles — isso fecha o triângulo em 60°. Meça de centro de tweeter a centro de tweeter, não de borda a borda da caixa.</p>
 
