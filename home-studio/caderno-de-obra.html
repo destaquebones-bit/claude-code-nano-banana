@@ -1562,8 +1562,30 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
       <li><div><b>Varra cada monitor sozinho, depois os dois juntos.</b> 20 Hz a 20 kHz. Ninguém na sala durante a varredura — seu corpo no caminho muda a medida.</div></li>
       <li><div><b>O que olhar, nesta ordem:</b> resposta de 20 a 300 Hz com suavização de 1/6 de oitava (procure o nó de 71,5 Hz e o empilhamento de 66–72); <em>waterfall</em> ou espectrograma (caudas longas em 107–114 Hz); RT60 (a estimativa era 0,93 s); e o ETC, para ver as primeiras reflexões chegando em 2,5 e 4,5 ms.</div></li>
       <li><div><b>Ajuste fino da cadeira.</b> Meça em y = 1,75 / 1,85 / 1,90 / 1,95 / 2,05 m e fique com a que der a resposta mais lisa entre 40 e 120 Hz. É o ajuste mais barato e mais eficaz que sobrou.</div></li>
-      <li><div><b>Só depois pense em EQ.</b> Correção eletrônica conserta pico, não conserta nulo — energia que a sala cancelou não volta com ganho. Tudo que dava para resolver com geometria e absorção já foi resolvido nas fases anteriores.</div></li>
+      <li><div><b>Refaça o perfil do SoundID.</b> Ele é calibrado para uma posição específica: assim que a mesa, a cadeira ou os monitores mudarem de lugar, <strong>o perfil antigo passa a estar errado</strong>. Meça de novo depois de fechar o layout, e outra vez depois de cada fase de tratamento.</div></li>
     </ol>
+  </div>
+  <div class="wrap" style="margin-top:34px">
+    <h3>SoundID Reference e o que ele não faz</h3>
+    <p>Correção de sala é excelente no último trecho e péssima como substituto de tratamento. A divisão de trabalho nesta sala é bem clara:</p>
+
+    <div class="tw"><table>
+      <thead><tr><th>Problema desta sala</th><th>SoundID resolve?</th><th>O que resolve</th></tr></thead>
+      <tbody>
+        <tr><td>Empilhamento de 66–72 Hz (pico)</td><td class="ok">sim, bem</td><td>é exatamente para isso que ele serve</td></tr>
+        <tr><td>Inclinação tonal geral</td><td class="ok">sim, bem</td><td>—</td></tr>
+        <tr><td>Nó de 71,5 Hz (buraco)</td><td class="bad">não</td><td>mover a cadeira. Energia que a sala cancelou não volta com ganho — o boost só queima headroom e faz o woofer trabalhar à toa</td></tr>
+        <tr><td>Cauda longa em 107–114 Hz</td><td class="bad">não</td><td>bass trap. Ele corrige o <em>nível</em> do modo, não o tempo que ele leva para morrer</td></tr>
+        <tr><td>Reflexões de 2,5 e 4,5 ms</td><td class="bad">não</td><td>absorção no ponto-espelho. Isso é domínio do tempo e muda quando você mexe a cabeça; EQ estático não acompanha</td></tr>
+        <tr><td>Cancelamento de fronteira de 90 Hz</td><td class="bad">parcial</td><td>absorção na parede frontal deixa o buraco raso o bastante para o SoundID conseguir fazer o resto</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="note"><b>Um filtro que precisa de +12 dB em algum ponto é um sinal de alarme, não uma solução.</b> Depois do tratamento essas correções extremas encolhem sozinhas, e aí o SoundID passa a trabalhar com poucos dB — menos borrão de fase, menos headroom perdido, e o resultado fica muito melhor do que ele conseguiria numa sala crua. Trate primeiro, corrija depois: nessa ordem ele rende o dobro.</div>
+
+    <p>Duas rotinas que valem a pena: <strong>desligue a correção de vez em quando</strong> para ouvir a sala nua — é assim que você percebe o tratamento fazendo efeito, e com ela sempre ligada você não percebe. E <strong>refaça o perfil a cada mudança de layout</strong>: mesa, cadeira ou monitor fora do lugar invalidam a medição anterior.</p>
+
+    <p style="font-family:var(--mono); font-size:12px; color:var(--mute)">O ECM8000 e o SoundID não competem: o primeiro é diagnóstico, o segundo é correção. Só o REW mostra waterfall, RT60 e ETC — e são esses três que dizem se vale comprar o bass trap e se ele funcionou. O relatório do SoundID mostra uma curva suavizada, que não responde nenhuma dessas perguntas.</p>
   </div>
 </section>
 
@@ -1763,12 +1785,25 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 
     <div class="note"><b>Mas meça a profundidade da mesa — é ela que decide se você consegue sentar no lugar certo.</b> Sua orelha precisa ficar 0,95 m à frente do baffle, e quem senta numa mesa fica com a orelha uns 0,28 m atrás da borda da frente. Igualando as duas coisas: <strong>profundidade necessária = 0,222 + 0,95 − 0,28 = 0,89 m</strong>. Com uma mesa de 0,60 m, sua orelha sentada normalmente cai em ~1,58 m em vez de 1,87, e o triângulo abre de 60° para <strong>82°</strong> — buraco no centro e agudo dependente de milímetros de cabeça.</div>
 
-    <p>Três saídas, em ordem de preferência:</p>
-    <ul class="plain">
-      <li><strong>Mesa de ~0,90 m de profundidade.</strong> Os monitores ocupam os 0,25 m do fundo e sobram 0,65 m de mesa útil. Tudo cai no lugar sem mais nada.</li>
-      <li><strong>Mesa de volta a 1,00 m com pedestais de chão.</strong> A borda da frente vai para 1,60 e sua orelha cai naturalmente em 1,88 sentado normalmente na mesa. É a razão pela qual pedestal resolve mais que só tirar o monitor da mesa.</li>
-      <li><strong>Sentar 0,30 m afastado da borda.</strong> Funciona e custa zero, mas você vai ter que se inclinar para digitar.</li>
-    </ul>
+    <h3>Com a mesa medida em 0,60 m, a conta fecha assim</h3>
+    <p>Borda de trás a 0,70 m, profundidade 0,60 m, borda da frente em <strong>1,30 m</strong>. Sentado encostado nela, sua orelha cai em <strong>1,58 m</strong> — não em 1,87. Com a separação de 1,10 m isso abre o triângulo para <strong>79,6°</strong>. Faltam 29 cm de mesa para tudo cair no lugar sozinho.</p>
+
+    <div class="tw"><table>
+      <thead><tr><th>Saída</th><th class="n">Escuta</th><th class="n">Separação</th><th class="n">SBIR</th><th class="n">Distância do nó de 71,5 Hz</th><th class="n">Custo</th></tr></thead>
+      <tbody>
+        <tr><td><strong>A · mesa a 1,00 m + pedestais de chão</strong></td><td class="n ok">1,88 m</td><td class="n ok">1,10 m</td><td class="n ok">90 Hz</td><td class="n ok">0,68 m</td><td class="n">R$ 60 a 400</td></tr>
+        <tr><td>B · manter 0,70 m, aproximar os monitores</td><td class="n">1,58 m</td><td class="n">0,76 m</td><td class="n">77 Hz</td><td class="n">0,38 m</td><td class="n ok">R$ 0</td></tr>
+        <tr><td>C · manter tudo e sentar afastado da mesa</td><td class="n">1,87 m</td><td class="n">1,10 m</td><td class="n">93 Hz</td><td class="n">0,67 m</td><td class="n ok">R$ 0</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="note"><b>A recomendação é a A.</b> Ela é a única em que sua orelha cai no lugar certo <em>sentado normalmente na mesa</em>, sem gambiarra e sem duas posições de escuta. Ganha o melhor cancelamento de fronteira dos três (90 Hz), fica quase o dobro mais longe do nó de 71,5 Hz que a B, e de quebra tira o monitor da bancada de vez — some a vibração e some o refletor. Ela também é exatamente o que os desenhos DES. E1 e E5 a E8 já mostram.</div>
+
+    <p><strong>A opção B tem um argumento honesto a favor:</strong> a 0,66 m do baffle você está bem mais dentro do campo direto, e sala não tratada pesa menos. Se o orçamento estiver zerado e você quiser tocar o barco hoje, ela funciona. O preço é sentar 0,38 m do nó de 71,5 Hz em vez de 0,68, e um palco estéreo mais estreito.</p>
+
+    <p><strong>A opção C é a que eu não recomendo</strong>, mesmo custando zero. Você acaba com duas posições de escuta — uma quando mixa recostado e outra quando se inclina para digitar — e decidir com o ouvido em dois lugares diferentes é pior que decidir de um lugar imperfeito.</p>
+
+    <div class="cut">pedestal DIY <span>· topo a 0,875 m do chão (1,10 da orelha menos os 0,225 da base da HS5 até o tweeter). Cano de PVC de 100 mm cheio de areia, cortado na medida, com chapa de MDF em cima e embaixo — sai por uns R$ 80 o par e você controla a altura exata.</span></div>
 
     <h3>O que a HS5 alcança nesta sala</h3>
     <p>A HS5 é −3 dB em <strong>~70 Hz</strong>. Olhe a régua modal do levantamento: o empilhamento de 66 + 71,5 Hz cai <em>exatamente</em> nesse ponto. Ou seja, a região onde a sala é mais caótica é a mesma onde o monitor já está caindo — o grave vai parecer fraco e inconsistente ao mesmo tempo, e é fácil culpar o monitor pelo que é a sala.</p>
