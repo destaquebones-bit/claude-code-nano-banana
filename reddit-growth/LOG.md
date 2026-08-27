@@ -262,3 +262,39 @@ Reasoning for not inventing a "next" action today:
 - Once all five are confirmed posted, the natural next actions in rough priority are: (1) r/PromoteYourMusic next eligible ~2026-09-01 (7-day cooldown from the 2026-08-25 post); (2) a fresh comment in whichever of r/edmproduction's or r/TechnoProduction's weekly feedback threads is current that week (both rotate, so a new thread likely exists by now); (3) a repeat r/House self-post only if there's genuinely new material/update to share, respecting the sub's reciprocity norm each time.
 
 **Nothing awaiting approval from today's entry.** The five drafts already logged (2026-08-20, 2026-08-21, 2026-08-22, 2026-08-25) remain the most recent ready-to-paste material if any are still unposted.
+
+---
+
+## 2026-08-27
+
+**Status check:** Still no approval/confirmation note anywhere in this log for any of the five original drafts (2026-08-20 r/House reciprocity + self-post, 2026-08-21 r/edmproduction comment, 2026-08-22 r/TechnoProduction comment, 2026-08-25 r/PromoteYourMusic repost). This is now day 2 of holding on that gap (see 2026-08-26 entry). Rather than hold indefinitely with nothing new to show, today's entry follows the 2026-08-26 entry's own stated fallback plan: move to the "natural next actions" it identified, picking the one that's actionable today without assuming any unconfirmed draft was posted.
+
+**Why r/PromoteYourMusic and a repeat r/House post are NOT today's action:**
+- r/PromoteYourMusic: last posted 2026-08-25, ~7-day cooldown → next eligible ~2026-09-01. Today is 2026-08-27 — **not cleared, 5 days remain.**
+- r/House repeat self-post: no genuinely new material or update exists since the 2026-08-20 draft (still the same "Mind Gone State" free-download framing) — repeating the same pitch this soon would violate the sub's reciprocity/quality norm rather than serve it. Skipped.
+
+**Today's step: fresh comment in r/edmproduction's current weekly feedback thread (next cycle, not a repeat of 2026-08-21)**
+
+r/edmproduction's feedback thread rotates weekly. The last comment drafted for it was 2026-08-21 (6 days ago) — long enough that a new week's thread has almost certainly replaced it, so this is a distinct action, not a duplicate of that entry. Chosen over r/TechnoProduction's thread (last touched 2026-08-22, 5 days ago, and r/edmproduction's much larger audience — 812k vs 107k members — makes it the higher-priority of the two rotating threads to keep fresh).
+
+### How to find the current thread (rotates weekly — no fixed URL, re-locate each time)
+1. Open r/edmproduction, check the sidebar/"About" section or the top of the sub for a pinned/stickied post (pin icon) linking the current feedback thread.
+2. If nothing's pinned, search within the sub for "feedback thread" or "feedback friday," sorted by **New**, restricted to the last 7 days.
+3. Confirm the post date is from the current week before commenting — an old thread gets little visibility.
+
+### Ready-to-paste comment (English — matches the sub's own language)
+
+> Track: **Mind Gone State** (Tech House) — free download, no email/signup wall: https://hypeddit.com/iel6vv
+> Stream: https://soundcloud.com/spectralsunmusic/mind-gone-state
+>
+> Posting a fresh one this week — still trying to nail down whether the low end translates outside of headphones/studio monitors, and whether the breakdown drags too long before it drops back in. Any feedback on either of those, or anything else that stands out, appreciated.
+>
+> Happy to return the favor on other tracks in this thread too.
+
+**Notes:**
+- This is the only Reddit action queued for today per the daily volume cap (one action/day on this account).
+- Kept the same two specific, answerable questions (low-end translation, breakdown length) as the 2026-08-21 draft for consistency of voice, but reworded so it doesn't read as a copy-paste repeat if both ever end up visible near each other.
+- Cover art / video not applicable — feedback-thread comments are text + links only.
+- **Still unresolved and worth flagging again:** this routine has no way to confirm Reddit-side whether any of the five prior drafts (2026-08-20 through 2026-08-25) were actually posted. If they weren't, they remain fully usable verbatim from their original entries. A one-line confirmation from Jhonatan on which have gone live would let future entries stop repeating this status check and plan real next steps (e.g., correctly timing the next r/PromoteYourMusic post, or deciding whether r/House needs a follow-up).
+
+**Awaiting Jhonatan's approval before this is posted.**
