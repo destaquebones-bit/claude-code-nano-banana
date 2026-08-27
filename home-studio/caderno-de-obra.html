@@ -1555,10 +1555,27 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
     </div>
   </div>
   <div class="wrap">
+    <h3>O que é o REW</h3>
+    <p><strong>Room EQ Wizard</strong> — software gratuito de medição acústica, roda no Mac, baixa em <span style="font-family:var(--mono)">roomeqwizard.com</span>. Ele toca uma varredura senoidal pelo monitor, grava com o microfone de medição e calcula a <em>resposta ao impulso</em> da sala. De uma medida de quinze segundos saem todos os gráficos.</p>
+    <p>A diferença para o SoundID: o SoundID mostra <em>como</em> a curva está. O REW mostra <em>por quê</em> — porque ele enxerga o tempo, não só o nível. É isso que decide se um problema é modo, reflexão ou posição, e portanto se a solução é trap, painel ou cadeira.</p>
+
+    <div class="tw"><table>
+      <thead><tr><th>Gráfico</th><th>Responde</th><th>O que procurar nesta sala</th></tr></thead>
+      <tbody>
+        <tr><td>SPL &amp; Phase</td><td>onde estão picos e buracos</td><td>o nó de 71,5 Hz e o pico de 66–72, com suavização de 1/6 de oitava</td></tr>
+        <tr><td>Waterfall / espectrograma</td><td>quanto tempo cada frequência leva para morrer</td><td>caudas longas em 107–114 Hz</td></tr>
+        <tr><td>RT60</td><td>quão viva é a sala no geral</td><td>a estimativa por conta era 0,93 s em 500 Hz</td></tr>
+        <tr><td>ETC</td><td>quando chegam as reflexões, em milissegundos</td><td>picos por volta de 2,5 e 4,5 ms — as laterais e o tampo</td></tr>
+      </tbody>
+    </table></div>
+
+    <p style="font-family:var(--mono); font-size:12px; color:var(--mute); margin-bottom:26px">Interface em inglês, sem versão em português, mas o fluxo é visual. Primeira sessão leva uns 40 minutos contando download e acertar o dispositivo de áudio; depois disso cada varredura são quinze segundos.</p>
+
     <ol class="steps">
       <li><div><b>Monte o rig.</b> ECM8000 na interface com <strong>+48V ligado</strong> — ele é condensador, sem phantom não sai sinal. REW no MacBook. Microfone em pedestal no ponto de escuta exato, na altura da orelha, <strong>apontado para o monitor</strong> que está tocando.
         <div class="cut">sem arquivo de calibração individual <span>· o ECM8000 não vem com um. Abaixo de 300 Hz ele é confiável; acima de 8 kHz não confie nele para julgar o monitor</span></div></div></li>
-      <li><div><b>Referência de tempo.</b> Sem ela o ETC não vale nada. Use um cabo de <em>loopback</em> da saída 2 para a entrada 2, ou a opção de referência acústica do REW. Ajuste o ganho para a varredura picar em torno de −12 dBFS.</div></li>
+      <li><div><b>Referência de tempo.</b> Sem ela o ETC não vale nada. Com uma interface de 2 saídas como a MiniFuse 2, o caminho simples é a <strong>referência acústica do REW</strong> — sem cabo extra, e dá o tempo relativo correto entre esquerdo e direito, que é o que interessa. <em>Loopback</em> da saída 2 para a entrada 2 também funciona, mas aí você fica sem uma saída para o monitor.</div></li>
+      <li><div><b>Confira a interface antes de varrer.</b> <strong>+48V ligado</strong> para o ECM8000. <strong>DIRECT/MONO desligado</strong> — monitoramento direto ligado contamina a medida. E deixe o knob MONITOR num ponto fixo: mexer nele no meio da sessão invalida a comparação entre varreduras. Ganho de entrada para a varredura picar em torno de −12 dBFS.</div></li>
       <li><div><b>Varra cada monitor sozinho, depois os dois juntos.</b> 20 Hz a 20 kHz. Ninguém na sala durante a varredura — seu corpo no caminho muda a medida.</div></li>
       <li><div><b>O que olhar, nesta ordem:</b> resposta de 20 a 300 Hz com suavização de 1/6 de oitava (procure o nó de 71,5 Hz e o empilhamento de 66–72); <em>waterfall</em> ou espectrograma (caudas longas em 107–114 Hz); RT60 (a estimativa era 0,93 s); e o ETC, para ver as primeiras reflexões chegando em 2,5 e 4,5 ms.</div></li>
       <li><div><b>Ajuste fino da cadeira.</b> Meça em y = 1,75 / 1,85 / 1,90 / 1,95 / 2,05 m e fique com a que der a resposta mais lisa entre 40 e 120 Hz. É o ajuste mais barato e mais eficaz que sobrou.</div></li>
@@ -1854,7 +1871,8 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 
     <h3>O preço de ficar na bancada, e como pagar barato</h3>
     <ul class="plain">
-      <li><strong>O caixote preto provavelmente é oco.</strong> Caixa vazia embaixo de monitor vira ressonador: ela toca junto, num tom só, e você escuta isso como grave inflado numa nota específica. Encha de areia seca bem socada, ou troque por massa maciça — meia placa de concreto de calçada empilhada resolve por uns R$ 20 e é mais pesada que qualquer pedestal barato.</li>
+      <li><strong>Os suportes são organizadores de mesa de face aberta</strong> — chapa fina, vão livre, prateleira no meio. São duas coisas ruins de uma vez: a cavidade aberta ressoa por volta de <strong>306 Hz</strong> (quarto de onda nos ~28 cm de profundidade) e a chapa fina do topo flexiona debaixo do monitor. Os dois efeitos caem em 300–600 Hz, a faixa de corpo e caixa da mixagem.
+      <div class="cut">encha, não troque <span>· ~10 litros de areia seca por suporte, em saco plástico grosso bem socado, sem bolsa de ar. São ~15 kg de cada lado, custam uns R$ 20 os dois, matam a cavidade, amortecem a chapa — e mantêm a altura do tweeter exatamente onde já está.</span></div></li>
       <li><strong>No lugar do calço, isolamento de verdade.</strong> Metal encostado em madeira transmite tudo. Entre a caixa e o caixote entra algo realmente macio: espuma de alta densidade, um mouse pad grosso dobrado, ou massa de calafetar em quatro pontos. Isso some com a vibração que hoje vai direto para o tampo.</li>
       <li><strong>A bancada vira refletor.</strong> Com o monitor apoiado nela, a superfície entre você e o cone devolve som pelo tampo. Incline os monitores 5 a 8° para baixo, mirando a orelha, e ponha o feltro de 0,40 × 1,20 m na faixa central — os dois já estavam na lista.</li>
       <li><strong>Tire o pedestal de microfone de cima da bancada.</strong> Ele continua ali entre os monitores. Um tubo de metal vertical no eixo do centro fantasma é refletor de médio-agudo em cima do ponto mais sensível da imagem estéreo.</li>
