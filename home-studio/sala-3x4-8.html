@@ -212,7 +212,7 @@ svg text{font-family:var(--mono); fill:var(--mute)}
     <p>Piso de porcelanato, teto de reboco liso. É o par de superfícies mais duro da sala e o único que se enfrenta em paralelo perfeito — dá <em>flutter</em> vertical (bate palma no meio da sala e você ouve). O tapete de 2,00 × 3,00 m resolve metade dessa dupla. A outra metade tem um complicador: <strong>no meio do teto há um ventilador</strong>, e ele ocupa exatamente o pedaço de teto que a nuvem precisa. O DES. 05 mostra o conflito com cota.</p>
 
     <h3>Parede esquerda (4,80 m) — parcial</h3>
-    <p>Só aparece de raspão na foto 1: um painel preto junto ao canto frontal e o gancho do fone logo depois. No canto do fundo, na foto 3, estão <strong>dois difusores de MDF encostados na parede, ainda não instalados</strong>. O miolo dessa parede — de ~1,0 m a ~4,2 m — não foi fotografado; está marcado como não documentado nos desenhos.</p>
+    <p>Só aparece de raspão na foto 1: um painel preto junto ao canto frontal e o gancho do fone logo depois. No canto do fundo, na foto 3, estão <strong>dois painéis de MDF encostados na parede, ainda não instalados</strong>. Fora de foto há ainda <strong>dois difusores skyline de madeira maciça</strong>, sem uso — e são eles, não os MDF, o material de difusão de verdade desta sala. O miolo dessa parede — de ~1,0 m a ~4,2 m — não foi fotografado; está marcado como não documentado nos desenhos.</p>
 
     <div class="note"><b>Precisão do levantamento.</b> As cotas de parede vêm da sua medida (3,00 × 4,80). As posições internas foram tiradas por escala das fotos, usando o vão da porta (0,88 m) e o painel preto (0,60 m) como réguas. As mais confiáveis são as da parede frontal; as menos confiáveis são a distância de escuta e as posições dos painéis na parede direita — estão marcadas com <span style="font-family:var(--mono)">≈</span>.</div>
   </div>
@@ -372,7 +372,7 @@ svg text{font-family:var(--mono); fill:var(--mute)}
           <div><span class="sw" style="background:var(--surface);border-color:var(--mute);border-style:dashed"></span><span>Eixo geométrico da sala (x = 1,50 m)</span></div>
           <div><span class="sw" style="background:var(--surface);border-color:var(--flag);border-style:dashed"></span><span>Eixo do sistema de escuta (x = 1,19 m)</span></div>
           <div><span class="sw" style="background:var(--ray-soft);border-color:var(--ray)"></span><span>Trajeto de primeira reflexão lateral</span></div>
-          <div><span class="sw" style="background:var(--mdf-soft);border-color:var(--mdf)"></span><span>MDF cru / difusor</span></div>
+          <div><span class="sw" style="background:var(--mdf-soft);border-color:var(--mdf)"></span><span>Madeira / difusão</span></div>
           <div><span class="sw" style="background:var(--felt);border-color:var(--felt-line)"></span><span>Absorvedor de tecido</span></div>
           <div><span class="sw" style="background:var(--glass-fill);border-color:var(--glass)"></span><span>Vidro</span></div>
         </div>
@@ -915,10 +915,13 @@ svg text{font-family:var(--mono); fill:var(--mute)}
   <circle cx="350" cy="338" r="17" fill="none" stroke="var(--ink)" stroke-width="1" opacity=".35"/>
 
   <!-- reused MDF diffusers on left wall rear -->
-  <rect class="s-mdf" x="174.5" y="494" width="10" height="54"/>
-  <rect class="s-mdf" x="174.5" y="566" width="10" height="54"/>
-  <text class="s-lbl" x="192" y="546" fill="var(--mdf)">4 difusores MDF</text>
-  <text class="s-lbl" x="192" y="558" fill="var(--mdf)">(2 empilhados em cada)</text>
+  <rect class="s-mdf" x="174.5" y="470" width="18" height="72"/>
+  <rect class="s-mdf" x="507.5" y="470" width="18" height="72"/>
+  <line class="s-rayd" x1="350" y1="338" x2="183" y2="506" stroke="var(--mdf)"/>
+  <line class="s-rayd" x1="350" y1="338" x2="517" y2="506" stroke="var(--mdf)"/>
+  <text class="s-lbl" x="200" y="500" fill="var(--mdf)">skyline de madeira</text>
+  <text class="s-lbl" x="200" y="512" fill="var(--mdf)">2,05 m do ouvinte</text>
+  <text class="s-lbl" x="500" y="500" text-anchor="end" fill="var(--mdf)">skyline de madeira</text>
 
   <!-- existing shelf kept -->
   <rect class="s-obj" x="483.5" y="554" width="42" height="108"/>
@@ -1081,6 +1084,15 @@ svg text{font-family:var(--mono); fill:var(--mute)}
   </div>
 
 
+
+  <div class="wrap" style="margin-top:34px">
+    <h3>O que um skyline de madeira faz — e o que ele não faz</h3>
+    <p>Um skyline é um difusor de duas dimensões: cada bloco tem uma profundidade da sequência, e o conjunto devolve a onda espalhada em meia esfera em vez de num único ângulo especular. Ele <strong>não absorve</strong> — na tabela de absorção os dois somam cerca de 0,1 sabin, ou seja, nada. Esse é o ponto: ele redistribui energia no tempo e no espaço sem tirá-la da sala.</p>
+    <p>Chutando 0,15 m de profundidade máxima e blocos de 7 cm — as medidas típicas desse formato — a faixa de projeto fica em <strong>1,1 kHz a 2,4 kHz</strong>, com espalhamento útil acima disso. <strong>Abaixo de ~1 kHz ele é um refletor de madeira</strong>, e é por isso que o lugar dele importa tanto: numa parede onde uma reflexão de médio-grave precoce faz mal, ele piora. Numa parede que devolve energia tardia, ele salva.</p>
+    <p>A distância mínima é a outra regra: cerca de três vezes a maior dimensão do painel, o que dá 1,8 m para um de 0,60 m. Nas laterais traseiras você tem 2,05 m — passa, sem sobra. Na parede frontal, a 0,95 m, não passaria.</p>
+    <div class="note"><b>Os quatro MDF ripados são outra categoria.</b> Pelo relevo que dá para ver nas fotos — 1 a 2 cm — eles só espalham acima de ~8 kHz, onde a sala já não tem problema. Não são ruins; são decorativos. Se na mão eles tiverem 5 cm ou mais de profundidade real entre o bloco mais fundo e o mais raso, me diga que eu recalculo: aí eles entram na conta como difusores de agudo de verdade.</div>
+  </div>
+
   <div class="wrap" style="margin-top:34px">
     <h3>O ventilador está em cima da nuvem</h3>
     <p>Com o sistema recentrado, tweeter e orelha ficam ambos a 1,20 m do piso. Isso põe os dois pontos de reflexão do teto em <strong>y = 1,42 m</strong>. Pelo que dá para inferir das fotos, o ventilador está centrado em <strong>y ≈ 2,20 m</strong> e varre um círculo de ~1,20 m — a ponta da pá alcança <strong>y = 1,60 m</strong>.</p>
@@ -1106,6 +1118,61 @@ svg text{font-family:var(--mono); fill:var(--mute)}
 <section id="plano">
   <div class="plate">
     <div class="head"><span class="head__n">04</span><h2>Plano de ação, em ordem de retorno</h2></div>
+    <div class="dw" style="margin-bottom:26px">
+<svg viewBox="0 0 700 372" role="img" aria-label="Mapa de cobertura espectral: faixa de frequências em que cada intervenção da lista atua">
+  <rect x="200" y="56" width="87.1" height="256" fill="var(--flag)" opacity=".09"/>
+  <line x1="389.7" y1="56" x2="389.7" y2="312" stroke="var(--mute)" stroke-width="1" stroke-dasharray="5 4"/>
+  <text class="s-dimt" x="393" y="50">Schroeder ≈310 Hz</text>
+  <text class="s-flagt" x="243" y="50" text-anchor="middle">ninguém chega</text>
+
+  <g class="s-hair">
+    <line x1="200" y1="56" x2="200" y2="312"/><line x1="257.5" y1="56" x2="257.5" y2="312"/>
+    <line x1="314.3" y1="56" x2="314.3" y2="312"/><line x1="371.8" y1="56" x2="371.8" y2="312"/>
+    <line x1="429.3" y1="56" x2="429.3" y2="312"/><line x1="486.8" y1="56" x2="486.8" y2="312"/>
+    <line x1="544.3" y1="56" x2="544.3" y2="312"/><line x1="601.8" y1="56" x2="601.8" y2="312"/>
+    <line x1="659.3" y1="56" x2="659.3" y2="312"/>
+  </g>
+
+  <g class="s-lbl" text-anchor="end">
+    <text x="192" y="76">modos desta sala</text>
+    <text x="192" y="106">bass traps de canto</text>
+    <text x="192" y="136">painel 5 cm + 10 cm de ar</text>
+    <text x="192" y="166">nuvem de teto 10 cm</text>
+    <text x="192" y="196">cortina blackout pesada</text>
+    <text x="192" y="226">tapete 2 × 3 com manta</text>
+    <text x="192" y="256">painel 5 cm rente (hoje)</text>
+    <text x="192" y="286">skyline de madeira</text>
+    <text x="192" y="306">MDF ripado</text>
+  </g>
+
+  <rect x="208.7" y="65" width="144.7" height="14" rx="4" fill="var(--flag)"/>
+  <rect x="287.1" y="95" width="372.2" height="14" rx="4" fill="var(--ray)"/>
+  <rect x="344.6" y="125" width="314.7" height="14" rx="4" fill="var(--ray)"/>
+  <rect x="353.4" y="155" width="305.9" height="14" rx="4" fill="var(--ray)"/>
+  <rect x="399.7" y="185" width="259.6" height="14" rx="4" fill="var(--ray)"/>
+  <rect x="410.8" y="215" width="248.5" height="14" rx="4" fill="var(--ray)"/>
+  <rect x="410.8" y="245" width="248.5" height="14" rx="4" fill="var(--ray)" opacity=".45"/>
+  <rect x="353.4" y="275" width="141.3" height="14" rx="4" fill="var(--flag)" opacity=".35"/>
+  <rect x="494.7" y="275" width="83.3" height="14" rx="4" fill="var(--mdf)"/>
+  <rect x="578" y="275" width="81.3" height="14" rx="4" fill="var(--mdf)" opacity=".4"/>
+  <rect x="648.3" y="299" width="11" height="10" rx="3" fill="var(--mdf)" opacity=".4"/>
+
+  <text class="s-lbl" x="360" y="286" fill="var(--flag)">refletor</text>
+  <text class="s-lbl" x="586" y="286" fill="var(--mdf)" opacity=".8">espalha</text>
+
+  <line x1="200" y1="312" x2="659.3" y2="312" stroke="var(--mute)" stroke-width="1"/>
+  <g class="s-dimt" text-anchor="middle">
+    <text x="200" y="328">31,5</text><text x="257.5" y="328">63</text><text x="314.3" y="328">125</text>
+    <text x="371.8" y="328">250</text><text x="429.3" y="328">500</text><text x="486.8" y="328">1k</text>
+    <text x="544.3" y="328">2k</text><text x="601.8" y="328">4k</text><text x="659.3" y="328">8k</text>
+  </g>
+  <text class="s-dimt" x="659.3" y="346" text-anchor="end">banda de oitava (Hz)</text>
+  <text class="s-dimt" x="200" y="366" fill="var(--flag)">De 31,5 a 90 Hz nenhuma peça da lista chega. Abaixo disso quem manda é onde a cadeira está — e só ela.</text>
+  <text class="s-dimt" x="200" y="40" letter-spacing="1.4">MAPA DE COBERTURA — ONDE CADA PEÇA TRABALHA</text>
+</svg>
+      <p class="dw__cap">Faixa útil de cada intervenção · barras claras = ação parcial</p>
+    </div>
+
     <div class="acts">
 
       <div class="act"><div class="act__n">1</div><div>
@@ -1122,7 +1189,7 @@ svg text{font-family:var(--mono); fill:var(--mute)}
 
       <div class="act"><div class="act__n">3</div><div>
         <h4>Trocar difusor por absorção na parede frontal</h4>
-        <p>Tire os dois ripados de MDF de trás dos monitores. No lugar, 100 mm de absorção (ou 50 mm com 50 mm de ar atrás) cobrindo o trecho livre de ~0,30 a 2,10 m, contornando a TV. Os quatro MDFs vão para o terço traseiro da parede esquerda, empilhados dois a dois — lá eles ficam a mais de 1,4 m do ouvinte e finalmente difundem, fazendo par com a estante e o quadro do lado direito.</p>
+        <p>Tire os dois ripados de MDF de trás dos monitores. No lugar, 100 mm de absorção (ou 50 mm com 50 mm de ar atrás) cobrindo o trecho livre de ~0,30 a 2,10 m, contornando a TV. Quanto aos quatro painéis de MDF: pela foto eles têm relevo de 1 a 2 cm, o que só espalha acima de ~8 kHz. São decoração. Use onde ficarem bonitos — a faixa de alvenaria acima da porta de vidro é um bom lugar — e não conte com eles no orçamento acústico. A difusão de verdade fica por conta dos dois skylines de madeira, na etapa 6.</p>
         <div class="act__meta"><span>Reaproveita o que já existe</span><span>Prioridade <i>alta</i></span></div>
       </div></div>
 
@@ -1139,24 +1206,31 @@ svg text{font-family:var(--mono); fill:var(--mute)}
       </div></div>
 
       <div class="act"><div class="act__n">6</div><div>
+        <h4>Os dois skylines de madeira nas laterais traseiras</h4>
+        <p>Um em cada parede lateral, centrados em <strong>y = 3,30 m</strong> (de 3,00 a 3,60) e a 1,30 m de altura — simétricos, a 2,05 m dos seus ouvidos. Ali eles fazem o que absorção nenhuma faz: devolvem energia lateral tardia e espalhada, que é o que dá sensação de espaço. Sem eles, a sala com todo o tratamento da lista fica correta e morta.</p>
+        <p><strong>Nunca nos pontos de primeira reflexão.</strong> A 1,32 m eles não têm distância para formar a frente de onda difusa — só jogariam energia precoce em cima do som direto. Ponto-espelho é absorção; difusão é da metade de trás para trás.</p>
+        <div class="act__meta"><span>Já está comprado</span><span>Prioridade <i>alta</i></span><span>Absorção adicionada <i>≈0,1 sabin</i></span></div>
+      </div></div>
+
+      <div class="act"><div class="act__n">7</div><div>
         <h4>Tapete sobre o ponto de reflexão do piso</h4>
         <p>Com a bancada na posição nova, os dois pontos de reflexão do piso caem em y = 1,42 m — logo à frente da mesa, exatamente embaixo da nuvem. O tapete de 2,00 × 3,00 m entra com o lado comprido no eixo do comprimento, de <strong>y = 0,60 m a y = 3,60 m</strong>, centrado em x = 1,50 m. <strong>Ponha manta de feltro por baixo</strong>: dobra a absorção nos médios e ainda tira o escorregão no porcelanato. Deixe uma faixa de piso livre junto às paredes — os bass traps de canto precisam apoiar no duro, e sobra alguma vivacidade de agudo.</p>
         <div class="act__meta"><span>Já está comprado</span><span>Prioridade <i>alta</i></span><span>≈11% da absorção total</span></div>
       </div></div>
 
-      <div class="act"><div class="act__n">7</div><div>
+      <div class="act"><div class="act__n">8</div><div>
         <h4>Resolver a parede de vidro sem furar o vidro</h4>
         <p>Cortina blackout pesada (≥400 g/m², franzimento 2:1, afastada 10–15 cm do vidro, indo do teto ao chão e transbordando 20 cm de cada lado) substituindo a cinza translúcida — é o absorvedor prático ali. Some a isso um gobo móvel de 1,40 × 1,60 m que você posiciona na frente do vidro só na hora de mixar e encosta na parede quando não está. As faixas de alvenaria ao lado e acima do vão do vidro aceitam painel fixo.</p>
         <div class="act__meta"><span>Nada é fixado no vidro</span><span>Prioridade <i>média</i></span></div>
       </div></div>
 
-      <div class="act"><div class="act__n">8</div><div>
+      <div class="act"><div class="act__n">9</div><div>
         <h4>Limpar o eixo entre os monitores</h4>
         <p>Feche ou abaixe a tampa do MacBook durante a escuta crítica (use a TV como tela), tire o pedestal de microfone e a caixa acrílica de cima da bancada, e ponha um feltro grosso na faixa central da bancada — com a mesa na nova posição, o ponto de reflexão dela cai em y ≈ 1,44 m, bem no meio do tampo. Inclinar os monitores 5–8° para baixo também tira a mesa do caminho.</p>
         <div class="act__meta"><span>Custo <i class="g">quase zero</i></span><span>Prioridade <i>média</i></span></div>
       </div></div>
 
-      <div class="act"><div class="act__n">9</div><div>
+      <div class="act"><div class="act__n">10</div><div>
         <h4>Medir antes e depois</h4>
         <p>REW com um microfone de medição (UMIK-1 ou equivalente): varredura na posição nova, resposta em frequência até 300 Hz, waterfall e ETC. Sem isso não dá para saber se o trap acertou o modo certo, e a régua modal do DES. 03 vira só teoria.</p>
         <div class="act__meta"><span>Depois das etapas 1–5</span><span>Prioridade <i class="g">verificação</i></span></div>
@@ -1176,7 +1250,8 @@ svg text{font-family:var(--mono); fill:var(--mute)}
       <li><strong>Centro e diâmetro do ventilador.</strong> Estimei y = 2,20 m e Ø 1,20 m de varredura, ambos por foto. É o que decide se a nuvem de teto cabe ou se o ventilador precisa recuar — o item mais bloqueante da lista.</li>
       <li><strong>Distância de escuta medida.</strong> Estimei 1,20 m por escala fotográfica; é o número menos confiável de todos e o mais importante do diagnóstico. Uma trena da parede frontal até a orelha resolve.</li>
       <li><strong>O que tem dentro dos painéis pretos.</strong> A espessura de 5 cm está confirmada, mas abaixo de 500 Hz o recheio pesa mais que ela: lã de rocha de 64 kg/m³ e espuma acústica de 5 cm têm curvas bem diferentes em 125–250 Hz. Se for espuma, os números do gráfico da seção 02 caem pela metade nos graves-médios.</li>
-      <li><strong>Largura × altura dos painéis</strong> (assumi 0,60 × 1,20 m) e a largura do vão de vidro (assumi 2,10 m).</li>
+      <li><strong>Largura × altura dos painéis pretos</strong> (assumi 0,60 × 1,20 m) e a largura do vão de vidro (assumi 2,10 m).</li>
+      <li><strong>Medidas dos skylines de madeira:</strong> lado do painel, largura do bloco e a diferença entre o bloco mais fundo e o mais raso. Assumi 0,60 m, 7 cm e 15 cm — é o que define a faixa de projeto de 1,1 a 2,4 kHz. E a profundidade real do relevo dos MDF ripados, para saber se entram ou não na conta.</li>
     </ul>
     <p>Me manda esses e eu refaço a planta com cotas fechadas, incluindo a lista de corte dos bass traps e a metragem exata de lã.</p>
   </div>
