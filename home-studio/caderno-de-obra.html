@@ -1,0 +1,758 @@
+<title>Caderno de Obra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<style>
+:root{
+  --paper:#EDEEEA; --surface:#F8F8F5; --sunk:#E3E4DE;
+  --ink:#16181C; --body:#2E3138; --mute:#6F7169; --rule:#D3D4CD;
+  --mdf:#B5762F; --mdf-soft:#EADCC4;
+  --felt:#1D1F24; --felt-line:#1D1F24;
+  --flag:#A2372E; --flag-soft:#F0DBD7;
+  --ray:#2C6B69; --ray-soft:#D8E6E4;
+  --glass:#7FA7A8; --glass-fill:#DCE9E9;
+  --wood:#8A5A32;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+:root:not([data-theme="light"]){ @media (prefers-color-scheme:dark){
+  --paper:#0F1114; --surface:#171A1E; --sunk:#101317;
+  --ink:#EAEAE4; --body:#C4C7C1; --mute:#8B8E86; --rule:#2B2F35;
+  --mdf:#D4964F; --mdf-soft:#4B3A22;
+  --felt:#3F434B; --felt-line:#5A5F69;
+  --flag:#DE7264; --flag-soft:#43231E;
+  --ray:#65AFA9; --ray-soft:#1E3634;
+  --glass:#5E8E90; --glass-fill:#1E3436;
+  --wood:#A5734A;
+}}
+:root[data-theme="dark"]{
+  --paper:#0F1114; --surface:#171A1E; --sunk:#101317;
+  --ink:#EAEAE4; --body:#C4C7C1; --mute:#8B8E86; --rule:#2B2F35;
+  --mdf:#D4964F; --mdf-soft:#4B3A22;
+  --felt:#3F434B; --felt-line:#5A5F69;
+  --flag:#DE7264; --flag-soft:#43231E;
+  --ray:#65AFA9; --ray-soft:#1E3634;
+  --glass:#5E8E90; --glass-fill:#1E3436;
+  --wood:#A5734A;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--body);
+  font-family:var(--serif); font-size:17px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--display); font-variation-settings:"wdth" 112; color:var(--ink); text-wrap:balance; margin:0; line-height:1.06}
+p{margin:0}
+strong{font-weight:600; color:var(--ink)}
+em{font-style:italic}
+a{color:var(--mdf)}
+:focus-visible{outline:2px solid var(--mdf); outline-offset:3px}
+
+.wrap{max-width:66ch; margin:0 auto; padding:0 24px}
+.plate{max-width:1160px; margin:0 auto; padding:0 24px}
+
+/* ---- title block ---- */
+.stamp{border-bottom:1px solid var(--rule); background:var(--surface)}
+.stamp__in{max-width:1160px; margin:0 auto; padding:56px 24px 0}
+.eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--mdf); margin:0 0 18px}
+.stamp h1{font-size:clamp(2.6rem,8vw,4.6rem); font-weight:800; font-variation-settings:"wdth" 118; letter-spacing:-.02em}
+.lede{font-size:1.22rem; line-height:1.5; color:var(--body); max-width:52ch; margin-top:20px}
+.specs{display:grid; grid-template-columns:repeat(auto-fit,minmax(148px,1fr)); gap:0; margin:44px 0 0; border-top:1px solid var(--rule)}
+.specs>div{padding:14px 16px 16px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule)}
+.specs>div:last-child{border-right:none}
+.specs dt{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--mute)}
+.specs dd{margin:5px 0 0; font-family:var(--display); font-variation-settings:"wdth" 108; font-weight:600; font-size:1.22rem; color:var(--ink); font-variant-numeric:tabular-nums}
+.specs dd .q{font-size:.72em; font-weight:500; color:var(--mute)}
+
+/* ---- sections ---- */
+section{padding:64px 0 0}
+section:last-child{padding-bottom:96px}
+.head{display:flex; align-items:baseline; gap:16px; border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:28px}
+.head__n{font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--mdf); white-space:nowrap; padding-bottom:3px}
+.head h2{font-size:clamp(1.5rem,3.4vw,2.1rem); font-weight:700; letter-spacing:-.01em}
+.wrap p + p{margin-top:1.05em}
+.wrap h3{font-family:var(--display); font-variation-settings:"wdth" 104; font-size:1.02rem; font-weight:700; letter-spacing:.01em; margin:2.1em 0 .5em}
+
+/* ---- drawings ---- */
+.dw{background:var(--surface); border:1px solid var(--rule); border-radius:2px; padding:18px 18px 12px; margin:0}
+.dw svg{display:block; width:100%; height:auto}
+.dw__cap{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-top:12px; border-top:1px solid var(--rule); padding-top:9px}
+.grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px}
+.stack{display:grid; gap:18px}
+.side{display:grid; grid-template-columns:minmax(320px,1.35fr) minmax(240px,1fr); gap:26px; align-items:start}
+@media (max-width:860px){ .side{grid-template-columns:1fr} }
+
+/* ---- key legend ---- */
+.key{font-family:var(--mono); font-size:12.5px; line-height:1.5; margin:0; display:grid; gap:7px}
+.key div{display:grid; grid-template-columns:22px 1fr; gap:9px; align-items:start}
+.key b{display:flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; background:var(--ink); color:var(--surface); font-size:10.5px; font-weight:600; font-family:var(--mono)}
+.key span{color:var(--body); padding-top:1px}
+.key .sw{width:20px; height:20px; border-radius:2px; border:1px solid var(--rule)}
+.keyhead{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute); margin:0 0 12px; border-bottom:1px solid var(--rule); padding-bottom:7px}
+.key + .keyhead{margin-top:26px}
+
+/* ---- tables ---- */
+.tw{overflow-x:auto; border:1px solid var(--rule); border-radius:2px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-family:var(--mono); font-size:12.5px; font-variant-numeric:tabular-nums}
+th,td{text-align:left; padding:9px 14px; border-bottom:1px solid var(--rule); white-space:nowrap}
+thead th{font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); font-weight:500; background:var(--sunk)}
+tbody tr:last-child td{border-bottom:none}
+td.n{text-align:right}
+td:first-child{white-space:normal; color:var(--ink)}
+.bad{color:var(--flag); font-weight:600}
+.ok{color:var(--ray); font-weight:600}
+
+/* ---- callout ---- */
+.note{border-left:3px solid var(--mdf); background:var(--surface); padding:16px 20px; font-size:.95rem; margin:1.6em 0}
+.note b{font-family:var(--display); font-variation-settings:"wdth" 104; font-weight:700}
+
+/* ---- action list ---- */
+.acts{display:grid; gap:2px; margin:0; counter-reset:act}
+.act{display:grid; grid-template-columns:52px 1fr; gap:20px; background:var(--surface); border:1px solid var(--rule); padding:20px 22px; align-items:start}
+.act__n{font-family:var(--display); font-variation-settings:"wdth" 118; font-weight:800; font-size:2rem; line-height:.9; color:var(--mdf); font-variant-numeric:tabular-nums}
+.act h4{font-size:1.06rem; font-weight:700; margin-bottom:6px}
+.act p{font-size:.95rem}
+.act__meta{font-family:var(--mono); font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--mute); margin-top:10px; display:flex; gap:16px; flex-wrap:wrap}
+.act__meta i{font-style:normal; color:var(--flag)}
+.act__meta i.g{color:var(--ray)}
+
+ul.plain{margin:1.1em 0; padding-left:1.15em}
+ul.plain li{margin-bottom:.5em}
+ul.plain li::marker{color:var(--mdf)}
+
+/* ---- chart ---- */
+.chart{position:relative}
+.chart .tip{
+  position:absolute; pointer-events:none; opacity:0; transform:translate(-50%,-100%);
+  background:var(--ink); color:var(--surface); border-radius:3px; padding:8px 11px;
+  font-family:var(--mono); font-size:11px; line-height:1.5; white-space:nowrap; z-index:5;
+  transition:opacity .09s linear;
+}
+.chart .tip[data-on="1"]{opacity:1}
+.chart .tip b{display:block; color:var(--surface); font-weight:600; margin-bottom:4px; opacity:.7; letter-spacing:.08em}
+.chart .tip i{font-style:normal; display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:7px; vertical-align:1px}
+.chart .tip u{text-decoration:none; float:right; padding-left:18px; font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){ .chart .tip{transition:none} }
+:root{ --a1:#3E9C97; --a2:#1F6E6B; --a3:#0B3E3C; }
+:root:not([data-theme="light"]){ @media (prefers-color-scheme:dark){ --a1:#2E8F8A; --a2:#4FBDB5; --a3:#9AE3DC; }}
+:root[data-theme="dark"]{ --a1:#2E8F8A; --a2:#4FBDB5; --a3:#9AE3DC; }
+
+/* ---- svg shared ---- */
+svg text{font-family:var(--mono); fill:var(--mute)}
+.s-wall{fill:none; stroke:var(--ink); stroke-width:9}
+.s-wall-e{fill:none; stroke:var(--ink); stroke-width:6}
+.s-hair{fill:none; stroke:var(--rule); stroke-width:1}
+.s-dim{fill:none; stroke:var(--mute); stroke-width:.9}
+.s-dimt{font-size:10px; fill:var(--mute)}
+.s-lbl{font-size:10px; fill:var(--body)}
+.s-felt{fill:var(--felt); stroke:var(--felt-line); stroke-width:.8}
+.s-mdf{fill:var(--mdf); opacity:.92}
+.s-mdf-l{fill:var(--mdf-soft); stroke:var(--mdf); stroke-width:.9}
+.s-wood{fill:none; stroke:var(--wood); stroke-width:2.4}
+.s-woodf{fill:var(--wood); opacity:.22}
+.s-glass{fill:var(--glass-fill); stroke:var(--glass); stroke-width:1.4}
+.s-ray{fill:none; stroke:var(--ray); stroke-width:1.5; stroke-linejoin:round}
+.s-rayd{fill:none; stroke:var(--ray); stroke-width:1.2; stroke-dasharray:5 3.5}
+.s-raypt{fill:var(--ray)}
+.s-flag{fill:none; stroke:var(--flag); stroke-width:1.3; stroke-dasharray:6 4}
+.s-flagf{fill:var(--flag)}
+.s-flagt{font-size:10px; fill:var(--flag); font-weight:600}
+.s-axis{fill:none; stroke:var(--mute); stroke-width:1; stroke-dasharray:12 4 2 4}
+.s-obj{fill:var(--sunk); stroke:var(--mute); stroke-width:1}
+.s-dark{fill:var(--felt); stroke:var(--felt-line); stroke-width:.8}
+.s-ghost{fill:none; stroke:var(--mute); stroke-width:1; stroke-dasharray:4 3}
+.s-fill-surf{fill:var(--surface)}
+.s-key circle{fill:var(--ink)}
+.s-key text{fill:var(--surface); font-size:10px; font-weight:600; text-anchor:middle}
+.s-kn circle{fill:var(--mdf)}
+.s-kn text{fill:var(--surface); font-size:10px; font-weight:600; text-anchor:middle}
+@media (prefers-reduced-motion:no-preference){}
+</style>
+<style>
+.phase{border-top:2px solid var(--ink); padding-top:14px; margin-top:12px}
+.phase__tag{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap}
+.phase__n{font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--mdf)}
+.phase h3{font-family:var(--display); font-variation-settings:"wdth" 108; font-size:1.35rem; font-weight:700; color:var(--ink); margin:0}
+.phase__cost{font-family:var(--mono); font-size:11px; color:var(--mute); margin-left:auto; letter-spacing:.06em}
+ol.steps{list-style:none; counter-reset:st; margin:20px 0 0; padding:0; display:grid; gap:14px}
+ol.steps>li{counter-increment:st; display:grid; grid-template-columns:30px 1fr; gap:16px; align-items:start}
+ol.steps>li::before{
+  content:counter(st); font-family:var(--mono); font-size:11px; font-weight:600;
+  width:26px; height:26px; border-radius:50%; border:1px solid var(--rule);
+  display:flex; align-items:center; justify-content:center; color:var(--mdf); background:var(--surface);
+}
+ol.steps>li>div{padding-top:2px}
+ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-weight:700; color:var(--ink)}
+.cut{font-family:var(--mono); font-size:12px; background:var(--sunk); border-left:3px solid var(--mdf); padding:11px 14px; margin-top:9px; line-height:1.65}
+.cut span{color:var(--mute)}
+.tot{display:flex; justify-content:space-between; align-items:baseline; gap:16px; border-top:2px solid var(--ink); padding:14px 16px 0; margin-top:2px; font-family:var(--mono); font-size:13px}
+.tot b{font-family:var(--display); font-variation-settings:"wdth" 112; font-weight:800; font-size:1.5rem; color:var(--ink); font-variant-numeric:tabular-nums}
+.warn{border-left:3px solid var(--flag); background:var(--flag-soft); padding:16px 20px; font-size:.95rem; margin:1.6em 0}
+.warn b{font-family:var(--display); font-variation-settings:"wdth" 104; font-weight:700; color:var(--ink)}
+.backlink{font-family:var(--mono); font-size:12px; color:var(--mute); margin-top:16px}
+.backlink a{color:var(--mdf)}
+</style>
+
+<header class="stamp">
+  <div class="stamp__in">
+    <p class="eyebrow">Execução · Home studio 3,00 × 4,80 m</p>
+    <h1>Caderno de Obra</h1>
+    <p class="lede">O que a sala vira quando tudo estiver montado, como construir cada peça, e a lista fechada do que comprar. Tudo em módulos de 0,60 × 1,20 m para sair de placas inteiras de lã de rocha, sem desperdício.</p>
+    <dl class="specs">
+      <div><dt>Peças a construir</dt><dd>11</dd></div>
+      <div><dt>Placas de lã 50 mm</dt><dd>38</dd></div>
+      <div><dt>Sarrafo</dt><dd>78 m</dd></div>
+      <div><dt>Tecido acústico</dt><dd>20 m</dd></div>
+      <div><dt>Fases</dt><dd>5</dd></div>
+      <div><dt>RT alvo</dt><dd>0,27 s</dd></div>
+    </dl>
+    <p class="backlink">Levantamento e diagnóstico que geraram este projeto: <a href="https://claude.ai/code/artifact/56852314-77af-49cf-a071-86d65d416694">Sala 3 × 4,8</a></p>
+  </div>
+</header>
+
+<main>
+
+<section id="iso">
+  <div class="plate">
+    <div class="head"><span class="head__n">DES. E1</span><h2>A sala pronta</h2></div>
+    <div class="side">
+      <div class="dw">
+<svg viewBox="20 20 600 560" role="img" aria-label="Vista isométrica da sala com todo o tratamento instalado: bass traps nos quatro cantos, absorção na parede frontal, painéis laterais, nuvem de teto inclinada, difusores skyline, tapete, cortina pesada e gobo móvel">
+  <polygon points="372.0,252.0 574.6,369.0 250.4,556.2 47.8,439.2" fill="var(--sunk)" fill-opacity="0.55" stroke="var(--rule)" stroke-width="1"/>
+  <polygon points="365.2,294.9 500.3,372.9 297.7,489.9 162.6,411.9" fill="var(--mdf)" fill-opacity="0.28" stroke="var(--mdf)" stroke-width="1.2"/>
+  <polygon points="372.0,252.0 574.6,369.0 574.6,166.2 372.0,49.2" fill="var(--surface)" fill-opacity="0.92" stroke="var(--ink)" stroke-width="1.4"/>
+  <polygon points="372.0,252.0 47.8,439.2 47.8,236.4 372.0,49.2" fill="var(--surface)" fill-opacity="0.8" stroke="var(--ink)" stroke-width="1.4"/>
+  <line x1="372.0" y1="49.2" x2="574.6" y2="166.2" class="s-ghost"/>
+  <line x1="574.6" y1="166.2" x2="250.4" y2="353.4" class="s-ghost"/>
+  <line x1="250.4" y1="353.4" x2="47.8" y2="236.4" class="s-ghost"/>
+  <line x1="47.8" y1="236.4" x2="372.0" y2="49.2" class="s-ghost"/>
+  <line x1="574.6" y1="369.0" x2="250.4" y2="556.2" class="s-ghost"/>
+  <line x1="250.4" y1="556.2" x2="250.4" y2="353.4" class="s-ghost"/>
+  <line x1="574.6" y1="369.0" x2="574.6" y2="166.2" class="s-ghost"/>
+  <line x1="47.8" y1="439.2" x2="47.8" y2="236.4" class="s-ghost"/>
+  <line x1="47.8" y1="439.2" x2="250.4" y2="556.2" class="s-ghost"/>
+  <polygon points="372.0,49.2 400.6,65.7 343.4,65.7" fill="var(--ray)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="372.0,49.2 400.6,65.7 400.6,268.5 372.0,252.0" fill="var(--ray)" fill-opacity="0.72" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="400.6,65.7 343.4,65.7 343.4,268.5 400.6,268.5" fill="var(--ray)" fill-opacity="0.55" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="343.4,65.7 372.0,49.2 372.0,252.0 343.4,268.5" fill="var(--ray)" fill-opacity="0.72" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="574.6,166.2 546.0,149.7 546.0,182.7" fill="var(--ray)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="574.6,166.2 546.0,149.7 546.0,352.5 574.6,369.0" fill="var(--ray)" fill-opacity="0.72" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="546.0,149.7 546.0,182.7 546.0,385.5 546.0,352.5" fill="var(--ray)" fill-opacity="0.55" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="546.0,182.7 574.6,166.2 574.6,369.0 546.0,385.5" fill="var(--ray)" fill-opacity="0.72" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="47.8,236.4 76.4,252.9 76.4,219.9" fill="var(--ray)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="47.8,236.4 76.4,252.9 76.4,455.7 47.8,439.2" fill="var(--ray)" fill-opacity="0.72" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="76.4,252.9 76.4,219.9 76.4,422.7 76.4,455.7" fill="var(--ray)" fill-opacity="0.55" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="76.4,219.9 47.8,236.4 47.8,439.2 76.4,422.7" fill="var(--ray)" fill-opacity="0.72" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="250.4,353.4 221.8,336.9 279.1,336.9" fill="var(--ray)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="250.4,353.4 221.8,336.9 221.8,539.7 250.4,556.2" fill="var(--ray)" fill-opacity="0.72" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="221.8,336.9 279.1,336.9 279.1,539.7 221.8,539.7" fill="var(--ray)" fill-opacity="0.55" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="279.1,336.9 250.4,353.4 250.4,556.2 279.1,539.7" fill="var(--ray)" fill-opacity="0.72" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="392.3,80.4 432.8,103.8 426.0,107.7 385.5,84.3" fill="var(--ray)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="385.5,84.3 426.0,107.7 426.0,201.3 385.5,177.9" fill="var(--ray)" fill-opacity="0.78" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="432.8,103.8 426.0,107.7 426.0,201.3 432.8,197.4" fill="var(--ray)" fill-opacity="0.58" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="432.8,103.8 473.3,127.2 466.6,131.1 426.0,107.7" fill="var(--ray)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="426.0,107.7 466.6,131.1 466.6,224.7 426.0,201.3" fill="var(--ray)" fill-opacity="0.78" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="473.3,127.2 466.6,131.1 466.6,224.7 473.3,220.8" fill="var(--ray)" fill-opacity="0.58" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="473.3,127.2 513.9,150.6 507.1,154.5 466.6,131.1" fill="var(--ray)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="466.6,131.1 507.1,154.5 507.1,248.1 466.6,224.7" fill="var(--ray)" fill-opacity="0.78" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="513.9,150.6 507.1,154.5 507.1,248.1 513.9,244.2" fill="var(--ray)" fill-opacity="0.58" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="405.8,184.9 478.7,227.0 473.3,230.2 400.4,188.0" fill="var(--felt)" fill-opacity="1" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="400.4,188.0 473.3,230.2 473.3,277.7 400.4,235.6" fill="var(--felt)" fill-opacity="0.9" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="478.7,227.0 473.3,230.2 473.3,277.7 478.7,274.6" fill="var(--felt)" fill-opacity="0.7" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="515.2,334.7 574.6,369.0 574.6,205.2 515.2,170.9" fill="var(--wood)" fill-opacity="0.3" stroke="var(--wood)" stroke-width="1.6"/>
+  <polygon points="309.9,155.3 316.6,159.2 276.1,182.6 269.3,178.7" fill="var(--ray)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="269.3,178.7 276.1,182.6 276.1,276.2 269.3,272.3" fill="var(--ray)" fill-opacity="0.78" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="316.6,159.2 276.1,182.6 276.1,276.2 316.6,252.8" fill="var(--ray)" fill-opacity="0.58" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="492.2,260.6 499.0,264.5 458.5,287.9 451.7,284.0" fill="var(--ray)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="451.7,284.0 458.5,287.9 458.5,381.5 451.7,377.6" fill="var(--ray)" fill-opacity="0.78" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="499.0,264.5 458.5,287.9 458.5,381.5 499.0,358.1" fill="var(--ray)" fill-opacity="0.58" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="169.4,244.2 179.5,250.1 139.0,273.4 128.8,267.6" fill="var(--mdf)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="128.8,267.6 139.0,273.4 139.0,320.2 128.8,314.4" fill="var(--mdf)" fill-opacity="0.78" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="179.5,250.1 139.0,273.4 139.0,320.2 179.5,296.9" fill="var(--mdf)" fill-opacity="0.58" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="361.9,355.3 372.0,361.2 331.5,384.6 321.3,378.8" fill="var(--mdf)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="321.3,378.8 331.5,384.6 331.5,431.4 321.3,425.6" fill="var(--mdf)" fill-opacity="0.78" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="372.0,361.2 331.5,384.6 331.5,431.4 372.0,408.0" fill="var(--mdf)" fill-opacity="0.58" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="380.8,303.1 407.8,318.7 380.8,334.3 353.8,318.7" fill="var(--sunk)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="353.8,318.7 380.8,334.3 380.8,336.6 353.8,321.0" fill="var(--sunk)" fill-opacity="0.78" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="407.8,318.7 380.8,334.3 380.8,336.6 407.8,321.0" fill="var(--sunk)" fill-opacity="0.58" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="381.5,236.4 385.5,238.7 381.5,241.1 377.4,238.7" fill="var(--sunk)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="377.4,238.7 381.5,241.1 381.5,320.6 377.4,318.3" fill="var(--sunk)" fill-opacity="0.78" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="385.5,238.7 381.5,241.1 381.5,320.6 385.5,318.3" fill="var(--sunk)" fill-opacity="0.58" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="382.1,207.1 395.6,214.9 378.8,224.7 365.2,216.9" fill="var(--felt)" fill-opacity="1" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="365.2,216.9 378.8,224.7 378.8,248.1 365.2,240.3" fill="var(--felt)" fill-opacity="0.92" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="395.6,214.9 378.8,224.7 378.8,248.1 395.6,238.3" fill="var(--felt)" fill-opacity="0.72" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="455.1,346.0 482.1,361.6 455.1,377.2 428.1,361.6" fill="var(--sunk)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="428.1,361.6 455.1,377.2 455.1,379.5 428.1,363.9" fill="var(--sunk)" fill-opacity="0.78" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="482.1,361.6 455.1,377.2 455.1,379.5 482.1,363.9" fill="var(--sunk)" fill-opacity="0.58" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="455.8,279.3 459.8,281.6 455.8,284.0 451.7,281.6" fill="var(--sunk)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="451.7,281.6 455.8,284.0 455.8,363.5 451.7,361.2" fill="var(--sunk)" fill-opacity="0.78" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="459.8,281.6 455.8,284.0 455.8,363.5 459.8,361.2" fill="var(--sunk)" fill-opacity="0.58" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="456.4,250.0 469.9,257.8 453.1,267.6 439.5,259.8" fill="var(--felt)" fill-opacity="1" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="439.5,259.8 453.1,267.6 453.1,291.0 439.5,283.2" fill="var(--felt)" fill-opacity="0.92" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="469.9,257.8 453.1,267.6 453.1,291.0 469.9,281.2" fill="var(--felt)" fill-opacity="0.72" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="345.0,255.9 466.6,326.1 426.0,349.5 304.5,279.3" fill="var(--sunk)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="304.5,279.3 426.0,349.5 426.0,351.8 304.5,281.6" fill="var(--sunk)" fill-opacity="0.78" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="466.6,326.1 426.0,349.5 426.0,351.8 466.6,328.4" fill="var(--sunk)" fill-opacity="0.58" stroke="var(--ink)" stroke-width="0.8"/>
+  <line x1="345.0" y1="262.9" x2="345.0" y2="319.1" class="s-hair"/>
+  <line x1="458.5" y1="328.4" x2="458.5" y2="384.6" class="s-hair"/>
+  <line x1="312.6" y1="281.6" x2="312.6" y2="337.8" class="s-hair"/>
+  <line x1="426.0" y1="347.2" x2="426.0" y2="403.3" class="s-hair"/>
+  <polygon points="330.8,345.2 352.4,357.7 328.8,371.3 307.2,358.9" fill="var(--sunk)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="307.2,358.9 328.8,371.3 328.8,406.4 307.2,394.0" fill="var(--sunk)" fill-opacity="0.78" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="352.4,357.7 328.8,371.3 328.8,406.4 352.4,392.8" fill="var(--sunk)" fill-opacity="0.58" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="312.6,314.4 331.5,325.3 327.4,327.7 308.5,316.7" fill="var(--sunk)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="308.5,316.7 327.4,327.7 327.4,370.6 308.5,359.6" fill="var(--sunk)" fill-opacity="0.78" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="331.5,325.3 327.4,327.7 327.4,370.6 331.5,368.2" fill="var(--sunk)" fill-opacity="0.58" stroke="var(--ink)" stroke-width="0.8"/>
+  <circle cx="345.0" cy="281.6" r="13" fill="var(--ink)"/>
+  <circle cx="345.0" cy="281.6" r="19" fill="none" stroke="var(--ink)" stroke-width="1" opacity=".3"/>
+  <polygon points="66.7,443.9 242.3,545.3 242.3,346.4 66.7,245.0" fill="var(--mute)" fill-opacity="0.28" stroke="var(--mute)" stroke-width="1"/>
+  <polygon points="78.2,456.8 220.0,538.6 220.0,374.8 78.2,292.9" fill="var(--glass-fill)" fill-opacity="0.5" stroke="var(--glass)" stroke-width="1.2"/>
+  <polygon points="132.2,339.8 213.3,386.6 206.5,390.5 125.4,343.6" fill="var(--ray)" fill-opacity="1.0" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="125.4,343.6 206.5,390.5 206.5,484.1 125.4,437.2" fill="var(--ray)" fill-opacity="0.78" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="213.3,386.6 206.5,390.5 206.5,484.1 213.3,480.2" fill="var(--ray)" fill-opacity="0.58" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="365.2,238.7 356.6,242.9 346.6,245.9 335.9,247.8 324.7,248.4 313.5,247.8 302.8,245.9 292.9,242.9 284.2,238.7 277.1,233.7 271.8,228.0 268.5,221.8 267.4,215.3 268.5,208.9 271.8,202.7 277.1,197.0 284.2,191.9 292.9,187.8 302.8,184.8 313.5,182.9 324.7,182.2 335.9,182.9 346.6,184.8 356.6,187.8 365.2,191.9 372.4,197.0 377.7,202.7 380.9,208.9 382.0,215.3 380.9,221.8 377.7,228.0 372.4,233.7" fill="var(--flag)" fill-opacity="0.1" stroke="var(--flag)" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <polygon points="324.7,213.8 280.8,233.7 290.3,239.1" fill="var(--flag)" fill-opacity="0.4" stroke="var(--flag)" stroke-width="0.8"/>
+  <polygon points="324.7,213.8 316.8,181.9 303.9,183.9" fill="var(--flag)" fill-opacity="0.4" stroke="var(--flag)" stroke-width="0.8"/>
+  <polygon points="324.7,213.8 376.5,225.8 380.0,218.3" fill="var(--flag)" fill-opacity="0.4" stroke="var(--flag)" stroke-width="0.8"/>
+  <line x1="324.7" y1="193.5" x2="324.7" y2="213.8" class="s-ghost"/>
+  <polygon points="348.4,132.3 469.9,202.5 429.4,214.9 307.8,144.8" fill="var(--ray)" fill-opacity="1" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="307.8,144.8 429.4,214.9 429.4,222.8 307.8,152.6" fill="var(--ray)" fill-opacity="0.75" stroke="var(--ink)" stroke-width="0.8"/>
+  <polygon points="469.9,202.5 429.4,214.9 429.4,222.8 469.9,210.3" fill="var(--ray)" fill-opacity="0.55" stroke="var(--ink)" stroke-width="0.8"/>
+  <line x1="348.4" y1="113.6" x2="348.4" y2="137.0" class="s-hair"/>
+  <line x1="463.2" y1="179.8" x2="463.2" y2="203.2" class="s-hair"/>
+  <line x1="314.6" y1="133.1" x2="314.6" y2="145.5" class="s-hair"/>
+  <line x1="429.4" y1="199.3" x2="429.4" y2="211.8" class="s-hair"/>
+<g class="s-key">
+    <circle cx="449.7" cy="83.9" r="9"/><text x="449.7" y="87.4">1</text>
+    <line x1="449.7" y1="92.9" x2="449.7" y2="97.9" stroke="var(--ink)" stroke-width="0.9" opacity=".5" fill="none"/>
+    <circle cx="372.0" cy="43.0" r="9"/><text x="372.0" y="46.5">2</text>
+    <line x1="372.0" y1="52.0" x2="372.0" y2="57.0" stroke="var(--ink)" stroke-width="0.9" opacity=".5" fill="none"/>
+    <circle cx="293.0" cy="151.0" r="9"/><text x="293.0" y="154.5">3</text>
+    <line x1="293.0" y1="160.0" x2="293.0" y2="165.0" stroke="var(--ink)" stroke-width="0.9" opacity=".5" fill="none"/>
+    <circle cx="388.9" cy="150.2" r="9"/><text x="388.9" y="153.8">4</text>
+    <line x1="388.9" y1="159.2" x2="388.9" y2="164.2" stroke="var(--ink)" stroke-width="0.9" opacity=".5" fill="none"/>
+    <circle cx="324.7" cy="183.4" r="9"/><text x="324.7" y="186.9">5</text>
+    <line x1="324.7" y1="192.4" x2="324.7" y2="197.4" stroke="var(--ink)" stroke-width="0.9" opacity=".5" fill="none"/>
+    <circle cx="154.5" cy="238.8" r="9"/><text x="154.5" y="242.3">6</text>
+    <line x1="154.5" y1="247.8" x2="154.5" y2="252.8" stroke="var(--ink)" stroke-width="0.9" opacity=".5" fill="none"/>
+    <circle cx="169.4" cy="339.4" r="9"/><text x="169.4" y="342.9">7</text>
+    <line x1="169.4" y1="348.4" x2="169.4" y2="353.4" stroke="var(--ink)" stroke-width="0.9" opacity=".5" fill="none"/>
+    <circle cx="331.5" cy="376.8" r="9"/><text x="331.5" y="380.3">8</text>
+    <line x1="331.5" y1="385.8" x2="331.5" y2="390.8" stroke="var(--ink)" stroke-width="0.9" opacity=".5" fill="none"/>
+    <circle cx="380.1" cy="196.7" r="9"/><text x="380.1" y="200.2">9</text>
+    <line x1="380.1" y1="205.7" x2="380.1" y2="210.7" stroke="var(--ink)" stroke-width="0.9" opacity=".5" fill="none"/>
+    <circle cx="401.7" cy="300.4" r="9"/><text x="401.7" y="303.9">10</text>
+    <line x1="401.7" y1="309.4" x2="401.7" y2="314.4" stroke="var(--ink)" stroke-width="0.9" opacity=".5" fill="none"/>
+  </g>
+</svg>
+        <p class="dw__cap">Isométrica · paredes direita e de fundo removidas para ver dentro</p>
+      </div>
+      <div>
+        <p class="keyhead">Legenda</p>
+        <div class="key">
+          <div><b>1</b><span>3 módulos de absorção na parede frontal, 0,60 × 1,20 × 0,10, de z = 1,15 a 2,35</span></div>
+          <div><b>2</b><span>4 bass traps de canto, do piso ao teto, atravessando o canto a 0,42 m de cada parede</span></div>
+          <div><b>3</b><span>2 módulos nos pontos-espelho, com 10 cm de ar atrás</span></div>
+          <div><b>4</b><span>Nuvem 1,80 × 0,60 × 0,10, inclinada 13°</span></div>
+          <div><b>5</b><span>Ventilador — a folga que define o tamanho da nuvem</span></div>
+          <div><b>6</b><span>2 skylines de madeira, um em cada lateral traseira</span></div>
+          <div><b>7</b><span>Cortina blackout do teto ao chão + gobo móvel na frente do vidro</span></div>
+          <div><b>8</b><span>Tapete 2,00 × 3,00 com manta, de y = 0,60 a 3,60</span></div>
+          <div><b>9</b><span>Monitores em pedestais de chão, baffle a 0,95 m da parede frontal</span></div>
+          <div><b>10</b><span>TV baixada — borda superior em z = 1,10, abaixo do eixo do tweeter</span></div>
+        </div>
+        <p class="keyhead">O que muda de lugar</p>
+        <div class="key">
+          <div><span class="sw" style="background:var(--ray-soft);border-color:var(--ray)"></span><span>Peças novas a construir — 12 no total</span></div>
+          <div><span class="sw" style="background:var(--mdf-soft);border-color:var(--mdf)"></span><span>O que você já tem: skylines, tapete</span></div>
+          <div><span class="sw" style="background:var(--flag-soft);border-color:var(--flag)"></span><span>Ventilador — restrição, medir antes</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="compras">
+  <div class="plate">
+    <div class="head"><span class="head__n">01</span><h2>Lista de compras</h2></div>
+
+    <p class="keyhead">Lã de rocha — painel 1200 × 600 × 50 mm, 48 a 64 kg/m³</p>
+    <div class="tw"><table>
+      <thead><tr><th>Destino</th><th class="n">Peças prontas</th><th class="n">Placas de 50 mm</th></tr></thead>
+      <tbody>
+        <tr><td>Bass traps de canto (piso ao teto)</td><td class="n">4</td><td class="n">18</td></tr>
+        <tr><td>Parede frontal — módulos 0,60 × 1,20 × 0,10</td><td class="n">3</td><td class="n">6</td></tr>
+        <tr><td>Pontos-espelho laterais — mesmos módulos</td><td class="n">2</td><td class="n">4</td></tr>
+        <tr><td>Nuvem de teto 1,80 × 0,60 × 0,10</td><td class="n">1</td><td class="n">3</td></tr>
+        <tr><td>Gobo móvel 1,20 × 1,20 × 0,10</td><td class="n">1</td><td class="n">4</td></tr>
+        <tr><td>Perda de corte e reserva</td><td class="n">—</td><td class="n">3</td></tr>
+        <tr><td><strong>Total</strong></td><td class="n"><strong>11</strong></td><td class="n"><strong>38 placas · 27,4 m²</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-family:var(--mono); font-size:12px; color:var(--mute); margin-top:10px">Duas placas de 50 mm empilhadas formam os 100 mm de cada peça. Não compre 25 mm: metade da espessura joga o limite de trabalho uma oitava para cima e some justo com os 125–250 Hz. Densidade entre 48 e 64 kg/m³; acima de 96 fica reflexivo demais no grave.</p>
+
+    <p class="keyhead">Madeira e tecido</p>
+    <div class="tw"><table>
+      <thead><tr><th>Item</th><th class="n">Quantidade</th><th>Para quê</th></tr></thead>
+      <tbody>
+        <tr><td>Sarrafo de pinus 100 × 20 mm, barra de 3,00 m</td><td class="n">26 barras</td><td>quadros das 11 peças + afastadores</td></tr>
+        <tr><td>Sarrafo de pinus 70 × 20 mm, barra de 3,00 m</td><td class="n">2 barras</td><td>pendural francês (5 pares)</td></tr>
+        <tr><td>Tecido acústico permeável, largura 1,40 m</td><td class="n">20 m lineares</td><td>forrar as 11 peças</td></tr>
+        <tr><td>Tecido blackout ≥ 400 g/m², largura 2,80 m</td><td class="n">6,00 m lineares</td><td>cortina do vidro, franzimento 2:1</td></tr>
+        <tr><td>Manta de feltro antiderrapante 5 a 10 mm</td><td class="n">6 m² (2,00 × 3,00)</td><td>debaixo do tapete</td></tr>
+        <tr><td>Feltro grosso</td><td class="n">0,40 × 1,20 m</td><td>faixa central da bancada</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-family:var(--mono); font-size:12px; color:var(--mute); margin-top:10px">Teste do tecido acústico: encoste na boca e sopre. Se o ar passa fácil, serve. TNT e tecido de forro não passam — refletem o agudo e desperdiçam a lã que está atrás.</p>
+
+    <p class="keyhead">Ferragens</p>
+    <div class="tw"><table>
+      <thead><tr><th>Item</th><th class="n">Quantidade</th></tr></thead>
+      <tbody>
+        <tr><td>Bucha 8 mm + parafuso 5 × 50 mm</td><td class="n">60 conjuntos</td></tr>
+        <tr><td>Parafuso para madeira 4,0 × 45 mm</td><td class="n">250</td></tr>
+        <tr><td>Grampeador manual + grampos 8 mm</td><td class="n">1 + 2.000</td></tr>
+        <tr><td>Gancho tipo olhal com bucha para laje</td><td class="n">4</td></tr>
+        <tr><td>Corrente de 0,15 m / de 0,27 m + mosquetões</td><td class="n">2 / 2 + 8</td></tr>
+        <tr><td>Rodízio com trava, 50 mm</td><td class="n">4</td></tr>
+        <tr><td>Varão 3,20 m + suporte com projeção de 15 cm</td><td class="n">1 + 3</td></tr>
+        <tr><td>Argola ou ilhós para a cortina</td><td class="n">24</td></tr>
+        <tr><td>Cola branca para madeira, 500 ml</td><td class="n">1</td></tr>
+      </tbody>
+    </table></div>
+
+    <p class="keyhead">Equipamento e proteção</p>
+    <div class="tw"><table>
+      <thead><tr><th>Item</th><th class="n">Qtd</th><th>Observação</th></tr></thead>
+      <tbody>
+        <tr><td>Pedestal de monitor de chão</td><td class="n">2</td><td>tweeter a 1,20 m; é o que libera a bancada da posição do monitor</td></tr>
+        <tr><td>Microfone de medição USB</td><td class="n">1</td><td>UMIK-1 ou similar; o REW é gratuito</td></tr>
+        <tr><td>Máscara PFF2</td><td class="n">5</td><td rowspan="3" style="white-space:normal">obrigatório ao cortar e manusear lã de rocha — a fibra irrita pele, olhos e vias aéreas</td></tr>
+        <tr><td>Luvas e óculos de proteção</td><td class="n">1 par cada</td></tr>
+        <tr><td>Camisa de manga comprida descartável</td><td class="n">1</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="tot"><span>Obra completa, sem pedestais nem microfone</span><b>R$ 3.000 – 5.250</b></div>
+    <div class="tot" style="border-top:1px solid var(--rule)"><span>Com pedestais e microfone de medição</span><b>R$ 4.300 – 7.750</b></div>
+    <p style="font-family:var(--mono); font-size:12px; color:var(--mute); margin-top:14px">Ordem de grandeza para conferir na sua região — o preço da lã de rocha e do tecido acústico varia muito entre fornecedores. As quantidades é que estão fechadas.</p>
+  </div>
+</section>
+
+<section id="modulo">
+  <div class="plate">
+    <div class="head"><span class="head__n">02</span><h2>O módulo — a peça que se repete</h2></div>
+  </div>
+  <div class="wrap">
+    <p>Seis das onze peças são o mesmo objeto: um quadro de sarrafo de <strong>0,60 × 1,20 m</strong>, cheio com duas placas de lã de 50 mm e forrado com tecido. Duas placas de 1200 × 600 empilhadas preenchem o quadro exatamente — zero corte, zero sobra. Aprenda a fazer um e você fez todos.</p>
+  </div>
+
+  <div class="plate" style="margin-top:26px">
+    <div class="dw">
+<svg viewBox="0 0 700 340" role="img" aria-label="Detalhe construtivo do módulo padrão: seção horizontal mostrando parede, afastador de 10 cm, quadro de sarrafo, lã de rocha e tecido; e elevação do quadro">
+  <defs>
+    <pattern id="hw" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="8" stroke="var(--mute)" stroke-width="1"/></pattern>
+    <pattern id="wool" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="2.4" fill="none" stroke="var(--ray)" stroke-width=".9"/></pattern>
+  </defs>
+
+  <rect x="60" y="62" width="480" height="16" fill="url(#hw)" opacity=".3"/>
+  <line x1="60" y1="80" x2="540" y2="80" stroke="var(--ink)" stroke-width="3"/>
+  <text class="s-dimt" x="60" y="56">PAREDE</text>
+
+  <rect x="90" y="80" width="14" height="70" fill="var(--wood)" opacity=".45" stroke="var(--wood)" stroke-width="1"/>
+  <rect x="496" y="80" width="14" height="70" fill="var(--wood)" opacity=".45" stroke="var(--wood)" stroke-width="1"/>
+  <rect x="90" y="150" width="14" height="70" fill="var(--wood)" opacity=".8" stroke="var(--wood)" stroke-width="1"/>
+  <rect x="496" y="150" width="14" height="70" fill="var(--wood)" opacity=".8" stroke="var(--wood)" stroke-width="1"/>
+  <rect x="104" y="150" width="392" height="70" fill="url(#wool)"/>
+  <rect x="104" y="150" width="392" height="70" fill="none" stroke="var(--ray)" stroke-width="1.2"/>
+  <path d="M90 220 h420" fill="none" stroke="var(--felt)" stroke-width="3"/>
+  <path d="M90 220 q-6 -4 0 -8 M510 220 q6 -4 0 -8" fill="none" stroke="var(--felt)" stroke-width="2"/>
+
+  <g class="s-dim">
+    <line x1="548" y1="80" x2="562" y2="80"/><line x1="548" y1="150" x2="562" y2="150"/><line x1="548" y1="220" x2="562" y2="220"/>
+    <line x1="555" y1="80" x2="555" y2="150"/><line x1="555" y1="150" x2="555" y2="220"/>
+    <line x1="90" y1="248" x2="90" y2="262"/><line x1="510" y1="248" x2="510" y2="262"/><line x1="90" y1="255" x2="510" y2="255"/>
+  </g>
+  <text class="s-dimt" x="566" y="118">0,10 ar</text>
+  <text class="s-dimt" x="566" y="188">0,10 lã</text>
+  <text class="s-dimt" x="300" y="251" text-anchor="middle">0,60</text>
+
+  <text class="s-lbl" x="112" y="132" fill="var(--wood)">afastador: sarrafo 100 × 20 deitado em pé</text>
+  <text class="s-lbl" x="120" y="192" fill="var(--ray)">2 placas de 50 mm, sem comprimir</text>
+  <text class="s-lbl" x="120" y="238" fill="var(--felt)">tecido grampeado no verso do quadro</text>
+  <text class="s-dimt" x="60" y="290" letter-spacing="1.2">SEÇÃO HORIZONTAL — MÓDULO NA PAREDE</text>
+  <text class="s-dimt" x="60" y="308" fill="var(--mdf)">O ar entre parede e lã não é folga: é o que leva o painel de 0,45 para 0,90 em 250 Hz.</text>
+
+  <rect x="575" y="90" width="80" height="160" fill="none" stroke="var(--wood)" stroke-width="2"/>
+  <rect x="575" y="90" width="9" height="160" fill="var(--wood)" opacity=".55"/>
+  <rect x="646" y="90" width="9" height="160" fill="var(--wood)" opacity=".55"/>
+  <rect x="584" y="90" width="62" height="9" fill="var(--wood)" opacity=".8"/>
+  <rect x="584" y="241" width="62" height="9" fill="var(--wood)" opacity=".8"/>
+  <path d="M590 104 l50 0 l-6 8 l-38 0z" fill="var(--mdf)" opacity=".7"/>
+  <text class="s-dimt" x="615" y="272" text-anchor="middle">0,60 × 1,20</text>
+  <text class="s-dimt" x="660" y="130" text-anchor="end" fill="var(--mdf)">pendural</text>
+  <text class="s-dimt" x="660" y="142" text-anchor="end" fill="var(--mdf)">francês</text>
+  <text class="s-dimt" x="575" y="80" letter-spacing="1.2">QUADRO</text>
+</svg>
+      <p class="dw__cap">DES. E3 · módulo padrão 0,60 × 1,20 × 0,10 com afastamento de 10 cm</p>
+    </div>
+  </div>
+
+  <div class="wrap" style="margin-top:26px">
+    <ol class="steps">
+      <li><div><b>Corte o sarrafo.</b> Por módulo: 2 peças de 1,20 m (montantes) e 2 peças de 0,56 m (travessas, que entram entre os montantes). O quadro fechado dá exatamente 0,60 × 1,20.
+        <div class="cut">2 × 1,20 m <span>montante</span> · 2 × 0,56 m <span>travessa</span> · 1 barra de 3 m rende 2 montantes + 1 travessa</div></div></li>
+      <li><div><b>Monte o quadro.</b> Cola branca na junta e 2 parafusos 4 × 45 por topo. Antes de a cola pegar, meça as duas diagonais: as duas têm que dar <strong>1,341 m</strong>. Se derem diferente, o quadro está fora de esquadro e a lã não vai encaixar.</div></li>
+      <li><div><b>Corte e encaixe a lã.</b> Máscara PFF2, luvas, manga comprida, de preferência na área de serviço. Duas placas de 1200 × 600 empilhadas entram inteiras — sem cortar. Encaixe por pressão, sem amassar: lã comprimida perde absorção no grave.</div></li>
+      <li><div><b>Estique o tecido.</b> Deite o quadro com a lã para cima, jogue o tecido por cima com 15 cm sobrando de cada lado. Grampeie <strong>um grampo no meio de cada um dos quatro lados</strong> primeiro, depois vá alternando lados a cada 8 cm, sempre puxando. Cantos: dobra de embrulho de presente, e corte o excesso só no fim.</div></li>
+      <li><div><b>Pendural francês.</b> Rasgue o sarrafo 70 × 20 a 45° no comprimento. Uma metade parafusada na travessa superior do quadro, com o corte para baixo; a outra na parede, com o corte para cima. O módulo desce e trava sozinho, e você pode tirar para ajustar posição.</div></li>
+      <li><div><b>Afastadores.</b> Dois sarrafos de 100 × 20 de 1,20 m, <strong>em pé</strong> (os 100 mm perpendiculares à parede), parafusados na parede nos dois lados de onde o módulo vai. O pendural francês vai em cima deles. É isso que cria os 10 cm de ar.</div></li>
+    </ol>
+    <div class="warn"><b>A lã de rocha coça, sério.</b> A fibra irrita pele, olhos e vias aéreas. Máscara PFF2 (não a cirúrgica), luvas, óculos e manga comprida durante todo o corte e encaixe. Faça fora da sala, varra com pano úmido, e não use aspirador comum. Depois de forrada com tecido, a peça é inerte.</div>
+  </div>
+</section>
+
+<section id="passo">
+  <div class="plate">
+    <div class="head"><span class="head__n">03</span><h2>Passo a passo</h2></div>
+
+    <div class="phase">
+      <div class="phase__tag"><span class="phase__n">FASE 0</span><h3>Uma tarde, zero compras</h3><span class="phase__cost">R$ 0</span></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <p>Esta fase sozinha vale mais que qualquer painel da lista. Faça antes de comprar nada — inclusive porque ela define se a nuvem cabe.</p>
+    <ol class="steps">
+      <li><div><b>Meça quatro coisas.</b> Pé-direito real. Centro do ventilador, medido da parede frontal. Diâmetro da varredura das pás. Distância da parede frontal até sua orelha, sentado como você senta.
+        <div class="cut">se o centro do ventilador der menos de 2,05 m <span>→ a nuvem não cabe; pule para recuar o ventilador</span></div></div></li>
+      <li><div><b>Mova a bancada.</b> Face frontal em <strong>y = 1,00 m</strong> da parede da TV, centrada em <strong>x = 1,50 m</strong>. Ela sai de encostada na parede e vem para o meio. Como fica a 1,00 m e o arco da porta tem raio 0,88 m, a porta continua abrindo.</div></li>
+      <li><div><b>Monitores em x = 0,95 e 2,05 m</b>, baffle a <strong>0,95 m</strong> da parede frontal, tweeter a <strong>1,20 m</strong> do chão, apontados para onde sua cabeça vai ficar. Sem pedestais de chão ainda, improvise com o que tiver — o importante é a posição.</div></li>
+      <li><div><b>Cadeira em x = 1,50 m, y = 1,90 m.</b> Marque com fita no chão. Este é o ponto que tira você do nó de 71,5 Hz.</div></li>
+      <li><div><b>Baixe a TV</b> até a borda superior ficar em <strong>z = 1,10 m</strong> — logo abaixo do eixo do tweeter. Isso libera a faixa de 1,15 a 2,35 m da parede frontal, que é onde os três módulos vão.</div></li>
+      <li><div><b>Limpe o eixo.</b> Tampa do MacBook fechada durante escuta crítica (use a TV como tela). Pedestal de microfone e a caixa acrílica saem da bancada. Ventilador desligado ao mixar.</div></li>
+      <li><div><b>Ouça uma música que você conhece de cor.</b> Anote o que mudou. Você vai querer essa referência depois de cada fase.</div></li>
+    </ol>
+  </div>
+
+  <div class="plate" style="margin-top:44px">
+    <div class="phase">
+      <div class="phase__tag"><span class="phase__n">FASE 1</span><h3>Quatro bass traps de canto</h3><span class="phase__cost">18 placas · ≈R$ 1.100 – 1.800</span></div>
+    </div>
+    <div class="dw" style="margin-top:22px">
+<svg viewBox="0 0 700 370" role="img" aria-label="Detalhe do bass trap de canto: seção horizontal mostrando o painel atravessando o canto a 42 cm de cada parede com vazio de ar atrás, e elevação com o empilhamento das placas">
+  <defs>
+    <pattern id="hw2" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="8" stroke="var(--mute)" stroke-width="1"/></pattern>
+    <pattern id="wool2" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="2.4" fill="none" stroke="var(--ray)" stroke-width=".9"/></pattern>
+  </defs>
+
+  <rect x="70" y="54" width="246" height="16" fill="url(#hw2)" opacity=".3"/>
+  <rect x="300" y="70" width="16" height="230" fill="url(#hw2)" opacity=".3"/>
+  <line x1="70" y1="70" x2="300" y2="70" stroke="var(--ink)" stroke-width="3"/>
+  <line x1="300" y1="70" x2="300" y2="300" stroke="var(--ink)" stroke-width="3"/>
+
+  <polygon points="130,70 300,70 300,240" fill="var(--sunk)" opacity=".7"/>
+  <polygon points="130,70 300,240 271.7,268.3 101.7,98.3" fill="url(#wool2)" stroke="var(--ray)" stroke-width="1.4"/>
+  <rect x="130" y="70" width="40" height="8" fill="var(--wood)"/>
+  <rect x="292" y="200" width="8" height="40" fill="var(--wood)"/>
+
+  <g class="s-dim">
+    <line x1="130" y1="44" x2="130" y2="64"/><line x1="300" y1="44" x2="300" y2="64"/><line x1="130" y1="52" x2="300" y2="52"/>
+  </g>
+  <text class="s-dimt" x="215" y="42" text-anchor="middle">0,42</text>
+  <text class="s-lbl" x="252" y="126" text-anchor="middle">vazio de ar</text>
+  <text class="s-lbl" x="252" y="140" text-anchor="middle" fill="var(--mute)">não preencher</text>
+  <line x1="180" y1="224" x2="205" y2="190" stroke="var(--ray)" stroke-width="1"/>
+  <text class="s-lbl" x="88" y="240" fill="var(--ray)">lã de rocha 100 mm</text>
+  <text class="s-lbl" x="88" y="254" fill="var(--wood)">taco de sarrafo na parede</text>
+  <text class="s-dimt" x="70" y="330" letter-spacing="1.2">SEÇÃO HORIZONTAL — CANTO</text>
+  <text class="s-dimt" x="70" y="348" fill="var(--mdf)">O triângulo vazio atrás faz parte do absorvedor. Encher com lã não melhora e gasta o triplo.</text>
+
+  <rect x="470" y="50" width="57" height="247" fill="url(#wool2)" stroke="var(--wood)" stroke-width="2"/>
+  <rect x="470" y="50" width="8" height="247" fill="var(--wood)" opacity=".6"/>
+  <rect x="519" y="50" width="8" height="247" fill="var(--wood)" opacity=".6"/>
+  <line x1="470" y1="183" x2="527" y2="183" stroke="var(--wood)" stroke-width="2"/>
+  <line x1="470" y1="69" x2="527" y2="69" stroke="var(--wood)" stroke-width="2"/>
+  <g class="s-dim">
+    <line x1="450" y1="50" x2="464" y2="50"/><line x1="450" y1="297" x2="464" y2="297"/><line x1="457" y1="50" x2="457" y2="297"/>
+    <line x1="470" y1="308" x2="470" y2="320"/><line x1="527" y1="308" x2="527" y2="320"/><line x1="470" y1="314" x2="527" y2="314"/>
+  </g>
+  <text class="s-dimt" x="443" y="177" text-anchor="middle" transform="rotate(-90 443 177)">2,60</text>
+  <text class="s-dimt" x="498" y="334" text-anchor="middle">0,60</text>
+  <text class="s-lbl" x="537" y="245">placa 1,20</text>
+  <text class="s-lbl" x="537" y="131">placa 1,20</text>
+  <text class="s-lbl" x="537" y="64">tira 0,20</text>
+  <text class="s-dimt" x="443" y="330" letter-spacing="1.2">ELEVAÇÃO</text>
+</svg>
+      <p class="dw__cap">DES. E2 · bass trap de canto, piso ao teto</p>
+    </div>
+  </div>
+
+  <div class="wrap" style="margin-top:26px">
+    <p>Comece pelos <strong>dois cantos frontais</strong> — são os que mais rendem. Se der para fazer os quatro de uma vez, melhor; se não, os de trás podem esperar.</p>
+    <ol class="steps">
+      <li><div><b>Marque o canto.</b> No chão e no teto, meça <strong>0,42 m</strong> a partir do canto, em cada uma das duas paredes. Ligue os quatro pontos com prumo e risque as duas linhas verticais nas paredes.</div></li>
+      <li><div><b>Tacos nas paredes.</b> Dois sarrafos de 100 × 20 de 2,60 m, um em cada parede, com a borda na linha marcada. Bucha 8 mm a cada 60 cm — 5 pontos por taco.</div></li>
+      <li><div><b>Monte o quadro.</b> 2 montantes de 2,60 m e 3 travessas de 0,56 m (base, meio e topo). O do meio é o que impede a lã de escorregar com o tempo.
+        <div class="cut">por trap: 2 × 2,60 m <span>montante</span> · 3 × 0,56 m <span>travessa</span> · total 4 traps: 8 montantes + 12 travessas</div></div></li>
+      <li><div><b>Encha.</b> Por camada: 2 placas inteiras de 1,20 empilhadas + 1 tira de 0,20 m no topo. Duas camadas = 100 mm. As tiras saem de 2 placas cortadas em 6 pedaços cada.</div></li>
+      <li><div><b>Forre com tecido</b> e feche igual ao módulo padrão.</div></li>
+      <li><div><b>Levante e parafuse.</b> Encoste o quadro nos dois tacos e parafuse os montantes neles, 4 pontos por lado. Repita nos outros três cantos.</div></li>
+      <li><div><b>Ouça a mesma música.</b> É aqui que a diferença é mais óbvia da lista inteira — o grave para de trocar de nível quando você mexe a cabeça.</div></li>
+    </ol>
+  </div>
+
+  <div class="plate" style="margin-top:44px">
+    <div class="phase">
+      <div class="phase__tag"><span class="phase__n">FASE 2</span><h3>Parede frontal, laterais e nuvem</h3><span class="phase__cost">13 placas · ≈R$ 900 – 1.600</span></div>
+    </div>
+    <div class="dw" style="margin-top:22px">
+<svg viewBox="0 0 700 300" role="img" aria-label="Detalhe da nuvem de teto inclinada: corte lateral com correntes de comprimentos diferentes e a folga de 5 cm para a pá do ventilador">
+  <line x1="40" y1="60" x2="660" y2="60" stroke="var(--ink)" stroke-width="3"/>
+  <line x1="60" y1="60" x2="60" y2="290" stroke="var(--ink)" stroke-width="3"/>
+  <text class="s-dimt" x="46" y="52">TETO</text>
+  <text class="s-dimt" x="66" y="286" opacity=".7">parede frontal</text>
+
+  <polygon points="150,114 270,90 270,110 150,134" fill="var(--ray)" fill-opacity=".35" stroke="var(--ray)" stroke-width="1.6"/>
+  <line x1="160" y1="60" x2="160" y2="112" stroke="var(--mute)" stroke-width="2" stroke-dasharray="3 3"/>
+  <line x1="260" y1="60" x2="260" y2="92" stroke="var(--mute)" stroke-width="2" stroke-dasharray="3 3"/>
+  <circle cx="160" cy="60" r="4" fill="var(--mute)"/><circle cx="260" cy="60" r="4" fill="var(--mute)"/>
+
+  <line x1="400" y1="60" x2="400" y2="108" stroke="var(--flag)" stroke-width="3"/>
+  <line x1="280" y1="108" x2="520" y2="108" stroke="var(--flag)" stroke-width="7" stroke-linecap="round" opacity=".6"/>
+  <circle cx="400" cy="106" r="6" fill="var(--flag)"/>
+  <text class="s-flagt" x="528" y="112">ventilador</text>
+
+  <g class="s-dim" stroke="var(--flag)">
+    <line x1="270" y1="140" x2="270" y2="158"/><line x1="280" y1="140" x2="280" y2="158"/><line x1="270" y1="150" x2="280" y2="150"/>
+  </g>
+  <text class="s-flagt" x="288" y="154">5 cm — a folga que dita o tamanho da nuvem</text>
+
+  <path d="M270 90 l-30 6 a34 34 0 0 0 30 -6z" fill="var(--ray)" opacity=".25"/>
+  <text class="s-lbl" x="228" y="86" text-anchor="end" fill="var(--ray)">13°</text>
+
+  <g class="s-dim">
+    <line x1="160" y1="70" x2="146" y2="70"/><line x1="153" y1="60" x2="153" y2="112"/><line x1="146" y1="112" x2="160" y2="112"/>
+    <line x1="260" y1="70" x2="274" y2="70"/><line x1="267" y1="60" x2="267" y2="92"/><line x1="274" y1="92" x2="260" y2="92"/>
+    <line x1="60" y1="252" x2="60" y2="266"/><line x1="160" y1="252" x2="160" y2="266"/><line x1="260" y1="252" x2="260" y2="266"/>
+    <line x1="60" y1="259" x2="260" y2="259"/>
+    <line x1="150" y1="228" x2="150" y2="242"/><line x1="270" y1="228" x2="270" y2="242"/><line x1="150" y1="235" x2="270" y2="235"/>
+  </g>
+  <text class="s-dimt" x="140" y="92" text-anchor="end">0,27</text>
+  <text class="s-dimt" x="282" y="80">0,15</text>
+  <text class="s-dimt" x="110" y="255" text-anchor="middle">1,00</text>
+  <text class="s-dimt" x="210" y="255" text-anchor="middle">0,50</text>
+  <text class="s-dimt" x="210" y="231" text-anchor="middle">0,60</text>
+  <text class="s-dimt" x="40" y="290" letter-spacing="1.2">CORTE — NUVEM INCLINADA</text>
+  <text class="s-dimt" x="660" y="290" text-anchor="end" fill="var(--mdf)">correntes diferentes na frente e atrás = a inclinação</text>
+</svg>
+      <p class="dw__cap">DES. E4 · nuvem 1,80 × 0,60, suspensa por correntes de 0,15 e 0,27 m</p>
+    </div>
+  </div>
+
+  <div class="wrap" style="margin-top:26px">
+    <ol class="steps">
+      <li><div><b>Três módulos na parede frontal.</b> Um ao lado do outro cobrindo <strong>x = 0,30 a 2,10 m</strong>, de <strong>z = 1,15 a 2,35 m</strong>. Aqui vão <strong>rentes à parede</strong>, sem afastador: a parede frontal inteira é o refletor, e você quer o painel colado nela cobrindo o máximo de área.</div></li>
+      <li><div><b>Dois módulos nos pontos-espelho laterais.</b> Centro em <strong>y = 1,32 m</strong> da parede frontal, de z = 0,60 a 1,80 m, um em cada parede, na mesma cota. <strong>Estes vão com os 10 cm de afastador.</strong> Confirme o ponto com o truque do espelho antes de furar: alguém desliza um espelho pela parede enquanto você fica sentado no ponto de escuta; onde você enxergar o cone do monitor, é ali.</div></li>
+      <li><div><b>Afaste também os três painéis pretos de 5 cm que você já tem.</b> Mesmos afastadores de sarrafo 100 × 20 em pé. Isso leva o α deles de 0,45 para 0,90 em 250 Hz sem comprar painel nenhum.</div></li>
+      <li><div><b>Monte a nuvem.</b> Quadro de 1,80 × 0,60 (2 montantes de 1,80, 3 travessas de 0,56 incluindo uma central), 100 mm de lã, tecido nas <strong>duas faces</strong> — ela fica pendurada, as duas aparecem.
+        <div class="cut">1 camada = 1 placa inteira + 1 meia placa · 2 camadas = 3 placas</div></div></li>
+      <li><div><b>Marque o teto e confira a folga antes de furar.</b> Quatro pontos: x = 0,65 e 2,35 m; y = <strong>1,00 m</strong> (frente) e <strong>1,50 m</strong> (trás), medidos da parede frontal. Com a nuvem de 0,60 de profundidade, a borda traseira fica em y = 1,55 e a pá do ventilador chega em 1,60. São 5 cm. Meça duas vezes.</div></li>
+      <li><div><b>Pendure com correntes desiguais.</b> <strong>0,15 m nos dois pontos de trás, 0,27 m nos dois da frente.</strong> A diferença de 12 cm sobre os 50 cm entre os pontos dá os 13° de inclinação, que jogam para a frente — contra a absorção da parede frontal — o que a borda traseira não pega.</div></li>
+    </ol>
+    <div class="warn"><b>Se o ventilador estiver a menos de 2,05 m da parede frontal,</b> pare aqui. A nuvem não cabe e nenhuma inclinação resolve. Recue o ventilador para y ≥ 2,90 m — atrás da cadeira, onde ele continua ventilando você e libera o teto inteiro — e aí monte a nuvem cheia, 1,20 × 1,20 centrada em y = 1,42 m. É meia hora de eletricista e vale mais que o painel.</div>
+  </div>
+
+  <div class="plate" style="margin-top:44px">
+    <div class="phase">
+      <div class="phase__tag"><span class="phase__n">FASE 3</span><h3>Fundo de vidro, gobo e piso</h3><span class="phase__cost">4 placas + tecidos · ≈R$ 700 – 1.300</span></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <ol class="steps">
+      <li><div><b>Suportes novos de varão, com projeção de 15 cm</b>, fixados o mais alto possível — de preferência no teto. A cortina tem que ir do teto ao chão e ficar afastada do vidro: é o espaço de ar entre tecido e vidro que faz ela absorver, e não só decorar.</div></li>
+      <li><div><b>Cortina blackout, duas folhas de 3,00 m</b> para um vão de 3,00 m — franzimento 2:1. Pano liso e esticado quase não absorve; é a prega que trabalha. Barra a 2 cm do chão, transbordando 20 cm de cada lado do vão.</div></li>
+      <li><div><b>Gobo móvel 1,20 × 1,20 × 0,10</b>, tecido nas duas faces, sobre uma base em H de sarrafo com 4 rodízios com trava. Altura total ~1,60 m, com a face absorvente cobrindo de 0,35 a 1,55 m — que é a altura da sua orelha. Fica encostado na parede e você traz para a frente do vidro só na hora de mixar.
+        <div class="cut">quadro: 4 × 1,20 m + 2 × 0,56 m <span>·</span> base em H: 2 × 0,80 m + 1 × 0,60 m</div></div></li>
+      <li><div><b>Manta debaixo do tapete.</b> 2,00 × 3,00 m de feltro de 5 a 10 mm. Sem ela o tapete tem α 0,20 em 500 Hz; com ela, 0,45. Mesmo tapete, mais que o dobro.</div></li>
+      <li><div><b>Tapete de y = 0,60 a 3,60 m</b>, centrado em x = 1,50. Deixe ~0,50 m de porcelanato livre de cada lado: os bass traps apoiam no duro e a sala não fica abafada.</div></li>
+      <li><div><b>Os dois skylines de madeira</b>, um em cada parede lateral, centro em <strong>y = 3,30 m</strong> e a 1,30 m de altura. Simétricos, nos dois lados, na mesma cota — se só der para pôr um, não ponha nenhum: assimetria de difusão é pior que difusão nenhuma.</div></li>
+      <li><div><b>Feltro grosso de 0,40 × 1,20 m</b> na faixa central da bancada, entre os monitores. E incline os monitores 5 a 8° para baixo, mirando a orelha.</div></li>
+    </ol>
+  </div>
+
+  <div class="plate" style="margin-top:44px">
+    <div class="phase">
+      <div class="phase__tag"><span class="phase__n">FASE 4</span><h3>Medir</h3><span class="phase__cost">≈R$ 900 – 1.500</span></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <ol class="steps">
+      <li><div><b>Microfone de medição USB + REW</b> (o software é gratuito). Microfone no ponto de escuta, na altura exata da orelha, apontado para o teto se o arquivo de calibração for de campo difuso.</div></li>
+      <li><div><b>Varredura de cada monitor separado, depois os dois juntos.</b> Olhe a resposta até 300 Hz, o waterfall e o ETC.</div></li>
+      <li><div><b>Ajuste fino da cadeira.</b> Meça em y = 1,75 / 1,85 / 1,90 / 1,95 / 2,05 m e fique com a que der a resposta mais lisa entre 40 e 120 Hz. É o ajuste mais barato e mais eficaz que sobrou.</div></li>
+      <li><div><b>Só depois pense em EQ.</b> Correção eletrônica conserta pico, não conserta nulo — energia que a sala cancelou não volta com ganho. Tudo que dava para resolver com geometria e absorção já foi resolvido nas fases anteriores.</div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="corte">
+  <div class="plate">
+    <div class="head"><span class="head__n">04</span><h2>Lista de corte</h2></div>
+
+    <p class="keyhead">Sarrafo 100 × 20 mm — por peça</p>
+    <div class="tw"><table>
+      <thead><tr><th>Peça</th><th class="n">Qtd</th><th>Montantes</th><th>Travessas</th></tr></thead>
+      <tbody>
+        <tr><td>Bass trap de canto</td><td class="n">4</td><td>2 × 2,60 m</td><td>3 × 0,56 m</td></tr>
+        <tr><td>Módulo parede frontal</td><td class="n">3</td><td>2 × 1,20 m</td><td>2 × 0,56 m</td></tr>
+        <tr><td>Módulo ponto-espelho</td><td class="n">2</td><td>2 × 1,20 m</td><td>2 × 0,56 m</td></tr>
+        <tr><td>Nuvem de teto</td><td class="n">1</td><td>2 × 1,80 m</td><td>3 × 0,56 m</td></tr>
+        <tr><td>Gobo móvel</td><td class="n">1</td><td>4 × 1,20 m</td><td>2 × 0,56 m + base 2 × 0,80 + 1 × 0,60</td></tr>
+        <tr><td>Afastadores de 10 cm</td><td class="n">10</td><td>1 × 1,20 m cada</td><td>—</td></tr>
+      </tbody>
+    </table></div>
+
+    <p class="keyhead">Plano de corte — 26 barras de 3,00 m</p>
+    <div class="tw"><table>
+      <thead><tr><th>Barras</th><th>Corte</th><th class="n">Aproveitamento</th><th>Rende</th></tr></thead>
+      <tbody>
+        <tr><td class="n">2</td><td>1,80 + 1,20</td><td class="n ok">100%</td><td>montantes da nuvem + 2 de 1,20</td></tr>
+        <tr><td class="n">8</td><td>2,60</td><td class="n bad">87%</td><td>montantes dos 4 bass traps</td></tr>
+        <tr><td class="n">11</td><td>1,20 + 1,20 + 0,56</td><td class="n ok">99%</td><td>22 montantes + 11 travessas</td></tr>
+        <tr><td class="n">4</td><td>0,56 × 5</td><td class="n">93%</td><td>20 travessas</td></tr>
+        <tr><td class="n">1</td><td>0,80 + 0,80 + 0,60</td><td class="n">73%</td><td>base em H do gobo</td></tr>
+        <tr><td class="n"><strong>26</strong></td><td><strong>78,0 m comprados</strong></td><td class="n"><strong>90%</strong></td><td><strong>70,5 m usados</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-family:var(--mono); font-size:12px; color:var(--mute); margin-top:10px">Corte primeiro todas as peças de 2,60 e 1,80 — são as que não perdoam erro de medida. As de 0,56 saem por último, das sobras.</p>
+
+    <p class="keyhead">Lã de rocha — por peça</p>
+    <div class="tw"><table>
+      <thead><tr><th>Peça</th><th>Por camada</th><th class="n">Camadas</th><th class="n">Placas</th></tr></thead>
+      <tbody>
+        <tr><td>Bass trap de canto (cada)</td><td>2 placas inteiras + 1 tira de 0,20</td><td class="n">2</td><td class="n">4,5</td></tr>
+        <tr><td>Módulo 0,60 × 1,20 (cada)</td><td>1 placa inteira</td><td class="n">2</td><td class="n">2</td></tr>
+        <tr><td>Nuvem 1,80 × 0,60</td><td>1 placa + 1 meia placa</td><td class="n">2</td><td class="n">3</td></tr>
+        <tr><td>Gobo 1,20 × 1,20</td><td>2 placas inteiras</td><td class="n">2</td><td class="n">4</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-family:var(--mono); font-size:12px; color:var(--mute); margin-top:10px">As tiras de 0,20 dos bass traps saem de 2 placas cortadas em 6 pedaços cada — 12 tiras para 8 necessárias.</p>
+  </div>
+</section>
+
+<section id="ordem">
+  <div class="wrap">
+    <div class="head"><span class="head__n">05</span><h2>Antes de comprar</h2></div>
+    <p>Três medidas mudam o que entra no carrinho. Faça a Fase 0 primeiro e me diga os números — eu fecho as cotas finais:</p>
+    <ul class="plain">
+      <li><strong>Pé-direito real.</strong> Usei 2,60 m. Cada 10 cm a mais são 8 placas de lã a mais nos bass traps, e mudam os modos de altura.</li>
+      <li><strong>Centro do ventilador e diâmetro da varredura.</strong> Decide se a nuvem é 1,80 × 0,60 inclinada ou 1,20 × 1,20 cheia — e se o ventilador precisa recuar antes de qualquer painel subir.</li>
+      <li><strong>O que tem dentro dos três painéis pretos de 5 cm.</strong> Lã de rocha e espuma acústica têm curvas bem diferentes em 125–250 Hz. Se for espuma, vale trocá-los pelos módulos novos em vez de só afastá-los.</li>
+    </ul>
+    <p>E uma ordem que funciona mesmo comprando em partes: <strong>Fase 0 hoje</strong> (não custa nada e é o maior ganho isolado), <strong>os dois bass traps frontais</strong> na primeira compra, o resto conforme der. A única coisa que não vale fazer pela metade são os pontos-espelho e os skylines — esses dois têm que sair sempre aos pares, um de cada lado, na mesma cota.</p>
+  </div>
+</section>
+
+</main>
