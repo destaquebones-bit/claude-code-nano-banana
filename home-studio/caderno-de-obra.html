@@ -427,7 +427,7 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
     <div class="tw"><table>
       <thead><tr><th>Item</th><th class="n">Qtd</th><th>Observação</th></tr></thead>
       <tbody>
-        <tr><td>Pedestal de monitor de chão</td><td class="n">2</td><td>tweeter a 1,20 m; é o que libera a bancada da posição do monitor</td></tr>
+        <tr><td>Pedestal de monitor de chão <em>(opcional)</em></td><td class="n">2</td><td>tweeter a 1,20 m. Dá para dispensar mantendo os monitores na bancada — ver seção 08</td></tr>
         <tr><td>Microfone de medição USB</td><td class="n">1</td><td>UMIK-1 ou similar; o REW é gratuito</td></tr>
         <tr><td>Máscara PFF2</td><td class="n">5</td><td rowspan="3" style="white-space:normal">obrigatório ao cortar e manusear lã de rocha — a fibra irrita pele, olhos e vias aéreas</td></tr>
         <tr><td>Luvas e óculos de proteção</td><td class="n">1 par cada</td></tr>
@@ -1391,7 +1391,8 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
       <li><div><b>Meça quatro coisas.</b> Pé-direito real. Centro do ventilador, medido da parede frontal. Diâmetro da varredura das pás. Distância da parede frontal até sua orelha, sentado como você senta.
         <div class="cut">se o centro do ventilador der menos de 2,05 m <span>→ a nuvem não cabe; pule para recuar o ventilador</span></div></div></li>
       <li><div><b>Mova a bancada.</b> Face frontal em <strong>y = 1,00 m</strong> da parede da TV, centrada em <strong>x = 1,50 m</strong>. Ela sai de encostada na parede e vem para o meio. Como fica a 1,00 m e o arco da porta tem raio 0,88 m, a porta continua abrindo.</div></li>
-      <li><div><b>Monitores em x = 0,95 e 2,05 m</b>, baffle a <strong>0,95 m</strong> da parede frontal, tweeter a <strong>1,20 m</strong> do chão, apontados para onde sua cabeça vai ficar. Sem pedestais de chão ainda, improvise com o que tiver — o importante é a posição.</div></li>
+      <li><div><b>Gire os monitores para a vertical.</b> Eles estão deitados de lado. Woofer embaixo, tweeter em cima — é a orientação para a qual a Yamaha projetou a HS, e a correção custa zero. Detalhe na seção 08.</div></li>
+      <li><div><b>Monitores em x = 0,95 e 2,05 m</b>, tweeter a <strong>1,20 m</strong> do chão, apontados para onde sua cabeça vai ficar. Baffle a 0,95 m da parede se forem pedestais de chão, ou a 1,00 m se ficarem na bancada — as duas opções estão comparadas na seção 08.</div></li>
       <li><div><b>Cadeira em x = 1,50 m, y = 1,90 m.</b> Marque com fita no chão. Este é o ponto que tira você do nó de 71,5 Hz.</div></li>
       <li><div><b>Baixe e centralize a TV.</b> Borda superior em <strong>z = 0,95 m</strong> e centro em <strong>x = 1,50 m</strong> — para 1,08 m de largura, de 0,96 a 2,04, sobrando 8 cm até o batente. Ela desce mais do que o mínimo de propósito: o ponto de reflexão da parede frontal fica em <strong>z = 1,20 m</strong>, e com a TV parando em 0,95 os módulos cobrem esse ponto com 20 cm de margem por baixo.</div></li>
       <li><div><b>Limpe o eixo.</b> Tampa do MacBook fechada durante escuta crítica (use a TV como tela). Pedestal de microfone e a caixa acrílica saem da bancada. Ventilador desligado ao mixar.</div></li>
@@ -1663,6 +1664,58 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
     <p>A resposta certa não é a TV, é um monitor de 24" a 27" — e com uma regra: <strong>a borda superior tem que ficar abaixo de 1,15 m</strong>, ou seja, abaixo do eixo do tweeter. Um 27" tem ~0,36 m de altura; apoiado na bancada a 0,78 m, o topo fica em 1,14 m. Passa raspando, e aí a difração acontece abaixo do eixo, onde importa muito menos. Incline para trás uns 10° e mantenha os 0,60 m centrais da bancada limpos. A TV continua na parede, para playback e referência.</p>
 
     <div class="warn"><b>Meça a largura da TV antes de furar.</b> Assumi 1,08 m (≈48"). Até 1,20 m ela centraliza limpo. Acima disso ela começa a invadir o batente da porta e você teria que deslocar alguns centímetros para a esquerda — o que é aceitável, já que a TV não é elemento acústico crítico, mas muda a marcação da parede.</div>
+  </div>
+</section>
+
+<section id="monitores">
+  <div class="wrap">
+    <div class="head"><span class="head__n">08</span><h2>Monitores: pedestal ou bancada</h2></div>
+
+    <h3>Em pé ou deitados, nesta sala</h3>
+    <p><strong>Em pé.</strong> E aqui o motivo não é o argumento genérico de manual — é uma conta desta sala.</p>
+    <p>Num alto-falante de duas vias, os dois drivers interferem entre si na região do cruzamento, perto de <strong>2 kHz</strong> na HS. Essa interferência acontece <em>no plano que contém os dois drivers</em>, e cava um cancelamento entre <strong>43° e 55°</strong> fora do eixo, dependendo do espaçamento. Você não escolhe se existe; escolhe só para onde ela aponta.</p>
+
+    <div class="note"><b>E nesta sala ela aponta para a bancada.</b> Com o baffle a 0,95 m da parede, tweeter a 1,20 m, tampo a 0,75 m e sua orelha a 1,90 m, o ponto de reflexão da bancada cai em y = 1,42 m — e o raio sai do tweeter a <strong>43,5° abaixo da horizontal</strong>. Em pé, é exatamente ali que o cancelamento do cruzamento fica. O monitor deixa de mandar energia de 2 kHz para o tampo da mesa, de graça, sem tratar nada. Deitado, esse cancelamento gira para o plano horizontal e a mesa recebe a energia inteira.</div>
+
+    <p>O mesmo vale para cima. A reflexão do teto sai a 71° e o seu teto tem um ventilador limitando o tamanho da nuvem — qualquer coisa que reduza a energia mandada para lá conta. Deitado, o monitor irradia verticalmente como um driver só: largo, sem cancelamento nenhum, jogando cruzamento no tampo e no teto ao mesmo tempo.</p>
+
+    <p>De quebra, em pé some a decisão de deixar o tweeter para dentro ou para fora — os dois monitores ficam simétricos por construção. Numa sala em que a Fase 0 inteira foi sobre recuperar simetria, não faz sentido reintroduzir assimetria dentro da própria caixa.</p>
+
+    <p><strong>Uma ressalva honesta:</strong> no eixo, apontado para a sua orelha, os dois jeitos medem igual. O ganho está no campo refletido e na consistência fora do eixo. É real, é de graça, mas não espere a diferença de virar a chave — espere a mesa e o teto pararem de devolver 2 kHz.</p>
+
+    <div class="note"><b>Ao girar, confira a altura de novo.</b> Em pé o tweeter sobe para perto do topo da caixa. Numa HS7 (332 mm de altura, tweeter a ~262 mm da base), bancada a 0,75 + o caixote de ~0,20 já põe o tweeter em <strong>1,22 m</strong> — praticamente na mira, <strong>sem o calço triangular</strong>. Numa HS5 (285 mm, tweeter a ~225 mm da base) o mesmo caixote dá ~1,16 m, e você compensa com um calço fino. Meça a sua e me diga o modelo que eu fecho a cota.</div>
+
+    <h3>Pode manter na bancada?</h3>
+    <p><strong>Pode</strong> — e sai mais barato. Mas atenção a uma consequência: com o monitor em cima do caixote em cima da mesa, o baffle recua para ~1,30 m da parede, e para manter os 60° você teria que sentar em 2,25 m — que é justo onde fica o nó de 107 Hz. Por isso, se os monitores ficam na bancada, <strong>a mesa tem que voltar para 0,70 m da parede</strong>, não 1,00.</p>
+    <p>Com a mesa já a 1,00 m, o caminho natural é a coluna A: os monitores em pedestais dentro do vão de 1 metro que você acabou de abrir, e a mesa fica exatamente onde está.</p>
+
+    <div class="tw"><table>
+      <thead><tr><th>Cota</th><th>A · pedestais de chão</th><th>B · monitores na bancada</th></tr></thead>
+      <tbody>
+        <tr><td>Borda de trás da bancada</td><td class="n">1,00 m</td><td class="n">0,70 m</td></tr>
+        <tr><td>Profundidade da bancada</td><td class="n">0,60 m</td><td class="n">0,70 m</td></tr>
+        <tr><td>Borda da frente</td><td class="n">1,60 m</td><td class="n">1,40 m</td></tr>
+        <tr><td>Baffle do monitor</td><td class="n">0,95 m</td><td class="n">≈1,00 m</td></tr>
+        <tr><td>Posição de escuta</td><td class="n">1,90 m</td><td class="n">1,95 m</td></tr>
+        <tr><td>Ângulo do triângulo</td><td class="n ok">60°</td><td class="n ok">60°</td></tr>
+        <tr><td>SBIR da parede frontal</td><td class="n ok">90 Hz</td><td class="n ok">86 Hz</td></tr>
+        <tr><td>Bancada livre à sua frente</td><td class="n ok">0,60 m</td><td class="n">0,40 m</td></tr>
+        <tr><td>Folga do arco da porta</td><td class="n ok">0,12 m</td><td class="n">0,11 m</td></tr>
+        <tr><td>Custo</td><td class="n">R$ 400 a 1.000</td><td class="n ok">R$ 0</td></tr>
+      </tbody>
+    </table></div>
+
+    <p>O tratamento não muda: o ponto-espelho lateral sai de 1,32 para 1,37 m, então centre o módulo em <strong>y = 1,35 m</strong> e ele cobre as duas opções. A nuvem de 0,95 a 1,55 m também continua servindo, porque o ponto de reflexão do teto vai de 1,42 para 1,47 m.</p>
+
+    <h3>O preço de ficar na bancada, e como pagar barato</h3>
+    <ul class="plain">
+      <li><strong>O caixote preto provavelmente é oco.</strong> Caixa vazia embaixo de monitor vira ressonador: ela toca junto, num tom só, e você escuta isso como grave inflado numa nota específica. Encha de areia seca bem socada, ou troque por massa maciça — meia placa de concreto de calçada empilhada resolve por uns R$ 20 e é mais pesada que qualquer pedestal barato.</li>
+      <li><strong>O calço triangular não é isolador.</strong> Metal encostado em madeira transmite tudo. Ponha um material realmente macio entre o monitor e o apoio: espuma de alta densidade, um mouse pad grosso dobrado, ou massa de calafetar em quatro pontos. Com o monitor em pé, provavelmente o calço sai de cena e você ganha a altura certa de graça.</li>
+      <li><strong>A bancada vira refletor.</strong> Com o monitor apoiado nela, a superfície entre você e o cone devolve som pelo tampo. Incline os monitores 5 a 8° para baixo, mirando a orelha, e ponha o feltro de 0,40 × 1,20 m na faixa central — os dois já estavam na lista.</li>
+      <li><strong>Tire o pedestal de microfone de cima da bancada.</strong> Na foto ele está no meio do caminho, entre os monitores. Um tubo de metal vertical no eixo do centro fantasma é refletor de médio-agudo em cima do ponto mais sensível da imagem estéreo.</li>
+    </ul>
+
+    <div class="note"><b>Resumo.</b> Gire para a vertical de qualquer jeito — isso é decidido. Depois escolha: mesa a 1,00 m com os monitores em pedestais dentro do vão (o que a sua mesa já permite), ou mesa de volta a 0,70 m com os monitores no caixote em cima dela. As duas fecham 60° e mesmo SBIR. A segunda custa zero e entrega uns 95% da primeira, desde que você encha o caixote e troque o calço por algo macio.</div>
   </div>
 </section>
 
