@@ -123,6 +123,23 @@ ul.plain{margin:1.1em 0; padding-left:1.15em}
 ul.plain li{margin-bottom:.5em}
 ul.plain li::marker{color:var(--mdf)}
 
+/* ---- chart ---- */
+.chart{position:relative}
+.chart .tip{
+  position:absolute; pointer-events:none; opacity:0; transform:translate(-50%,-100%);
+  background:var(--ink); color:var(--surface); border-radius:3px; padding:8px 11px;
+  font-family:var(--mono); font-size:11px; line-height:1.5; white-space:nowrap; z-index:5;
+  transition:opacity .09s linear;
+}
+.chart .tip[data-on="1"]{opacity:1}
+.chart .tip b{display:block; color:var(--surface); font-weight:600; margin-bottom:4px; opacity:.7; letter-spacing:.08em}
+.chart .tip i{font-style:normal; display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:7px; vertical-align:1px}
+.chart .tip u{text-decoration:none; float:right; padding-left:18px; font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){ .chart .tip{transition:none} }
+:root{ --a1:#3E9C97; --a2:#1F6E6B; --a3:#0B3E3C; }
+:root:not([data-theme="light"]){ @media (prefers-color-scheme:dark){ --a1:#2E8F8A; --a2:#4FBDB5; --a3:#9AE3DC; }}
+:root[data-theme="dark"]{ --a1:#2E8F8A; --a2:#4FBDB5; --a3:#9AE3DC; }
+
 /* ---- svg shared ---- */
 svg text{font-family:var(--mono); fill:var(--mute)}
 .s-wall{fill:none; stroke:var(--ink); stroke-width:9}
@@ -192,7 +209,7 @@ svg text{font-family:var(--mono); fill:var(--mute)}
     <p>Cortina cinza leve, translúcida, num varão simples — e <strong>atrás dela a porta de vidro</strong>. Isso é o dado mais pesado do levantamento: a parede inteira atrás da posição de escuta é uma superfície rígida, plana, que devolve praticamente toda a energia acima de 300 Hz e vaza tudo abaixo disso. A cortina, do jeito que está, absorve só agudo — abaixo de 1 kHz ela é acusticamente invisível. Há furos de parafuso na parede acima do varão, de alguma fixação anterior.</p>
 
     <h3>Piso e teto</h3>
-    <p>Piso de porcelanato, teto de reboco liso. É o par de superfícies mais duro da sala e o único que se enfrenta em paralelo perfeito, sem nada no meio — dá <em>flutter</em> vertical (bate palma embaixo da luminária e você ouve). Um tapete de 3 m está a caminho; ele resolve metade dessa dupla, e o DES. 05 mostra exatamente onde ele precisa cair.</p>
+    <p>Piso de porcelanato, teto de reboco liso. É o par de superfícies mais duro da sala e o único que se enfrenta em paralelo perfeito — dá <em>flutter</em> vertical (bate palma no meio da sala e você ouve). O tapete de 2,00 × 3,00 m resolve metade dessa dupla. A outra metade tem um complicador: <strong>no meio do teto há um ventilador</strong>, e ele ocupa exatamente o pedaço de teto que a nuvem precisa. O DES. 05 mostra o conflito com cota.</p>
 
     <h3>Parede esquerda (4,80 m) — parcial</h3>
     <p>Só aparece de raspão na foto 1: um painel preto junto ao canto frontal e o gancho do fone logo depois. No canto do fundo, na foto 3, estão <strong>dois difusores de MDF encostados na parede, ainda não instalados</strong>. O miolo dessa parede — de ~1,0 m a ~4,2 m — não foi fotografado; está marcado como não documentado nos desenhos.</p>
@@ -282,8 +299,13 @@ svg text{font-family:var(--mono); fill:var(--mute)}
   <line class="s-hair" x1="483.5" y1="600" x2="525.5" y2="600"/>
 
   <!-- ceiling light -->
-  <circle class="s-ghost" cx="350" cy="374" r="13"/>
-  <line class="s-ghost" x1="337" y1="374" x2="363" y2="374"/>
+  <circle class="s-ghost" cx="350" cy="374" r="72"/>
+  <g stroke="var(--mute)" stroke-width="9" stroke-linecap="round" opacity=".55">
+    <line x1="350" y1="374" x2="350" y2="308"/>
+    <line x1="350" y1="374" x2="293" y2="407"/>
+    <line x1="350" y1="374" x2="407" y2="407"/>
+  </g>
+  <circle cx="350" cy="374" r="9" fill="var(--mute)"/>
 
   <!-- loose diffusers -->
   <rect class="s-mdf-l" x="176" y="630" width="36" height="22"/>
@@ -342,7 +364,7 @@ svg text{font-family:var(--mono); fill:var(--mute)}
           <div><b>9</b><span>Cortina leve, translúcida</span></div>
           <div><b>10</b><span>Porta de vidro — parede de fundo inteira</span></div>
           <div><b>11</b><span>Dois difusores MDF encostados, não instalados</span></div>
-          <div><b>12</b><span>Luminária de teto (posição aproximada)</span></div>
+          <div><b>12</b><span>Ventilador de teto com luminária — varredura ≈Ø1,20 m, centro estimado em y = 2,20 m</span></div>
         </div>
 
         <p class="keyhead">Linhas</p>
@@ -596,6 +618,11 @@ svg text{font-family:var(--mono); fill:var(--mute)}
 
   <line class="s-rayd" x1="102" y1="225.6" x2="204" y2="228" opacity=".9"/>
 
+  <line x1="324" y1="60" x2="324" y2="86" stroke="var(--mute)" stroke-width="3"/>
+  <line x1="252" y1="90" x2="396" y2="90" stroke="var(--mute)" stroke-width="5" stroke-linecap="round" opacity=".7"/>
+  <circle cx="324" cy="88" r="6" fill="var(--mute)"/>
+  <text class="s-dimt" x="404" y="86">ventilador de teto</text>
+
   <g class="s-dim"><line x1="120" y1="46" x2="120" y2="56"/><line x1="192" y1="46" x2="192" y2="56"/><line x1="120" y1="51" x2="192" y2="51"/></g>
   <text class="s-dimt" x="156" y="42" text-anchor="middle" fill="var(--ray)">zona da nuvem de teto</text>
 
@@ -680,6 +707,90 @@ svg text{font-family:var(--mono); fill:var(--mute)}
         <tr><td>Piso (tweeter a 1,22 m)</td><td class="n">1,22 m</td><td class="n">70 Hz</td><td>reforça o buraco do modo de 71,5 Hz</td></tr>
       </tbody>
     </table></div>
+
+    <p class="keyhead">O que 5 cm resolvem — e onde eles param</p>
+    <div class="dw chart" id="absChart">
+      <div class="tip" id="absTip"></div>
+<svg viewBox="0 0 700 400" role="img" aria-label="Coeficiente de absorção por banda de oitava de um painel de 50 mm em três montagens: rente à parede, com 5 cm de ar e com 10 cm de ar">
+  <rect x="78" y="56" width="157.4" height="244" fill="var(--flag)" opacity=".07"/>
+  <text class="s-dimt" x="156" y="46" text-anchor="middle" fill="var(--flag)">região crítica desta sala</text>
+
+  <g class="s-hair">
+    <line x1="78" y1="56" x2="560" y2="56"/><line x1="78" y1="117" x2="560" y2="117"/>
+    <line x1="78" y1="178" x2="560" y2="178"/><line x1="78" y1="239" x2="560" y2="239"/>
+  </g>
+  <line x1="78" y1="300" x2="560" y2="300" stroke="var(--mute)" stroke-width="1"/>
+
+  <g class="s-dimt" text-anchor="end">
+    <text x="70" y="60">1,00</text><text x="70" y="121">0,75</text>
+    <text x="70" y="182">0,50</text><text x="70" y="243">0,25</text><text x="70" y="304">0</text>
+  </g>
+  <g class="s-dimt" text-anchor="middle">
+    <text x="78" y="318">63</text><text x="158.3" y="318">125</text><text x="238.7" y="318">250</text>
+    <text x="319" y="318">500</text><text x="399.3" y="318">1k</text><text x="479.7" y="318">2k</text><text x="560" y="318">4k</text>
+  </g>
+  <text class="s-dimt" x="34" y="178" text-anchor="middle" transform="rotate(-90 34 178)">α — coeficiente de absorção</text>
+  <text class="s-dimt" x="560" y="336" text-anchor="end">banda de oitava (Hz)</text>
+
+  <g stroke="var(--flag)" stroke-width="1.6">
+    <line x1="92.7" y1="296" x2="92.7" y2="306"/><line x1="178.6" y1="296" x2="178.6" y2="306"/>
+    <line x1="211.9" y1="296" x2="211.9" y2="306"/><line x1="235.4" y1="296" x2="235.4" y2="306"/>
+  </g>
+
+  <line id="absCross" x1="0" y1="56" x2="0" y2="300" stroke="var(--mute)" stroke-width="1" stroke-dasharray="4 4" opacity="0"/>
+
+  <polyline fill="none" stroke="var(--a3)" stroke-width="2" stroke-linejoin="round" points="78,256.1 158.3,178 238.7,80.4 319,56 399.3,56 479.7,56 560,56"/>
+  <polyline fill="none" stroke="var(--a2)" stroke-width="2" stroke-linejoin="round" points="78,270.7 158.3,214.6 238.7,117 319,68.2 399.3,56 479.7,56 560,56"/>
+  <polyline fill="none" stroke="var(--a1)" stroke-width="2" stroke-linejoin="round" points="78,285.4 158.3,263.4 238.7,190.2 319,104.8 399.3,68.2 479.7,56 560,56"/>
+
+  <g fill="var(--a3)" stroke="var(--surface)" stroke-width="2">
+    <path d="M78 250.1 l6 6 -6 6 -6 -6z"/><path d="M158.3 172 l6 6 -6 6 -6 -6z"/><path d="M238.7 74.4 l6 6 -6 6 -6 -6z"/><path d="M319 50 l6 6 -6 6 -6 -6z"/>
+  </g>
+  <g fill="var(--a2)" stroke="var(--surface)" stroke-width="2">
+    <rect x="73" y="265.7" width="10" height="10"/><rect x="153.3" y="209.6" width="10" height="10"/><rect x="233.7" y="112" width="10" height="10"/><rect x="314" y="63.2" width="10" height="10"/><rect x="394.3" y="51" width="10" height="10"/>
+  </g>
+  <g fill="var(--a1)" stroke="var(--surface)" stroke-width="2">
+    <circle cx="78" cy="285.4" r="5"/><circle cx="158.3" cy="263.4" r="5"/><circle cx="238.7" cy="190.2" r="5"/><circle cx="319" cy="104.8" r="5"/><circle cx="399.3" cy="68.2" r="5"/><circle cx="479.7" cy="56" r="5"/>
+  </g>
+
+  <g stroke="var(--mdf)" stroke-width="1.4">
+    <line x1="250" y1="80.4" x2="250" y2="190.2"/>
+    <line x1="245" y1="80.4" x2="255" y2="80.4"/><line x1="245" y1="190.2" x2="255" y2="190.2"/>
+  </g>
+  <text class="s-lbl" x="250" y="206" fill="var(--mdf)">em 250 Hz o mesmo painel vai de 0,45 para 0,90 — só pelo ar atrás</text>
+
+  <g class="s-lbl">
+    <line x1="78" y1="356" x2="98" y2="356" stroke="var(--a3)" stroke-width="2"/>
+    <path d="M88 350 l6 6 -6 6 -6 -6z" fill="var(--a3)" stroke="var(--surface)" stroke-width="2"/>
+    <text x="106" y="360">5 cm + 10 cm de ar</text>
+    <line x1="248" y1="356" x2="268" y2="356" stroke="var(--a2)" stroke-width="2"/>
+    <rect x="253" y="351" width="10" height="10" fill="var(--a2)" stroke="var(--surface)" stroke-width="2"/>
+    <text x="276" y="360">5 cm + 5 cm de ar</text>
+    <line x1="408" y1="356" x2="428" y2="356" stroke="var(--a1)" stroke-width="2"/>
+    <circle cx="418" cy="356" r="5" fill="var(--a1)" stroke="var(--surface)" stroke-width="2"/>
+    <text x="436" y="360">5 cm rente à parede (hoje)</text>
+  </g>
+  <text class="s-dimt" x="78" y="382" fill="var(--flag)">marcas vermelhas: 71 · 150 · 200 · 245 Hz — nó modal, SBIR frontal e lateral, comb da 1ª reflexão</text>
+
+  <g id="absHit" fill="transparent">
+    <rect x="78" y="56" width="40" height="244" data-b="0"/><rect x="118" y="56" width="80" height="244" data-b="1"/>
+    <rect x="198" y="56" width="81" height="244" data-b="2"/><rect x="279" y="56" width="80" height="244" data-b="3"/>
+    <rect x="359" y="56" width="80" height="244" data-b="4"/><rect x="439" y="56" width="81" height="244" data-b="5"/>
+    <rect x="520" y="56" width="40" height="244" data-b="6"/>
+  </g>
+</svg>
+      <p class="dw__cap">Absorção de lã mineral de 50 mm por montagem · valores típicos de catálogo para 48–64 kg/m³</p>
+    </div>
+
+    <div class="tw" style="margin-top:14px"><table>
+      <thead><tr><th>Montagem do painel de 5 cm</th><th class="n">63</th><th class="n">125</th><th class="n">250</th><th class="n">500</th><th class="n">1k</th><th class="n">2k</th><th class="n">4k</th></tr></thead>
+      <tbody>
+        <tr><td>Rente à parede — como está hoje</td><td class="n bad">0,06</td><td class="n bad">0,15</td><td class="n">0,45</td><td class="n">0,80</td><td class="n">0,95</td><td class="n">1,00</td><td class="n">1,00</td></tr>
+        <tr><td>Com 5 cm de ar atrás</td><td class="n">0,12</td><td class="n">0,35</td><td class="n">0,75</td><td class="n">0,95</td><td class="n">1,00</td><td class="n">1,00</td><td class="n">1,00</td></tr>
+        <tr><td>Com 10 cm de ar atrás</td><td class="n">0,18</td><td class="n ok">0,50</td><td class="n ok">0,90</td><td class="n">1,00</td><td class="n">1,00</td><td class="n">1,00</td><td class="n">1,00</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-family:var(--mono); font-size:12px; color:var(--mute); margin-top:10px">Um absorvedor poroso trabalha onde a velocidade das partículas é alta — a um quarto de onda da parede rígida. Com 5 cm rente, esse ponto é 1,7 kHz. Com 5 cm de ar atrás, cai para ~860 Hz. Com 10 cm, para ~570 Hz. O ar é de graça e é a melhor coisa que dá para fazer com os painéis que você já tem.</p>
   </div>
 
   <div class="wrap" style="margin-top:34px">
@@ -689,7 +800,7 @@ svg text{font-family:var(--mono); fill:var(--mute)}
       <li><strong>Triângulo aberto demais.</strong> Separação de 1,23 m contra uma distância de escuta de ~0,85 m no eixo — isso dá 70–76°, contra os 60° de referência. Buraco no centro e agudo dependente de milímetros de cabeça.</li>
       <li><strong>A TV é o pior refletor da sala.</strong> Uma superfície plana e rígida de ~0,66 m², a 25 cm atrás dos monitores, com a borda inferior na altura do tweeter. Não dá para tratar a parede frontal ignorando ela.</li>
       <li><strong>Os difusores estão no lugar errado.</strong> Um difusor precisa de campo formado — na prática, 1 m no mínimo, idealmente 3× a maior dimensão do painel. A 20 cm da fonte, aqueles ripados de MDF não difundem: refletem, com a coloração de um pente de ripas. Eles são bons; estão só na parede errada.</li>
-      <li><strong>Zero controle de grave.</strong> Nenhum canto tratado. Os três painéis pretos somam ~2,2 m² de absorção de 5 cm numa sala de 69 m² de superfície — 3% de cobertura, e nada abaixo de ~300 Hz. Montados rentes à parede, perdem metade do que poderiam fazer nos médios-graves.</li>
+      <li><strong>Zero controle de grave.</strong> Nenhum canto tratado. Os três painéis pretos somam ~2,2 m² numa sala de 69 m² de superfície — 3% de cobertura. Com 5 cm confirmados e montados rentes à parede, eles entregam α 0,80 em 500 Hz mas só 0,15 em 125 Hz e 0,06 em 63 Hz: <strong>são transparentes exatamente nas frequências que estragam esta sala</strong> — o nó de 71,5 Hz, o empilhamento de 66–72 Hz e o SBIR frontal de 245 Hz. Não é defeito do painel, é a espessura.</li>
       <li><strong>Vidro atrás da cabeça.</strong> ~4,4 m² de superfície com coeficiente de absorção próximo de zero acima de 250 Hz, coberta por uma cortina translúcida que só pega agudo. É também o ponto de vazamento de som da sala inteira.</li>
       <li><strong>Porcelanato e reboco frente a frente.</strong> As duas maiores superfícies da sala são rígidas, paralelas e não têm nada entre elas. O piso devolve a 4,6 ms e o teto a 5,4 ms, quase no mesmo nível — é o par que mais suja a região de 300 Hz a 3 kHz, justo onde mora a voz.</li>
       <li><strong>A tampa do MacBook</strong> fica aberta bem no eixo entre os monitores, inclinada. É um refletor de médio no centro exato da imagem estéreo.</li>
@@ -762,8 +873,15 @@ svg text{font-family:var(--mono); fill:var(--mute)}
   <rect x="513.5" y="232.4" width="12" height="72" fill="var(--ray)" fill-opacity=".3" stroke="var(--ray)" stroke-width="1.4"/>
 
   <!-- ceiling cloud -->
-  <rect x="278" y="209" width="144" height="144" fill="none" stroke="var(--ray)" stroke-width="1.4" stroke-dasharray="8 5"/>
-  <text class="s-lbl" x="350" y="200" text-anchor="middle" fill="var(--ray)">nuvem de teto 1,20 × 1,20</text>
+  <circle cx="350" cy="374" r="72" fill="var(--flag)" fill-opacity=".08" stroke="var(--flag)" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <g stroke="var(--flag)" stroke-width="7" stroke-linecap="round" opacity=".4">
+    <line x1="350" y1="374" x2="350" y2="308"/><line x1="350" y1="374" x2="293" y2="407"/><line x1="350" y1="374" x2="407" y2="407"/>
+  </g>
+  <text class="s-flagt" x="350" y="430" text-anchor="middle">varredura do ventilador</text>
+  <rect x="254" y="212" width="192" height="84" fill="none" stroke="var(--ray)" stroke-width="1.4" stroke-dasharray="8 5"/>
+  <text class="s-lbl" x="350" y="206" text-anchor="middle" fill="var(--ray)">nuvem 1,60 × 0,70 — inclinada 13°</text>
+  <g class="s-dim"><line x1="460" y1="296" x2="460" y2="302"/><line x1="460" y1="299" x2="478" y2="299"/></g>
+  <text class="s-flagt" x="482" y="302">5 cm de folga</text>
 
   <!-- desk + monitors -->
   <rect class="s-obj" x="236" y="230" width="228" height="72" opacity=".55"/>
@@ -852,12 +970,13 @@ svg text{font-family:var(--mono); fill:var(--mute)}
 
 <section id="piso">
   <div class="plate">
-    <div class="head"><span class="head__n">03</span><h2>O piso e o tapete</h2></div>
+    <div class="head"><span class="head__n">03</span><h2>O par vertical: piso, teto e ventilador</h2></div>
   </div>
 
   <div class="wrap">
     <p>Porcelanato e reboco liso são as duas maiores superfícies da sala — 14,4 m² cada — e são as únicas que se enfrentam em paralelo perfeito, sem móvel, painel ou reentrância no meio. Juntas somam pouco mais de 1 sabin de absorção. É por isso que a conta de RT deu 0,9 s: quase toda a sala é espelho.</p>
     <p>O tapete resolve metade dessa dupla; a nuvem resolve a outra. Sozinho ele não é suficiente — e sozinho ele é até perigoso.</p>
+    <p>Só que a metade de cima tem um ocupante. O ventilador de teto está no meio da sala, e a nuvem precisa ir <em>exatamente</em> ali.</p>
   </div>
 
   <div class="plate" style="margin-top:30px">
@@ -871,10 +990,13 @@ svg text{font-family:var(--mono); fill:var(--mute)}
   <rect class="s-wall" x="60" y="60" width="576" height="312"/>
 
   <rect x="60" y="108" width="12" height="264" fill="var(--ray)" fill-opacity=".3" stroke="var(--ray)" stroke-width="1.4"/>
-  <rect x="158.4" y="78" width="144" height="12" fill="var(--ray)" fill-opacity=".3" stroke="var(--ray)" stroke-width="1.4"/>
-  <g class="s-hair" stroke="var(--ray)">
-    <line x1="180" y1="60" x2="180" y2="78"/><line x1="280" y1="60" x2="280" y2="78"/>
-  </g>
+  <polygon points="162,96 246,78 246,90 162,108" fill="var(--ray)" fill-opacity=".3" stroke="var(--ray)" stroke-width="1.4"/>
+  <g class="s-hair" stroke="var(--ray)"><line x1="240" y1="60" x2="240" y2="80"/></g>
+  <line x1="324" y1="60" x2="324" y2="86" stroke="var(--flag)" stroke-width="3"/>
+  <line x1="252" y1="90" x2="396" y2="90" stroke="var(--flag)" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+  <circle cx="324" cy="88" r="6" fill="var(--flag)"/>
+  <g class="s-dim" stroke="var(--flag)"><line x1="246" y1="66" x2="252" y2="66"/><line x1="246" y1="60" x2="246" y2="72"/><line x1="252" y1="60" x2="252" y2="72"/></g>
+  <text class="s-flagt" x="258" y="52">5 cm entre a nuvem e a pá</text>
   <rect x="132" y="364" width="360" height="8" fill="url(#rugS)" opacity=".45"/>
   <rect x="132" y="364" width="360" height="8" fill="none" stroke="var(--mdf)" stroke-width="1.4"/>
 
@@ -902,9 +1024,9 @@ svg text{font-family:var(--mono); fill:var(--mute)}
   <circle class="s-raypt" cx="231" cy="368" r="4"/>
   <text class="s-lbl" x="238" y="352" fill="var(--ray)">piso · 4,5 ms · −7,6 dB → tapete</text>
 
-  <polyline class="s-ray" points="174,228 231,90 288,228"/>
-  <circle class="s-raypt" cx="231" cy="90" r="4"/>
-  <text class="s-lbl" x="238" y="108" fill="var(--ray)">teto · 4,2 ms → nuvem</text>
+  <polyline class="s-ray" points="174,228 231,93 288,228"/>
+  <circle class="s-raypt" cx="231" cy="93" r="4"/>
+  <text class="s-lbl" x="150" y="130" fill="var(--ray)">teto · 4,2 ms → nuvem</text>
 
   <line class="s-rayd" x1="174" y1="228" x2="288" y2="228" opacity=".9"/>
   <line class="s-flag" x1="231" y1="90" x2="231" y2="372" opacity=".55"/>
@@ -935,10 +1057,10 @@ svg text{font-family:var(--mono); fill:var(--mute)}
         <tr><td>Paredes pintadas</td><td class="n">≈32 m²</td><td class="n">0,04</td><td class="n">1,3</td></tr>
         <tr><td>Porta de vidro</td><td class="n">4,4 m²</td><td class="n">0,04</td><td class="n">0,2</td></tr>
         <tr><td>Porta de madeira</td><td class="n">1,9 m²</td><td class="n">0,10</td><td class="n">0,2</td></tr>
-        <tr><td>3 painéis pretos, 50 mm</td><td class="n">2,2 m²</td><td class="n">0,85</td><td class="n">1,8</td></tr>
+        <tr><td>3 painéis pretos, 50 mm rentes</td><td class="n">2,2 m²</td><td class="n">0,80</td><td class="n">1,7</td></tr>
         <tr><td>Cortina leve</td><td class="n">≈4 m²</td><td class="n">0,15</td><td class="n">0,6</td></tr>
         <tr><td>Estante, livros, móveis, você</td><td class="n">—</td><td class="n">—</td><td class="n">≈1,5</td></tr>
-        <tr><td><strong>Total hoje</strong></td><td class="n">—</td><td class="n">—</td><td class="n bad">≈6,6 → RT 0,90 s</td></tr>
+        <tr><td><strong>Total hoje</strong></td><td class="n">—</td><td class="n">—</td><td class="n bad">≈6,5 → RT 0,93 s</td></tr>
       </tbody>
     </table></div>
 
@@ -952,10 +1074,23 @@ svg text{font-family:var(--mono); fill:var(--mute)}
         <tr><td><strong>Tapete 2 × 3 com manta</strong></td><td class="n">6,0 m²</td><td class="n">0,45</td><td class="n">+2,6</td><td class="n">16%</td></tr>
         <tr><td>Nuvem de teto (duas faces)</td><td class="n">1,4 m²</td><td class="n">1,20</td><td class="n">+1,8</td><td class="n">11%</td></tr>
         <tr><td>2 painéis laterais</td><td class="n">1,4 m²</td><td class="n">0,95</td><td class="n">+1,3</td><td class="n">8%</td></tr>
-        <tr><td><strong>Total depois</strong></td><td class="n">—</td><td class="n">—</td><td class="n ok">≈22,8 → RT 0,26 s</td><td class="n">—</td></tr>
+        <tr><td><strong>Total depois</strong></td><td class="n">—</td><td class="n">—</td><td class="n ok">≈22,7 → RT 0,27 s</td><td class="n">—</td></tr>
       </tbody>
     </table></div>
-    <p style="font-family:var(--mono); font-size:12px; color:var(--mute); margin-top:10px">Estimativa de Sabine, válida como ordem de grandeza acima de 300 Hz. Abaixo disso a sala é modal e nenhuma conta de RT descreve o que se ouve.</p>
+    <p style="font-family:var(--mono); font-size:12px; color:var(--mute); margin-top:10px">Estimativa de Sabine em 500 Hz, válida como ordem de grandeza acima de 300 Hz. Note que nesta banda o afastamento dos painéis quase não aparece — o ganho dele está uma oitava e meia abaixo, como mostra o gráfico da seção 02. Abaixo disso a sala é modal e nenhuma conta de RT descreve o que se ouve.</p>
+  </div>
+
+
+  <div class="wrap" style="margin-top:34px">
+    <h3>O ventilador está em cima da nuvem</h3>
+    <p>Com o sistema recentrado, tweeter e orelha ficam ambos a 1,20 m do piso. Isso põe os dois pontos de reflexão do teto em <strong>y = 1,42 m</strong>. Pelo que dá para inferir das fotos, o ventilador está centrado em <strong>y ≈ 2,20 m</strong> e varre um círculo de ~1,20 m — a ponta da pá alcança <strong>y = 1,60 m</strong>.</p>
+    <p>São <strong>17,5 cm</strong> entre a ponta da pá e o ponto que a nuvem precisa cobrir. Cabe, mas sem folga nenhuma: nuvem de 1,60 × 0,70 m, de y = 0,85 a y = 1,55, com 5 cm sobrando para a pá. Por isso ela vai <strong>inclinada 13°, borda dianteira 15 cm mais baixa</strong> — o ângulo desvia para a frente, contra a absorção da parede frontal, tudo o que a borda traseira não conseguir pegar.</p>
+    <div class="note"><b>Meça o ventilador antes de comprar a nuvem.</b> Se ele estiver em y = 2,00 m em vez de 2,20 m, a pá chega a y = 1,40 m e o ponto de reflexão passa a ficar <em>debaixo</em> do ventilador — a nuvem deixa de caber e nenhum ângulo salva. Nesse caso as opções são recuar o ventilador para y ≥ 2,90 m (fica atrás da cadeira, continua ventilando você e libera o teto inteiro) ou trocá-lo por ventilador de coluna ou split.</div>
+    <p>Duas coisas valem independente da medida:</p>
+    <ul class="plain">
+      <li><strong>Ventilador desligado durante escuta crítica.</strong> Um ventilador de teto em velocidade média entrega 35–50 dBA na altura da cabeça. Para julgar cauda de reverb, ruído de fundo de gravação e o que acontece 60 dB abaixo do pico, você precisa de menos de 30 dBA. Ligado, ele também modula o campo refletido — as pás giram, e a reflexão do teto fica batendo em ciclo.</li>
+      <li><strong>Desligado, as pás continuam sendo refletor.</strong> São superfícies planas e rígidas a ~2,35 m, bem no caminho. Hoje, sem nuvem nenhuma, boa parte da reflexão de teto está batendo nelas.</li>
+    </ul>
   </div>
 
   <div class="wrap" style="margin-top:34px">
@@ -993,19 +1128,19 @@ svg text{font-family:var(--mono); fill:var(--mute)}
 
       <div class="act"><div class="act__n">4</div><div>
         <h4>Pontos-espelho laterais, simétricos</h4>
-        <p>Centro em y = 1,32 m nas duas paredes, altura central 1,20 m, painel de 0,60 × 1,20 m com 100 mm — ou os pretos que você já tem, remontados <strong>com 5 a 10 cm de ar atrás</strong>, o que praticamente dobra a absorção deles nos médios-graves. Confirme os pontos com o truque do espelho: alguém desliza um espelho pela parede, você senta e marca onde enxerga o cone do monitor.</p>
+        <p>Centro em y = 1,32 m nas duas paredes, altura central 1,20 m, painel de 0,60 × 1,20 m com 100 mm — ou os pretos de 5 cm que você já tem, remontados <strong>com 10 cm de ar atrás</strong>. Só isso leva o α de 250 Hz de 0,45 para 0,90 e o de 125 Hz de 0,15 para 0,50 — o mesmo painel, dobrando de rendimento, com um sarrafo de 10 cm entre ele e a parede. Confirme os pontos com o truque do espelho: alguém desliza um espelho pela parede, você senta e marca onde enxerga o cone do monitor.</p>
         <div class="act__meta"><span>2 painéis</span><span>Prioridade <i>alta</i></span></div>
       </div></div>
 
       <div class="act"><div class="act__n">5</div><div>
-        <h4>Nuvem de teto</h4>
-        <p>1,20 × 1,20 m com 100 mm, suspensa 15 cm do teto, centrada em y = 1,42 m — no meio do caminho entre monitor e cabeça. O teto hoje é a maior superfície rígida sem nenhum tratamento, e devolve a 5,4 ms.</p>
-        <div class="act__meta"><span>1 nuvem</span><span>Prioridade <i>alta</i></span></div>
+        <h4>Nuvem de teto, encaixada na folga do ventilador</h4>
+        <p>1,60 × 0,70 m com 100 mm, de y = 0,85 a y = 1,55, inclinada 13° com a borda dianteira 15 cm mais baixa. É o que cabe entre a parede frontal e a ponta da pá. <strong>Meça o ventilador primeiro</strong> — se ele estiver mais à frente do que os 2,20 m que estimei, a nuvem não cabe e o certo é recuar o ventilador para trás da cadeira.</p>
+        <div class="act__meta"><span>1 nuvem</span><span>Prioridade <i>alta</i></span><span>Bloqueio <i>medir o ventilador</i></span></div>
       </div></div>
 
       <div class="act"><div class="act__n">6</div><div>
         <h4>Tapete sobre o ponto de reflexão do piso</h4>
-        <p>Com a bancada na posição nova, os dois pontos de reflexão do piso caem em y = 1,42 m — logo à frente da mesa, exatamente embaixo da nuvem. Deite o tapete de 3 m com o lado comprido no eixo do comprimento, de <strong>y = 0,60 m a y = 3,60 m</strong>, centrado em x = 1,50 m. <strong>Ponha manta de feltro por baixo</strong>: dobra a absorção nos médios e ainda tira o escorregão no porcelanato. Deixe uma faixa de piso livre junto às paredes — os bass traps de canto precisam apoiar no duro, e sobra alguma vivacidade de agudo.</p>
+        <p>Com a bancada na posição nova, os dois pontos de reflexão do piso caem em y = 1,42 m — logo à frente da mesa, exatamente embaixo da nuvem. O tapete de 2,00 × 3,00 m entra com o lado comprido no eixo do comprimento, de <strong>y = 0,60 m a y = 3,60 m</strong>, centrado em x = 1,50 m. <strong>Ponha manta de feltro por baixo</strong>: dobra a absorção nos médios e ainda tira o escorregão no porcelanato. Deixe uma faixa de piso livre junto às paredes — os bass traps de canto precisam apoiar no duro, e sobra alguma vivacidade de agudo.</p>
         <div class="act__meta"><span>Já está comprado</span><span>Prioridade <i>alta</i></span><span>≈11% da absorção total</span></div>
       </div></div>
 
@@ -1038,12 +1173,46 @@ svg text{font-family:var(--mono); fill:var(--mute)}
     <ul class="plain">
       <li><strong>Pé-direito real.</strong> Usei 2,60 m. Se for 2,70 ou 2,80, os modos de altura mudam e o empilhamento em ~68 Hz pode sumir ou piorar.</li>
       <li><strong>Foto da parede esquerda inteira.</strong> É o trecho marcado como não documentado no DES. 02 — 3,20 m dos quais eu não sei nada, e é justamente onde vão os difusores no plano proposto.</li>
-      <li><strong>Formato exato do tapete.</strong> Assumi 2,00 × 3,00 m retangular. Se for redondo de 3 m de diâmetro, centre em x = 1,50 m e y = 1,90 m — cobre os dois pontos de reflexão do mesmo jeito, só sobra menos piso atrás da cadeira.</li>
+      <li><strong>Centro e diâmetro do ventilador.</strong> Estimei y = 2,20 m e Ø 1,20 m de varredura, ambos por foto. É o que decide se a nuvem de teto cabe ou se o ventilador precisa recuar — o item mais bloqueante da lista.</li>
       <li><strong>Distância de escuta medida.</strong> Estimei 1,20 m por escala fotográfica; é o número menos confiável de todos e o mais importante do diagnóstico. Uma trena da parede frontal até a orelha resolve.</li>
-      <li><strong>Espessura e dimensão reais dos painéis pretos</strong> e a largura do vão de vidro. Assumi 0,60 × 1,20 × 0,05 m e 2,10 m de vão.</li>
+      <li><strong>O que tem dentro dos painéis pretos.</strong> A espessura de 5 cm está confirmada, mas abaixo de 500 Hz o recheio pesa mais que ela: lã de rocha de 64 kg/m³ e espuma acústica de 5 cm têm curvas bem diferentes em 125–250 Hz. Se for espuma, os números do gráfico da seção 02 caem pela metade nos graves-médios.</li>
+      <li><strong>Largura × altura dos painéis</strong> (assumi 0,60 × 1,20 m) e a largura do vão de vidro (assumi 2,10 m).</li>
     </ul>
-    <p>Me manda esses cinco e eu refaço a planta com cotas fechadas, incluindo a lista de corte dos bass traps e a metragem exata de lã.</p>
+    <p>Me manda esses e eu refaço a planta com cotas fechadas, incluindo a lista de corte dos bass traps e a metragem exata de lã.</p>
   </div>
 </section>
 
 </main>
+
+<script>
+(function(){
+  var d=[[0.06,0.15,0.45,0.80,0.95,1.00,1.00],[0.12,0.35,0.75,0.95,1.00,1.00,1.00],[0.18,0.50,0.90,1.00,1.00,1.00,1.00]];
+  var bands=["63 Hz","125 Hz","250 Hz","500 Hz","1 kHz","2 kHz","4 kHz"];
+  var names=["5 cm rente","+ 5 cm de ar","+ 10 cm de ar"];
+  var vars=["--a1","--a2","--a3"];
+  var xs=[78,158.3,238.7,319,399.3,479.7,560];
+  var box=document.getElementById("absChart"), tip=document.getElementById("absTip");
+  var svg=box.querySelector("svg"), cross=document.getElementById("absCross");
+  function fmt(v){return v.toFixed(2).replace(".",",");}
+  function show(i){
+    var html="<b>"+bands[i]+"</b>";
+    for(var k=0;k<3;k++){html+="<i style=\"background:var("+vars[k]+")\"></i>"+names[k]+"<u>"+fmt(d[k][i])+"</u><br>";}
+    tip.innerHTML=html;
+    var r=svg.getBoundingClientRect(), sc=r.width/700;
+    tip.style.left=(xs[i]*sc)+"px";
+    tip.style.top=(46*sc)+"px";
+    tip.setAttribute("data-on","1");
+    cross.setAttribute("x1",xs[i]); cross.setAttribute("x2",xs[i]); cross.setAttribute("opacity","1");
+  }
+  function hide(){tip.setAttribute("data-on","0"); cross.setAttribute("opacity","0");}
+  var hits=document.querySelectorAll("#absHit rect");
+  for(var i=0;i<hits.length;i++){
+    (function(el){
+      var idx=+el.getAttribute("data-b");
+      el.addEventListener("pointerenter",function(){show(idx);});
+      el.addEventListener("pointermove",function(){show(idx);});
+    })(hits[i]);
+  }
+  box.addEventListener("pointerleave",hide);
+})();
+</script>
