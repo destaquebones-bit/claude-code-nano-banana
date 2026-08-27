@@ -167,6 +167,7 @@ svg text{font-family:var(--mono); fill:var(--mute)}
       <div><dt>Volume</dt><dd>37,4 m³</dd></div>
       <div><dt>Superfície</dt><dd>69,4 m²</dd></div>
       <div><dt>Proporção</dt><dd>1,85 : 1,15 : 1</dd></div>
+      <div><dt>Piso</dt><dd>Porcelanato</dd></div>
     </dl>
   </div>
 </header>
@@ -189,6 +190,9 @@ svg text{font-family:var(--mono); fill:var(--mute)}
 
     <h3>Parede de fundo (3,00 m) — foto 3 e 4</h3>
     <p>Cortina cinza leve, translúcida, num varão simples — e <strong>atrás dela a porta de vidro</strong>. Isso é o dado mais pesado do levantamento: a parede inteira atrás da posição de escuta é uma superfície rígida, plana, que devolve praticamente toda a energia acima de 300 Hz e vaza tudo abaixo disso. A cortina, do jeito que está, absorve só agudo — abaixo de 1 kHz ela é acusticamente invisível. Há furos de parafuso na parede acima do varão, de alguma fixação anterior.</p>
+
+    <h3>Piso e teto</h3>
+    <p>Piso de porcelanato, teto de reboco liso. É o par de superfícies mais duro da sala e o único que se enfrenta em paralelo perfeito, sem nada no meio — dá <em>flutter</em> vertical (bate palma embaixo da luminária e você ouve). Um tapete de 3 m está a caminho; ele resolve metade dessa dupla, e o DES. 05 mostra exatamente onde ele precisa cair.</p>
 
     <h3>Parede esquerda (4,80 m) — parcial</h3>
     <p>Só aparece de raspão na foto 1: um painel preto junto ao canto frontal e o gancho do fone logo depois. No canto do fundo, na foto 3, estão <strong>dois difusores de MDF encostados na parede, ainda não instalados</strong>. O miolo dessa parede — de ~1,0 m a ~4,2 m — não foi fotografado; está marcado como não documentado nos desenhos.</p>
@@ -586,6 +590,10 @@ svg text{font-family:var(--mono); fill:var(--mute)}
   <circle class="s-raypt" cx="620" cy="206" r="3.6"/>
   <text class="s-lbl" x="612" y="196" text-anchor="end" fill="var(--ray)">vidro do fundo · 20,5 ms · −18 dB</text>
 
+  <polyline class="s-ray" points="102,225.6 153.4,372 204,228"/>
+  <circle class="s-raypt" cx="153.4" cy="372" r="3.6"/>
+  <text class="s-lbl" x="160" y="366" fill="var(--ray)">piso (porcelanato) · 4,6 ms · −8 dB</text>
+
   <line class="s-rayd" x1="102" y1="225.6" x2="204" y2="228" opacity=".9"/>
 
   <g class="s-dim"><line x1="120" y1="46" x2="120" y2="56"/><line x1="192" y1="46" x2="192" y2="56"/><line x1="120" y1="51" x2="192" y2="51"/></g>
@@ -634,7 +642,7 @@ svg text{font-family:var(--mono); fill:var(--mute)}
 <section id="diag">
   <div class="wrap">
     <div class="head"><span class="head__n">02</span><h2>Diagnóstico</h2></div>
-    <p>Com 37,4 m³ e RT estimado em ~0,45 s, a frequência de Schroeder fica perto de <strong>220 Hz</strong>. Abaixo disso a sala não tem campo difuso — tem modos individuais, e são eles que mandam. Acima disso mandam as reflexões primárias.</p>
+    <p>Refiz a conta de absorção agora que sei que o piso é porcelanato — o resultado está na seção 03. Dá <strong>RT ≈ 0,9 s</strong> em 500 Hz, e com isso a frequência de Schroeder sobe para perto de <strong>310 Hz</strong>. Abaixo disso a sala não tem campo difuso: tem modos individuais, e são eles que mandam. Acima, mandam as reflexões primárias. Uma sala de mix desse volume deveria estar em 0,25–0,35 s.</p>
   </div>
 
   <div class="plate" style="margin-top:26px">
@@ -657,6 +665,7 @@ svg text{font-family:var(--mono); fill:var(--mute)}
         <tr><td>Parede direita</td><td>0,69 m da frente</td><td class="n">6,0 ms</td><td class="n">−9 dB</td><td>4 dB e 3,5 ms de diferença do lado esquerdo</td></tr>
         <tr><td>TV (plano frontal)</td><td>0,10 m da parede</td><td class="n bad">1,3 ms</td><td class="n">forte em 200–800 Hz</td><td>comb de ~800 Hz de passo a partir de 400 Hz</td></tr>
         <tr><td>Teto</td><td>0,77 m da frente</td><td class="n">5,4 ms</td><td class="n">−9 dB</td><td>sem tratamento nenhum</td></tr>
+        <tr><td>Piso (porcelanato)</td><td>0,78 m da frente</td><td class="n">4,6 ms</td><td class="n">−8 dB</td><td>par paralelo com o teto — flutter vertical</td></tr>
         <tr><td>Porta de vidro</td><td>3,60 m atrás</td><td class="n">20,5 ms</td><td class="n">−18 dB</td><td>eco discreto, quase sem absorção</td></tr>
       </tbody>
     </table></div>
@@ -682,6 +691,7 @@ svg text{font-family:var(--mono); fill:var(--mute)}
       <li><strong>Os difusores estão no lugar errado.</strong> Um difusor precisa de campo formado — na prática, 1 m no mínimo, idealmente 3× a maior dimensão do painel. A 20 cm da fonte, aqueles ripados de MDF não difundem: refletem, com a coloração de um pente de ripas. Eles são bons; estão só na parede errada.</li>
       <li><strong>Zero controle de grave.</strong> Nenhum canto tratado. Os três painéis pretos somam ~2,2 m² de absorção de 5 cm numa sala de 69 m² de superfície — 3% de cobertura, e nada abaixo de ~300 Hz. Montados rentes à parede, perdem metade do que poderiam fazer nos médios-graves.</li>
       <li><strong>Vidro atrás da cabeça.</strong> ~4,4 m² de superfície com coeficiente de absorção próximo de zero acima de 250 Hz, coberta por uma cortina translúcida que só pega agudo. É também o ponto de vazamento de som da sala inteira.</li>
+      <li><strong>Porcelanato e reboco frente a frente.</strong> As duas maiores superfícies da sala são rígidas, paralelas e não têm nada entre elas. O piso devolve a 4,6 ms e o teto a 5,4 ms, quase no mesmo nível — é o par que mais suja a região de 300 Hz a 3 kHz, justo onde mora a voz.</li>
       <li><strong>A tampa do MacBook</strong> fica aberta bem no eixo entre os monitores, inclinada. É um refletor de médio no centro exato da imagem estéreo.</li>
     </ul>
 
@@ -718,7 +728,18 @@ svg text{font-family:var(--mono); fill:var(--mute)}
   <text class="s-dimt" x="106" y="398" text-anchor="middle" transform="rotate(-90 106 398)">4,80</text>
   <text class="s-dimt" x="140" y="224" text-anchor="middle" transform="rotate(-90 140 224)">1,90</text>
 
+  <defs>
+    <pattern id="rugP" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="7" stroke="var(--mdf)" stroke-width="1.1"/>
+    </pattern>
+  </defs>
   <rect class="s-wall" x="170" y="110" width="360" height="576"/>
+
+  <!-- tapete -->
+  <rect x="230" y="182" width="240" height="360" fill="url(#rugP)" opacity=".3"/>
+  <rect x="230" y="182" width="240" height="360" fill="none" stroke="var(--mdf)" stroke-width="1.4"/>
+  <text class="s-lbl" x="350" y="530" text-anchor="middle" fill="var(--mdf)">tapete 2,00 × 3,00 — y 0,60 a 3,60</text>
+
   <line class="s-axis" x1="350" y1="96" x2="350" y2="700"/>
 
   <!-- bass traps -->
@@ -758,6 +779,13 @@ svg text{font-family:var(--mono); fill:var(--mute)}
   <circle class="s-raypt" cx="525.5" cy="268.2" r="3.6"/>
   <line class="s-rayd" x1="284" y1="224" x2="350" y2="338"/>
   <line class="s-rayd" x1="416" y1="224" x2="350" y2="338"/>
+  <g fill="none" stroke="var(--ray)" stroke-width="1.6">
+    <circle cx="317" cy="281" r="5.5"/><circle cx="383" cy="281" r="5.5"/>
+    <line x1="311.5" y1="281" x2="322.5" y2="281"/><line x1="377.5" y1="281" x2="388.5" y2="281"/>
+    <line x1="317" y1="275.5" x2="317" y2="286.5"/><line x1="383" y1="275.5" x2="383" y2="286.5"/>
+    <line x1="388" y1="285" x2="470" y2="318" stroke-width="1"/>
+  </g>
+  <text class="s-lbl" x="474" y="322" fill="var(--ray)">reflexão do piso</text>
   <path d="M330 300 a44 44 0 0 0 40 0" fill="none" stroke="var(--ray)" stroke-width="1.2"/>
   <text class="s-lbl" x="350" y="292" text-anchor="middle" fill="var(--ray)">60°</text>
   <text class="s-lbl" x="192" y="262" fill="var(--ray)">4,5 ms · −7,6 dB</text>
@@ -790,7 +818,7 @@ svg text{font-family:var(--mono); fill:var(--mute)}
   </g>
 
   <text class="s-dimt" x="350" y="716" text-anchor="middle" fill="var(--glass)">PORTA DE VIDRO — SUPERFÍCIE INTOCÁVEL</text>
-  <text class="s-dimt" x="350" y="736" text-anchor="middle" opacity=".65">escala 1:100 · verde = intervenção nova · cinza = mobiliário mantido</text>
+  <text class="s-dimt" x="350" y="736" text-anchor="middle" opacity=".65">escala 1:100 · verde = intervenção nova · âmbar = material já existente · cinza = mobiliário mantido</text>
 </svg>
         <p class="dw__cap">Planta proposta · sistema recentrado e tratamento por prioridade</p>
       </div>
@@ -822,9 +850,127 @@ svg text{font-family:var(--mono); fill:var(--mute)}
   </div>
 </section>
 
+<section id="piso">
+  <div class="plate">
+    <div class="head"><span class="head__n">03</span><h2>O piso e o tapete</h2></div>
+  </div>
+
+  <div class="wrap">
+    <p>Porcelanato e reboco liso são as duas maiores superfícies da sala — 14,4 m² cada — e são as únicas que se enfrentam em paralelo perfeito, sem móvel, painel ou reentrância no meio. Juntas somam pouco mais de 1 sabin de absorção. É por isso que a conta de RT deu 0,9 s: quase toda a sala é espelho.</p>
+    <p>O tapete resolve metade dessa dupla; a nuvem resolve a outra. Sozinho ele não é suficiente — e sozinho ele é até perigoso.</p>
+  </div>
+
+  <div class="plate" style="margin-top:30px">
+    <div class="dw">
+<svg viewBox="0 0 700 420" role="img" aria-label="Corte longitudinal da configuração proposta mostrando o par vertical: nuvem de teto acima e tapete abaixo, com os dois trajetos de reflexão">
+  <defs>
+    <pattern id="rugS" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="7" stroke="var(--mdf)" stroke-width="1.1"/>
+    </pattern>
+  </defs>
+  <rect class="s-wall" x="60" y="60" width="576" height="312"/>
+
+  <rect x="60" y="108" width="12" height="264" fill="var(--ray)" fill-opacity=".3" stroke="var(--ray)" stroke-width="1.4"/>
+  <rect x="158.4" y="78" width="144" height="12" fill="var(--ray)" fill-opacity=".3" stroke="var(--ray)" stroke-width="1.4"/>
+  <g class="s-hair" stroke="var(--ray)">
+    <line x1="180" y1="60" x2="180" y2="78"/><line x1="280" y1="60" x2="280" y2="78"/>
+  </g>
+  <rect x="132" y="364" width="360" height="8" fill="url(#rugS)" opacity=".45"/>
+  <rect x="132" y="364" width="360" height="8" fill="none" stroke="var(--mdf)" stroke-width="1.4"/>
+
+  <line class="s-hair" x1="165" y1="246" x2="165" y2="366"/>
+  <line class="s-hair" x1="171" y1="246" x2="171" y2="366"/>
+  <rect class="s-obj" x="152" y="360" width="32" height="6"/>
+  <rect class="s-dark" x="160" y="210" width="14" height="36"/>
+  <circle cx="167" cy="234" r="4" fill="none" stroke="var(--paper)" stroke-width="1.4"/>
+
+  <rect class="s-obj" x="180" y="282" width="72" height="6"/>
+  <line class="s-hair" x1="186" y1="288" x2="186" y2="372"/>
+  <line class="s-hair" x1="246" y1="288" x2="246" y2="372"/>
+
+  <path class="s-obj" d="M288 316 h44 a5 5 0 0 1 5 5 v46 h-54 v-46 a5 5 0 0 1 5-5z"/>
+  <rect class="s-obj" x="328" y="252" width="9" height="66" rx="4"/>
+  <circle cx="288" cy="214" r="14" fill="var(--ink)"/>
+  <path d="M283 228 q5 6 10 0 l14 8 v54 h-38 v-54z" fill="var(--ink)" opacity=".55"/>
+
+  <g stroke="var(--mute)" stroke-width="2" opacity=".8">
+    <line x1="616" y1="84" x2="616" y2="372"/><line x1="622" y1="84" x2="622" y2="372"/>
+  </g>
+  <rect class="s-glass" x="628" y="120" width="8" height="252"/>
+
+  <polyline class="s-ray" points="174,228 231,372 288,228"/>
+  <circle class="s-raypt" cx="231" cy="368" r="4"/>
+  <text class="s-lbl" x="238" y="352" fill="var(--ray)">piso · 4,5 ms · −7,6 dB → tapete</text>
+
+  <polyline class="s-ray" points="174,228 231,90 288,228"/>
+  <circle class="s-raypt" cx="231" cy="90" r="4"/>
+  <text class="s-lbl" x="238" y="108" fill="var(--ray)">teto · 4,2 ms → nuvem</text>
+
+  <line class="s-rayd" x1="174" y1="228" x2="288" y2="228" opacity=".9"/>
+  <line class="s-flag" x1="231" y1="90" x2="231" y2="372" opacity=".55"/>
+  <text class="s-flagt" x="236" y="248">y = 1,42 m</text>
+
+  <g class="s-dim">
+    <line x1="132" y1="386" x2="132" y2="400"/><line x1="492" y1="386" x2="492" y2="400"/><line x1="132" y1="393" x2="492" y2="393"/>
+    <line x1="60" y1="386" x2="60" y2="400"/><line x1="60" y1="393" x2="132" y2="393"/>
+  </g>
+  <text class="s-dimt" x="312" y="389" text-anchor="middle" fill="var(--mdf)">tapete 3,00</text>
+  <text class="s-dimt" x="96" y="389" text-anchor="middle">0,60</text>
+
+  <text class="s-dimt" x="60" y="52" letter-spacing="1.4">DES. 05 · PAR VERTICAL — CONFIGURAÇÃO PROPOSTA</text>
+  <text class="s-dimt" x="52" y="216" text-anchor="middle" transform="rotate(-90 52 216)">2,60</text>
+  <text class="s-dimt" x="66" y="368" opacity=".7">frontal</text>
+  <text class="s-dimt" x="612" y="368" text-anchor="end" opacity=".7">vidro</text>
+  <text class="s-dimt" x="636" y="414" text-anchor="end" opacity=".65">tweeter e orelha na mesma altura (1,20 m) — por isso os dois pontos caem no mesmo y</text>
+</svg>
+      <p class="dw__cap">Corte longitudinal · nuvem e tapete atacam o mesmo ponto, de cima e de baixo</p>
+    </div>
+
+    <p class="keyhead">Orçamento de absorção em 500 Hz</p>
+    <div class="tw"><table>
+      <thead><tr><th>Superfície</th><th class="n">Área</th><th class="n">α</th><th class="n">Sabins</th></tr></thead>
+      <tbody>
+        <tr><td>Piso — porcelanato</td><td class="n">14,4 m²</td><td class="n">0,02</td><td class="n bad">0,3</td></tr>
+        <tr><td>Teto — reboco liso</td><td class="n">14,4 m²</td><td class="n">0,05</td><td class="n bad">0,7</td></tr>
+        <tr><td>Paredes pintadas</td><td class="n">≈32 m²</td><td class="n">0,04</td><td class="n">1,3</td></tr>
+        <tr><td>Porta de vidro</td><td class="n">4,4 m²</td><td class="n">0,04</td><td class="n">0,2</td></tr>
+        <tr><td>Porta de madeira</td><td class="n">1,9 m²</td><td class="n">0,10</td><td class="n">0,2</td></tr>
+        <tr><td>3 painéis pretos, 50 mm</td><td class="n">2,2 m²</td><td class="n">0,85</td><td class="n">1,8</td></tr>
+        <tr><td>Cortina leve</td><td class="n">≈4 m²</td><td class="n">0,15</td><td class="n">0,6</td></tr>
+        <tr><td>Estante, livros, móveis, você</td><td class="n">—</td><td class="n">—</td><td class="n">≈1,5</td></tr>
+        <tr><td><strong>Total hoje</strong></td><td class="n">—</td><td class="n">—</td><td class="n bad">≈6,6 → RT 0,90 s</td></tr>
+      </tbody>
+    </table></div>
+
+    <p class="keyhead">O que cada intervenção acrescenta</p>
+    <div class="tw"><table>
+      <thead><tr><th>Intervenção</th><th class="n">Área</th><th class="n">α</th><th class="n">+ Sabins</th><th class="n">Fatia</th></tr></thead>
+      <tbody>
+        <tr><td>4 bass traps de canto</td><td class="n">4,4 m²</td><td class="n">0,90</td><td class="n">+4,0</td><td class="n">25%</td></tr>
+        <tr><td>Cortina blackout pesada</td><td class="n">8,0 m²</td><td class="n">0,55</td><td class="n">+3,8</td><td class="n">23%</td></tr>
+        <tr><td>Absorção da parede frontal</td><td class="n">2,9 m²</td><td class="n">0,95</td><td class="n">+2,7</td><td class="n">17%</td></tr>
+        <tr><td><strong>Tapete 2 × 3 com manta</strong></td><td class="n">6,0 m²</td><td class="n">0,45</td><td class="n">+2,6</td><td class="n">16%</td></tr>
+        <tr><td>Nuvem de teto (duas faces)</td><td class="n">1,4 m²</td><td class="n">1,20</td><td class="n">+1,8</td><td class="n">11%</td></tr>
+        <tr><td>2 painéis laterais</td><td class="n">1,4 m²</td><td class="n">0,95</td><td class="n">+1,3</td><td class="n">8%</td></tr>
+        <tr><td><strong>Total depois</strong></td><td class="n">—</td><td class="n">—</td><td class="n ok">≈22,8 → RT 0,26 s</td><td class="n">—</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-family:var(--mono); font-size:12px; color:var(--mute); margin-top:10px">Estimativa de Sabine, válida como ordem de grandeza acima de 300 Hz. Abaixo disso a sala é modal e nenhuma conta de RT descreve o que se ouve.</p>
+  </div>
+
+  <div class="wrap" style="margin-top:34px">
+    <h3>Três avisos sobre o tapete</h3>
+    <ul class="plain">
+      <li><strong>Ele não substitui bass trap.</strong> Um tapete sobre porcelanato absorve bem de 1 kHz para cima, razoavelmente em 500 Hz e praticamente nada abaixo de 250 Hz. Se ele entrar antes dos traps, você troca uma sala brilhante e bagunçada por uma sala abafada e igualmente bagunçada no grave — e vai mixar agudo demais para compensar.</li>
+      <li><strong>Manta por baixo não é opcional.</strong> Tapete direto no porcelanato tem α ≈ 0,20 em 500 Hz. Com manta de feltro ou espuma de 5–10 mm, sobe para ≈ 0,45. É a diferença entre 1,1 e 2,6 sabins pelo mesmo tapete.</li>
+      <li><strong>Não encoste nas paredes.</strong> Deixe ~0,50 m de porcelanato livre de cada lado: é onde os bass traps vão apoiar, e o piso duro junto às paredes ajuda a manter a sala viva o suficiente para não ficar abafada.</li>
+    </ul>
+  </div>
+</section>
+
 <section id="plano">
   <div class="plate">
-    <div class="head"><span class="head__n">03</span><h2>Plano de ação, em ordem de retorno</h2></div>
+    <div class="head"><span class="head__n">04</span><h2>Plano de ação, em ordem de retorno</h2></div>
     <div class="acts">
 
       <div class="act"><div class="act__n">1</div><div>
@@ -858,18 +1004,24 @@ svg text{font-family:var(--mono); fill:var(--mute)}
       </div></div>
 
       <div class="act"><div class="act__n">6</div><div>
+        <h4>Tapete sobre o ponto de reflexão do piso</h4>
+        <p>Com a bancada na posição nova, os dois pontos de reflexão do piso caem em y = 1,42 m — logo à frente da mesa, exatamente embaixo da nuvem. Deite o tapete de 3 m com o lado comprido no eixo do comprimento, de <strong>y = 0,60 m a y = 3,60 m</strong>, centrado em x = 1,50 m. <strong>Ponha manta de feltro por baixo</strong>: dobra a absorção nos médios e ainda tira o escorregão no porcelanato. Deixe uma faixa de piso livre junto às paredes — os bass traps de canto precisam apoiar no duro, e sobra alguma vivacidade de agudo.</p>
+        <div class="act__meta"><span>Já está comprado</span><span>Prioridade <i>alta</i></span><span>≈11% da absorção total</span></div>
+      </div></div>
+
+      <div class="act"><div class="act__n">7</div><div>
         <h4>Resolver a parede de vidro sem furar o vidro</h4>
         <p>Cortina blackout pesada (≥400 g/m², franzimento 2:1, afastada 10–15 cm do vidro, indo do teto ao chão e transbordando 20 cm de cada lado) substituindo a cinza translúcida — é o absorvedor prático ali. Some a isso um gobo móvel de 1,40 × 1,60 m que você posiciona na frente do vidro só na hora de mixar e encosta na parede quando não está. As faixas de alvenaria ao lado e acima do vão do vidro aceitam painel fixo.</p>
         <div class="act__meta"><span>Nada é fixado no vidro</span><span>Prioridade <i>média</i></span></div>
       </div></div>
 
-      <div class="act"><div class="act__n">7</div><div>
+      <div class="act"><div class="act__n">8</div><div>
         <h4>Limpar o eixo entre os monitores</h4>
         <p>Feche ou abaixe a tampa do MacBook durante a escuta crítica (use a TV como tela), tire o pedestal de microfone e a caixa acrílica de cima da bancada, e ponha um feltro grosso na faixa central da bancada — com a mesa na nova posição, o ponto de reflexão dela cai em y ≈ 1,44 m, bem no meio do tampo. Inclinar os monitores 5–8° para baixo também tira a mesa do caminho.</p>
         <div class="act__meta"><span>Custo <i class="g">quase zero</i></span><span>Prioridade <i>média</i></span></div>
       </div></div>
 
-      <div class="act"><div class="act__n">8</div><div>
+      <div class="act"><div class="act__n">9</div><div>
         <h4>Medir antes e depois</h4>
         <p>REW com um microfone de medição (UMIK-1 ou equivalente): varredura na posição nova, resposta em frequência até 300 Hz, waterfall e ETC. Sem isso não dá para saber se o trap acertou o modo certo, e a régua modal do DES. 03 vira só teoria.</p>
         <div class="act__meta"><span>Depois das etapas 1–5</span><span>Prioridade <i class="g">verificação</i></span></div>
@@ -881,12 +1033,12 @@ svg text{font-family:var(--mono); fill:var(--mute)}
 
 <section id="faltando">
   <div class="wrap">
-    <div class="head"><span class="head__n">04</span><h2>O que falta para fechar o desenho</h2></div>
+    <div class="head"><span class="head__n">05</span><h2>O que falta para fechar o desenho</h2></div>
     <p>Cinco coisas travam a precisão do levantamento. Nenhuma muda o diagnóstico, mas todas mudam as cotas:</p>
     <ul class="plain">
       <li><strong>Pé-direito real.</strong> Usei 2,60 m. Se for 2,70 ou 2,80, os modos de altura mudam e o empilhamento em ~68 Hz pode sumir ou piorar.</li>
       <li><strong>Foto da parede esquerda inteira.</strong> É o trecho marcado como não documentado no DES. 02 — 3,20 m dos quais eu não sei nada, e é justamente onde vão os difusores no plano proposto.</li>
-      <li><strong>O piso.</strong> Não aparece em nenhuma foto. Porcelanato e tapete grosso dão RT bem diferentes, e o RT é o que define a frequência de Schroeder.</li>
+      <li><strong>Formato exato do tapete.</strong> Assumi 2,00 × 3,00 m retangular. Se for redondo de 3 m de diâmetro, centre em x = 1,50 m e y = 1,90 m — cobre os dois pontos de reflexão do mesmo jeito, só sobra menos piso atrás da cadeira.</li>
       <li><strong>Distância de escuta medida.</strong> Estimei 1,20 m por escala fotográfica; é o número menos confiável de todos e o mais importante do diagnóstico. Uma trena da parede frontal até a orelha resolve.</li>
       <li><strong>Espessura e dimensão reais dos painéis pretos</strong> e a largura do vão de vidro. Assumi 0,60 × 1,20 × 0,05 m e 2,10 m de vão.</li>
     </ul>
