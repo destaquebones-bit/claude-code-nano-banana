@@ -298,3 +298,41 @@ r/edmproduction's feedback thread rotates weekly. The last comment drafted for i
 - **Still unresolved and worth flagging again:** this routine has no way to confirm Reddit-side whether any of the five prior drafts (2026-08-20 through 2026-08-25) were actually posted. If they weren't, they remain fully usable verbatim from their original entries. A one-line confirmation from Jhonatan on which have gone live would let future entries stop repeating this status check and plan real next steps (e.g., correctly timing the next r/PromoteYourMusic post, or deciding whether r/House needs a follow-up).
 
 **Awaiting Jhonatan's approval before this is posted.**
+
+---
+
+## 2026-08-28
+
+**Status check:** Still no approval/confirmation note anywhere in this log beyond the single "Aprovado" (2026-08-20, Step 1–2 only). No confirmation for r/edmproduction (2026-08-21, refreshed 2026-08-27), r/TechnoProduction (2026-08-22), or r/PromoteYourMusic repost (2026-08-25). This is day 3 of holding on that gap (see 2026-08-26 and 2026-08-27 entries). Continuing to follow the 2026-08-26 entry's own stated fallback plan rather than holding indefinitely: work through the "natural next actions" list, picking whichever is actionable today without assuming any unconfirmed draft was posted.
+
+**Why each other candidate is NOT today's action:**
+- r/PromoteYourMusic: last posted 2026-08-25, ~7-day cooldown → next eligible ~2026-09-01. Today is 2026-08-28 — **not cleared, 4 days remain.**
+- r/House repeat self-post: still no genuinely new material/update since the 2026-08-20 draft (same "Mind Gone State" free-download framing) — repeating this soon would violate the sub's reciprocity/quality norm. Skipped.
+- r/edmproduction feedback thread: just refreshed yesterday (2026-08-27) — commenting again today would be back-to-back activity in the same sub on the same account, which is exactly the pattern this log has been avoiding since the r/TechHouseBrasil ban. Skipped.
+
+**Today's step: fresh comment in r/TechnoProduction's current weekly feedback thread (next cycle, not a repeat of 2026-08-22)**
+
+r/TechnoProduction's feedback thread rotates weekly. It was last touched on 2026-08-22 (6 days ago) — the longest-stale of the two rotating-feedback-thread subs, and long enough that a new week's thread has almost certainly replaced the one linked in that entry. Chosen over r/edmproduction (refreshed only yesterday) for exactly that staleness reason, consistent with the rotation logic used in the 2026-08-27 entry.
+
+### How to find the current thread (rotates weekly — no fixed URL, re-locate each time)
+1. Open r/TechnoProduction, check the sidebar/"About"/community highlights for a pinned link to the feedback thread, or look for a stickied/pinned post at the top of the sub (pin icon).
+2. If nothing's pinned, search within the sub for "feedback thread" or "feedback friday," sorted by **New**, restricted to the last 7 days — these are typically auto-posted on a fixed weekday by AutoModerator or a mod account.
+3. Confirm the post date is from the current week before commenting — replying in an old thread gets little visibility and can read as necro-posting.
+4. Same genre-fit note as the 2026-08-22 entry: "Mind Gone State" is Tech House, not straight Techno. Production-feedback threads are usually genre-agnostic within electronic music, but if the current thread's own rules explicitly restrict to techno-only submissions, skip commenting there and flag it back in tomorrow's entry instead of forcing a mismatched post.
+
+### Ready-to-paste comment (English — matches the sub's own language)
+
+> Track: **Mind Gone State** (Tech House) — free download, no email/signup wall: https://hypeddit.com/iel6vv
+> Stream: https://soundcloud.com/spectralsunmusic/mind-gone-state
+>
+> Back with a fresh one this week (know it leans tech house rather than straight techno, hope that's still fair game here). Mainly trying to nail down two things: does the low end hold up outside headphones/monitors, and does the breakdown run too long before it drops back in? Any other rough edges welcome too.
+>
+> Happy to return the favor and give feedback on other tracks in this thread.
+
+**Notes:**
+- This is the only Reddit action queued for today per the daily volume cap (one action/day on this account).
+- Reworded from the 2026-08-22 draft (same two specific, answerable questions — low-end translation, breakdown length — for voice consistency) so it doesn't read as a copy-paste repeat if both ever end up visible near each other.
+- Cover art / video not applicable — feedback-thread comments are text + links only.
+- **Still unresolved and worth flagging again:** this routine has no way to confirm Reddit-side whether any of the six prior drafts (2026-08-20 reciprocity + self-post, 2026-08-21 r/edmproduction, 2026-08-22 r/TechnoProduction, 2026-08-25 r/PromoteYourMusic, 2026-08-27 r/edmproduction refresh) were actually posted, beyond the single "Aprovado" note on the 2026-08-20 entry. If any weren't, they remain fully usable verbatim from their original entries. A one-line confirmation from Jhonatan on which have gone live would let future entries stop repeating this status check and plan real next steps — most notably correctly timing the next r/PromoteYourMusic post around 2026-09-01.
+
+**Awaiting Jhonatan's approval before this is posted.**
