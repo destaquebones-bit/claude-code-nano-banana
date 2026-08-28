@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 W,H = 2.75, 2.60
-DW,DZ = 0.88, 2.10
+DW,DZ = 0.82, 2.10
 DX0 = W-DW
 TR  = 0.424
 TVW,TVH,TVZ = 1.08,0.61,0.80
-TVC = min(W/2, DX0-TVW/2)
+TVC = min(W/2, DX0-TVW/2)  # 1,375 - centraliza
 BLKC= (TR+DX0)/2
 SEP,EAR = 0.770,1.587
 ML,MR = W/2-SEP/2, W/2+SEP/2
@@ -54,7 +54,7 @@ rect(W-TR,W,0,DZ,"none","var(--flag)","1.6",' stroke-dasharray="8 5"')   # 3 tre
 rect(DX0,W,0,DZ,"none","var(--wood)","2.6")                     # porta
 for i in (0,1):
     for j in (0,1):
-        rect(BLKC-0.60+0.60*i, BLKC+0.60*i, 1.40+0.60*j, 2.00+0.60*j, "url(#wl)","var(--ray)","1.6")
+        rect(BLKC-0.60+0.60*i, BLKC+0.60*i, 1.45+0.60*j, 2.05+0.60*j, "url(#wl)","var(--ray)","1.6")
 rect(TR, TVC-TVW/2, TVZ, TVZ+TVH, "url(#wo)","var(--ray)","1.2",' stroke-dasharray="5 4"')
 rect(DX0, W-TR, DZ, H, "url(#wo)","var(--ray)","1.2",' stroke-dasharray="5 4"')
 rect(TVC-TVW/2,TVC+TVW/2,TVZ,TVZ+TVH,"var(--felt)","var(--ink)","1.8")
@@ -81,23 +81,23 @@ tag(6,DX0+0.23,2.35,"var(--ray)")
 tag(7,0.60,1.10,"var(--ray)")
 txt(X(W/2),Y(H)+ -16,"centro real 1,375","s-dimt","middle","var(--flag)")
 txt(X(W)+26,Y(1.10)+4,"eixo tweeter + orelha &#183; 1,10","s-dimt","start","var(--flag)")
-vtxt(DX0+0.44,1.05,"PORTA &#183; 0,88 &#215; 2,10","s-lbl","var(--wood)",' letter-spacing="1.4"')
+vtxt(DX0+0.44,1.05,"PORTA PORTA &#183; 0,88 &#215; 2,10#183; 0,82 PORTA &#183; 0,88 &#215; 2,10#215; 2,10","s-lbl","var(--wood)",' letter-spacing="1.4"')
 
-dimH(0,W,838,"2,75 &#8212; MEDIDO HOJE")
-dimH(0,TR,810,"0,42"); dimH(TR,DX0,810,"1,45 de parede livre"); dimH(DX0,W,810,"0,88")
+dimH(0,W,838,"2,75")
+dimH(0,TR,810,"0,42"); dimH(TR,DX0,810,"1,51 de parede livre"); dimH(DX0,W,810,"0,82")
 dimH(BLKC-0.60,BLKC+0.60,784,"1,20 &#183; bloco"); 
-dimV(0,TVZ,124,"0,80"); dimV(TVZ,TVZ+TVH,124,"0,61"); dimV(1.40,H,98,"1,20")
-dimV(0,DZ,X(W)+236,"2,10"); dimV(DZ,H,X(W)+236,"0,50"); dimV(0,H,X(W)+282,"2,60 &#183; conferir")
+dimV(0,TVZ,124,"0,80"); dimV(TVZ,TVZ+TVH,124,"0,61"); dimV(1.45,H,98,"1,20")
+dimV(0,DZ,X(W)+236,"2,10"); dimV(DZ,H,X(W)+236,"0,55"); dimV(0,H,X(W)+282,"2,65")
 
 # LEGENDA
 LX=X(W)+320
-items=[(1,"var(--ray)","Bass trap frontal esquerdo","inteiro, do piso ao teto &#183; 0,42 &#215; 2,60"),
- (2,"var(--ray)","Bass trap frontal direito","s&#243; o trecho acima da porta &#183; 0,42 &#215; 0,50"),
+items=[(1,"var(--ray)","Bass trap frontal esquerdo","inteiro, do piso ao teto &#183; 0,42 &#215; 2,65"),
+ (2,"var(--ray)","Bass trap frontal direito","s&#243; acima da porta &#183; 0,42 &#215; 0,55"),
  (3,"var(--flag)","O que a porta rouba","2,10 m de canto que n&#227;o d&#225; para tratar"),
- (4,"var(--ray)","4 m&#243;dulos 0,60 &#215; 0,60 &#215; 0,10","x = 0,55 a 1,75 &#183; z = 1,40 a 2,60"),
+ (4,"var(--ray)","4 m&#243;dulos 0,60 &#215; 0,60 &#215; 0,10","x = 0,58 a 1,78 &#183; z = 1,45 a 2,65"),
  (5,"var(--felt)","A TV cobre os dois espelhos","x = 1,13 e 1,62, na altura do tweeter"),
- (6,"var(--ray)","Filete acima da porta","0,46 &#215; 0,50 &#183; opcional, fase 2"),
- (7,"var(--ray)","Faixa &#224; esquerda da TV","0,37 &#215; 0,61 &#183; opcional, fase 2")]
+ (6,"var(--ray)","Filete acima da porta","0,40 &#215; 0,55 &#183; opcional, fase 2"),
+ (7,"var(--ray)","Faixa &#224; esquerda da TV","0,41 &#215; 0,61 &#183; opcional, fase 2")]
 yy=150
 txt(LX,yy,"O QUE VAI NA PAREDE","s-dimt","start","var(--ink)",' letter-spacing="1.5"'); yy+=10
 a('<line class="s-dim" x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f"/>'%(LX,yy,LX+330,yy)); yy+=26
@@ -109,12 +109,12 @@ for n,c,t1,t2 in items:
     yy+=44
 yy+=8
 a('<line class="s-dim" x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f"/>'%(LX,yy,LX+330,yy)); yy+=24
-txt(LX,yy,"A MEDIDA QUE FALTA","s-dimt","start","var(--flag)",' letter-spacing="1.5"'); yy+=22
-for l in ["Da parede DIREITA at&#233; o batente da porta.","&#201; ela que fixa os 1,45 m de parede livre,","o centro poss&#237;vel da TV e a separa&#231;&#227;o","m&#225;xima entre os monitores. Assumi 0,88 m."]:
+txt(LX,yy,"O QUE A PORTA DECIDIU","s-dimt","start","var(--flag)",' letter-spacing="1.5"'); yy+=22
+for l in ["V&#227;o de 0,82 m, batente encostado na parede direita.","","Sobram 1,51 m de parede livre &#8212; os 4 m&#243;dulos","cabem com 15 cm de folga de cada lado.","","A TV centraliza: com 1,5 cm sobrando at&#233; o batente.","","A separa&#231;&#227;o poderia ir a 0,89, mas a&#237; o SBIR da","lateral sobe para 92 Hz e empilha com o da parede","frontal, que est&#225; em 93. Fica em 0,77."]:
     txt(LX,yy,l,"s-dimt","start"); yy+=16
 
-txt(52,44,"PAREDE FRONTAL &#183; 2,75 &#215; 2,60 m &#183; VISTA DE DENTRO DA SALA","s-dimt","start","var(--ink)",' letter-spacing="1.6"')
-txt(52,64,"Cotas em metros","s-dimt","start")
+txt(52,44,"PAREDE FRONTAL &#183; 2,75 &#215; 2,65 m &#183; VISTA DE DENTRO DA SALA","s-dimt","start","var(--ink)",' letter-spacing="1.6"')
+txt(52,64,"Cotas em metros &#183; sala 2,75 &#215; 3,70 &#183; todas as medidas conferidas com trena","s-dimt","start")
 txt(52,872,"Hachura verde cheia = l&#227; de rocha 100 mm &#183; c&#237;rculos claros tracejados = filetes opcionais &#183; tracejado laranja = o que a porta impede","s-dimt","start")
 open("_frente275.svg","w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900">\n'+"\n".join(o)+'\n</svg>')
 print("ok")

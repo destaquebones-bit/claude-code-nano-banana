@@ -8,17 +8,17 @@
   <rect x="150.0" y="136.8" width="98.4" height="603.2" fill="url(#tr)" stroke="var(--ray)" stroke-width="1.8"/>
   <rect x="689.6" y="136.8" width="98.4" height="116.0" fill="url(#tr)" stroke="var(--ray)" stroke-width="1.8"/>
   <rect x="689.6" y="252.8" width="98.4" height="487.2" fill="none" stroke="var(--flag)" stroke-width="1.6" stroke-dasharray="8 5"/>
-  <rect x="583.8" y="252.8" width="204.2" height="487.2" fill="none" stroke="var(--wood)" stroke-width="2.6"/>
-  <rect x="276.9" y="276.0" width="139.2" height="139.2" fill="url(#wl)" stroke="var(--ray)" stroke-width="1.6"/>
-  <rect x="276.9" y="136.8" width="139.2" height="139.2" fill="url(#wl)" stroke="var(--ray)" stroke-width="1.6"/>
-  <rect x="416.1" y="276.0" width="139.2" height="139.2" fill="url(#wl)" stroke="var(--ray)" stroke-width="1.6"/>
-  <rect x="416.1" y="136.8" width="139.2" height="139.2" fill="url(#wl)" stroke="var(--ray)" stroke-width="1.6"/>
-  <rect x="248.4" y="412.9" width="84.9" height="141.5" fill="url(#wo)" stroke="var(--ray)" stroke-width="1.2" stroke-dasharray="5 4"/>
-  <rect x="583.8" y="136.8" width="105.8" height="116.0" fill="url(#wo)" stroke="var(--ray)" stroke-width="1.2" stroke-dasharray="5 4"/>
-  <rect x="333.3" y="412.9" width="250.6" height="141.5" fill="var(--felt)" stroke="var(--ink)" stroke-width="1.8"/>
-  <rect x="340.2" y="419.8" width="236.6" height="127.6" fill="var(--glass)" stroke="none" stroke-width="0" fill-opacity=".26"/>
-  <rect x="219.6" y="566.0" width="364.2" height="174.0" fill="var(--mute)" opacity=".12"/>
-  <line x1="219.6" y1="566.0" x2="583.8" y2="566.0" stroke="var(--mute)" stroke-width="2.5" stroke-dasharray="8 5"/>
+  <rect x="597.8" y="252.8" width="190.2" height="487.2" fill="none" stroke="var(--wood)" stroke-width="2.6"/>
+  <rect x="283.9" y="264.4" width="139.2" height="139.2" fill="url(#wl)" stroke="var(--ray)" stroke-width="1.6"/>
+  <rect x="283.9" y="125.2" width="139.2" height="139.2" fill="url(#wl)" stroke="var(--ray)" stroke-width="1.6"/>
+  <rect x="423.1" y="264.4" width="139.2" height="139.2" fill="url(#wl)" stroke="var(--ray)" stroke-width="1.6"/>
+  <rect x="423.1" y="125.2" width="139.2" height="139.2" fill="url(#wl)" stroke="var(--ray)" stroke-width="1.6"/>
+  <rect x="248.4" y="412.9" width="95.4" height="141.5" fill="url(#wo)" stroke="var(--ray)" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <rect x="597.8" y="136.8" width="91.9" height="116.0" fill="url(#wo)" stroke="var(--ray)" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <rect x="343.7" y="412.9" width="250.6" height="141.5" fill="var(--felt)" stroke="var(--ink)" stroke-width="1.8"/>
+  <rect x="350.7" y="419.8" width="236.6" height="127.6" fill="var(--glass)" stroke="none" stroke-width="0" fill-opacity=".26"/>
+  <rect x="219.6" y="566.0" width="378.2" height="174.0" fill="var(--mute)" opacity=".12"/>
+  <line x1="219.6" y1="566.0" x2="597.8" y2="566.0" stroke="var(--mute)" stroke-width="2.5" stroke-dasharray="8 5"/>
   <rect x="344.9" y="538.2" width="69.6" height="27.8" fill="var(--mute)" stroke="var(--ink)" stroke-width="1.2" fill-opacity=".5"/>
   <rect x="360.0" y="472.0" width="39.4" height="66.1" fill="var(--felt)" stroke="var(--ink)" stroke-width="1.5"/>
   <circle cx="379.7" cy="513.8" r="11.6" fill="none" stroke="var(--paper)" stroke-width="2"/>
@@ -39,37 +39,37 @@
   <text class="s-tag" x="738.8" y="198.8" text-anchor="middle" fill="var(--paper)">2</text>
   <circle cx="738.8" cy="496.4" r="11" fill="var(--flag)" stroke="var(--paper)" stroke-width="2"/>
   <text class="s-tag" x="738.8" y="500.4" text-anchor="middle" fill="var(--paper)">3</text>
-  <circle cx="416.1" cy="206.4" r="11" fill="var(--ray)" stroke="var(--paper)" stroke-width="2"/>
-  <text class="s-tag" x="416.1" y="210.4" text-anchor="middle" fill="var(--paper)">4</text>
-  <circle cx="458.6" cy="484.8" r="11" fill="var(--felt)" stroke="var(--paper)" stroke-width="2"/>
-  <text class="s-tag" x="458.6" y="488.8" text-anchor="middle" fill="var(--paper)">5</text>
-  <circle cx="637.2" cy="194.8" r="11" fill="var(--ray)" stroke="var(--paper)" stroke-width="2"/>
-  <text class="s-tag" x="637.2" y="198.8" text-anchor="middle" fill="var(--paper)">6</text>
+  <circle cx="423.1" cy="206.4" r="11" fill="var(--ray)" stroke="var(--paper)" stroke-width="2"/>
+  <text class="s-tag" x="423.1" y="210.4" text-anchor="middle" fill="var(--paper)">4</text>
+  <circle cx="469.0" cy="484.8" r="11" fill="var(--felt)" stroke="var(--paper)" stroke-width="2"/>
+  <text class="s-tag" x="469.0" y="488.8" text-anchor="middle" fill="var(--paper)">5</text>
+  <circle cx="651.1" cy="194.8" r="11" fill="var(--ray)" stroke="var(--paper)" stroke-width="2"/>
+  <text class="s-tag" x="651.1" y="198.8" text-anchor="middle" fill="var(--paper)">6</text>
   <circle cx="289.2" cy="484.8" r="11" fill="var(--ray)" stroke="var(--paper)" stroke-width="2"/>
   <text class="s-tag" x="289.2" y="488.8" text-anchor="middle" fill="var(--paper)">7</text>
   <text class="s-dimt" x="469.0" y="120.8" text-anchor="middle" fill="var(--flag)">centro real 1,375</text>
   <text class="s-dimt" x="814.0" y="488.8" text-anchor="start" fill="var(--flag)">eixo tweeter + orelha &#183; 1,10</text>
-  <text class="s-lbl" text-anchor="middle" fill="var(--wood)" letter-spacing="1.4" transform="rotate(-90 685.9 496.4)" x="685.9" y="496.4">PORTA &#183; 0,88 &#215; 2,10</text>
+  <text class="s-lbl" text-anchor="middle" fill="var(--wood)" letter-spacing="1.4" transform="rotate(-90 699.8 496.4)" x="699.8" y="496.4">PORTA PORTA &#183; 0,88 &#215; 2,10#183; 0,82 PORTA &#183; 0,88 &#215; 2,10#215; 2,10</text>
   <line class="s-dim" x1="150.0" y1="838.0" x2="788.0" y2="838.0"/>
   <line class="s-dim" x1="150.0" y1="833.0" x2="150.0" y2="843.0"/>
   <line class="s-dim" x1="788.0" y1="833.0" x2="788.0" y2="843.0"/>
-  <text class="s-dimt" x="469.0" y="830.0" text-anchor="middle">2,75 &#8212; MEDIDO HOJE</text>
+  <text class="s-dimt" x="469.0" y="830.0" text-anchor="middle">2,75</text>
   <line class="s-dim" x1="150.0" y1="810.0" x2="248.4" y2="810.0"/>
   <line class="s-dim" x1="150.0" y1="805.0" x2="150.0" y2="815.0"/>
   <line class="s-dim" x1="248.4" y1="805.0" x2="248.4" y2="815.0"/>
   <text class="s-dimt" x="199.2" y="802.0" text-anchor="middle">0,42</text>
-  <line class="s-dim" x1="248.4" y1="810.0" x2="583.8" y2="810.0"/>
+  <line class="s-dim" x1="248.4" y1="810.0" x2="597.8" y2="810.0"/>
   <line class="s-dim" x1="248.4" y1="805.0" x2="248.4" y2="815.0"/>
-  <line class="s-dim" x1="583.8" y1="805.0" x2="583.8" y2="815.0"/>
-  <text class="s-dimt" x="416.1" y="802.0" text-anchor="middle">1,45 de parede livre</text>
-  <line class="s-dim" x1="583.8" y1="810.0" x2="788.0" y2="810.0"/>
-  <line class="s-dim" x1="583.8" y1="805.0" x2="583.8" y2="815.0"/>
+  <line class="s-dim" x1="597.8" y1="805.0" x2="597.8" y2="815.0"/>
+  <text class="s-dimt" x="423.1" y="802.0" text-anchor="middle">1,51 de parede livre</text>
+  <line class="s-dim" x1="597.8" y1="810.0" x2="788.0" y2="810.0"/>
+  <line class="s-dim" x1="597.8" y1="805.0" x2="597.8" y2="815.0"/>
   <line class="s-dim" x1="788.0" y1="805.0" x2="788.0" y2="815.0"/>
-  <text class="s-dimt" x="685.9" y="802.0" text-anchor="middle">0,88</text>
-  <line class="s-dim" x1="276.9" y1="784.0" x2="555.3" y2="784.0"/>
-  <line class="s-dim" x1="276.9" y1="779.0" x2="276.9" y2="789.0"/>
-  <line class="s-dim" x1="555.3" y1="779.0" x2="555.3" y2="789.0"/>
-  <text class="s-dimt" x="416.1" y="776.0" text-anchor="middle">1,20 &#183; bloco</text>
+  <text class="s-dimt" x="692.9" y="802.0" text-anchor="middle">0,82</text>
+  <line class="s-dim" x1="283.9" y1="784.0" x2="562.3" y2="784.0"/>
+  <line class="s-dim" x1="283.9" y1="779.0" x2="283.9" y2="789.0"/>
+  <line class="s-dim" x1="562.3" y1="779.0" x2="562.3" y2="789.0"/>
+  <text class="s-dimt" x="423.1" y="776.0" text-anchor="middle">1,20 &#183; bloco</text>
   <line class="s-dim" x1="124.0" y1="740.0" x2="124.0" y2="554.4"/>
   <line class="s-dim" x1="119.0" y1="740.0" x2="129.0" y2="740.0"/>
   <line class="s-dim" x1="119.0" y1="554.4" x2="129.0" y2="554.4"/>
@@ -78,10 +78,10 @@
   <line class="s-dim" x1="119.0" y1="554.4" x2="129.0" y2="554.4"/>
   <line class="s-dim" x1="119.0" y1="412.9" x2="129.0" y2="412.9"/>
   <text class="s-dimt" x="118.0" y="483.6" text-anchor="middle" transform="rotate(-90 118.0 483.6)">0,61</text>
-  <line class="s-dim" x1="98.0" y1="415.2" x2="98.0" y2="136.8"/>
-  <line class="s-dim" x1="93.0" y1="415.2" x2="103.0" y2="415.2"/>
+  <line class="s-dim" x1="98.0" y1="403.6" x2="98.0" y2="136.8"/>
+  <line class="s-dim" x1="93.0" y1="403.6" x2="103.0" y2="403.6"/>
   <line class="s-dim" x1="93.0" y1="136.8" x2="103.0" y2="136.8"/>
-  <text class="s-dimt" x="92.0" y="276.0" text-anchor="middle" transform="rotate(-90 92.0 276.0)">1,20</text>
+  <text class="s-dimt" x="92.0" y="270.2" text-anchor="middle" transform="rotate(-90 92.0 270.2)">1,20</text>
   <line class="s-dim" x1="1024.0" y1="740.0" x2="1024.0" y2="252.8"/>
   <line class="s-dim" x1="1019.0" y1="740.0" x2="1029.0" y2="740.0"/>
   <line class="s-dim" x1="1019.0" y1="252.8" x2="1029.0" y2="252.8"/>
@@ -89,21 +89,21 @@
   <line class="s-dim" x1="1024.0" y1="252.8" x2="1024.0" y2="136.8"/>
   <line class="s-dim" x1="1019.0" y1="252.8" x2="1029.0" y2="252.8"/>
   <line class="s-dim" x1="1019.0" y1="136.8" x2="1029.0" y2="136.8"/>
-  <text class="s-dimt" x="1018.0" y="194.8" text-anchor="middle" transform="rotate(-90 1018.0 194.8)">0,50</text>
+  <text class="s-dimt" x="1018.0" y="194.8" text-anchor="middle" transform="rotate(-90 1018.0 194.8)">0,55</text>
   <line class="s-dim" x1="1070.0" y1="740.0" x2="1070.0" y2="136.8"/>
   <line class="s-dim" x1="1065.0" y1="740.0" x2="1075.0" y2="740.0"/>
   <line class="s-dim" x1="1065.0" y1="136.8" x2="1075.0" y2="136.8"/>
-  <text class="s-dimt" x="1064.0" y="438.4" text-anchor="middle" transform="rotate(-90 1064.0 438.4)">2,60 &#183; conferir</text>
+  <text class="s-dimt" x="1064.0" y="438.4" text-anchor="middle" transform="rotate(-90 1064.0 438.4)">2,65</text>
   <text class="s-dimt" x="1108.0" y="150.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.5">O QUE VAI NA PAREDE</text>
   <line class="s-dim" x1="1108.0" y1="160.0" x2="1438.0" y2="160.0"/>
   <circle cx="1119.0" cy="182.0" r="11" fill="var(--ray)"/>
   <text class="s-tag" x="1119.0" y="186.0" text-anchor="middle" fill="var(--paper)">1</text>
   <text class="s-leg" x="1140.0" y="180.0" text-anchor="start" fill="var(--ink)">Bass trap frontal esquerdo</text>
-  <text class="s-dimt" x="1140.0" y="195.0" text-anchor="start">inteiro, do piso ao teto &#183; 0,42 &#215; 2,60</text>
+  <text class="s-dimt" x="1140.0" y="195.0" text-anchor="start">inteiro, do piso ao teto &#183; 0,42 &#215; 2,65</text>
   <circle cx="1119.0" cy="226.0" r="11" fill="var(--ray)"/>
   <text class="s-tag" x="1119.0" y="230.0" text-anchor="middle" fill="var(--paper)">2</text>
   <text class="s-leg" x="1140.0" y="224.0" text-anchor="start" fill="var(--ink)">Bass trap frontal direito</text>
-  <text class="s-dimt" x="1140.0" y="239.0" text-anchor="start">s&#243; o trecho acima da porta &#183; 0,42 &#215; 0,50</text>
+  <text class="s-dimt" x="1140.0" y="239.0" text-anchor="start">s&#243; acima da porta &#183; 0,42 &#215; 0,55</text>
   <circle cx="1119.0" cy="270.0" r="11" fill="var(--flag)"/>
   <text class="s-tag" x="1119.0" y="274.0" text-anchor="middle" fill="var(--paper)">3</text>
   <text class="s-leg" x="1140.0" y="268.0" text-anchor="start" fill="var(--ink)">O que a porta rouba</text>
@@ -111,7 +111,7 @@
   <circle cx="1119.0" cy="314.0" r="11" fill="var(--ray)"/>
   <text class="s-tag" x="1119.0" y="318.0" text-anchor="middle" fill="var(--paper)">4</text>
   <text class="s-leg" x="1140.0" y="312.0" text-anchor="start" fill="var(--ink)">4 m&#243;dulos 0,60 &#215; 0,60 &#215; 0,10</text>
-  <text class="s-dimt" x="1140.0" y="327.0" text-anchor="start">x = 0,55 a 1,75 &#183; z = 1,40 a 2,60</text>
+  <text class="s-dimt" x="1140.0" y="327.0" text-anchor="start">x = 0,58 a 1,78 &#183; z = 1,45 a 2,65</text>
   <circle cx="1119.0" cy="358.0" r="11" fill="var(--felt)"/>
   <text class="s-tag" x="1119.0" y="362.0" text-anchor="middle" fill="var(--paper)">5</text>
   <text class="s-leg" x="1140.0" y="356.0" text-anchor="start" fill="var(--ink)">A TV cobre os dois espelhos</text>
@@ -119,18 +119,24 @@
   <circle cx="1119.0" cy="402.0" r="11" fill="var(--ray)"/>
   <text class="s-tag" x="1119.0" y="406.0" text-anchor="middle" fill="var(--paper)">6</text>
   <text class="s-leg" x="1140.0" y="400.0" text-anchor="start" fill="var(--ink)">Filete acima da porta</text>
-  <text class="s-dimt" x="1140.0" y="415.0" text-anchor="start">0,46 &#215; 0,50 &#183; opcional, fase 2</text>
+  <text class="s-dimt" x="1140.0" y="415.0" text-anchor="start">0,40 &#215; 0,55 &#183; opcional, fase 2</text>
   <circle cx="1119.0" cy="446.0" r="11" fill="var(--ray)"/>
   <text class="s-tag" x="1119.0" y="450.0" text-anchor="middle" fill="var(--paper)">7</text>
   <text class="s-leg" x="1140.0" y="444.0" text-anchor="start" fill="var(--ink)">Faixa &#224; esquerda da TV</text>
-  <text class="s-dimt" x="1140.0" y="459.0" text-anchor="start">0,37 &#215; 0,61 &#183; opcional, fase 2</text>
+  <text class="s-dimt" x="1140.0" y="459.0" text-anchor="start">0,41 &#215; 0,61 &#183; opcional, fase 2</text>
   <line class="s-dim" x1="1108.0" y1="502.0" x2="1438.0" y2="502.0"/>
-  <text class="s-dimt" x="1108.0" y="526.0" text-anchor="start" fill="var(--flag)" letter-spacing="1.5">A MEDIDA QUE FALTA</text>
-  <text class="s-dimt" x="1108.0" y="548.0" text-anchor="start">Da parede DIREITA at&#233; o batente da porta.</text>
-  <text class="s-dimt" x="1108.0" y="564.0" text-anchor="start">&#201; ela que fixa os 1,45 m de parede livre,</text>
-  <text class="s-dimt" x="1108.0" y="580.0" text-anchor="start">o centro poss&#237;vel da TV e a separa&#231;&#227;o</text>
-  <text class="s-dimt" x="1108.0" y="596.0" text-anchor="start">m&#225;xima entre os monitores. Assumi 0,88 m.</text>
-  <text class="s-dimt" x="52.0" y="44.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.6">PAREDE FRONTAL &#183; 2,75 &#215; 2,60 m &#183; VISTA DE DENTRO DA SALA</text>
-  <text class="s-dimt" x="52.0" y="64.0" text-anchor="start">Cotas em metros</text>
+  <text class="s-dimt" x="1108.0" y="526.0" text-anchor="start" fill="var(--flag)" letter-spacing="1.5">O QUE A PORTA DECIDIU</text>
+  <text class="s-dimt" x="1108.0" y="548.0" text-anchor="start">V&#227;o de 0,82 m, batente encostado na parede direita.</text>
+  <text class="s-dimt" x="1108.0" y="564.0" text-anchor="start"></text>
+  <text class="s-dimt" x="1108.0" y="580.0" text-anchor="start">Sobram 1,51 m de parede livre &#8212; os 4 m&#243;dulos</text>
+  <text class="s-dimt" x="1108.0" y="596.0" text-anchor="start">cabem com 15 cm de folga de cada lado.</text>
+  <text class="s-dimt" x="1108.0" y="612.0" text-anchor="start"></text>
+  <text class="s-dimt" x="1108.0" y="628.0" text-anchor="start">A TV centraliza: com 1,5 cm sobrando at&#233; o batente.</text>
+  <text class="s-dimt" x="1108.0" y="644.0" text-anchor="start"></text>
+  <text class="s-dimt" x="1108.0" y="660.0" text-anchor="start">A separa&#231;&#227;o poderia ir a 0,89, mas a&#237; o SBIR da</text>
+  <text class="s-dimt" x="1108.0" y="676.0" text-anchor="start">lateral sobe para 92 Hz e empilha com o da parede</text>
+  <text class="s-dimt" x="1108.0" y="692.0" text-anchor="start">frontal, que est&#225; em 93. Fica em 0,77.</text>
+  <text class="s-dimt" x="52.0" y="44.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.6">PAREDE FRONTAL &#183; 2,75 &#215; 2,65 m &#183; VISTA DE DENTRO DA SALA</text>
+  <text class="s-dimt" x="52.0" y="64.0" text-anchor="start">Cotas em metros &#183; sala 2,75 &#215; 3,70 &#183; todas as medidas conferidas com trena</text>
   <text class="s-dimt" x="52.0" y="872.0" text-anchor="start">Hachura verde cheia = l&#227; de rocha 100 mm &#183; c&#237;rculos claros tracejados = filetes opcionais &#183; tracejado laranja = o que a porta impede</text>
 </svg>
