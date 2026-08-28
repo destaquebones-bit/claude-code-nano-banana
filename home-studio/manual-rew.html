@@ -223,7 +223,7 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 
 <header class="stamp">
   <div class="stamp__in">
-    <p class="eyebrow">Medição · Home studio 2,75 × 4,80 m</p>
+    <p class="eyebrow">Medição · Home studio 2,75 × 3,70 m</p>
     <h1>Manual do REW</h1>
     <p class="lede">Como montar a cadeia, configurar o programa e tirar a varredura base desta sala com o que você já tem em casa. E, no fim, o que os gráficos devem mostrar se o diagnóstico estiver certo.</p>
     <dl class="specs">
@@ -231,7 +231,7 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
       <div><dt>Tempo</dt><dd>uma tarde</dd></div>
       <div><dt>Microfone</dt><dd>ECM8000</dd></div>
       <div><dt>Interface</dt><dd>MiniFuse 2</dd></div>
-      <div><dt>Faixa útil</dt><dd>55 a 300 <span class="q">Hz</span></dd></div>
+      <div><dt>Faixa útil</dt><dd>55 a 360 <span class="q">Hz</span></dd></div>
       <div><dt>Arquivos</dt><dd>4 <span class="q">mdat</span></dd></div>
     </dl>
     <p class="backlink">Faz parte do conjunto: <a href="https://claude.ai/code/artifact/56852314-77af-49cf-a071-86d65d416694">Sala 3 × 4,8</a> · <a href="https://claude.ai/code/artifact/37f67936-c761-4d7e-a3c3-4b1e9efe1d20">Caderno de Obra</a> · <a href="https://claude.ai/code/artifact/b821551a-6f47-4def-9141-469b2348c341">Bibliografia</a></p>
@@ -243,8 +243,8 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 <section id="porque">
   <div class="wrap">
     <div class="head"><span class="head__n">00</span><h2>O que você está medindo</h2></div>
-    <p>Quase tudo neste projeto saiu de foto, de trena e de conta: o nó de 71,5 Hz na cadeira, a dupla de 125–132 Hz, o RT de 0,93 s, o SBIR de 93 Hz. São previsões. Boas previsões, mas previsões.</p>
-    <p>A varredura transforma isso em fato — e, mais importante, <strong>dimensiona a compra</strong>. Se o RT medido der 0,70 s, a sala precisa de menos lã do que a lista prevê. Se der 1,15 s, quatro bass traps não bastam e é melhor descobrir agora.</p>
+    <p>Quase tudo neste projeto saiu de foto, de trena e de conta: o trio de 125–139 Hz, o RT de 0,85 s, o SBIR de 93 Hz, os modos que <em>não</em> devem chegar à sua cadeira. São previsões. Boas previsões, mas previsões — e refeitas três vezes conforme as medidas da sala foram melhorando.</p>
+    <p>A varredura transforma isso em fato — e, mais importante, <strong>dimensiona a compra</strong>. Se o RT medido der 0,65 s, a sala precisa de menos lã do que a lista prevê. Se der 1,05 s, quatro bass traps não bastam e é melhor descobrir agora.</p>
     <div class="warn"><b>Isto é uma via de mão única.</b> Depois que o primeiro painel subir, o "antes" acabou para sempre. Não existe segunda chance de medir a sala crua — e sem o "antes" você nunca vai saber se o dinheiro fez o que devia. Se só houver uma tarde livre este mês, é esta.</div>
   </div>
 </section>
@@ -307,7 +307,7 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
     </div>
 
     <h3>Uma parada de dois minutos que vale a tarde inteira</h3>
-    <p>Antes de medir qualquer coisa, abra <strong>Tools → Room Simulator</strong> e digite as dimensões: <strong>2,75 × 4,80 × 2,60 m</strong>. Ponha o ouvinte e as caixas nas posições reais. O REW desenha o mapa modal previsto.</p>
+    <p>Antes de medir qualquer coisa, abra <strong>Tools → Room Simulator</strong> e digite as dimensões: <strong>2,75 × 3,70 × 2,60 m</strong>. Ponha o ouvinte e as caixas nas posições reais. O REW desenha o mapa modal previsto.</p>
     <p>Guarde essa imagem. No fim da tarde você vai ter a previsão e a medição lado a lado — e é comparando as duas que você aprende a ler a própria sala, muito mais rápido do que lendo qualquer livro.</p>
   </div>
 </section>
@@ -393,7 +393,7 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 
       <div><b>RT60</b><div>
         <p>Use <strong>Topt</strong> ou <strong>T20</strong>. É o número que você compara com os 0,93 s estimados e que dimensiona quantas placas comprar.</p>
-        <p>Com uma ressalva honesta: RT60 não tem significado rigoroso abaixo da frequência de Schroeder, que nesta sala é <strong>329 Hz</strong>. Embaixo disso a sala não é difusa, é um punhado de modos separados — leia o waterfall, não o RT60.</p></div></div>
+        <p>Com uma ressalva honesta: RT60 não tem significado rigoroso abaixo da frequência de Schroeder, que nesta sala é <strong>358 Hz</strong>. Embaixo disso a sala não é difusa, é um punhado de modos separados — leia o waterfall, não o RT60.</p></div></div>
     </div>
   </div>
 </section>
@@ -402,11 +402,11 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
   <div class="plate">
     <div class="head"><span class="head__n">06</span><h2>O que esta sala deve mostrar</h2></div>
     <div class="wrap" style="padding-left:0;padding-right:0">
-      <p>Esta é a parte que transforma a tarde em diagnóstico. Abaixo estão as previsões calculadas para a geometria proposta — monitores a 0,99 e 1,76 m da parede esquerda, baffle a 0,92 m da parede frontal, orelha e tweeter a 1,10 m, escuta a 1,59 m. <strong>Confira uma por uma.</strong> As que baterem confirmam o modelo; as que não baterem são as interessantes, e é sobre elas que eu quero ver o gráfico.</p>
+      <p>Esta é a parte que transforma a tarde em diagnóstico. Previsões calculadas para a sala medida de <strong>2,75 × 3,70 × 2,60 m</strong>, com monitores a 0,99 e 1,76 m da parede esquerda, baffle a 0,92 m da parede frontal, orelha e tweeter a 1,10 m, escuta a 1,59 m. <strong>Confira uma por uma.</strong> As que baterem confirmam o modelo; as que não baterem são as interessantes, e é sobre elas que eu quero ver o gráfico.</p>
     </div>
 
     <div class="dw" style="margin-top:26px">
-<svg viewBox="0 0 700 330" role="img" aria-label="Linha do tempo das reflexões previstas nos primeiros 20 milissegundos: som direto em zero, bancada em 0,79 ms, piso em 4,55, parede esquerda em 4,92, parede frontal em 5,15, teto em 6,78, parede direita em 7,10 e o vidro do fundo em 18,46 ms">
+<svg viewBox="0 0 700 330" role="img" aria-label="Linha do tempo das reflexões previstas nos primeiros 20 milissegundos: som direto em zero, bancada em 0,79 ms, piso em 4,55, parede esquerda em 4,92, parede frontal em 5,15, teto em 6,78, parede direita em 7,10 e o vidro do fundo em 12,06 ms">
   <line class="s-hair" x1="60" y1="40" x2="60" y2="250"/>
   <line class="s-dim" x1="60" y1="250" x2="670" y2="250"/>
   <g class="s-dimt" text-anchor="middle">
@@ -449,9 +449,10 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
   <circle cx="277" cy="164" r="4" fill="var(--ray)"/>
   <text class="s-lbl" x="283" y="230">parede direita &#183; 7,10</text>
 
-  <line x1="622" y1="250" x2="622" y2="223" stroke="var(--glass)" stroke-width="3"/>
-  <circle cx="622" cy="223" r="4.5" fill="var(--glass)"/>
-  <text class="s-lbl" x="616" y="218" text-anchor="end" fill="var(--glass)">vidro do fundo &#183; 18,46 ms</text>
+  <line x1="428" y1="250" x2="428" y2="196" stroke="var(--glass)" stroke-width="3"/>
+  <circle cx="428" cy="196" r="4.5" fill="var(--glass)"/>
+  <text class="s-lbl" x="436" y="192" fill="var(--glass)">vidro do fundo &#183; 12,06 ms</text>
+  <text class="s-dimt" x="436" y="205">a sala encurtou: era 18,5 ms com 4,80 m</text>
 
   <rect x="60" y="40" width="230" height="210" fill="var(--ray)" opacity=".055"/>
   <text class="s-dimt" x="175" y="34" text-anchor="middle" fill="var(--ray)">as reflex&#245;es precoces que somem com painel</text>
@@ -466,17 +467,22 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
     <div class="tw" style="margin-top:16px"><table>
       <thead><tr><th>Onde olhar</th><th>O que a conta prevê</th><th class="n">Confirma o quê</th></tr></thead>
       <tbody>
-        <tr><td>SPL, 40–300 Hz, sem suavização</td><td>pico forte e estreito por volta de <strong>128 Hz</strong></td><td class="n">a dupla 124,7 + 131,9</td></tr>
-        <tr><td>SPL, mesma vista</td><td>vale em <strong>93 a 99 Hz</strong></td><td class="n">SBIR de parede e lateral</td></tr>
-        <tr><td>SPL, na cadeira</td><td>queda em <strong>71,5 Hz</strong>, mais rasa quanto mais longe de 1,20 m</td><td class="n">o nó que mandou a cadeira para trás</td></tr>
+        <tr><td>SPL, 40–300 Hz, sem suavização</td><td>montanha larga de <strong>125 a 139 Hz</strong>, o maior acidente do gráfico</td><td class="n">o trio W2 + A2 + C3</td></tr>
+        <tr><td>SPL, mesma vista</td><td>vale em <strong>87 a 93 Hz</strong></td><td class="n">SBIR frontal e lateral</td></tr>
+        <tr><td>SPL, 180–190 Hz</td><td>segundo pico, menor</td><td class="n">C4 em 185,4</td></tr>
         <tr><td>SPL, 600–700 Hz</td><td>vale largo por volta de <strong>634 Hz</strong></td><td class="n">o rebote da bancada</td></tr>
-        <tr><td>RT60, bandas de 250 a 2 k</td><td>algo perto de <strong>0,93 s</strong></td><td class="n">o cálculo que dimensiona a compra</td></tr>
+        <tr><td>RT60, bandas de 250 a 2 k</td><td>algo perto de <strong>0,85 s</strong></td><td class="n">o cálculo que dimensiona a compra</td></tr>
       </tbody>
     </table></div>
 
-    <div class="note"><b>O 128 Hz é a novidade, e é o mais importante.</b> Ele não estava no diagnóstico antigo: apareceu quando a largura passou de 3,00 para 2,75 e o segundo modo de largura subiu de 114 para 124,7 Hz, encostando no segundo modo de altura, que está em 131,9. Os dois acoplam quase perfeitamente na sua posição, porque tweeter e orelha estão os dois a 1,10 m — a 20 cm do ventre em meia altura. <strong>Se o pico de 128 Hz aparecer forte na medição, é ele o problema número um da sala</strong>, e os bass traps de canto são a ferramenta certa.</div>
+    <div class="note"><b>O trio de 125–139 Hz é o problema número um desta sala.</b> Três modos axiais em 14 Hz de distância: largura 124,7, altura 131,9 e comprimento 139,1. Os três acoplam bem na sua posição — o de altura acopla <strong>0,78</strong>, quase o máximo possível, porque tweeter e orelha estão os dois a 1,10 m, a 20 cm do ventre em meia altura, e ali fonte e receptor estão os dois no ventre.
+    <br><br>Ele piorou com as duas últimas medidas da sala: a largura de 2,75 trouxe o modo de largura para 124,7, e o comprimento de 3,70 trouxe o de comprimento para 139,1. Um par virou trio. <strong>Se essa montanha aparecer entre 125 e 140 Hz, é ela que come o orçamento</strong> — e bass trap de canto é a ferramenta certa, porque os três têm ventre nos cantos.</div>
 
-    <div class="warn"><b>E duas coisas que NÃO devem aparecer.</b> Um nó profundo em 62,4 Hz e outro em 66 Hz — ambos existem na sala, mas nenhum dos dois chega à sua orelha: o de 62,4 tem nó exato na linha de centro onde você senta, e o de 66 tem nó em 1,30 m de altura, a 20 cm da sua orelha. Se eles aparecerem fortes na medição, <strong>você não está sentado onde eu acho que está</strong> — e aí a conversa muda.</div>
+    <div class="warn"><b>E três coisas que NÃO devem aparecer. Estas são o teste do modelo.</b>
+    <br><br><strong>62,4 Hz</strong> — existe na sala, mas tem nó exato na linha de centro, onde você senta. Acoplamento 0,00.
+    <br><strong>66 Hz</strong> — nó em 1,30 m de altura, a 20 cm da sua orelha e do seu tweeter. Acoplamento 0,06.
+    <br><strong>92,7 Hz</strong> — este é o mais bonito dos três. O nó do segundo modo de comprimento fica em 0,925 m da parede frontal, e o baffle dos seus monitores está em 0,92 m. <strong>Cinco milímetros.</strong> Os monitores praticamente não conseguem excitar esse modo: acoplamento 0,01. Foi coincidência, mas é real, e aguenta uns 7 cm para cada lado antes de acordar.
+    <br><br>Se qualquer um dos três aparecer forte, <strong>a geometria não é a que eu acho que é</strong> — cadeira fora da linha de centro, orelha em outra altura, ou a mesa em outra distância. Aí a medição vale mais que o desenho e a gente recomeça por ela.</div>
   </div>
 </section>
 
@@ -488,10 +494,10 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
     <div class="field">
       <h4>Procedimento</h4>
       <ol>
-        <li>Microfone a 1,58 m da parede frontal, na linha de centro. Varra as duas caixas.</li>
+        <li>Microfone a 1,50 m da parede frontal, na linha de centro. Varra as duas caixas.</li>
+        <li>Recue para 1,59 m. Varra de novo.</li>
         <li>Recue para 1,70 m. Varra de novo.</li>
-        <li>Recue para 1,83 m. Varra de novo.</li>
-        <li>Sobreponha as três no gráfico SPL e olhe SÓ a faixa de 40 a 120 Hz.</li>
+        <li>Sobreponha as três no gráfico SPL e olhe SÓ a faixa de 100 a 200 Hz — é lá que a cadeira manda agora.</li>
         <li>Escolha a mais lisa. Não a mais confortável, não a mais bonita no desenho.</li>
       </ol>
     </div>
@@ -500,14 +506,16 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
     <div class="cut">separação = 1,1547 &#215; (distância da orelha &#8722; 0,92)</div>
 
     <div class="tw" style="margin-top:16px"><table>
-      <thead><tr><th class="n">Se o gráfico escolher</th><th class="n">Separação</th><th>O que muda na prática</th></tr></thead>
+      <thead><tr><th class="n">Orelha</th><th class="n">Separação</th><th class="n">C3 · 139 Hz</th><th class="n">C4 · 185 Hz</th><th>Cabe?</th></tr></thead>
       <tbody>
-        <tr><td class="n">1,58 m</td><td class="n">0,76 m</td><td>é o que o batente da porta já permite; nada a negociar</td></tr>
-        <tr><td class="n">1,70 m</td><td class="n">0,90 m</td><td>exige conferir a folga até o batente</td></tr>
-        <tr><td class="n">1,83 m</td><td class="n">1,05 m</td><td>é o limite físico da sala pelo lado direito</td></tr>
+        <tr><td class="n">1,50 m</td><td class="n">0,67 m</td><td class="n bad">0,55</td><td class="n">0,37</td><td>sim</td></tr>
+        <tr><td class="n">1,59 m</td><td class="n">0,77 m</td><td class="n">0,43</td><td class="n">0,63</td><td>sim, no limite do batente</td></tr>
+        <tr><td class="n">1,70 m</td><td class="n">0,90 m</td><td class="n ok">0,26</td><td class="n bad">0,87</td><td>só recuando a bancada</td></tr>
+        <tr><td class="n">1,85 m</td><td class="n">1,07 m</td><td class="n ok">0,00</td><td class="n bad">1,00</td><td>não — o batente não deixa</td></tr>
       </tbody>
     </table></div>
 
+    <p>Repare no que a tabela diz: recuar a cadeira melhora o modo de 139 Hz e piora o de 185 Hz, na mesma proporção. <strong>Não existe posição que ganhe nos dois</strong> — existe a que soa melhor, e é por isso que esta decisão sai do gráfico e não da conta. Os 1,85 m matariam o de 139 Hz de vez, mas exigem 1,07 m de separação e o batente da porta não deixa.</p>
     <p>Hoje você tem cerca de <strong>1,02 m</strong> montado — mas medido a partir de um centro de 1,50 m que não existe numa sala de 2,75. Re-centrar significa <strong>trazer o monitor direito para dentro</strong>, não empurrar mais para fora.</p>
   </div>
 </section>
