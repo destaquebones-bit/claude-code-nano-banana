@@ -1783,8 +1783,23 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 
     <p>Duas coisas de instalação que combinam com isso: a HS5 tem <strong>port traseiro</strong> — os 0,70 m de parede atrás dela estão de bom tamanho, mas nunca encoste. E se um dia sobrar zumbido de terra, ele quase sempre vem do cabo, não das chaves.</p>
 
-    <h3>Separação</h3>
-    <p>A cota do projeto é <strong>1,10 m</strong> entre os tweeters (x = 0,95 e 2,05), com você a 0,95 m à frente do plano dos baffles — isso fecha o triângulo em 60°. Meça de centro de tweeter a centro de tweeter, não de borda a borda da caixa.</p>
+    <h3>Separação: deixe a medição escolher</h3>
+    <p>Havia uma inversão de ordem no plano original, e vale corrigir. A separação não é uma cota independente — ela é <em>consequência</em> de onde você senta. Uma vez que o baffle está travado em 0,92 m, vale:</p>
+
+    <div class="cut">separa&#231;&#227;o = 1,1547 &#215; (dist&#226;ncia da orelha &#8722; 0,92) <span>· a constante &#233; 2·tan30&#176;, que fecha o tri&#226;ngulo em 60&#176;</span></div>
+
+    <div class="tw"><table>
+      <thead><tr><th class="n">Orelha</th><th class="n">Separação</th><th class="n">Dist. do nó de 71,5 Hz</th><th>Onde você senta</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1,58 m</td><td class="n">0,76 m</td><td class="n">0,38 m</td><td>encostado na mesa</td></tr>
+        <tr><td class="n">1,70 m</td><td class="n">0,90 m</td><td class="n">0,50 m</td><td>0,40 m atrás da borda</td></tr>
+        <tr><td class="n">1,83 m</td><td class="n">1,05 m</td><td class="n ok">0,63 m</td><td>0,53 m atrás da borda</td></tr>
+      </tbody>
+    </table></div>
+
+    <p><strong>O batente da porta fecha a janela por cima.</strong> Com o monitor direito em x = 2,01 a caixa já encosta quase no batente — não dá para separar mais que ~1,05 m, o que por sua vez trava a distância de escuta em ~1,83 m. A sala inteira, portanto, só permite escutar entre <strong>1,55 e 1,83 m</strong>, e a separação anda junto.</p>
+
+    <div class="note"><b>Com o ECM8000 na mão, a ordem certa é o contrário da que eu tinha proposto.</b> Não escolha a separação e depois sente: <strong>varra em três posições de cadeira, escolha a que der a resposta mais lisa entre 40 e 120 Hz, e só então ajuste a separação pela fórmula.</strong> A posição da cadeira mexe no grave, que é onde esta sala dói; a separação mexe na imagem estéreo, que é ajuste fino. Deixe o que dói decidir primeiro.</div>
 
     <h3>A cadeia com a bancada a 0,70 m</h3>
     <p>Com a borda de trás da mesa a 0,70 m da parede e a HS5 em cima dela, a caixa tem 0,222 m de profundidade — o baffle cai em <strong>≈0,92 m</strong>. Refazendo tudo a partir daí:</p>
@@ -1934,6 +1949,78 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
     </ul>
 
     <div class="note"><b>Resumo.</b> Gire para a vertical de qualquer jeito — isso é decidido. Depois escolha: mesa a 1,00 m com os monitores em pedestais dentro do vão (o que a sua mesa já permite), ou mesa de volta a 0,70 m com os monitores no caixote em cima dela. As duas fecham 60° e mesmo SBIR. A segunda custa zero e entrega uns 95% da primeira, desde que você encha o caixote e troque o calço por algo macio.</div>
+  </div>
+</section>
+
+<section id="proximos">
+  <div class="wrap">
+    <div class="head"><span class="head__n">09</span><h2>Próximos passos</h2></div>
+
+    <p>Os suportes estão resolvidos. O que vem agora tem uma ordem que não é opcional — e ela começa longe da loja. <strong>Nada do que está nas Etapas A e B custa dinheiro, e as duas precisam estar fechadas antes de a primeira placa de lã entrar em casa.</strong> O motivo é simples: metade das cotas deste caderno saiu de foto e de conta. A varredura transforma isso em fato, e ela só vale se a geometria estiver parada quando você medir.</p>
+
+    <div class="warn"><b>A regra que ordena tudo o resto.</b> Depois que o primeiro painel subir, o "antes" acabou para sempre. Não existe segunda chance de medir a sala crua. Se você só tiver uma tarde livre no mês, gaste essa tarde na Etapa B, não na serra.</div>
+
+    <div class="phase">
+      <div class="phase__tag"><span class="phase__n">ETAPA A</span><h3>Travar o sistema — uma hora, R$ 0</h3><span class="phase__cost">tem que estar pronto antes de medir</span></div>
+    </div>
+
+    <ol class="steps">
+      <li><div><b>As três chaves atrás de cada HS5 em posição neutra.</b> <strong>ROOM CONTROL em 0</strong> e <strong>HIGH TRIM em 0</strong>. Elas existem para compensar parede atrás do monitor e sala abafada — nenhum dos dois é o seu caso agora, e qualquer correção aplicada aqui entra na medição como se fosse a sala. Confira caixa por caixa: as chaves viram sozinhas quando se move o monitor.
+        <div class="cut">o ROOM CONTROL volta a ser útil <span>· depois dos painéis, se a varredura mostrar excesso abaixo de 500 Hz. Antes, é ruído no diagnóstico.</span></div></div></li>
+      <li><div><b>Calibrar o LEVEL e marcar.</b> Ruído rosa a −20 dBFS, uma caixa de cada vez, medidor a <strong>79 dB SPL</strong> na posição da orelha (C, slow). Depois toque em mono: o centro fantasma tem que ficar exatamente entre as caixas, não puxado para um lado. Quando fechar, <strong>marque o knob com fita e caneta</strong> — é a referência que faz o "antes e depois" de cada fase significar alguma coisa.</div></li>
+      <li><div><b>Teste do espelho para o toe-in.</b> Sentado na cadeira, alguém desliza um espelho pela parede lateral: onde você enxerga o tweeter, ali é o ponto-espelho — anote a distância da parede frontal. Depois gire cada caixa até enxergar o baffle inteiro de frente. Isso confirma na prática o <strong>y ≈ 1,35 m</strong> calculado para o módulo lateral, e é a única forma honesta de acertar o toe-in.</div></li>
+      <li><div><b>Limpar o eixo, de verdade.</b> Pedestal de microfone e caixa acrílica fora da bancada. Tampa do MacBook fechada. Ventilador desligado. Não é caprichismo: qualquer um deles muda a varredura em 1–4 kHz, e você não quer descobrir isso depois de comprar lã.</div></li>
+      <li><div><b>Fechar a caixa de tomada aberta</b> na parede frontal. É segurança primeiro; a cavidade aberta ser um pequeno ressoador é o bônus.</div></li>
+    </ol>
+
+    <div class="phase" style="margin-top:34px">
+      <div class="phase__tag"><span class="phase__n">ETAPA B</span><h3>A varredura base — uma tarde, R$ 0</h3><span class="phase__cost">o microfone já está aí</span></div>
+    </div>
+
+    <ol class="steps">
+      <li><div><b>Instale o REW</b> (roomeqwizard.com, gratuito, roda em macOS). Na primeira abertura ele pede o dispositivo de entrada e saída — aponte para a MiniFuse.</div></li>
+      <li><div><b>Monte a cadeia e não mexa mais nela.</b> ECM8000 no canal 1 da MiniFuse 2 com <strong>+48 V ligado</strong>, <strong>DIRECT/MONO desligado</strong>, ganho de entrada e knob de MONITOR marcados com fita. Se qualquer um desses mudar entre duas varreduras, os dois arquivos deixam de ser comparáveis.
+        <div class="cut">no REW, ative acoustic timing reference <span>· é o que deixa as medições de fases diferentes alinhadas no tempo, sem o que a comparação de reflexões não fecha</span></div></div></li>
+      <li><div><b>Microfone no lugar da sua orelha</b>, apontado para cima ou para o centro entre as caixas — o que importa é repetir exatamente na próxima vez. Fotografe a montagem. Você vai querer reproduzi-la daqui a dois meses.</div></li>
+      <li><div><b>Varra 20 Hz – 20 kHz, cada caixa sozinha e as duas juntas.</b> Salve com a data no nome do arquivo: <strong style="font-family:var(--mono); font-size:.9em">2026-08-base-L.mdat</strong> e assim por diante. Guarde uma cópia fora do Mac.</div></li>
+      <li><div><b>Leia quatro coisas, nesta ordem</b> — e me mande os gráficos:
+        <div class="cut">1 · o nó de 71,5 Hz <span>· existe na cadeira? qual a profundidade?</span><br>2 · o empilhamento de 66–72 Hz e o aglomerado de 107–114 Hz <span>· confirmam o mapa modal?</span><br>3 · RT60 por banda <span>· os 0,93 s calculados batem?</span><br>4 · o ETC nos primeiros 20 ms <span>· onde estão as reflexões precoces de verdade</span></div></div></li>
+    </ol>
+
+    <div class="note"><b>Por que isto vem antes da compra e não depois.</b> Os 0,93 s de RT saíram de uma estimativa Sabine com piso de cerâmica e paredes nuas. Se a varredura devolver 0,70, a sala precisa de menos sabins do que a lista prevê e você economiza placas. Se devolver 1,15, os quatro bass traps de canto deixam de ser suficientes e é melhor saber disso <em>antes</em> de dimensionar a compra. A medição não é conferência do projeto — é o que fecha o orçamento.</div>
+
+    <div class="phase" style="margin-top:34px">
+      <div class="phase__tag"><span class="phase__n">ETAPA C</span><h3>Fechar a geometria com o que a medição disser</h3><span class="phase__cost">R$ 0 · mas depende da Etapa B</span></div>
+    </div>
+
+    <ol class="steps">
+      <li><div><b>Varra em três posições de cadeira: 1,58 m, 1,70 m e 1,83 m</b> de orelha à parede frontal. Escolha pela resposta mais lisa entre <strong>40 e 120 Hz</strong> — não pelo conforto, não pelo que parece mais bonito no desenho. É a única decisão deste projeto em que a medida ganha da conta sem discussão.</div></li>
+      <li><div><b>Só então ajuste a separação</b>, pela fórmula que fecha o triângulo em 60°:
+        <div class="cut">separação = 1,1547 × (distância da orelha − 0,92)</div>
+        <p style="margin:.7em 0 0">Hoje você tem cerca de <strong>1,02 m</strong> montado, e o batente da porta não deixa passar muito disso. Essa separação corresponde a sentar em torno de <strong>1,80 m</strong> — que por acaso é a maior das três posições a testar. Se a varredura eleger 1,83 m, você não mexe em nada. Se eleger 1,58 m, a separação tem que cair para 0,76 m.</p></div></li>
+      <li><div><b>Refaça o perfil do SoundID Reference — e só agora.</b> Ele fotografa a sala no estado em que estiver. Um perfil tirado antes de o monitor girar, o LEVEL calibrar e a cadeira parar de andar está corrigindo uma sala que não existe mais. E lembre do que ele não faz: corrige picos e inclinação, <strong>não preenche nulos, não encurta decaimento e não apaga reflexão precoce</strong>. Essas três continuam sendo trabalho de painel.</div></li>
+    </ol>
+
+    <div class="phase" style="margin-top:34px">
+      <div class="phase__tag"><span class="phase__n">ETAPA D</span><h3>As quatro medidas que destravam a compra</h3><span class="phase__cost">trena · 15 minutos</span></div>
+    </div>
+
+    <ol class="steps">
+      <li><div><b>Para que lado a porta abre, e qual o raio do arco.</b> <strong>Esta é a que mais importa.</strong> A elevação cotada mostrou que o bass trap frontal direito cai em cima da dobradiça, e que sobra 1,70 m de parede frontal livre — foi o que derrubou os módulos frontais de seis para quatro. Dependendo do lado, o trap direito muda de forma ou vira meia altura. Não compre lã antes de responder isso.</div></li>
+      <li><div><b>Pé-direito real.</b> Assumi 2,60 m. Cada 10 cm a mais são ~8 placas a mais nos quatro traps de canto, e movem os modos de altura.</div></li>
+      <li><div><b>O que tem dentro dos três painéis pretos de 5 cm.</b> Lã de rocha e espuma se comportam de forma bem diferente em 125–250 Hz. Se for espuma, eles não entram na conta de sabins e vale reaproveitá-los só como quebra-flutter no fundo.</div></li>
+      <li><div><b>As dimensões dos dois skylines.</b> Um difusor precisa de campo distante — cerca de 3× a maior dimensão. Num painel de 0,60 m isso é 1,80 m de distância mínima do ouvinte, e é o que decide se eles vão para as laterais traseiras em y = 3,30 m ou para a parede do fundo.</div></li>
+    </ol>
+
+    <div class="phase" style="margin-top:34px">
+      <div class="phase__tag"><span class="phase__n">ETAPA E</span><h3>Aí sim, comprar</h3><span class="phase__cost">Fase 1 primeiro</span></div>
+    </div>
+
+    <p>Com as quatro respostas e a varredura na mão, a lista da seção 01 deixa de ser estimativa. A ordem de compra continua a mesma: <strong>os dois bass traps frontais primeiro</strong> — são os que atacam o empilhamento de 66–72 Hz, que é o problema número um desta sala —, depois os traseiros, depois parede frontal e pontos-espelho, e a nuvem por último, porque ela depende do ventilador.</p>
+
+    <div class="note"><b>Uma coisa para não fazer agora.</b> Não compre difusor, não compre espuma de perfil, e não trate o fundo antes da frente. Numa sala de 3,00 × 4,80 m com RT perto de 1 s, tudo o que resolve está abaixo de 300 Hz e nos primeiros 20 ms. Difusão e espuma fina não tocam em nenhum dos dois — deixam a sala com um som mais "seco" nos agudos e o mesmo problema modal embaixo, que é a forma clássica de gastar dinheiro e piorar o equilíbrio.</div>
+
+    <div class="note"><b>Resumo em uma frase.</b> Chaves em zero, LEVEL calibrado e eixo limpo hoje; varredura base amanhã; cadeira e separação escolhidas pelo gráfico, não pelo desenho; medir porta e pé-direito; e só então comprar, começando pelos dois traps da frente.</div>
   </div>
 </section>
 
