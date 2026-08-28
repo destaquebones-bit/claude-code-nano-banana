@@ -1,0 +1,548 @@
+<title>Manual do REW</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<style>
+:root{
+  --paper:#EDEEEA; --surface:#F8F8F5; --sunk:#E3E4DE;
+  --ink:#16181C; --body:#2E3138; --mute:#6F7169; --rule:#D3D4CD;
+  --mdf:#B5762F; --mdf-soft:#EADCC4;
+  --felt:#1D1F24; --felt-line:#1D1F24;
+  --flag:#A2372E; --flag-soft:#F0DBD7;
+  --ray:#2C6B69; --ray-soft:#D8E6E4;
+  --glass:#7FA7A8; --glass-fill:#DCE9E9;
+  --wood:#8A5A32;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+:root:not([data-theme="light"]){ @media (prefers-color-scheme:dark){
+  --paper:#0F1114; --surface:#171A1E; --sunk:#101317;
+  --ink:#EAEAE4; --body:#C4C7C1; --mute:#8B8E86; --rule:#2B2F35;
+  --mdf:#D4964F; --mdf-soft:#4B3A22;
+  --felt:#3F434B; --felt-line:#5A5F69;
+  --flag:#DE7264; --flag-soft:#43231E;
+  --ray:#65AFA9; --ray-soft:#1E3634;
+  --glass:#5E8E90; --glass-fill:#1E3436;
+  --wood:#A5734A;
+}}
+:root[data-theme="dark"]{
+  --paper:#0F1114; --surface:#171A1E; --sunk:#101317;
+  --ink:#EAEAE4; --body:#C4C7C1; --mute:#8B8E86; --rule:#2B2F35;
+  --mdf:#D4964F; --mdf-soft:#4B3A22;
+  --felt:#3F434B; --felt-line:#5A5F69;
+  --flag:#DE7264; --flag-soft:#43231E;
+  --ray:#65AFA9; --ray-soft:#1E3634;
+  --glass:#5E8E90; --glass-fill:#1E3436;
+  --wood:#A5734A;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--body);
+  font-family:var(--serif); font-size:17px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--display); font-variation-settings:"wdth" 112; color:var(--ink); text-wrap:balance; margin:0; line-height:1.06}
+p{margin:0}
+strong{font-weight:600; color:var(--ink)}
+em{font-style:italic}
+a{color:var(--mdf)}
+:focus-visible{outline:2px solid var(--mdf); outline-offset:3px}
+
+.wrap{max-width:66ch; margin:0 auto; padding:0 24px}
+.plate{max-width:1160px; margin:0 auto; padding:0 24px}
+
+/* ---- title block ---- */
+.stamp{border-bottom:1px solid var(--rule); background:var(--surface)}
+.stamp__in{max-width:1160px; margin:0 auto; padding:56px 24px 0}
+.eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--mdf); margin:0 0 18px}
+.stamp h1{font-size:clamp(2.6rem,8vw,4.6rem); font-weight:800; font-variation-settings:"wdth" 118; letter-spacing:-.02em}
+.lede{font-size:1.22rem; line-height:1.5; color:var(--body); max-width:52ch; margin-top:20px}
+.specs{display:grid; grid-template-columns:repeat(auto-fit,minmax(148px,1fr)); gap:0; margin:44px 0 0; border-top:1px solid var(--rule)}
+.specs>div{padding:14px 16px 16px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule)}
+.specs>div:last-child{border-right:none}
+.specs dt{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--mute)}
+.specs dd{margin:5px 0 0; font-family:var(--display); font-variation-settings:"wdth" 108; font-weight:600; font-size:1.22rem; color:var(--ink); font-variant-numeric:tabular-nums}
+.specs dd .q{font-size:.72em; font-weight:500; color:var(--mute)}
+
+/* ---- sections ---- */
+section{padding:64px 0 0}
+section:last-child{padding-bottom:96px}
+.head{display:flex; align-items:baseline; gap:16px; border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:28px}
+.head__n{font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--mdf); white-space:nowrap; padding-bottom:3px}
+.head h2{font-size:clamp(1.5rem,3.4vw,2.1rem); font-weight:700; letter-spacing:-.01em}
+.wrap p + p{margin-top:1.05em}
+.wrap h3{font-family:var(--display); font-variation-settings:"wdth" 104; font-size:1.02rem; font-weight:700; letter-spacing:.01em; margin:2.1em 0 .5em}
+
+/* ---- drawings ---- */
+.dw{background:var(--surface); border:1px solid var(--rule); border-radius:2px; padding:18px 18px 12px; margin:0}
+.dw svg{display:block; width:100%; height:auto}
+.dw__cap{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-top:12px; border-top:1px solid var(--rule); padding-top:9px}
+.grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px}
+.stack{display:grid; gap:18px}
+.side{display:grid; grid-template-columns:minmax(320px,1.35fr) minmax(240px,1fr); gap:26px; align-items:start}
+@media (max-width:860px){ .side{grid-template-columns:1fr} }
+
+/* ---- key legend ---- */
+.key{font-family:var(--mono); font-size:12.5px; line-height:1.5; margin:0; display:grid; gap:7px}
+.key div{display:grid; grid-template-columns:22px 1fr; gap:9px; align-items:start}
+.key b{display:flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; background:var(--ink); color:var(--surface); font-size:10.5px; font-weight:600; font-family:var(--mono)}
+.key span{color:var(--body); padding-top:1px}
+.key .sw{width:20px; height:20px; border-radius:2px; border:1px solid var(--rule)}
+.keyhead{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute); margin:0 0 12px; border-bottom:1px solid var(--rule); padding-bottom:7px}
+.key + .keyhead{margin-top:26px}
+
+/* ---- tables ---- */
+.tw{overflow-x:auto; border:1px solid var(--rule); border-radius:2px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-family:var(--mono); font-size:12.5px; font-variant-numeric:tabular-nums}
+th,td{text-align:left; padding:9px 14px; border-bottom:1px solid var(--rule); white-space:nowrap}
+thead th{font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); font-weight:500; background:var(--sunk)}
+tbody tr:last-child td{border-bottom:none}
+td.n{text-align:right}
+td:first-child{white-space:normal; color:var(--ink)}
+.bad{color:var(--flag); font-weight:600}
+.ok{color:var(--ray); font-weight:600}
+
+/* ---- callout ---- */
+.note{border-left:3px solid var(--mdf); background:var(--surface); padding:16px 20px; font-size:.95rem; margin:1.6em 0}
+.note b{font-family:var(--display); font-variation-settings:"wdth" 104; font-weight:700}
+
+/* ---- action list ---- */
+.acts{display:grid; gap:2px; margin:0; counter-reset:act}
+.act{display:grid; grid-template-columns:52px 1fr; gap:20px; background:var(--surface); border:1px solid var(--rule); padding:20px 22px; align-items:start}
+.act__n{font-family:var(--display); font-variation-settings:"wdth" 118; font-weight:800; font-size:2rem; line-height:.9; color:var(--mdf); font-variant-numeric:tabular-nums}
+.act h4{font-size:1.06rem; font-weight:700; margin-bottom:6px}
+.act p{font-size:.95rem}
+.act__meta{font-family:var(--mono); font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--mute); margin-top:10px; display:flex; gap:16px; flex-wrap:wrap}
+.act__meta i{font-style:normal; color:var(--flag)}
+.act__meta i.g{color:var(--ray)}
+
+ul.plain{margin:1.1em 0; padding-left:1.15em}
+ul.plain li{margin-bottom:.5em}
+ul.plain li::marker{color:var(--mdf)}
+
+/* ---- chart ---- */
+.chart{position:relative}
+.chart .tip{
+  position:absolute; pointer-events:none; opacity:0; transform:translate(-50%,-100%);
+  background:var(--ink); color:var(--surface); border-radius:3px; padding:8px 11px;
+  font-family:var(--mono); font-size:11px; line-height:1.5; white-space:nowrap; z-index:5;
+  transition:opacity .09s linear;
+}
+.chart .tip[data-on="1"]{opacity:1}
+.chart .tip b{display:block; color:var(--surface); font-weight:600; margin-bottom:4px; opacity:.7; letter-spacing:.08em}
+.chart .tip i{font-style:normal; display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:7px; vertical-align:1px}
+.chart .tip u{text-decoration:none; float:right; padding-left:18px; font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){ .chart .tip{transition:none} }
+:root{ --a1:#3E9C97; --a2:#1F6E6B; --a3:#0B3E3C; }
+:root:not([data-theme="light"]){ @media (prefers-color-scheme:dark){ --a1:#2E8F8A; --a2:#4FBDB5; --a3:#9AE3DC; }}
+:root[data-theme="dark"]{ --a1:#2E8F8A; --a2:#4FBDB5; --a3:#9AE3DC; }
+
+/* ---- svg shared ---- */
+svg text{font-family:var(--mono); fill:var(--mute)}
+.s-wall{fill:none; stroke:var(--ink); stroke-width:9}
+.s-wall-e{fill:none; stroke:var(--ink); stroke-width:6}
+.s-hair{fill:none; stroke:var(--rule); stroke-width:1}
+.s-dim{fill:none; stroke:var(--mute); stroke-width:.9}
+.s-dimt{font-size:10px; fill:var(--mute)}
+.s-lbl{font-size:10px; fill:var(--body)}
+.s-felt{fill:var(--felt); stroke:var(--felt-line); stroke-width:.8}
+.s-mdf{fill:var(--mdf); opacity:.92}
+.s-mdf-l{fill:var(--mdf-soft); stroke:var(--mdf); stroke-width:.9}
+.s-wood{fill:none; stroke:var(--wood); stroke-width:2.4}
+.s-woodf{fill:var(--wood); opacity:.22}
+.s-glass{fill:var(--glass-fill); stroke:var(--glass); stroke-width:1.4}
+.s-ray{fill:none; stroke:var(--ray); stroke-width:1.5; stroke-linejoin:round}
+.s-rayd{fill:none; stroke:var(--ray); stroke-width:1.2; stroke-dasharray:5 3.5}
+.s-raypt{fill:var(--ray)}
+.s-flag{fill:none; stroke:var(--flag); stroke-width:1.3; stroke-dasharray:6 4}
+.s-flagf{fill:var(--flag)}
+.s-flagt{font-size:10px; fill:var(--flag); font-weight:600}
+.s-axis{fill:none; stroke:var(--mute); stroke-width:1; stroke-dasharray:12 4 2 4}
+.s-obj{fill:var(--sunk); stroke:var(--mute); stroke-width:1}
+.s-dark{fill:var(--felt); stroke:var(--felt-line); stroke-width:.8}
+.s-ghost{fill:none; stroke:var(--mute); stroke-width:1; stroke-dasharray:4 3}
+.s-fill-surf{fill:var(--surface)}
+.s-key circle{fill:var(--ink)}
+.s-key text{fill:var(--surface); font-size:10px; font-weight:600; text-anchor:middle}
+.s-kn circle{fill:var(--mdf)}
+.s-kn text{fill:var(--surface); font-size:10px; font-weight:600; text-anchor:middle}
+@media (prefers-reduced-motion:no-preference){}
+</style>
+<style>
+.phase{border-top:2px solid var(--ink); padding-top:14px; margin-top:12px}
+.phase__tag{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap}
+.phase__n{font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--mdf)}
+.phase h3{font-family:var(--display); font-variation-settings:"wdth" 108; font-size:1.35rem; font-weight:700; color:var(--ink); margin:0}
+.phase__cost{font-family:var(--mono); font-size:11px; color:var(--mute); margin-left:auto; letter-spacing:.06em}
+ol.steps{list-style:none; counter-reset:st; margin:20px 0 0; padding:0; display:grid; gap:14px}
+ol.steps>li{counter-increment:st; display:grid; grid-template-columns:30px 1fr; gap:16px; align-items:start}
+ol.steps>li::before{
+  content:counter(st); font-family:var(--mono); font-size:11px; font-weight:600;
+  width:26px; height:26px; border-radius:50%; border:1px solid var(--rule);
+  display:flex; align-items:center; justify-content:center; color:var(--mdf); background:var(--surface);
+}
+ol.steps>li>div{padding-top:2px}
+ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-weight:700; color:var(--ink)}
+.cut{font-family:var(--mono); font-size:12px; background:var(--sunk); border-left:3px solid var(--mdf); padding:11px 14px; margin-top:9px; line-height:1.65}
+.cut span{color:var(--mute)}
+.tot{display:flex; justify-content:space-between; align-items:baseline; gap:16px; border-top:2px solid var(--ink); padding:14px 16px 0; margin-top:2px; font-family:var(--mono); font-size:13px}
+.tot b{font-family:var(--display); font-variation-settings:"wdth" 112; font-weight:800; font-size:1.5rem; color:var(--ink); font-variant-numeric:tabular-nums}
+.warn{border-left:3px solid var(--flag); background:var(--flag-soft); padding:16px 20px; font-size:.95rem; margin:1.6em 0}
+.warn b{font-family:var(--display); font-variation-settings:"wdth" 104; font-weight:700; color:var(--ink)}
+.backlink{font-family:var(--mono); font-size:12px; color:var(--mute); margin-top:16px}
+.backlink a{color:var(--mdf)}
+</style>
+<style>
+.rig{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:2px; margin:26px 0 0}
+.rig div{background:var(--surface); border:1px solid var(--rule); padding:16px 18px}
+.rig dt{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--mute); margin-bottom:6px}
+.rig dd{margin:0; font-family:var(--display); font-variation-settings:"wdth" 106; font-weight:600; font-size:1.02rem; color:var(--ink)}
+.rig p{font-size:.86rem; color:var(--mute); margin-top:6px; line-height:1.45}
+.panel{border:1px solid var(--rule); background:var(--surface); margin:1.6em 0; overflow:hidden}
+.panel__h{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--surface); background:var(--ink); padding:9px 16px}
+.panel dl{margin:0; display:grid; grid-template-columns:minmax(160px,auto) 1fr; font-family:var(--mono); font-size:12.5px}
+.panel dt{padding:9px 16px; border-bottom:1px solid var(--rule); color:var(--mute); border-right:1px solid var(--rule)}
+.panel dd{padding:9px 16px; border-bottom:1px solid var(--rule); margin:0; color:var(--ink); font-weight:500}
+.panel dt:last-of-type,.panel dd:last-of-type{border-bottom:none}
+.panel dd em{font-style:normal; color:var(--mute); font-weight:400}
+@media (max-width:560px){ .panel dl{grid-template-columns:1fr} .panel dt{border-right:none; padding-bottom:0; border-bottom:none} }
+.field{border:2px solid var(--ink); background:var(--surface); padding:22px 24px; margin:1.8em 0}
+.field h4{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--mdf); margin:0 0 14px}
+.field ol{margin:0; padding-left:1.3em; font-family:var(--mono); font-size:12.5px; line-height:1.9; color:var(--ink)}
+.field ol li::marker{color:var(--mute)}
+.look{display:grid; gap:2px; margin:22px 0 0}
+.look>div{display:grid; grid-template-columns:104px 1fr; gap:18px; background:var(--surface); border:1px solid var(--rule); padding:15px 18px; align-items:start}
+.look b{font-family:var(--mono); font-size:12.5px; color:var(--mdf); font-variant-numeric:tabular-nums; padding-top:2px}
+.look p{font-size:.93rem}
+.look p+p{margin-top:.5em}
+@media (max-width:560px){ .look>div{grid-template-columns:1fr; gap:6px} }
+</style>
+
+<header class="stamp">
+  <div class="stamp__in">
+    <p class="eyebrow">Medição · Home studio 2,75 × 4,80 m</p>
+    <h1>Manual do REW</h1>
+    <p class="lede">Como montar a cadeia, configurar o programa e tirar a varredura base desta sala com o que você já tem em casa. E, no fim, o que os gráficos devem mostrar se o diagnóstico estiver certo.</p>
+    <dl class="specs">
+      <div><dt>Custo</dt><dd>R$ 0</dd></div>
+      <div><dt>Tempo</dt><dd>uma tarde</dd></div>
+      <div><dt>Microfone</dt><dd>ECM8000</dd></div>
+      <div><dt>Interface</dt><dd>MiniFuse 2</dd></div>
+      <div><dt>Faixa útil</dt><dd>55 a 300 <span class="q">Hz</span></dd></div>
+      <div><dt>Arquivos</dt><dd>4 <span class="q">mdat</span></dd></div>
+    </dl>
+    <p class="backlink">Faz parte do conjunto: <a href="https://claude.ai/code/artifact/56852314-77af-49cf-a071-86d65d416694">Sala 3 × 4,8</a> · <a href="https://claude.ai/code/artifact/37f67936-c761-4d7e-a3c3-4b1e9efe1d20">Caderno de Obra</a> · <a href="https://claude.ai/code/artifact/b821551a-6f47-4def-9141-469b2348c341">Bibliografia</a></p>
+  </div>
+</header>
+
+<main>
+
+<section id="porque">
+  <div class="wrap">
+    <div class="head"><span class="head__n">00</span><h2>O que você está medindo</h2></div>
+    <p>Quase tudo neste projeto saiu de foto, de trena e de conta: o nó de 71,5 Hz na cadeira, a dupla de 125–132 Hz, o RT de 0,93 s, o SBIR de 93 Hz. São previsões. Boas previsões, mas previsões.</p>
+    <p>A varredura transforma isso em fato — e, mais importante, <strong>dimensiona a compra</strong>. Se o RT medido der 0,70 s, a sala precisa de menos lã do que a lista prevê. Se der 1,15 s, quatro bass traps não bastam e é melhor descobrir agora.</p>
+    <div class="warn"><b>Isto é uma via de mão única.</b> Depois que o primeiro painel subir, o "antes" acabou para sempre. Não existe segunda chance de medir a sala crua — e sem o "antes" você nunca vai saber se o dinheiro fez o que devia. Se só houver uma tarde livre este mês, é esta.</div>
+  </div>
+</section>
+
+<section id="antes">
+  <div class="plate">
+    <div class="head"><span class="head__n">01</span><h2>Antes de abrir o programa</h2></div>
+  </div>
+  <div class="wrap">
+    <p>O REW é gratuito, roda no Mac e é feito em Java — as versões atuais já vêm com o Java embutido, você não precisa instalar nada além dele. Baixe em <strong>roomeqwizard.com</strong> e pegue a versão de macOS que combina com o seu processador (Apple Silicon ou Intel).</p>
+
+    <h3>As duas permissões que o macOS vai pedir</h3>
+    <ol class="steps">
+      <li><div><b>Gatekeeper.</b> Na primeira abertura o macOS pode recusar o aplicativo. Vá em <strong>Ajustes do Sistema → Privacidade e Segurança</strong>, role até o aviso sobre o REW e clique em <em>Abrir Assim Mesmo</em>.</div></li>
+      <li><div><b>Microfone.</b> Em <strong>Privacidade e Segurança → Microfone</strong>, ligue a chave do REW. Sem isso ele abre normalmente, mostra a interface, e a varredura sai <em>em silêncio absoluto</em> sem nenhuma mensagem de erro. É a causa número um de "não funciona".</div></li>
+    </ol>
+
+    <h3>A cadeia física, montada uma vez e congelada</h3>
+    <div class="rig">
+      <div><dt>Entrada 1</dt><dd>ECM8000</dd><p>Cabo XLR direto na entrada 1 da MiniFuse. Nada de adaptador P10.</p></div>
+      <div><dt>Phantom</dt><dd>+48 V ligado</dd><p>O ECM8000 é um eletreto: sem phantom ele não produz sinal nenhum.</p></div>
+      <div><dt>Monitoração direta</dt><dd>toda no lado USB</dd><p>Se a interface mandar o microfone de volta para os monitores, você mede realimentação, não a sala.</p></div>
+      <div><dt>Volume de saída</dt><dd>marcado com fita</dd><p>O knob da MiniFuse e o LEVEL das HS5 não podem mudar entre duas medições que você queira comparar.</p></div>
+    </div>
+
+    <h3>Onde o microfone fica</h3>
+    <p>Em pedestal, na <strong>posição exata da sua orelha</strong> — altura e lugar, sentado como você senta. Cápsula apontada para o monitor que estiver sendo medido. Fotografe a montagem: daqui a dois meses você vai precisar reproduzi-la, e a foto vale mais que a memória.</p>
+
+    <div class="note"><b>Sobre não ter arquivo de calibração.</b> O ECM8000 não vem com curva individual, e isso preocupa menos do que parece. Onde ele desvia é no agudo, acima de uns 10 kHz. Toda a decisão desta sala está <strong>abaixo de 300 Hz</strong>, região em que um ECM8000 sem calibração é perfeitamente honesto. Meça sem cal file e não perca tempo procurando um.</div>
+
+    <div class="warn"><b>Silêncio de verdade.</b> Ventilador de teto desligado. Geladeira, ar-condicionado e celular longe. Tampa do MacBook fechada se ele tiver ventoinha. O piso do ruído de fundo é o que limita quanto do decaimento você consegue enxergar — e decaimento é justamente o que você quer medir.</div>
+  </div>
+</section>
+
+<section id="prefs">
+  <div class="wrap">
+    <div class="head"><span class="head__n">02</span><h2>As preferências, uma vez só</h2></div>
+    <p>Abra <strong>Preferences</strong> e configure as duas abas que importam. Depois disso você não volta mais aqui.</p>
+
+    <div class="panel">
+      <div class="panel__h">Preferences · aba Soundcard</div>
+      <dl>
+        <dt>Output device</dt><dd>MiniFuse 2</dd>
+        <dt>Input device</dt><dd>MiniFuse 2</dd>
+        <dt>Sample rate</dt><dd>48 000 Hz</dd>
+        <dt>Output</dt><dd>um canal por vez <em>— L para medir a caixa esquerda, R para a direita</em></dd>
+        <dt>Input</dt><dd>o canal onde está o ECM8000 <em>— entrada 1</em></dd>
+      </dl>
+    </div>
+
+    <p>O erro clássico aqui é o REW abrir com o microfone e os alto-falantes internos do Mac selecionados e você não reparar. Confira os dois campos com os olhos, não de memória.</p>
+
+    <div class="panel">
+      <div class="panel__h">Preferences · aba Analysis</div>
+      <dl>
+        <dt>Impulse response calculation</dt><dd>padrão do programa</dd>
+        <dt>Remove time delay causado pela distância</dt><dd>deixe desligado</dd>
+        <dt>Cal files</dt><dd>nenhum <em>— sem arquivo para o ECM8000, como explicado acima</em></dd>
+      </dl>
+    </div>
+
+    <h3>Uma parada de dois minutos que vale a tarde inteira</h3>
+    <p>Antes de medir qualquer coisa, abra <strong>Tools → Room Simulator</strong> e digite as dimensões: <strong>2,75 × 4,80 × 2,60 m</strong>. Ponha o ouvinte e as caixas nas posições reais. O REW desenha o mapa modal previsto.</p>
+    <p>Guarde essa imagem. No fim da tarde você vai ter a previsão e a medição lado a lado — e é comparando as duas que você aprende a ler a própria sala, muito mais rápido do que lendo qualquer livro.</p>
+  </div>
+</section>
+
+<section id="nivel">
+  <div class="wrap">
+    <div class="head"><span class="head__n">03</span><h2>Acertar o nível</h2></div>
+    <p>Duas coisas diferentes se chamam "nível" aqui, e confundir as duas é o segundo erro mais comum.</p>
+
+    <h3>1 · O nível de entrada, que não pode saturar</h3>
+    <p>No diálogo <strong>Measure</strong>, use o botão <strong>Check Levels</strong>. O REW toca um ruído e mostra o quanto está chegando. Ajuste o ganho da entrada 1 da MiniFuse até o indicador ficar por volta de <strong>−12 dBFS</strong>. Sobra teto de sobra para os picos e o sinal fica bem acima do ruído.</p>
+    <p>Se passar de −3 dBFS, o conversor corta os picos e a medição inteira vira lixo — com aparência de gráfico normal, o que é pior.</p>
+
+    <h3>2 · O nível de saída, que é conforto e comparabilidade</h3>
+    <p>Não precisa de decibelímetro caro. Um aplicativo de celular serve, e por um motivo que vale entender: <strong>o que importa não é o número absoluto, é a mesma medida duas vezes.</strong> Um app que erra 3 dB para cima erra 3 dB para cima nas duas caixas — e a diferença entre esquerda e direita, que é o que você quer, sai certa.</p>
+
+    <div class="field">
+      <h4>Casar as duas caixas</h4>
+      <ol>
+        <li>Ruído rosa só na esquerda. Meça na posição da orelha, ponderação C, resposta lenta.</li>
+        <li>Ajuste o LEVEL da caixa esquerda até dar por volta de 79 dB. Se der 76 ou 82, tudo bem.</li>
+        <li>Repita na direita e ajuste até bater <em>o mesmo número</em> da esquerda. Aqui a precisão importa.</li>
+        <li>Toque as duas juntas em mono: o centro fantasma tem que aparecer exatamente entre elas.</li>
+        <li>Marque os dois knobs com fita e caneta. Acabou.</li>
+      </ol>
+    </div>
+
+    <p>O nível da varredura em si é outro ajuste, dentro do diálogo Measure. Comece em <strong>−12 dBFS</strong> e suba só se a medição sair com aparência ruidosa embaixo de 60 Hz.</p>
+  </div>
+</section>
+
+<section id="varredura">
+  <div class="wrap">
+    <div class="head"><span class="head__n">04</span><h2>A varredura base</h2></div>
+
+    <div class="panel">
+      <div class="panel__h">Diálogo Measure · o que preencher</div>
+      <dl>
+        <dt>Tipo</dt><dd>Sweep</dd>
+        <dt>Faixa</dt><dd>20 Hz a 20 000 Hz</dd>
+        <dt>Length</dt><dd>512k <em>— mais longo que o padrão, para resolver o grave</em></dd>
+        <dt>Level</dt><dd>−12 dBFS</dd>
+        <dt>Timing reference</dt><dd>Use acoustic timing reference</dd>
+        <dt>Ref. output</dt><dd>sempre o mesmo canal, nas quatro medições</dd>
+        <dt>Name</dt><dd>preenchido antes de apertar Start</dd>
+      </dl>
+    </div>
+
+    <p>O <strong>acoustic timing reference</strong> faz o REW tocar um sinalzinho de referência antes da varredura para saber exatamente quando o som saiu. É o que permite comparar medições de dias diferentes no eixo do tempo — sem ele, o gráfico de reflexões de hoje e o de daqui a dois meses não se sobrepõem. Ligue e não mexa mais.</p>
+
+    <h3>A ordem das quatro medições</h3>
+    <ol class="steps">
+      <li><div><b>Só a caixa esquerda</b>, microfone na posição da orelha. Salve como <strong>base-L</strong>.</div></li>
+      <li><div><b>Só a direita</b>, microfone sem sair do lugar um milímetro. Salve como <strong>base-R</strong>.
+        <div class="cut">esta é a medição mais informativa do dia <span>· sobrepondo L e R você vê a assimetria da sala em um gráfico só. Se as duas curvas se separam abaixo de 300 Hz, o sistema não está centrado.</span></div></div></li>
+      <li><div><b>As duas juntas.</b> Salve como <strong>base-LR</strong>. É a que mais se parece com o que você escuta, e a menos útil para diagnosticar — as duas caixas se somam e se cancelam entre si e escondem a causa.</div></li>
+      <li><div><b>Campo próximo:</b> microfone a 20 cm do woofer da caixa esquerda, apontado para ele. Salve como <strong>base-nearfield</strong>. Aqui a sala quase não entra, então o que aparecer é a caixa. É a sua régua: tudo que estiver na medição da orelha e <em>não</em> estiver nesta é obra da sala.</div></li>
+    </ol>
+
+    <div class="note"><b>Nomes de arquivo com data.</b> <span style="font-family:var(--mono);font-size:.9em">2026-08-28-base-L.mdat</span> e assim por diante. Daqui a três fases você vai ter quinze arquivos, e o nome é a única coisa que os distingue. Guarde uma cópia fora do Mac.</div>
+  </div>
+</section>
+
+<section id="ler">
+  <div class="plate">
+    <div class="head"><span class="head__n">05</span><h2>Os quatro gráficos que importam</h2></div>
+  </div>
+  <div class="wrap">
+    <p>O REW abre dezenas de abas. Quatro respondem a tudo que este projeto precisa saber.</p>
+
+    <div class="look">
+      <div><b>SPL &amp; Phase</b><div>
+        <p>A resposta de frequência. Comece com suavização <strong>1/6 de oitava</strong> para ver o equilíbrio geral, depois troque para <strong>1/12 ou nenhuma</strong> e olhe só de 40 a 300 Hz — é lá que moram os picos e os nós, e a suavização larga os esconde.</p>
+        <p>Não persiga nada abaixo de 55 Hz: a HS5 cai 3 dB em 70 Hz e simplesmente não produz aquilo. O que parece um buraco enorme em 40 Hz é a caixa, não a sala.</p></div></div>
+
+      <div><b>Impulse<br>vista ETC</b><div>
+        <p>A aba Impulse, alternada para <strong>ETC</strong>, mostra a energia chegando ao longo do tempo. Aperte o zoom nos <strong>primeiros 20 ms</strong>: cada pico é uma superfície devolvendo som.</p>
+        <p>A conversão que decifra o gráfico: <strong>1 ms de atraso = 34,3 cm de percurso a mais</strong>. Mediu um pico em 5 ms? A reflexão viajou 1,7 m além do caminho direto. A seção 06 traz a tabela pronta desta sala.</p></div></div>
+
+      <div><b>Waterfall<br>ou Spectrogram</b><div>
+        <p>O decaimento, frequência por frequência. Modo ressonante aparece como uma crista que <em>continua depois</em> que o resto já morreu. É aqui que a dupla de 125–132 Hz deve se denunciar.</p>
+        <p>Olhe a forma, não os números absolutos — a escala depende de ajustes que não mudam nada de físico.</p></div></div>
+
+      <div><b>RT60</b><div>
+        <p>Use <strong>Topt</strong> ou <strong>T20</strong>. É o número que você compara com os 0,93 s estimados e que dimensiona quantas placas comprar.</p>
+        <p>Com uma ressalva honesta: RT60 não tem significado rigoroso abaixo da frequência de Schroeder, que nesta sala é <strong>329 Hz</strong>. Embaixo disso a sala não é difusa, é um punhado de modos separados — leia o waterfall, não o RT60.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="previsao">
+  <div class="plate">
+    <div class="head"><span class="head__n">06</span><h2>O que esta sala deve mostrar</h2></div>
+    <div class="wrap" style="padding-left:0;padding-right:0">
+      <p>Esta é a parte que transforma a tarde em diagnóstico. Abaixo estão as previsões calculadas para a geometria proposta — monitores a 0,99 e 1,76 m da parede esquerda, baffle a 0,92 m da parede frontal, orelha e tweeter a 1,10 m, escuta a 1,59 m. <strong>Confira uma por uma.</strong> As que baterem confirmam o modelo; as que não baterem são as interessantes, e é sobre elas que eu quero ver o gráfico.</p>
+    </div>
+
+    <div class="dw" style="margin-top:26px">
+<svg viewBox="0 0 700 330" role="img" aria-label="Linha do tempo das reflexões previstas nos primeiros 20 milissegundos: som direto em zero, bancada em 0,79 ms, piso em 4,55, parede esquerda em 4,92, parede frontal em 5,15, teto em 6,78, parede direita em 7,10 e o vidro do fundo em 18,46 ms">
+  <line class="s-hair" x1="60" y1="40" x2="60" y2="250"/>
+  <line class="s-dim" x1="60" y1="250" x2="670" y2="250"/>
+  <g class="s-dimt" text-anchor="middle">
+    <text x="60" y="268">0</text><text x="212" y="268">5</text><text x="365" y="268">10</text><text x="517" y="268">15</text><text x="670" y="268">20 ms</text>
+  </g>
+  <text class="s-dimt" x="365" y="292" text-anchor="middle">atraso em relação ao som direto &#183; 1 ms = 34,3 cm de percurso a mais</text>
+  <g class="s-hair">
+    <line x1="212" y1="40" x2="212" y2="250"/><line x1="365" y1="40" x2="365" y2="250"/><line x1="517" y1="40" x2="517" y2="250"/>
+  </g>
+  <g class="s-dimt" text-anchor="end">
+    <text x="52" y="63">0 dB</text><text x="52" y="132">&#8722;8</text><text x="52" y="201">&#8722;16</text><text x="52" y="253">&#8722;22</text>
+  </g>
+
+  <line x1="60" y1="250" x2="60" y2="58" stroke="var(--ink)" stroke-width="3.5"/>
+  <circle cx="60" cy="58" r="4.5" fill="var(--ink)"/>
+  <text class="s-lbl" x="66" y="52" font-weight="600">direto</text>
+
+  <line x1="84" y1="250" x2="84" y2="80" stroke="var(--flag)" stroke-width="3"/>
+  <circle cx="84" cy="80" r="4.5" fill="var(--flag)"/>
+  <text class="s-flagt" x="92" y="76">bancada &#183; 0,79 ms</text>
+  <text class="s-dimt" x="92" y="89">o pior da sala &#8212; s&#243; 2,6 dB abaixo do direto</text>
+
+  <line x1="199" y1="250" x2="199" y2="140" stroke="var(--ray)" stroke-width="2.6"/>
+  <circle cx="199" cy="140" r="4" fill="var(--ray)"/>
+  <text class="s-lbl" x="205" y="136">piso &#183; 4,55</text>
+
+  <line x1="210" y1="250" x2="210" y2="144" stroke="var(--ray)" stroke-width="2.6"/>
+  <circle cx="210" cy="144" r="4" fill="var(--ray)"/>
+  <text class="s-lbl" x="216" y="160">parede esquerda &#183; 4,92</text>
+
+  <line x1="217" y1="250" x2="217" y2="147" stroke="var(--ray)" stroke-width="2.6"/>
+  <circle cx="217" cy="147" r="4" fill="var(--ray)"/>
+  <text class="s-lbl" x="223" y="184">parede frontal &#183; 5,15</text>
+
+  <line x1="267" y1="250" x2="267" y2="162" stroke="var(--ray)" stroke-width="2.6"/>
+  <circle cx="267" cy="162" r="4" fill="var(--ray)"/>
+  <text class="s-lbl" x="273" y="208">teto &#183; 6,78</text>
+
+  <line x1="277" y1="250" x2="277" y2="164" stroke="var(--ray)" stroke-width="2.6"/>
+  <circle cx="277" cy="164" r="4" fill="var(--ray)"/>
+  <text class="s-lbl" x="283" y="230">parede direita &#183; 7,10</text>
+
+  <line x1="622" y1="250" x2="622" y2="223" stroke="var(--glass)" stroke-width="3"/>
+  <circle cx="622" cy="223" r="4.5" fill="var(--glass)"/>
+  <text class="s-lbl" x="616" y="218" text-anchor="end" fill="var(--glass)">vidro do fundo &#183; 18,46 ms</text>
+
+  <rect x="60" y="40" width="230" height="210" fill="var(--ray)" opacity=".055"/>
+  <text class="s-dimt" x="175" y="34" text-anchor="middle" fill="var(--ray)">as reflex&#245;es precoces que somem com painel</text>
+</svg>
+      <p class="dw__cap">Previsão das chegadas · alturas calculadas só pela distância percorrida, sem contar absorção nem a diretividade do monitor — a reflexão real de cada superfície vem mais baixa que isto</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <h3>Cinco coisas para conferir, em ordem</h3>
+
+    <div class="tw" style="margin-top:16px"><table>
+      <thead><tr><th>Onde olhar</th><th>O que a conta prevê</th><th class="n">Confirma o quê</th></tr></thead>
+      <tbody>
+        <tr><td>SPL, 40–300 Hz, sem suavização</td><td>pico forte e estreito por volta de <strong>128 Hz</strong></td><td class="n">a dupla 124,7 + 131,9</td></tr>
+        <tr><td>SPL, mesma vista</td><td>vale em <strong>93 a 99 Hz</strong></td><td class="n">SBIR de parede e lateral</td></tr>
+        <tr><td>SPL, na cadeira</td><td>queda em <strong>71,5 Hz</strong>, mais rasa quanto mais longe de 1,20 m</td><td class="n">o nó que mandou a cadeira para trás</td></tr>
+        <tr><td>SPL, 600–700 Hz</td><td>vale largo por volta de <strong>634 Hz</strong></td><td class="n">o rebote da bancada</td></tr>
+        <tr><td>RT60, bandas de 250 a 2 k</td><td>algo perto de <strong>0,93 s</strong></td><td class="n">o cálculo que dimensiona a compra</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="note"><b>O 128 Hz é a novidade, e é o mais importante.</b> Ele não estava no diagnóstico antigo: apareceu quando a largura passou de 3,00 para 2,75 e o segundo modo de largura subiu de 114 para 124,7 Hz, encostando no segundo modo de altura, que está em 131,9. Os dois acoplam quase perfeitamente na sua posição, porque tweeter e orelha estão os dois a 1,10 m — a 20 cm do ventre em meia altura. <strong>Se o pico de 128 Hz aparecer forte na medição, é ele o problema número um da sala</strong>, e os bass traps de canto são a ferramenta certa.</div>
+
+    <div class="warn"><b>E duas coisas que NÃO devem aparecer.</b> Um nó profundo em 62,4 Hz e outro em 66 Hz — ambos existem na sala, mas nenhum dos dois chega à sua orelha: o de 62,4 tem nó exato na linha de centro onde você senta, e o de 66 tem nó em 1,30 m de altura, a 20 cm da sua orelha. Se eles aparecerem fortes na medição, <strong>você não está sentado onde eu acho que está</strong> — e aí a conversa muda.</div>
+  </div>
+</section>
+
+<section id="cadeiras">
+  <div class="wrap">
+    <div class="head"><span class="head__n">07</span><h2>O teste das três cadeiras</h2></div>
+    <p>Esta é a medição que decide uma cota do projeto — a única em que o gráfico ganha do desenho sem discussão.</p>
+
+    <div class="field">
+      <h4>Procedimento</h4>
+      <ol>
+        <li>Microfone a 1,58 m da parede frontal, na linha de centro. Varra as duas caixas.</li>
+        <li>Recue para 1,70 m. Varra de novo.</li>
+        <li>Recue para 1,83 m. Varra de novo.</li>
+        <li>Sobreponha as três no gráfico SPL e olhe SÓ a faixa de 40 a 120 Hz.</li>
+        <li>Escolha a mais lisa. Não a mais confortável, não a mais bonita no desenho.</li>
+      </ol>
+    </div>
+
+    <p>Escolhida a distância, a separação entre os tweeters sai da fórmula que fecha o triângulo em 60°:</p>
+    <div class="cut">separação = 1,1547 &#215; (distância da orelha &#8722; 0,92)</div>
+
+    <div class="tw" style="margin-top:16px"><table>
+      <thead><tr><th class="n">Se o gráfico escolher</th><th class="n">Separação</th><th>O que muda na prática</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1,58 m</td><td class="n">0,76 m</td><td>é o que o batente da porta já permite; nada a negociar</td></tr>
+        <tr><td class="n">1,70 m</td><td class="n">0,90 m</td><td>exige conferir a folga até o batente</td></tr>
+        <tr><td class="n">1,83 m</td><td class="n">1,05 m</td><td>é o limite físico da sala pelo lado direito</td></tr>
+      </tbody>
+    </table></div>
+
+    <p>Hoje você tem cerca de <strong>1,02 m</strong> montado — mas medido a partir de um centro de 1,50 m que não existe numa sala de 2,75. Re-centrar significa <strong>trazer o monitor direito para dentro</strong>, não empurrar mais para fora.</p>
+  </div>
+</section>
+
+<section id="erros">
+  <div class="wrap">
+    <div class="head"><span class="head__n">08</span><h2>Quando não funcionar</h2></div>
+
+    <div class="tw"><table>
+      <thead><tr><th>O que acontece</th><th>Quase sempre é</th></tr></thead>
+      <tbody>
+        <tr><td>A varredura toca e o REW não registra nada</td><td>permissão de microfone desligada no macOS, ou phantom desligado</td></tr>
+        <tr><td>Sinal de entrada muito baixo</td><td>ganho da entrada 1 no mínimo — o ECM8000 pede bastante ganho</td></tr>
+        <tr><td>A curva fica cheia de bicos e a distorção alta</td><td>entrada saturando; baixe o ganho até −12 dBFS</td></tr>
+        <tr><td>Assobio ou realimentação durante a varredura</td><td>monitoração direta da interface mandando o microfone de volta às caixas</td></tr>
+        <tr><td>O timing reference falha</td><td>o canal de referência escolhido não está ligado, ou está baixo demais</td></tr>
+        <tr><td>Grave todo picotado abaixo de 50 Hz</td><td>normal: é a HS5 caindo. Não é a sala</td></tr>
+        <tr><td>Um vale enorme some quando você anda 10 cm com o microfone</td><td>não é defeito — é um nó modal, e é exatamente o que você veio medir</td></tr>
+        <tr><td>Duas medições do mesmo ponto não batem</td><td>algum knob se mexeu, ou o microfone não voltou ao mesmo lugar</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="depois">
+  <div class="wrap">
+    <div class="head"><span class="head__n">09</span><h2>Depois da tarde</h2></div>
+    <ol class="steps">
+      <li><div><b>Exporte os gráficos e me mande.</b> SPL de 20 a 300 Hz sem suavização, ETC nos primeiros 20 ms, waterfall e a tabela de RT60 por banda. Com isso eu fecho as quantidades da lista de compras em cima de medida, não de estimativa.</div></li>
+      <li><div><b>Só então refaça o perfil do SoundID.</b> Ele fotografa a sala no estado em que estiver; um perfil tirado antes de a geometria parar de andar corrige uma sala que não existe mais.</div></li>
+      <li><div><b>Repita as quatro medições depois de cada fase</b>, com a montagem da foto e os knobs na fita. Mesmo microfone, mesmo lugar, mesmo nível. É a única forma de saber o que cada compra comprou.</div></li>
+    </ol>
+
+    <div class="note"><b>O que a medição não vai te dizer.</b> Se está bom. Ela diz o que a sala faz — o resto é decisão sua, e se resolve ouvindo uma música que você conhece de cor, antes e depois de cada fase. O gráfico serve para você não gastar dinheiro no lugar errado, não para substituir a orelha.</div>
+  </div>
+</section>
+
+</main>
