@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <defs>
+  <pattern id="wl" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="2.6" fill="none" stroke="var(--ray)" stroke-width="1"/></pattern>
+  <pattern id="hw" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="8" stroke="var(--mute)" stroke-width="1"/></pattern>
+  </defs>
+  <rect x="175.0" y="690.0" width="500.0" height="28.0" fill="url(#hw)" opacity=".5"/>
+  <rect x="147.0" y="190.0" width="28.0" height="500.0" fill="url(#hw)" opacity=".5"/>
+  <line x1="175.0" y1="690.0" x2="675.0" y2="690.0" stroke="var(--ink)" stroke-width="3.5"/>
+  <line x1="175.0" y1="690.0" x2="175.0" y2="190.0" stroke="var(--ink)" stroke-width="3.5"/>
+  <polygon points="599.0,690.0 175.0,266.0 175.0,336.7 528.3,690.0" fill="url(#wl)" stroke="var(--ray)" stroke-width="1.8"/>
+  <polygon points="528.3,690.0 175.0,336.7 175.0,407.4 457.6,690.0" fill="url(#wl)" stroke="var(--ray)" stroke-width="1.8"/>
+  <polygon points="457.6,690.0 175.0,407.4 175.0,478.1 386.9,690.0" fill="url(#wl)" stroke="var(--ray)" stroke-width="1.8"/>
+  <polygon points="386.9,690.0 175.0,478.1 175.0,548.8 316.2,690.0" fill="url(#wl)" stroke="var(--ray)" stroke-width="1.8"/>
+  <polygon points="175.0,690.0 316.2,690.0 175.0,548.8" fill="none" stroke="var(--mute)" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <line x1="599.0" y1="690.0" x2="175.0" y2="266.0" stroke="var(--felt)" stroke-width="4"/>
+  <circle cx="454.8" cy="581.2" r="10.0" fill="var(--ray)" stroke="var(--paper)" stroke-width="2"/>
+  <text class="s-tag" x="454.8" y="585.2" text-anchor="middle" fill="var(--paper)">1</text>
+  <circle cx="403.9" cy="601.0" r="10.0" fill="var(--ray)" stroke="var(--paper)" stroke-width="2"/>
+  <text class="s-tag" x="403.9" y="605.0" text-anchor="middle" fill="var(--paper)">2</text>
+  <circle cx="353.0" cy="620.8" r="10.0" fill="var(--ray)" stroke="var(--paper)" stroke-width="2"/>
+  <text class="s-tag" x="353.0" y="624.8" text-anchor="middle" fill="var(--paper)">3</text>
+  <circle cx="302.1" cy="640.6" r="10.0" fill="var(--ray)" stroke="var(--paper)" stroke-width="2"/>
+  <text class="s-tag" x="302.1" y="644.6" text-anchor="middle" fill="var(--paper)">4</text>
+  <text class="s-dimt" x="217.3" y="651.7" text-anchor="middle">ar</text>
+  <line x1="175.0" y1="746.0" x2="599.0" y2="746.0" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="175.0" y1="740.0" x2="175.0" y2="752.0" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="599.0" y1="740.0" x2="599.0" y2="752.0" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="387.0" y="738.0" text-anchor="middle">0,424</text>
+  <line x1="113.0" y1="690.0" x2="113.0" y2="266.0" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="107.0" y1="690.0" x2="119.0" y2="690.0" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="107.0" y1="266.0" x2="119.0" y2="266.0" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="107.0" y="478.0" text-anchor="middle" transform="rotate(-90 107.0 478.0)">0,424</text>
+  <line x1="175.0" y1="690.0" x2="387.0" y2="478.0" stroke="var(--flag)" stroke-width="1.8" stroke-dasharray="8 5"/>
+  <circle cx="387.0" cy="478.0" r="4" fill="var(--flag)"/>
+  <line x1="387.0" y1="478.0" x2="507.0" y2="382.0" stroke="var(--flag)" stroke-width="1"/>
+  <text class="s-lbl" x="513.0" y="380.0" text-anchor="start" fill="var(--flag)">0,300 do canto at&#233; a face</text>
+  <text class="s-dimt" x="513.0" y="394.0" text-anchor="start">quarto de onda em 286 Hz</text>
+  <line x1="285.2" y1="376.2" x2="435.2" y2="318.2" stroke="var(--felt)" stroke-width="1"/>
+  <text class="s-lbl" x="441.2" y="316.2" text-anchor="start" fill="var(--felt)">tecido ac&#250;stico na face</text>
+  <text class="s-dimt" x="441.2" y="330.2" text-anchor="start">sopre nele: o ar tem que passar</text>
+  <text class="s-dimt" x="120.0" y="150.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.5">1 &#183; SE&#199;&#195;O HORIZONTAL DO CANTO</text>
+  <text class="s-dimt" x="120.0" y="170.0" text-anchor="start">Quatro camadas de 50 mm em degrau. A l&#227; de 7 kg/m&#179; &#233; mole: corte</text>
+  <text class="s-dimt" x="120.0" y="186.0" text-anchor="start">ret&#226;ngulos e empurre &#8212; ela se acomoda sozinha contra as paredes.</text>
+  <rect x="868.0" y="250.0" width="32.0" height="463.8" fill="url(#hw)" opacity=".45"/>
+  <line x1="900.0" y1="250.0" x2="900.0" y2="713.8" stroke="var(--ink)" stroke-width="3"/>
+  <line x1="855.0" y1="250.0" x2="1066.2" y2="250.0" stroke="var(--ink)" stroke-width="3.5"/>
+  <line x1="855.0" y1="713.8" x2="1066.2" y2="713.8" stroke="var(--ink)" stroke-width="3.5"/>
+  <text class="s-dimt" x="1074.2" y="255.0" text-anchor="start">teto</text>
+  <text class="s-dimt" x="1074.2" y="718.8" text-anchor="start">piso</text>
+  <rect x="900.0" y="293.8" width="105.0" height="420.0" fill="url(#wl)" stroke="var(--ray)" stroke-width="2"/>
+  <line x1="900.0" y1="503.8" x2="1005.0" y2="503.8" stroke="var(--ray)" stroke-width="1.4" stroke-dasharray="8 5"/>
+  <rect x="900.0" y="708.8" width="105.0" height="10.0" fill="var(--wood)"/>
+  <rect x="900.0" y="498.8" width="105.0" height="10.0" fill="var(--wood)"/>
+  <rect x="900.0" y="288.8" width="105.0" height="10.0" fill="var(--wood)"/>
+  <rect x="901.2" y="293.8" width="8.0" height="420.0" fill="var(--wood)"/>
+  <rect x="995.8" y="293.8" width="8.0" height="420.0" fill="var(--wood)"/>
+  <rect x="900.5" y="387.8" width="104.0" height="17.0" fill="var(--surface)" opacity=".93"/>
+  <text class="s-dimt" x="952.5" y="399.8" text-anchor="middle" fill="var(--ink)">placa 1,20</text>
+  <rect x="900.5" y="597.8" width="104.0" height="17.0" fill="var(--surface)" opacity=".93"/>
+  <text class="s-dimt" x="952.5" y="609.8" text-anchor="middle" fill="var(--ink)">placa 1,20</text>
+  <circle cx="952.5" cy="293.8" r="11.5" fill="var(--wood)" stroke="var(--paper)" stroke-width="2"/>
+  <text class="s-tag" x="952.5" y="297.8" text-anchor="middle" fill="var(--paper)">3</text>
+  <line x1="1045.0" y1="713.8" x2="1045.0" y2="293.8" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="1040.0" y1="713.8" x2="1050.0" y2="713.8" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="1040.0" y1="293.8" x2="1050.0" y2="293.8" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="1039.0" y="503.8" text-anchor="middle" transform="rotate(-90 1039.0 503.8)">2,40</text>
+  <line x1="1045.0" y1="293.8" x2="1045.0" y2="250.0" stroke="var(--flag)" stroke-width="1.2"/>
+  <line x1="1040.0" y1="293.8" x2="1050.0" y2="293.8" stroke="var(--flag)" stroke-width="1.2"/>
+  <line x1="1040.0" y1="250.0" x2="1050.0" y2="250.0" stroke="var(--flag)" stroke-width="1.2"/>
+  <text class="s-dimt" x="1057.0" y="275.9" text-anchor="start" fill="var(--flag)">0,25 sobra no alto</text>
+  <line x1="900.0" y1="747.8" x2="1005.0" y2="747.8" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="900.0" y1="741.8" x2="900.0" y2="753.8" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="1005.0" y1="741.8" x2="1005.0" y2="753.8" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="952.5" y="739.8" text-anchor="middle">0,60</text>
+  <text class="s-dimt" x="855.0" y="220.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.5">2 &#183; ELEVA&#199;&#195;O</text>
+  <text class="s-dimt" x="855.0" y="236.0" text-anchor="start">cada coluna = 2 placas de 1,20 empilhadas</text>
+  <text class="s-dimt" x="1220.0" y="160.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.5">O CORTE &#183; 10 PLACAS, SOBRA ZERO</text>
+  <line x1="1220.0" y1="170.0" x2="1540.0" y2="170.0" stroke="var(--mute)" stroke-width="1"/>
+  <circle cx="1229.0" cy="190.0" r="9.5" fill="var(--ray)" stroke="var(--paper)" stroke-width="2"/>
+  <text class="s-tag" x="1229.0" y="194.0" text-anchor="middle" fill="var(--paper)">1</text>
+  <text class="s-dimt" x="1246.0" y="194.0" text-anchor="start">Camada 0,60 &#215; 2,40</text>
+  <text class="s-dimt" x="1540.0" y="194.0" text-anchor="end">4 placas inteiras</text>
+  <circle cx="1229.0" cy="209.0" r="9.5" fill="var(--ray)" stroke="var(--paper)" stroke-width="2"/>
+  <text class="s-tag" x="1229.0" y="213.0" text-anchor="middle" fill="var(--paper)">2</text>
+  <text class="s-dimt" x="1246.0" y="213.0" text-anchor="start">Camada 0,45 &#215; 2,40</text>
+  <text class="s-dimt" x="1540.0" y="213.0" text-anchor="end">4 placas rasgadas</text>
+  <circle cx="1229.0" cy="228.0" r="9.5" fill="var(--ray)" stroke="var(--paper)" stroke-width="2"/>
+  <text class="s-tag" x="1229.0" y="232.0" text-anchor="middle" fill="var(--paper)">3</text>
+  <text class="s-dimt" x="1246.0" y="232.0" text-anchor="start">Camada 0,30 &#215; 2,40</text>
+  <text class="s-dimt" x="1540.0" y="232.0" text-anchor="end">2 placas rasgadas</text>
+  <circle cx="1229.0" cy="247.0" r="9.5" fill="var(--ray)" stroke="var(--paper)" stroke-width="2"/>
+  <text class="s-tag" x="1229.0" y="251.0" text-anchor="middle" fill="var(--paper)">4</text>
+  <text class="s-dimt" x="1246.0" y="251.0" text-anchor="start">Camada 0,15 &#215; 2,40</text>
+  <text class="s-dimt" x="1540.0" y="251.0" text-anchor="end">as sobras da 0,45</text>
+  <line x1="1220.0" y1="274.0" x2="1540.0" y2="274.0" stroke="var(--rule)" stroke-width="1"/>
+  <text class="s-dimt" x="1220.0" y="294.0" text-anchor="start">Manta de 50 mm consumida</text>
+  <text class="s-dimt" x="1540.0" y="294.0" text-anchor="end" fill="var(--ray)">7,20 m&#178;</text>
+  <text class="s-dimt" x="1220.0" y="313.0" text-anchor="start">Peso total de PET nos dois</text>
+  <text class="s-dimt" x="1540.0" y="313.0" text-anchor="end" fill="var(--ray)">2,5 kg</text>
+  <text class="s-dimt" x="1220.0" y="358.0" text-anchor="start" fill="var(--wood)" letter-spacing="1.5">O QUADRO DE RIP&#195;O</text>
+  <line x1="1220.0" y1="368.0" x2="1540.0" y2="368.0" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="1220.0" y="392.0" text-anchor="start">2 montantes de 2,40 por trap</text>
+  <text class="s-dimt" x="1540.0" y="392.0" text-anchor="end">9,6 m</text>
+  <text class="s-dimt" x="1220.0" y="411.0" text-anchor="start">3 tri&#226;ngulos 0,42 / 0,42 / 0,60</text>
+  <text class="s-dimt" x="1540.0" y="411.0" text-anchor="end">8,7 m</text>
+  <text class="s-dimt" x="1220.0" y="430.0" text-anchor="start">Sarrafo 2,5 &#215; 5 cm d&#225; e sobra</text>
+  <text class="s-dimt" x="1540.0" y="430.0" text-anchor="end">&#8776;19 m</text>
+  <text class="s-dimt" x="1220.0" y="449.0" text-anchor="start">Comprar</text>
+  <text class="s-dimt" x="1540.0" y="449.0" text-anchor="end">7 barras de 3 m</text>
+  <text class="s-dimt" x="1220.0" y="474.0" text-anchor="start">O recheio pesa 2,5 kg. O quadro vai pesar</text>
+  <text class="s-dimt" x="1220.0" y="489.0" text-anchor="start">mais que a l&#227; &#8212; n&#227;o precisa de madeira grossa.</text>
+  <text class="s-dimt" x="1220.0" y="528.0" text-anchor="start" fill="var(--flag)" letter-spacing="1.5">O QUE ESPERAR, SEM ROMANCE</text>
+  <line x1="1220.0" y1="538.0" x2="1540.0" y2="538.0" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="1220.0" y="562.0" text-anchor="start">125 Hz &#183; alfa 0,30</text>
+  <text class="s-dimt" x="1540.0" y="562.0" text-anchor="end">0,9 sabins</text>
+  <text class="s-dimt" x="1220.0" y="581.0" text-anchor="start">250 Hz &#183; alfa 0,55</text>
+  <text class="s-dimt" x="1540.0" y="581.0" text-anchor="end">1,6 sabins</text>
+  <text class="s-dimt" x="1220.0" y="600.0" text-anchor="start">500 Hz &#183; alfa 0,80</text>
+  <text class="s-dimt" x="1540.0" y="600.0" text-anchor="end">2,3 sabins</text>
+  <text class="s-dimt" x="1220.0" y="619.0" text-anchor="start">1 kHz &#183; alfa 0,85</text>
+  <text class="s-dimt" x="1540.0" y="619.0" text-anchor="end">2,4 sabins</text>
+  <text class="s-dimt" x="1220.0" y="646.0" text-anchor="start">A meta da sala inteira &#233; 16 sabins.</text>
+  <text class="s-dimt" x="1220.0" y="661.0" text-anchor="start"></text>
+  <text class="s-dimt" x="1220.0" y="676.0" text-anchor="start">A 7 kg/m&#179; a manta &#233; pouco resistiva: rende</text>
+  <text class="s-dimt" x="1220.0" y="691.0" text-anchor="start">muito mais no m&#233;dio que no grave. Estes dois</text>
+  <text class="s-dimt" x="1220.0" y="706.0" text-anchor="start">traps s&#227;o um bom come&#231;o e v&#227;o secar o fundo</text>
+  <text class="s-dimt" x="1220.0" y="721.0" text-anchor="start">de vidro &#8212; mas o pico de 127 Hz vai precisar</text>
+  <text class="s-dimt" x="1220.0" y="736.0" text-anchor="start">de mais material ou de manta mais densa.</text>
+  <text class="s-dimt" x="110.0" y="54.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.6">BASS TRAP DE CANTO &#183; L&#195; DE PET 7 kg/m&#179; &#183; DOIS CANTOS TRASEIROS</text>
+  <text class="s-dimt" x="110.0" y="74.0" text-anchor="start">Cotas em metros &#183; face a 0,424 de cada parede, igual &#224; planta &#183; 20 cm de manta e 10 cm de ar no v&#233;rtice</text>
+</svg>
