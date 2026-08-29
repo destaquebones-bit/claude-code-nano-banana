@@ -3,7 +3,7 @@ from playwright.async_api import async_playwright
 CSS="""<style>
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap');
 :root{--paper:#faf9f5;--surface:#fff;--sunk:#f0eee7;--ink:#1a1a18;--mute:#8a8579;--rule:#ddd9cd;
---ray:#3f7d5c;--flag:#c2703a;--wood:#8a6a3f;--felt:#2f2f2c;--glass:#8fb3c4;--mdf:#7a6a52}
+--ray:#3f7d5c;--flag:#c2703a;--wood:#8a6a3f;--felt:#2f2f2c;--glass:#8fb3c4;--mdf:#7a6a52;--mdf-soft:#EADCC4}
 body{margin:0;background:var(--paper)}
 svg{display:block;background:var(--paper)}
 .s-lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:var(--ink)}

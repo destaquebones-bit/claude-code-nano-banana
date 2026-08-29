@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2090 980">
+<defs><clipPath id="b1"><rect x="40" y="206" width="560" height="630"/></clipPath><clipPath id="b2"><rect x="628" y="176" width="456" height="700"/></clipPath></defs>
+  <g clip-path="url(#b1)">
+  <polygon points="333.0,579.7 395.2,633.9 248.0,615.9" fill="var(--mdf)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="333.0,579.7 395.2,633.9 248.0,615.9" fill="#000" fill-opacity="0.069"/>
+  <polygon points="395.7,631.2 249.6,613.5 249.0,604.0 396.4,621.6" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="395.7,631.2 249.6,613.5 249.0,604.0 396.4,621.6" fill="#000" fill-opacity="0.124"/>
+  <polygon points="396.4,621.6 249.0,604.0 250.6,600.2 397.0,617.5" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="396.4,621.6 249.0,604.0 250.6,600.2 397.0,617.5" fill="#000" fill-opacity="0.069"/>
+  <polygon points="395.1,635.4 248.1,617.4 248.0,615.9 395.2,633.9" fill="var(--mdf)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="395.1,635.4 248.1,617.4 248.0,615.9 395.2,633.9" fill="#000" fill-opacity="0.124"/>
+  <polygon points="396.3,627.1 395.7,631.2 396.4,621.6 397.0,617.5" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="396.3,627.1 395.7,631.2 396.4,621.6 397.0,617.5" fill="#000" fill-opacity="0.319"/>
+  <polygon points="329.5,593.6 322.8,587.6 323.5,312.9 331.9,316.8" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="329.5,593.6 322.8,587.6 323.5,312.9 331.9,316.8" fill="#000" fill-opacity="0.156"/>
+  <polygon points="339.1,589.4 329.5,593.6 331.9,316.8 343.8,314.1" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="339.1,589.4 329.5,593.6 331.9,316.8 343.8,314.1" fill="#000" fill-opacity="0.206"/>
+  <polygon points="261.4,614.9 259.9,618.9 244.4,333.2 246.4,330.6" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="261.4,614.9 259.9,618.9 244.4,333.2 246.4,330.6" fill="#000" fill-opacity="0.319"/>
+  <polygon points="259.9,618.9 248.0,617.4 229.4,332.2 244.4,333.2" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="259.9,618.9 248.0,617.4 229.4,332.2 244.4,333.2" fill="#000" fill-opacity="0.124"/>
+  <polygon points="404.2,509.2 242.0,493.5 241.2,481.8 405.0,497.3" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="404.2,509.2 242.0,493.5 241.2,481.8 405.0,497.3" fill="#000" fill-opacity="0.124"/>
+  <polygon points="405.0,497.3 241.2,481.8 243.0,478.5 405.7,493.7" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="405.0,497.3 241.2,481.8 243.0,478.5 405.7,493.7" fill="#000" fill-opacity="0.069"/>
+  <polygon points="404.8,505.6 404.2,509.2 405.0,497.3 405.7,493.7" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="404.8,505.6 404.2,509.2 405.0,497.3 405.7,493.7" fill="#000" fill-opacity="0.319"/>
+  <polygon points="395.7,631.2 395.1,635.4 415.3,344.1 415.9,341.4" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="395.7,631.2 395.1,635.4 415.3,344.1 415.9,341.4" fill="#000" fill-opacity="0.319"/>
+  <polygon points="395.1,635.4 382.5,633.9 399.2,343.1 415.3,344.1" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="395.1,635.4 382.5,633.9 399.2,343.1 415.3,344.1" fill="#000" fill-opacity="0.124"/>
+  <polygon points="335.3,310.3 343.8,314.1 331.9,316.8 323.5,312.9" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="335.3,310.3 343.8,314.1 331.9,316.8 323.5,312.9" fill="#000" fill-opacity="0.069"/>
+  <polygon points="336.1,308.8 415.3,344.1 229.5,332.2" fill="var(--mdf)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="336.1,308.8 415.3,344.1 229.5,332.2" fill="#000" fill-opacity="0.069"/>
+  <polygon points="244.4,333.2 229.4,332.2 231.5,329.7 246.4,330.6" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="244.4,333.2 229.4,332.2 231.5,329.7 246.4,330.6" fill="#000" fill-opacity="0.069"/>
+  <polygon points="414.8,356.5 232.5,344.4 231.5,329.7 415.9,341.4" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="414.8,356.5 232.5,344.4 231.5,329.7 415.9,341.4" fill="#000" fill-opacity="0.124"/>
+  <polygon points="415.9,341.4 231.5,329.7 233.6,327.1 416.5,338.6" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="415.9,341.4 231.5,329.7 233.6,327.1 416.5,338.6" fill="#000" fill-opacity="0.069"/>
+  <polygon points="415.1,346.6 229.7,334.6 229.5,332.2 415.3,344.1" fill="var(--mdf)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="415.1,346.6 229.7,334.6 229.5,332.2 415.3,344.1" fill="#000" fill-opacity="0.124"/>
+  <polygon points="415.4,353.7 414.8,356.5 415.9,341.4 416.5,338.6" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="415.4,353.7 414.8,356.5 415.9,341.4 416.5,338.6" fill="#000" fill-opacity="0.319"/>
+  <polygon points="415.3,344.1 399.2,343.1 400.0,340.3 415.9,341.4" fill="var(--wood)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="415.3,344.1 399.2,343.1 400.0,340.3 415.9,341.4" fill="#000" fill-opacity="0.069"/>
+  </g>
+  <line x1="326.2" y1="327.5" x2="412.2" y2="231.5" stroke="var(--mdf)" stroke-width="1.1"/>
+  <circle cx="326.2" cy="327.5" r="3.2" fill="var(--mdf)"/>
+  <text class="s-lbl" x="418.2" y="235.5" text-anchor="start" fill="var(--mdf)">1  Tri&#226;ngulo de chapa 6 mm</text>
+  <text class="s-dimt" x="418.2" y="249.5" text-anchor="start">0,424 &#215; 0,424 &#215; 0,60</text>
+  <text class="s-dimt" x="418.2" y="263.5" text-anchor="start">um em cima, um embaixo</text>
+  <line x1="332.5" y1="437.8" x2="236.5" y2="407.8" stroke="var(--wood)" stroke-width="1.1"/>
+  <circle cx="332.5" cy="437.8" r="3.2" fill="var(--wood)"/>
+  <text class="s-lbl" x="230.5" y="411.8" text-anchor="end" fill="var(--wood)">2  Longarina do v&#233;rtice</text>
+  <text class="s-dimt" x="230.5" y="425.8" text-anchor="end">1,20 m</text>
+  <line x1="394.0" y1="574.2" x2="450.0" y2="658.2" stroke="var(--wood)" stroke-width="1.1"/>
+  <circle cx="394.0" cy="574.2" r="3.2" fill="var(--wood)"/>
+  <text class="s-lbl" x="456.0" y="662.2" text-anchor="start" fill="var(--wood)">3  Duas longarinas da frente</text>
+  <text class="s-dimt" x="456.0" y="676.2" text-anchor="start">+ 4  tr&#234;s travessas de 0,60</text>
+  <text class="s-dimt" x="60.0" y="178.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.5">1 &#183; O ESQUELETO DE UM M&#211;DULO</text>
+  <text class="s-dimt" x="60.0" y="196.0" text-anchor="start">&#201; a escada da Op&#231;&#227;o A mais tr&#234;s pe&#231;as: dois tri&#226;ngulos e a longarina do v&#233;rtice.</text>
+  <g clip-path="url(#b2)">
+  <polygon points="866.5,642.1 967.4,735.4 817.2,820.2 729.9,702.0" fill="var(--rule)" fill-opacity="1.000" stroke="var(--rule)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="866.5,642.1 967.4,735.4 817.2,820.2 729.9,702.0" fill="#000" fill-opacity="0.069"/>
+  <polygon points="866.5,642.1 729.9,702.0 670.2,193.7 871.2,182.3" fill="var(--sunk)" fill-opacity="1.000" stroke="var(--rule)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="866.5,642.1 729.9,702.0 670.2,193.7 871.2,182.3" fill="#000" fill-opacity="0.206"/>
+  <polygon points="866.5,642.1 871.2,182.3 1025.8,200.5 967.4,735.4" fill="var(--sunk)" fill-opacity="1.000" stroke="var(--rule)" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="866.5,642.1 871.2,182.3 1025.8,200.5 967.4,735.4" fill="#000" fill-opacity="0.156"/>
+  <polygon points="912.7,684.1 802.4,669.7 793.4,481.3 923.0,492.5" fill="var(--felt)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".9" stroke-linejoin="round"/>
+  <polygon points="912.7,684.1 802.4,669.7 793.4,481.3 923.0,492.5" fill="#000" fill-opacity="0.124"/>
+  <polygon points="868.5,459.6 923.0,492.5 793.4,481.3" fill="var(--felt)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".9" stroke-linejoin="round"/>
+  <polygon points="868.5,459.6 923.0,492.5 793.4,481.3" fill="#000" fill-opacity="0.069"/>
+  <polygon points="923.0,492.5 793.4,481.3 780.6,214.7 937.6,218.4" fill="var(--felt)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".9" stroke-linejoin="round"/>
+  <polygon points="923.0,492.5 793.4,481.3 780.6,214.7 937.6,218.4" fill="#000" fill-opacity="0.124"/>
+  <polygon points="871.1,207.7 937.6,218.4 780.6,214.7" fill="var(--felt)" fill-opacity="1.000" stroke="var(--ink)" stroke-width=".9" stroke-linejoin="round"/>
+  <polygon points="871.1,207.7 937.6,218.4 780.6,214.7" fill="#000" fill-opacity="0.069"/>
+  </g>
+  <line x1="862.6" y1="244.3" x2="982.6" y2="180.3" stroke="var(--felt)" stroke-width="1.1"/>
+  <circle cx="862.6" cy="244.3" r="3.2" fill="var(--felt)"/>
+  <text class="s-lbl" x="988.6" y="184.3" text-anchor="start" fill="var(--felt)">Fechado dos seis lados</text>
+  <text class="s-dimt" x="988.6" y="198.3" text-anchor="start">frente, os dois lados e as</text>
+  <text class="s-dimt" x="988.6" y="212.3" text-anchor="start">duas tampas &#8212; tudo tecido</text>
+  <text class="s-dimt" x="650.0" y="158.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.5">2 &#183; FECHADO &#183; nada aparece e nada cai</text>
+  <text class="s-dimt" x="1150.0" y="172.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.5">3 &#183; OS 8 TRI&#194;NGULOS SAEM DE 2 RETALHOS</text>
+  <text class="s-dimt" x="1150.0" y="190.0" text-anchor="start">Retalho de 1,20 &#215; 0,60 de compensado 6 mm. Dois quadrados, um corte na diagonal em cada.</text>
+  <rect x="1150.0" y="230.0" width="214.5" height="107.3" fill="none" stroke="var(--mute)" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <rect x="1150.0" y="230.0" width="76.4" height="76.4" fill="var(--mdf-soft)" stroke="var(--mdf)" stroke-width="1.6"/>
+  <line x1="1150.0" y1="306.4" x2="1226.4" y2="230.0" stroke="var(--mdf)" stroke-width="2.4"/>
+  <rect x="1226.4" y="230.0" width="76.4" height="76.4" fill="var(--mdf-soft)" stroke="var(--mdf)" stroke-width="1.6"/>
+  <line x1="1226.4" y1="306.4" x2="1302.9" y2="230.0" stroke="var(--mdf)" stroke-width="2.4"/>
+  <text class="s-dimt" x="1257.2" y="350.9" text-anchor="middle">1,20 &#215; 0,60</text>
+  <text class="s-dimt" x="1188.2" y="269.0" text-anchor="middle">0,424</text>
+  <rect x="1391.8" y="230.0" width="214.5" height="107.3" fill="none" stroke="var(--mute)" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <rect x="1391.8" y="230.0" width="76.4" height="76.4" fill="var(--mdf-soft)" stroke="var(--mdf)" stroke-width="1.6"/>
+  <line x1="1391.8" y1="306.4" x2="1468.2" y2="230.0" stroke="var(--mdf)" stroke-width="2.4"/>
+  <rect x="1468.2" y="230.0" width="76.4" height="76.4" fill="var(--mdf-soft)" stroke="var(--mdf)" stroke-width="1.6"/>
+  <line x1="1468.2" y1="306.4" x2="1544.7" y2="230.0" stroke="var(--mdf)" stroke-width="2.4"/>
+  <text class="s-dimt" x="1499.0" y="350.9" text-anchor="middle">1,20 &#215; 0,60</text>
+  <text class="s-dimt" x="1430.0" y="269.0" text-anchor="middle">0,424</text>
+  <text class="s-dimt" x="1150.0" y="386.0" text-anchor="start">Sobra a faixa de 1,20 &#215; 0,17 em cada retalho &#8212; guarde para calços.</text>
+  <text class="s-dimt" x="1150.0" y="524.0" text-anchor="start" fill="var(--flag)" letter-spacing="1.5">4 &#183; O PONTO FRACO: ELE TOMBA F&#193;CIL</text>
+  <polygon points="1150.0,690.0 1300.0,690.0 1150.0,580.0" fill="var(--sunk)" stroke="var(--mute)" stroke-width="1.6"/>
+  <line x1="1202.0" y1="690.0" x2="1202.0" y2="648.0" stroke="var(--flag)" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <circle cx="1202.0" cy="653.0" r="5" fill="var(--flag)"/>
+  <text class="s-dimt" x="1212.0" y="658.0" text-anchor="start" fill="var(--flag)">centro de massa</text>
+  <line x1="1150.0" y1="690.0" x2="1300.0" y2="690.0" stroke="var(--ink)" stroke-width="2.5"/>
+  <text class="s-dimt" x="1300.0" y="708.0" text-anchor="end">aresta de tombo</text>
+  <text class="s-dimt" x="1340.0" y="570.0" text-anchor="start">Com o prisma vazio, o centro de massa fica a</text>
+  <text class="s-dimt" x="1340.0" y="586.0" text-anchor="start">apenas 10 cm atr&#225;s da aresta da frente. Um</text>
+  <text class="s-dimt" x="1340.0" y="602.0" text-anchor="start">empurr&#227;o de 5&#176; j&#225; derruba.</text>
+  <text class="s-dimt" x="1340.0" y="628.0" text-anchor="start" fill="var(--flag)">Solu&#231;&#227;o: 8 a 12 kg de areia ensacada dentro do</text>
+  <text class="s-dimt" x="1340.0" y="644.0" text-anchor="start" fill="var(--flag)">m&#243;dulo de baixo. Vai para 10&#8211;12&#176;, custa R$ 10 e</text>
+  <text class="s-dimt" x="1340.0" y="660.0" text-anchor="start" fill="var(--flag)">n&#227;o muda nada na ac&#250;stica.</text>
+  <text class="s-dimt" x="1340.0" y="686.0" text-anchor="start">Se tiver crian&#231;a ou animal, some UM parafuso no</text>
+  <text class="s-dimt" x="1340.0" y="702.0" text-anchor="start">topo &#8212; a&#237; volta a furar parede, mas s&#243; um furo.</text>
+  <text class="s-dimt" x="1700.0" y="200.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.5">A CONTRA B</text>
+  <line x1="1700.0" y1="210.0" x2="2030.0" y2="210.0" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="1940.0" y="188.0" text-anchor="end" fill="var(--mute)">A</text>
+  <text class="s-dimt" x="2030.0" y="188.0" text-anchor="end" fill="var(--flag)">B</text>
+  <text class="s-dimt" x="1700.0" y="234.0" text-anchor="start">Ripa</text>
+  <text class="s-dimt" x="1940.0" y="234.0" text-anchor="end">18,0 m</text>
+  <text class="s-dimt" x="2030.0" y="234.0" text-anchor="end">21,6 m</text>
+  <text class="s-dimt" x="1700.0" y="253.0" text-anchor="start">Chapa 6 mm</text>
+  <text class="s-dimt" x="1940.0" y="253.0" text-anchor="end">&#8212;</text>
+  <text class="s-dimt" x="2030.0" y="253.0" text-anchor="end" fill="var(--flag)">1,44 m&#178;</text>
+  <text class="s-dimt" x="1700.0" y="272.0" text-anchor="start">Tecido ac&#250;stico</text>
+  <text class="s-dimt" x="1940.0" y="272.0" text-anchor="end">3,5 m</text>
+  <text class="s-dimt" x="2030.0" y="272.0" text-anchor="end">3,5 m</text>
+  <text class="s-dimt" x="1700.0" y="291.0" text-anchor="start">Tecido barato (lados)</text>
+  <text class="s-dimt" x="1940.0" y="291.0" text-anchor="end">&#8212;</text>
+  <text class="s-dimt" x="2030.0" y="291.0" text-anchor="end" fill="var(--flag)">3,5 m</text>
+  <text class="s-dimt" x="1700.0" y="310.0" text-anchor="start">Bucha e parafuso na parede</text>
+  <text class="s-dimt" x="1940.0" y="310.0" text-anchor="end">16</text>
+  <text class="s-dimt" x="2030.0" y="310.0" text-anchor="end" fill="var(--flag)">0</text>
+  <text class="s-dimt" x="1700.0" y="329.0" text-anchor="start">Lastro de areia</text>
+  <text class="s-dimt" x="1940.0" y="329.0" text-anchor="end">&#8212;</text>
+  <text class="s-dimt" x="2030.0" y="329.0" text-anchor="end">10 kg</text>
+  <line x1="1700.0" y1="352.0" x2="2030.0" y2="352.0" stroke="var(--rule)" stroke-width="1"/>
+  <text class="s-dimt" x="1700.0" y="372.0" text-anchor="start">Custo a mais da B</text>
+  <text class="s-dimt" x="1940.0" y="372.0" text-anchor="end"></text>
+  <text class="s-dimt" x="2030.0" y="372.0" text-anchor="end" fill="var(--flag)">R$ 90 a 170</text>
+  <text class="s-dimt" x="1700.0" y="399.0" text-anchor="start">Ordem de grandeza para conferir na sua regi&#227;o.</text>
+  <text class="s-dimt" x="1700.0" y="415.0" text-anchor="start">O que pesa &#233; a chapa e os 3,6 m de ripa a mais.</text>
+  <text class="s-dimt" x="1700.0" y="453.0" text-anchor="start" fill="var(--ray)" letter-spacing="1.5">O QUE A B COMPRA</text>
+  <line x1="1700.0" y1="463.0" x2="2030.0" y2="463.0" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="1700.0" y="487.0" text-anchor="start">Nenhum furo de parede.</text>
+  <text class="s-dimt" x="1700.0" y="503.0" text-anchor="start"></text>
+  <text class="s-dimt" x="1700.0" y="519.0" text-anchor="start">Move inteiro: levanta e leva, a manta vai junto</text>
+  <text class="s-dimt" x="1700.0" y="535.0" text-anchor="start">dentro da caixa. Se a sala mudar, ou se voc&#234;</text>
+  <text class="s-dimt" x="1700.0" y="551.0" text-anchor="start">mudar de casa, ele vai junto pronto.</text>
+  <text class="s-dimt" x="1700.0" y="567.0" text-anchor="start"></text>
+  <text class="s-dimt" x="1700.0" y="583.0" text-anchor="start">Mais r&#237;gido: os tri&#226;ngulos travam o esquadro</text>
+  <text class="s-dimt" x="1700.0" y="599.0" text-anchor="start">para sempre, sem depender do canto.</text>
+  <text class="s-dimt" x="1700.0" y="615.0" text-anchor="start"></text>
+  <text class="s-dimt" x="1700.0" y="631.0" text-anchor="start">Serve em qualquer canto, inclusive nos dois que</text>
+  <text class="s-dimt" x="1700.0" y="647.0" text-anchor="start">hoje est&#227;o bloqueados, se um dia liberarem.</text>
+  <text class="s-dimt" x="1700.0" y="681.0" text-anchor="start" fill="var(--ray)" letter-spacing="1.5">O QUE N&#195;O MUDA</text>
+  <line x1="1700.0" y1="691.0" x2="2030.0" y2="691.0" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="1700.0" y="715.0" text-anchor="start">O corte da manta: 0,615 / 0,465 / 0,315 / 0,165.</text>
+  <text class="s-dimt" x="1700.0" y="731.0" text-anchor="start">A ordem de entrada, da mais estreita para fora.</text>
+  <text class="s-dimt" x="1700.0" y="747.0" text-anchor="start">O envelope do tecido na face da frente.</text>
+  <text class="s-dimt" x="1700.0" y="763.0" text-anchor="start">As 4 escadas que voc&#234; j&#225; ia fazer &#8212; elas viram</text>
+  <text class="s-dimt" x="1700.0" y="779.0" text-anchor="start">a frente do prisma, sem uma serrada a mais.</text>
+  <text class="s-dimt" x="60.0" y="54.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.6">OP&#199;&#195;O B &#183; PRISMA AUTOPORTANTE, FECHADO EM TECIDO</text>
+  <text class="s-dimt" x="60.0" y="74.0" text-anchor="start">Sem furar parede. Cada m&#243;dulo &#233; uma caixa fechada de 0,424 &#215; 0,424 &#215; 1,20 &#8212; dois por trap.</text>
+</svg>
