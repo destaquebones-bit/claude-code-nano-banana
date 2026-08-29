@@ -116,9 +116,9 @@ for l in ["S&#243; existem dois comprimentos de corte: 1,20 e 0,60.","A medida d
     txt(LX,yy,l,"s-dimt","start"); yy+=16
 yy+=22
 head("O QUE USAR","var(--flag)")
-for k,v in [("Parafuso","3,5 &#215; 40 mm"),("Quantidade","60 (usa 64 com folga)"),
-            ("Broca de furo-guia","2,5 mm"),("Serrote","o de 550 mm que voc&#234; comprou"),
-            ("Esquadro ou gabarito","obrigat&#243;rio")]:
+for k,v in [("Parafuso &#183; bitola","3,5 mm"),("Parafuso &#183; comprimento","travessa + 20 mm"),
+            ("Quantidade","60"),("Brocas","4 mm e 2,5 mm"),
+            ("Serrote","o de 550 mm que voc&#234; comprou"),("Esquadro ou gabarito","obrigat&#243;rio")]:
     row(k,v)
 yy+=8
 for l in ["Antes de cortar: tire TODO prego, parafuso e","cantoneira das ripas. Um s&#243; escondido acaba com","os dentes do serrote em uma passada."]:
