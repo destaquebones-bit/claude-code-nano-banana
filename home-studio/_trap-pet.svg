@@ -122,10 +122,12 @@
   <text class="s-dimt" x="1220.0" y="646.0" text-anchor="start">A meta da sala inteira &#233; 16 sabins.</text>
   <text class="s-dimt" x="1220.0" y="661.0" text-anchor="start"></text>
   <text class="s-dimt" x="1220.0" y="676.0" text-anchor="start">A 7 kg/m&#179; a manta &#233; pouco resistiva: rende</text>
-  <text class="s-dimt" x="1220.0" y="691.0" text-anchor="start">muito mais no m&#233;dio que no grave. Estes dois</text>
-  <text class="s-dimt" x="1220.0" y="706.0" text-anchor="start">traps s&#227;o um bom come&#231;o e v&#227;o secar o fundo</text>
-  <text class="s-dimt" x="1220.0" y="721.0" text-anchor="start">de vidro &#8212; mas o pico de 127 Hz vai precisar</text>
-  <text class="s-dimt" x="1220.0" y="736.0" text-anchor="start">de mais material ou de manta mais densa.</text>
-  <text class="s-dimt" x="110.0" y="54.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.6">BASS TRAP DE CANTO &#183; L&#195; DE PET 7 kg/m&#179; &#183; DOIS CANTOS TRASEIROS</text>
+  <text class="s-dimt" x="1220.0" y="691.0" text-anchor="start">muito mais no m&#233;dio que no grave. Os dois traps</text>
+  <text class="s-dimt" x="1220.0" y="706.0" text-anchor="start">s&#227;o um bom come&#231;o &#8212; mas o pico de 127 Hz vai</text>
+  <text class="s-dimt" x="1220.0" y="721.0" text-anchor="start">precisar de mais material ou de manta densa.</text>
+  <text class="s-dimt" x="1220.0" y="736.0" text-anchor="start"></text>
+  <text class="s-dimt" x="1220.0" y="751.0" text-anchor="start">Na diagonal porque os outros dois cantos est&#227;o</text>
+  <text class="s-dimt" x="1220.0" y="766.0" text-anchor="start">ocupados: a porta na frente, o arm&#225;rio no fundo.</text>
+  <text class="s-dimt" x="110.0" y="54.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.6">BASS TRAP DE CANTO &#183; L&#195; DE PET 7 kg/m&#179; &#183; FRONTAL ESQUERDO E TRASEIRO DIREITO</text>
   <text class="s-dimt" x="110.0" y="74.0" text-anchor="start">Cotas em metros &#183; face a 0,424 de cada parede, igual &#224; planta &#183; 20 cm de manta e 10 cm de ar no v&#233;rtice</text>
 </svg>

@@ -123,10 +123,10 @@ for f,al,sab in (("125 Hz","0,30","0,9 sabins"),("250 Hz","0,55","1,6 sabins"),
                  ("500 Hz","0,80","2,3 sabins"),("1 kHz","0,85","2,4 sabins")):
     row(f+" &#183; alfa "+al,sab)
 yy+=8
-for l in ["A meta da sala inteira &#233; 16 sabins.","","A 7 kg/m&#179; a manta &#233; pouco resistiva: rende","muito mais no m&#233;dio que no grave. Estes dois","traps s&#227;o um bom come&#231;o e v&#227;o secar o fundo","de vidro &#8212; mas o pico de 127 Hz vai precisar","de mais material ou de manta mais densa."]:
+for l in ["A meta da sala inteira &#233; 16 sabins.","","A 7 kg/m&#179; a manta &#233; pouco resistiva: rende","muito mais no m&#233;dio que no grave. Os dois traps","s&#227;o um bom come&#231;o &#8212; mas o pico de 127 Hz vai","precisar de mais material ou de manta densa.","","Na diagonal porque os outros dois cantos est&#227;o","ocupados: a porta na frente, o arm&#225;rio no fundo."]:
     txt(LX,yy,l,"s-dimt","start"); yy+=15
 
-txt(110,54,"BASS TRAP DE CANTO &#183; L&#195; DE PET 7 kg/m&#179; &#183; DOIS CANTOS TRASEIROS","s-dimt","start","var(--ink)",' letter-spacing="1.6"')
+txt(110,54,"BASS TRAP DE CANTO &#183; L&#195; DE PET 7 kg/m&#179; &#183; FRONTAL ESQUERDO E TRASEIRO DIREITO","s-dimt","start","var(--ink)",' letter-spacing="1.6"')
 txt(110,74,"Cotas em metros &#183; face a 0,424 de cada parede, igual &#224; planta &#183; 20 cm de manta e 10 cm de ar no v&#233;rtice","s-dimt","start")
 open("_trap-pet.svg","w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">\n'+"\n".join(o)+'\n</svg>')
 print("ok")

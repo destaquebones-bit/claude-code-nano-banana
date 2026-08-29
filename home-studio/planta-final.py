@@ -62,18 +62,20 @@ arcpl(W,0,DW,math.pi,math.pi/2,"var(--flag)"); line((W,0),(W-0.03,DW),"var(--fla
 line((0,L),(W,L),"var(--glass)","5")
 txt(W/2,L+0.115,"PORTA DE VIDRO &#183; parede do fundo inteira","s-dimt",fill="var(--glass)")
 
+# armario, antes dos cantos
+rect(0,0.88,L-0.52,L,"var(--sunk)","var(--wood)","2"); txt(0.44,L-0.24,"ARM&#193;RIO","s-dimt",fill="var(--wood)")
 # bass traps
-poly([(0,TRAP),(0,0),(TRAP,0)],"url(#wl)","var(--ray)","2"); tag(1,0.135,0.135,"var(--ray)")
+poly([(0,TRAP),(0,0),(TRAP,0)],"url(#wl)","var(--ray)","2.6"); tag("A",0.145,0.145,"var(--ray)")
 poly([(W,TRAP),(W,0),(W-TRAP,0)],"none","var(--flag)","2",' stroke-dasharray="7 5"'); tag(2,W-0.135,0.135,"var(--flag)")
-poly([(0,L-TRAP),(0,L),(TRAP,L)],"url(#wl)","var(--ray)","2"); tag(1,0.135,L-0.135,"var(--ray)")
-poly([(W,L-TRAP),(W,L),(W-TRAP,L)],"url(#wl)","var(--ray)","2"); tag(1,W-0.135,L-0.135,"var(--ray)")
+poly([(0,L-TRAP),(0,L),(TRAP,L)],"none","var(--flag)","2",' stroke-dasharray="7 5"'); tag(3,0.135,L-0.135,"var(--flag)")
+poly([(W,L-TRAP),(W,L),(W-TRAP,L)],"url(#wl)","var(--ray)","2.6"); tag("B",W-0.145,L-0.145,"var(--ray)")
 # bloco frontal
-rect(BLK0,BLK1,0,0.10,"url(#wl)","var(--ray)","2"); tag(3,BLK0+0.16,0.05,"var(--ray)")
+rect(BLK0,BLK1,0,0.10,"url(#wl)","var(--ray)","2"); tag(4,BLK0+0.16,0.05,"var(--ray)")
 # TV
-rect(W/2-TVW/2,W/2+TVW/2,0,0.055,"var(--felt)","var(--ink)","1.4"); tag(4,W/2+0.42,0.028,"var(--felt)")
+rect(W/2-TVW/2,W/2+TVW/2,0,0.055,"var(--felt)","var(--ink)","1.4"); tag(5,W/2+0.42,0.028,"var(--felt)")
 # modulos de ponto-espelho
-rect(0,0.10,MIRS-0.30,MIRS+0.30,"url(#wl)","var(--ray)","2"); tag(5,0.05,MIRS,"var(--ray)")
-rect(W-0.10,W,MIRS-0.30,MIRS+0.30,"url(#wl)","var(--ray)","2"); tag(5,W-0.05,MIRS,"var(--ray)")
+rect(0,0.10,MIRS-0.30,MIRS+0.30,"url(#wl)","var(--ray)","2"); tag(6,0.05,MIRS,"var(--ray)")
+rect(W-0.10,W,MIRS-0.30,MIRS+0.30,"url(#wl)","var(--ray)","2"); tag(6,W-0.05,MIRS,"var(--ray)")
 # bancada
 rect(0.30,FX,0.70,1.30,"var(--surface)","var(--mute)","1.6",' stroke-dasharray="7 5"')
 txt(0.42,1.21,"bancada","s-dimt",anch="start")
@@ -83,11 +85,11 @@ for cx in (ML,MR):
 # nuvem, por cima da bancada
 rect(W/2-0.90,W/2+0.90,MIRC-0.30,MIRC+0.30,"none","var(--ray)","2",' stroke-dasharray="9 5"')
 txt(W/2-0.90+0.30,MIRC+0.235,"NUVEM ACIMA","s-dimt",fill="var(--ray)")
-tag(6,W/2-0.90+0.10,MIRC-0.18,"var(--ray)")
+tag(7,W/2-0.90+0.10,MIRC-0.18,"var(--ray)")
 # gobo
-rect(W/2-0.60,W/2+0.60,L-0.16,L-0.06,"url(#wl)","var(--ray)","1.6",' opacity=".8"'); tag(7,W/2+0.72,L-0.11,"var(--ray)")
+rect(W/2-0.60,W/2+0.60,L-0.16,L-0.06,"url(#wl)","var(--ray)","1.6",' opacity=".8"'); tag(8,W/2+0.72,L-0.11,"var(--ray)")
 # armario
-rect(0.44,1.24,L-0.46,L-0.06,"var(--sunk)","var(--wood)","1.8"); txt(0.84,L-0.24,"arm&#225;rio","s-dimt",fill="var(--wood)")
+line((TRAP*0.55,TRAP*0.55),(W-TRAP*0.55,L-TRAP*0.55),"var(--ray)","1.2",' stroke-dasharray="3 8" opacity=".7"')
 # ouvinte + raios
 for cx,mx in ((ML,1.131),(MR,W-1.131)):
     line((cx,BAF),(W/2,EAR),"var(--flag)","1.9")
@@ -111,14 +113,16 @@ txt(56,44,"PLANTA &#183; 2,75 &#215; 3,70 m &#183; P&#201;-DIREITO 2,65 &#183; G
 txt(56,64,"Cotas em metros &#183; laranja = som direto e espelhos &#183; verde tracejado = caminho das reflex&#245;es precoces","s-dimt","start",None,"",px=True)
 
 LX=X(W)+215; yy=150
-items=[("1","var(--ray)","Bass trap de canto &#183; 3 un.","0,42 de cada parede, do piso ao teto"),
- ("2","var(--flag)","Canto frontal direito","s&#243; acima da porta &#183; 0,42 &#215; 0,55 em z 2,10&#8211;2,65"),
- ("3","var(--ray)","Bloco da parede frontal","4 m&#243;dulos &#183; x 0,58 a 1,78 &#183; z 1,45 a 2,65"),
- ("4","var(--felt)","TV 48\"","x 0,835 a 1,915 &#8212; centralizada, com 1,5 cm de folga"),
- ("5","var(--ray)","Ponto-espelho lateral","centro em y = 1,20 &#183; um de cada lado, mesma cota"),
- ("6","var(--ray)","Nuvem de teto","1,80 &#215; 0,60 &#183; centro em y = 1,25, se o ventilador deixar"),
- ("7","var(--ray)","Gobo m&#243;vel","1,20 &#215; 1,20 &#183; s&#243; na frente do vidro na hora de mixar")]
-txt(LX,yy,"O QUE VAI ONDE","s-dimt","start","var(--ink)",' letter-spacing="1.5"',px=True); yy+=10
+items=[("A","var(--ray)","Bass trap &#183; CONSTRUIR AGORA","frontal esquerdo &#183; 0,42 &#215; 0,42 &#215; 2,40"),
+ ("B","var(--ray)","Bass trap &#183; CONSTRUIR AGORA","traseiro direito &#183; na diagonal do A"),
+ ("2","var(--flag)","Canto frontal direito &#183; bloqueado","a porta &#183; s&#243; 0,42 &#215; 0,55 acima de 2,10"),
+ ("3","var(--flag)","Canto traseiro esquerdo &#183; bloqueado","o arm&#225;rio ocupa o v&#233;rtice"),
+ ("4","var(--ray)","Bloco da parede frontal","4 m&#243;dulos &#183; x 0,58 a 1,78 &#183; z 1,45 a 2,65"),
+ ("5","var(--felt)","TV 48\"","x 0,835 a 1,915 &#8212; centralizada, com 1,5 cm de folga"),
+ ("6","var(--ray)","Ponto-espelho lateral","centro em y = 1,20 &#183; um de cada lado, mesma cota"),
+ ("7","var(--ray)","Nuvem de teto","1,80 &#215; 0,60 &#183; centro em y = 1,25, se o ventilador deixar"),
+ ("8","var(--ray)","Gobo m&#243;vel","1,20 &#215; 1,20 &#183; s&#243; na frente do vidro na hora de mixar")]
+txt(LX,yy,"OS DOIS TRAPS NA DIAGONAL","s-dimt","start","var(--ink)",' letter-spacing="1.5"',px=True); yy+=10
 a('<line class="s-dim" x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f"/>'%(LX,yy,LX+350,yy)); yy+=26
 for n,c_,t1,t2 in items:
     a('<circle cx="%.1f" cy="%.1f" r="11.5" fill="%s"/>'%(LX+11,yy-4,c_))
@@ -127,9 +131,9 @@ for n,c_,t1,t2 in items:
     yy+=42
 yy+=10; a('<line class="s-dim" x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f"/>'%(LX,yy,LX+350,yy)); yy+=26
 txt(LX,yy,"AS COTAS QUE N&#195;O SE MEXEM","s-dimt","start","var(--flag)",' letter-spacing="1.5"',px=True); yy+=22
-for l in ["Baffle a 0,92 m da parede frontal. Est&#225; a 5 mm do","n&#243; do modo de 92,7 Hz e o desliga de gra&#231;a.","",
-          "Tweeter e orelha a 1,10 m. Sobe o m&#237;nimo poss&#237;vel","acima do rebote da bancada.","",
-          "Separa&#231;a&#771;o 0,77 m, tri&#226;ngulo de 60&#176;. O batente da","porta deixaria at&#233; 0,89, mas a&#237; os dois vales de SBIR","empilham em 92 Hz. Um pico se absorve; um vale, n&#227;o."]:
+for l in ["Dos quatro cantos, dois est&#227;o ocupados &#8212; a porta","na frente e o arm&#225;rio no fundo. Sobram exatamente","os dois da diagonal, e &#233; onde os traps v&#227;o.","",
+          "Para o modo, tanto faz qual canto: todos s&#227;o ventre","de press&#227;o. Na diagonal os dois ainda se atrapalham","menos, porque n&#227;o dividem a mesma regi&#227;o de campo.","",
+          "Baffle a 0,92 m: a 5 mm do n&#243; de 92,7 Hz.","Tweeter e orelha a 1,10 m. Separa&#231;&#227;o 0,77 m."]:
     txt(LX,yy,l,"s-dimt","start",None,"",px=True); yy+=17
 open("_planta-final.svg","w").write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1420 1010">\n'+"\n".join(o)+'\n</svg>')
 print("ok")
