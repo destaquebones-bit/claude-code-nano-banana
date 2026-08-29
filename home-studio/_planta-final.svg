@@ -17,8 +17,9 @@
   <line x1="738.8" y1="120.0" x2="732.6" y2="288.1" stroke="var(--flag)" stroke-width="4"/>
   <line x1="175.0" y1="878.5" x2="738.8" y2="878.5" stroke="var(--glass)" stroke-width="5"/>
   <text class="s-dimt" x="456.9" y="902.1" text-anchor="middle" fill="var(--glass)">PORTA DE VIDRO &#183; parede do fundo inteira</text>
-  <rect x="175.0" y="771.9" width="180.4" height="106.6" fill="var(--sunk)" stroke="var(--wood)" stroke-width="2"/>
-  <text class="s-dimt" x="265.2" y="829.3" text-anchor="middle" fill="var(--wood)">ARM&#193;RIO</text>
+  <rect x="175.0" y="792.4" width="246.0" height="86.1" fill="var(--sunk)" stroke="var(--wood)" stroke-width="2"/>
+  <text class="s-dimt" x="298.0" y="825.2" text-anchor="middle" fill="var(--wood)">ARM&#193;RIO</text>
+  <text class="s-dimt" x="298.0" y="849.8" text-anchor="middle" fill="var(--wood)">s&#243; at&#233; 1,35 de altura</text>
   <polygon points="175.0,206.9 175.0,120.0 261.9,120.0" fill="url(#wl)" stroke="var(--ray)" stroke-width="2.6"/>
   <circle cx="204.7" cy="149.7" r="11.5" fill="var(--ray)" stroke="var(--paper)" stroke-width="2"/>
   <text class="s-tag" x="204.7" y="153.7" text-anchor="middle" fill="var(--paper)">A</text>
@@ -129,8 +130,8 @@
   <text class="s-dimt" x="985.8" y="279.0" text-anchor="start">a porta &#183; s&#243; 0,42 &#215; 0,55 acima de 2,10</text>
   <circle cx="964.8" cy="308.0" r="11.5" fill="var(--flag)"/>
   <text class="s-tag" x="964.8" y="312.0" text-anchor="middle" fill="var(--paper)">3</text>
-  <text class="s-leg" x="985.8" y="306.0" text-anchor="start" fill="var(--ink)">Canto traseiro esquerdo &#183; bloqueado</text>
-  <text class="s-dimt" x="985.8" y="321.0" text-anchor="start">o arm&#225;rio ocupa o v&#233;rtice</text>
+  <text class="s-leg" x="985.8" y="306.0" text-anchor="start" fill="var(--ink)">Canto traseiro esquerdo &#183; meio livre</text>
+  <text class="s-dimt" x="985.8" y="321.0" text-anchor="start">o arm&#225;rio s&#243; vai at&#233; ~1,35 &#183; vaga do 3&#186; trap</text>
   <circle cx="964.8" cy="350.0" r="11.5" fill="var(--ray)"/>
   <text class="s-tag" x="964.8" y="354.0" text-anchor="middle" fill="var(--paper)">4</text>
   <text class="s-leg" x="985.8" y="348.0" text-anchor="start" fill="var(--ink)">Bloco da parede frontal</text>
@@ -153,14 +154,17 @@
   <text class="s-dimt" x="985.8" y="531.0" text-anchor="start">1,20 &#215; 1,20 &#183; s&#243; na frente do vidro na hora de mixar</text>
   <line class="s-dim" x1="953.8" y1="574.0" x2="1303.8" y2="574.0"/>
   <text class="s-dimt" x="953.8" y="600.0" text-anchor="start" fill="var(--flag)" letter-spacing="1.5">AS COTAS QUE N&#195;O SE MEXEM</text>
-  <text class="s-dimt" x="953.8" y="622.0" text-anchor="start">Dos quatro cantos, dois est&#227;o ocupados &#8212; a porta</text>
-  <text class="s-dimt" x="953.8" y="639.0" text-anchor="start">na frente e o arm&#225;rio no fundo. Sobram exatamente</text>
-  <text class="s-dimt" x="953.8" y="656.0" text-anchor="start">os dois da diagonal, e &#233; onde os traps v&#227;o.</text>
-  <text class="s-dimt" x="953.8" y="673.0" text-anchor="start"></text>
-  <text class="s-dimt" x="953.8" y="690.0" text-anchor="start">Para o modo, tanto faz qual canto: todos s&#227;o ventre</text>
-  <text class="s-dimt" x="953.8" y="707.0" text-anchor="start">de press&#227;o. Na diagonal os dois ainda se atrapalham</text>
-  <text class="s-dimt" x="953.8" y="724.0" text-anchor="start">menos, porque n&#227;o dividem a mesma regi&#227;o de campo.</text>
-  <text class="s-dimt" x="953.8" y="741.0" text-anchor="start"></text>
-  <text class="s-dimt" x="953.8" y="758.0" text-anchor="start">Baffle a 0,92 m: a 5 mm do n&#243; de 92,7 Hz.</text>
-  <text class="s-dimt" x="953.8" y="775.0" text-anchor="start">Tweeter e orelha a 1,10 m. Separa&#231;&#227;o 0,77 m.</text>
+  <text class="s-dimt" x="953.8" y="622.0" text-anchor="start">Dois cantos inteiros: frontal esquerdo e traseiro</text>
+  <text class="s-dimt" x="953.8" y="639.0" text-anchor="start">direito. &#201; onde v&#227;o os dois traps de agora.</text>
+  <text class="s-dimt" x="953.8" y="656.0" text-anchor="start"></text>
+  <text class="s-dimt" x="953.8" y="673.0" text-anchor="start">Os outros dois est&#227;o ocupados s&#243; embaixo &#8212; a porta</text>
+  <text class="s-dimt" x="953.8" y="690.0" text-anchor="start">at&#233; 2,10 e o arm&#225;rio at&#233; ~1,35. Sobram 0,55 e 1,30 m</text>
+  <text class="s-dimt" x="953.8" y="707.0" text-anchor="start">de canto alto, guardados para os pr&#243;ximos traps.</text>
+  <text class="s-dimt" x="953.8" y="724.0" text-anchor="start"></text>
+  <text class="s-dimt" x="953.8" y="741.0" text-anchor="start">Para o modo, tanto faz qual canto: todos s&#227;o ventre</text>
+  <text class="s-dimt" x="953.8" y="758.0" text-anchor="start">de press&#227;o. Na diagonal os dois ainda se atrapalham</text>
+  <text class="s-dimt" x="953.8" y="775.0" text-anchor="start">menos, porque n&#227;o dividem a mesma regi&#227;o de campo.</text>
+  <text class="s-dimt" x="953.8" y="792.0" text-anchor="start"></text>
+  <text class="s-dimt" x="953.8" y="809.0" text-anchor="start">Baffle a 0,92 m: a 5 mm do n&#243; de 92,7 Hz.</text>
+  <text class="s-dimt" x="953.8" y="826.0" text-anchor="start">Tweeter e orelha a 1,10 m. Separa&#231;&#227;o 0,77 m.</text>
 </svg>

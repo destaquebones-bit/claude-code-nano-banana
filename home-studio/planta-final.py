@@ -63,7 +63,9 @@ line((0,L),(W,L),"var(--glass)","5")
 txt(W/2,L+0.115,"PORTA DE VIDRO &#183; parede do fundo inteira","s-dimt",fill="var(--glass)")
 
 # armario, antes dos cantos
-rect(0,0.88,L-0.52,L,"var(--sunk)","var(--wood)","2"); txt(0.44,L-0.24,"ARM&#193;RIO","s-dimt",fill="var(--wood)")
+rect(0,1.20,L-0.42,L,"var(--sunk)","var(--wood)","2")
+txt(0.60,L-0.26,"ARM&#193;RIO","s-dimt",fill="var(--wood)")
+txt(0.60,L-0.14,"s&#243; at&#233; 1,35 de altura","s-dimt",fill="var(--wood)")
 # bass traps
 poly([(0,TRAP),(0,0),(TRAP,0)],"url(#wl)","var(--ray)","2.6"); tag("A",0.145,0.145,"var(--ray)")
 poly([(W,TRAP),(W,0),(W-TRAP,0)],"none","var(--flag)","2",' stroke-dasharray="7 5"'); tag(2,W-0.135,0.135,"var(--flag)")
@@ -116,7 +118,7 @@ LX=X(W)+215; yy=150
 items=[("A","var(--ray)","Bass trap &#183; CONSTRUIR AGORA","frontal esquerdo &#183; 0,42 &#215; 0,42 &#215; 2,40"),
  ("B","var(--ray)","Bass trap &#183; CONSTRUIR AGORA","traseiro direito &#183; na diagonal do A"),
  ("2","var(--flag)","Canto frontal direito &#183; bloqueado","a porta &#183; s&#243; 0,42 &#215; 0,55 acima de 2,10"),
- ("3","var(--flag)","Canto traseiro esquerdo &#183; bloqueado","o arm&#225;rio ocupa o v&#233;rtice"),
+ ("3","var(--flag)","Canto traseiro esquerdo &#183; meio livre","o arm&#225;rio s&#243; vai at&#233; ~1,35 &#183; vaga do 3&#186; trap"),
  ("4","var(--ray)","Bloco da parede frontal","4 m&#243;dulos &#183; x 0,58 a 1,78 &#183; z 1,45 a 2,65"),
  ("5","var(--felt)","TV 48\"","x 0,835 a 1,915 &#8212; centralizada, com 1,5 cm de folga"),
  ("6","var(--ray)","Ponto-espelho lateral","centro em y = 1,20 &#183; um de cada lado, mesma cota"),
@@ -131,7 +133,8 @@ for n,c_,t1,t2 in items:
     yy+=42
 yy+=10; a('<line class="s-dim" x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f"/>'%(LX,yy,LX+350,yy)); yy+=26
 txt(LX,yy,"AS COTAS QUE N&#195;O SE MEXEM","s-dimt","start","var(--flag)",' letter-spacing="1.5"',px=True); yy+=22
-for l in ["Dos quatro cantos, dois est&#227;o ocupados &#8212; a porta","na frente e o arm&#225;rio no fundo. Sobram exatamente","os dois da diagonal, e &#233; onde os traps v&#227;o.","",
+for l in ["Dois cantos inteiros: frontal esquerdo e traseiro","direito. &#201; onde v&#227;o os dois traps de agora.","",
+          "Os outros dois est&#227;o ocupados s&#243; embaixo &#8212; a porta","at&#233; 2,10 e o arm&#225;rio at&#233; ~1,35. Sobram 0,55 e 1,30 m","de canto alto, guardados para os pr&#243;ximos traps.","",
           "Para o modo, tanto faz qual canto: todos s&#227;o ventre","de press&#227;o. Na diagonal os dois ainda se atrapalham","menos, porque n&#227;o dividem a mesma regi&#227;o de campo.","",
           "Baffle a 0,92 m: a 5 mm do n&#243; de 92,7 Hz.","Tweeter e orelha a 1,10 m. Separa&#231;&#227;o 0,77 m."]:
     txt(LX,yy,l,"s-dimt","start",None,"",px=True); yy+=17
