@@ -1,0 +1,439 @@
+<title>Depois da Medição</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<style>
+:root{
+  --paper:#EDEEEA; --surface:#F8F8F5; --sunk:#E3E4DE;
+  --ink:#16181C; --body:#2E3138; --mute:#6F7169; --rule:#D3D4CD;
+  --mdf:#B5762F; --mdf-soft:#EADCC4;
+  --felt:#1D1F24; --felt-line:#1D1F24;
+  --flag:#A2372E; --flag-soft:#F0DBD7;
+  --ray:#2C6B69; --ray-soft:#D8E6E4;
+  --glass:#7FA7A8; --glass-fill:#DCE9E9;
+  --wood:#8A5A32;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+:root:not([data-theme="light"]){ @media (prefers-color-scheme:dark){
+  --paper:#0F1114; --surface:#171A1E; --sunk:#101317;
+  --ink:#EAEAE4; --body:#C4C7C1; --mute:#8B8E86; --rule:#2B2F35;
+  --mdf:#D4964F; --mdf-soft:#4B3A22;
+  --felt:#3F434B; --felt-line:#5A5F69;
+  --flag:#DE7264; --flag-soft:#43231E;
+  --ray:#65AFA9; --ray-soft:#1E3634;
+  --glass:#5E8E90; --glass-fill:#1E3436;
+  --wood:#A5734A;
+}}
+:root[data-theme="dark"]{
+  --paper:#0F1114; --surface:#171A1E; --sunk:#101317;
+  --ink:#EAEAE4; --body:#C4C7C1; --mute:#8B8E86; --rule:#2B2F35;
+  --mdf:#D4964F; --mdf-soft:#4B3A22;
+  --felt:#3F434B; --felt-line:#5A5F69;
+  --flag:#DE7264; --flag-soft:#43231E;
+  --ray:#65AFA9; --ray-soft:#1E3634;
+  --glass:#5E8E90; --glass-fill:#1E3436;
+  --wood:#A5734A;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--body);
+  font-family:var(--serif); font-size:17px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--display); font-variation-settings:"wdth" 112; color:var(--ink); text-wrap:balance; margin:0; line-height:1.06}
+p{margin:0}
+strong{font-weight:600; color:var(--ink)}
+em{font-style:italic}
+a{color:var(--mdf)}
+:focus-visible{outline:2px solid var(--mdf); outline-offset:3px}
+
+.wrap{max-width:66ch; margin:0 auto; padding:0 24px}
+.plate{max-width:1160px; margin:0 auto; padding:0 24px}
+
+/* ---- title block ---- */
+.stamp{border-bottom:1px solid var(--rule); background:var(--surface)}
+.stamp__in{max-width:1160px; margin:0 auto; padding:56px 24px 0}
+.eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--mdf); margin:0 0 18px}
+.stamp h1{font-size:clamp(2.6rem,8vw,4.6rem); font-weight:800; font-variation-settings:"wdth" 118; letter-spacing:-.02em}
+.lede{font-size:1.22rem; line-height:1.5; color:var(--body); max-width:52ch; margin-top:20px}
+.specs{display:grid; grid-template-columns:repeat(auto-fit,minmax(148px,1fr)); gap:0; margin:44px 0 0; border-top:1px solid var(--rule)}
+.specs>div{padding:14px 16px 16px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule)}
+.specs>div:last-child{border-right:none}
+.specs dt{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--mute)}
+.specs dd{margin:5px 0 0; font-family:var(--display); font-variation-settings:"wdth" 108; font-weight:600; font-size:1.22rem; color:var(--ink); font-variant-numeric:tabular-nums}
+.specs dd .q{font-size:.72em; font-weight:500; color:var(--mute)}
+
+/* ---- sections ---- */
+section{padding:64px 0 0}
+section:last-child{padding-bottom:96px}
+.head{display:flex; align-items:baseline; gap:16px; border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:28px}
+.head__n{font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--mdf); white-space:nowrap; padding-bottom:3px}
+.head h2{font-size:clamp(1.5rem,3.4vw,2.1rem); font-weight:700; letter-spacing:-.01em}
+.wrap p + p{margin-top:1.05em}
+.wrap h3{font-family:var(--display); font-variation-settings:"wdth" 104; font-size:1.02rem; font-weight:700; letter-spacing:.01em; margin:2.1em 0 .5em}
+
+/* ---- drawings ---- */
+.dw{background:var(--surface); border:1px solid var(--rule); border-radius:2px; padding:18px 18px 12px; margin:0}
+.dw svg{display:block; width:100%; height:auto}
+.dw__cap{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-top:12px; border-top:1px solid var(--rule); padding-top:9px}
+.grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px}
+.stack{display:grid; gap:18px}
+.side{display:grid; grid-template-columns:minmax(320px,1.35fr) minmax(240px,1fr); gap:26px; align-items:start}
+@media (max-width:860px){ .side{grid-template-columns:1fr} }
+
+/* ---- key legend ---- */
+.key{font-family:var(--mono); font-size:12.5px; line-height:1.5; margin:0; display:grid; gap:7px}
+.key div{display:grid; grid-template-columns:22px 1fr; gap:9px; align-items:start}
+.key b{display:flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; background:var(--ink); color:var(--surface); font-size:10.5px; font-weight:600; font-family:var(--mono)}
+.key span{color:var(--body); padding-top:1px}
+.key .sw{width:20px; height:20px; border-radius:2px; border:1px solid var(--rule)}
+.keyhead{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute); margin:0 0 12px; border-bottom:1px solid var(--rule); padding-bottom:7px}
+.key + .keyhead{margin-top:26px}
+
+/* ---- tables ---- */
+.tw{overflow-x:auto; border:1px solid var(--rule); border-radius:2px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-family:var(--mono); font-size:12.5px; font-variant-numeric:tabular-nums}
+th,td{text-align:left; padding:9px 14px; border-bottom:1px solid var(--rule); white-space:nowrap}
+thead th{font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); font-weight:500; background:var(--sunk)}
+tbody tr:last-child td{border-bottom:none}
+td.n{text-align:right}
+td:first-child{white-space:normal; color:var(--ink)}
+.bad{color:var(--flag); font-weight:600}
+.ok{color:var(--ray); font-weight:600}
+
+/* ---- callout ---- */
+.note{border-left:3px solid var(--mdf); background:var(--surface); padding:16px 20px; font-size:.95rem; margin:1.6em 0}
+.note b{font-family:var(--display); font-variation-settings:"wdth" 104; font-weight:700}
+
+/* ---- action list ---- */
+.acts{display:grid; gap:2px; margin:0; counter-reset:act}
+.act{display:grid; grid-template-columns:52px 1fr; gap:20px; background:var(--surface); border:1px solid var(--rule); padding:20px 22px; align-items:start}
+.act__n{font-family:var(--display); font-variation-settings:"wdth" 118; font-weight:800; font-size:2rem; line-height:.9; color:var(--mdf); font-variant-numeric:tabular-nums}
+.act h4{font-size:1.06rem; font-weight:700; margin-bottom:6px}
+.act p{font-size:.95rem}
+.act__meta{font-family:var(--mono); font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--mute); margin-top:10px; display:flex; gap:16px; flex-wrap:wrap}
+.act__meta i{font-style:normal; color:var(--flag)}
+.act__meta i.g{color:var(--ray)}
+
+ul.plain{margin:1.1em 0; padding-left:1.15em}
+ul.plain li{margin-bottom:.5em}
+ul.plain li::marker{color:var(--mdf)}
+
+/* ---- chart ---- */
+.chart{position:relative}
+.chart .tip{
+  position:absolute; pointer-events:none; opacity:0; transform:translate(-50%,-100%);
+  background:var(--ink); color:var(--surface); border-radius:3px; padding:8px 11px;
+  font-family:var(--mono); font-size:11px; line-height:1.5; white-space:nowrap; z-index:5;
+  transition:opacity .09s linear;
+}
+.chart .tip[data-on="1"]{opacity:1}
+.chart .tip b{display:block; color:var(--surface); font-weight:600; margin-bottom:4px; opacity:.7; letter-spacing:.08em}
+.chart .tip i{font-style:normal; display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:7px; vertical-align:1px}
+.chart .tip u{text-decoration:none; float:right; padding-left:18px; font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){ .chart .tip{transition:none} }
+:root{ --a1:#3E9C97; --a2:#1F6E6B; --a3:#0B3E3C; }
+:root:not([data-theme="light"]){ @media (prefers-color-scheme:dark){ --a1:#2E8F8A; --a2:#4FBDB5; --a3:#9AE3DC; }}
+:root[data-theme="dark"]{ --a1:#2E8F8A; --a2:#4FBDB5; --a3:#9AE3DC; }
+
+/* ---- svg shared ---- */
+svg text{font-family:var(--mono); fill:var(--mute)}
+.s-wall{fill:none; stroke:var(--ink); stroke-width:9}
+.s-wall-e{fill:none; stroke:var(--ink); stroke-width:6}
+.s-hair{fill:none; stroke:var(--rule); stroke-width:1}
+.s-dim{fill:none; stroke:var(--mute); stroke-width:.9}
+.s-dimt{font-size:10px; fill:var(--mute)}
+.s-lbl{font-size:10px; fill:var(--body)}
+.s-felt{fill:var(--felt); stroke:var(--felt-line); stroke-width:.8}
+.s-mdf{fill:var(--mdf); opacity:.92}
+.s-mdf-l{fill:var(--mdf-soft); stroke:var(--mdf); stroke-width:.9}
+.s-wood{fill:none; stroke:var(--wood); stroke-width:2.4}
+.s-woodf{fill:var(--wood); opacity:.22}
+.s-glass{fill:var(--glass-fill); stroke:var(--glass); stroke-width:1.4}
+.s-ray{fill:none; stroke:var(--ray); stroke-width:1.5; stroke-linejoin:round}
+.s-rayd{fill:none; stroke:var(--ray); stroke-width:1.2; stroke-dasharray:5 3.5}
+.s-raypt{fill:var(--ray)}
+.s-flag{fill:none; stroke:var(--flag); stroke-width:1.3; stroke-dasharray:6 4}
+.s-flagf{fill:var(--flag)}
+.s-flagt{font-size:10px; fill:var(--flag); font-weight:600}
+.s-axis{fill:none; stroke:var(--mute); stroke-width:1; stroke-dasharray:12 4 2 4}
+.s-obj{fill:var(--sunk); stroke:var(--mute); stroke-width:1}
+.s-dark{fill:var(--felt); stroke:var(--felt-line); stroke-width:.8}
+.s-ghost{fill:none; stroke:var(--mute); stroke-width:1; stroke-dasharray:4 3}
+.s-fill-surf{fill:var(--surface)}
+.s-key circle{fill:var(--ink)}
+.s-key text{fill:var(--surface); font-size:10px; font-weight:600; text-anchor:middle}
+.s-kn circle{fill:var(--mdf)}
+.s-kn text{fill:var(--surface); font-size:10px; font-weight:600; text-anchor:middle}
+@media (prefers-reduced-motion:no-preference){}
+</style>
+<style>
+.phase{border-top:2px solid var(--ink); padding-top:14px; margin-top:12px}
+.phase__tag{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap}
+.phase__n{font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--mdf)}
+.phase h3{font-family:var(--display); font-variation-settings:"wdth" 108; font-size:1.35rem; font-weight:700; color:var(--ink); margin:0}
+.phase__cost{font-family:var(--mono); font-size:11px; color:var(--mute); margin-left:auto; letter-spacing:.06em}
+ol.steps{list-style:none; counter-reset:st; margin:20px 0 0; padding:0; display:grid; gap:14px}
+ol.steps>li{counter-increment:st; display:grid; grid-template-columns:30px 1fr; gap:16px; align-items:start}
+ol.steps>li::before{
+  content:counter(st); font-family:var(--mono); font-size:11px; font-weight:600;
+  width:26px; height:26px; border-radius:50%; border:1px solid var(--rule);
+  display:flex; align-items:center; justify-content:center; color:var(--mdf); background:var(--surface);
+}
+ol.steps>li>div{padding-top:2px}
+ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-weight:700; color:var(--ink)}
+.cut{font-family:var(--mono); font-size:12px; background:var(--sunk); border-left:3px solid var(--mdf); padding:11px 14px; margin-top:9px; line-height:1.65}
+.cut span{color:var(--mute)}
+.tot{display:flex; justify-content:space-between; align-items:baseline; gap:16px; border-top:2px solid var(--ink); padding:14px 16px 0; margin-top:2px; font-family:var(--mono); font-size:13px}
+.tot b{font-family:var(--display); font-variation-settings:"wdth" 112; font-weight:800; font-size:1.5rem; color:var(--ink); font-variant-numeric:tabular-nums}
+.warn{border-left:3px solid var(--flag); background:var(--flag-soft); padding:16px 20px; font-size:.95rem; margin:1.6em 0}
+.warn b{font-family:var(--display); font-variation-settings:"wdth" 104; font-weight:700; color:var(--ink)}
+.backlink{font-family:var(--mono); font-size:12px; color:var(--mute); margin-top:16px}
+.backlink a{color:var(--mdf)}
+</style>
+<style>
+.big{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:2px; margin:30px 0 0}
+.big div{background:var(--surface); border:1px solid var(--rule); padding:16px 18px}
+.big dt{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--mute)}
+.big dd{margin:6px 0 0; font-family:var(--display); font-variation-settings:"wdth" 112; font-weight:700; font-size:1.5rem; color:var(--ink); font-variant-numeric:tabular-nums}
+.big dd s{text-decoration:line-through; color:var(--mute); font-weight:500; font-size:.62em; margin-right:8px}
+.big p{font-size:.84rem; color:var(--mute); margin-top:6px; line-height:1.45}
+.kill{border-left:3px solid var(--flag); background:var(--surface); padding:2px 0; margin:1.4em 0}
+.kill div{display:grid; grid-template-columns:1fr auto; gap:16px; padding:11px 18px; border-bottom:1px solid var(--rule); align-items:baseline}
+.kill div:last-child{border-bottom:none}
+.kill b{font-family:var(--display); font-variation-settings:"wdth" 104; font-weight:600; color:var(--ink); font-size:.97rem}
+.kill span{font-family:var(--mono); font-size:11.5px; color:var(--mute); text-align:right}
+.kill i{font-style:normal; display:block; font-size:.86rem; color:var(--mute); margin-top:3px; font-family:var(--serif)}
+.dev{border:1px solid var(--rule); background:var(--surface); margin:1.5em 0}
+.dev__h{display:flex; align-items:baseline; gap:14px; background:var(--sunk); padding:12px 18px; border-bottom:1px solid var(--rule); flex-wrap:wrap}
+.dev__h b{font-family:var(--display); font-variation-settings:"wdth" 108; font-weight:700; font-size:1.06rem; color:var(--ink)}
+.dev__h em{font-style:normal; font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--mdf)}
+.dev__h u{text-decoration:none; margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--mute)}
+.dev__b{padding:16px 18px}
+.dev__b p{font-size:.94rem}
+.dev__b p+p{margin-top:.8em}
+.spec{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:14px}
+.spec div{background:var(--surface); padding:10px 13px}
+.spec dt{font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute)}
+.spec dd{margin:4px 0 0; font-family:var(--mono); font-size:13px; font-weight:600; color:var(--ink)}
+</style>
+
+<header class="stamp">
+  <div class="stamp__in">
+    <p class="eyebrow">Revisão · Home studio 2,75 × 3,70 × 2,65 m</p>
+    <h1>Depois da Medição</h1>
+    <p class="lede">A sala foi medida e metade do projeto caiu. O médio já estava tratado; o problema é todo abaixo de 250 Hz. Este é o projeto refeito em cima de número medido, não de estimativa.</p>
+    <dl class="specs">
+      <div><dt>RT 250 Hz–2 kHz</dt><dd>0,42 <span class="q">s</span></dd></div>
+      <div><dt>RT em 63 Hz</dt><dd>1,75 <span class="q">s</span></dd></div>
+      <div><dt>Pico</dt><dd>+8,8 <span class="q">dB · 131 Hz</span></dd></div>
+      <div><dt>Placas de lã</dt><dd>10 <span class="q">de 36</span></dd></div>
+      <div><dt>Dispositivos</dt><dd>6</dd></div>
+      <div><dt>Medição</dt><dd>30/08</dd></div>
+    </dl>
+    <p class="backlink">O projeto antigo: <a href="https://claude.ai/code/artifact/37f67936-c761-4d7e-a3c3-4b1e9efe1d20">Caderno de Obra</a> · <a href="https://claude.ai/code/artifact/56852314-77af-49cf-a071-86d65d416694">Sala 3 × 4,8</a> · como medir: <a href="https://claude.ai/code/artifact/62003f52-0a7c-4d1a-bb37-82c9bd68f91c">Manual do REW</a></p>
+  </div>
+</header>
+
+<main>
+
+<section id="virada">
+  <div class="wrap">
+    <div class="head"><span class="head__n">01</span><h2>O que a medição derrubou</h2></div>
+    <p>Eu estimei o RT da sala em <strong>0,85 s</strong> por Sabine, assumindo uma sala nua com piso de cerâmica e paredes secas. A sua não é isso há muito tempo.</p>
+
+    <dl class="big">
+      <div><dt>RT medido · 250 Hz a 2 kHz</dt><dd><s>0,85</s>0,42 s</dd><p>Metade do que eu calculei. O tapete, as cortinas, o armário com livros e discos e os três painéis pretos já fizeram esse trabalho.</p></div>
+      <div><dt>RT medido · 63 Hz</dt><dd>1,75 s</dd><p>Cinco vezes o valor do médio. É esta razão, e não o número absoluto, que faz a sala soar embolada.</p></div>
+      <div><dt>Reflexões precoces</dt><dd>−20 dB</dd><p>Paredes, teto e vidro do fundo chegam todos em −20 dB ou menos. Já estão onde deveriam estar.</p></div>
+    </dl>
+
+    <div class="warn"><b>A consequência é dura e é boa.</b> Quase toda a absorção de banda larga que eu tinha especificado — o bloco de quatro módulos na parede frontal, os módulos dos pontos-espelho, o gobo — foi dimensionada para uma sala de 0,85 s. Instalada numa sala de 0,42 s, ela leva o médio para 0,25 e deixa o grave em 0,92 e 1,75. <strong>A desproporção piora.</strong> Sala seca no médio com grave arrastando é o pior dos dois mundos, e é o erro mais comum de tratamento caseiro.</div>
+
+    <h3>O ETC confirmou por outro caminho</h3>
+    <p>Com a medição de referência acústica dá para ver cada reflexão chegando. Só uma é forte:</p>
+    <div class="tw"><table>
+      <thead><tr><th>Superfície</th><th class="n">Chegada</th><th class="n">Nível</th><th>Veredito</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Tampo da bancada</strong></td><td class="n">0,32 ms</td><td class="n bad">−7,9 dB</td><td>a única que incomoda</td></tr>
+        <tr><td>Parede frontal</td><td class="n">4,97 ms</td><td class="n ok">−22,0 dB</td><td>já está boa</td></tr>
+        <tr><td>Teto</td><td class="n">6,67 ms</td><td class="n ok">−20,2 dB</td><td>já está boa</td></tr>
+        <tr><td>Vidro do fundo</td><td class="n">10,88 ms</td><td class="n ok">−23,0 dB</td><td>já está boa</td></tr>
+        <tr><td>Laterais e piso</td><td class="n">4,3 a 7,0 ms</td><td class="n ok">−31 a −33 dB</td><td>invisíveis</td></tr>
+      </tbody>
+    </table></div>
+    <p>O rebote da bancada chega em <strong>0,32 ms</strong> e a apenas 7,9 dB abaixo do som direto. É cedo demais para o ouvido separar do direto — ele não vira eco, vira <em>filtro</em>. E se conserta com uma faixa de feltro, não com painel.</p>
+
+    <div class="note"><b>O que a medição confirmou do projeto antigo.</b> O pico previsto do trio modal apareceu em <strong>130,7 Hz com +8,8 dB</strong> — eu tinha calculado o A2 em 129,4. O vale de SBIR apareceu em 82 Hz. E L e R medem a menos de 1,5 dB de diferença em todas as bandas do grave: <strong>o sistema está centrado</strong>. A geometria estava certa; era o dimensionamento da absorção que estava errado.</div>
+  </div>
+</section>
+
+<section id="alvo">
+  <div class="plate">
+    <div class="head"><span class="head__n">02</span><h2>O novo alvo</h2></div>
+    <div class="dw">
+<svg viewBox="0 0 700 300" role="img" aria-label="RT60 por banda antes e depois do projeto revisado: 63 Hz cai de 1,75 para 0,81 s, 125 Hz de 0,92 para 0,55, e as bandas de 500 Hz para cima ficam entre 0,21 e 0,29 s">
+        <rect x="58" y="34" width="618" height="202" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>
+        <line class="s-hair" x1="58" y1="236.0" x2="676" y2="236.0"/>
+        <text class="s-dimt" x="51" y="240.0" text-anchor="end">0.0</text>
+        <line class="s-hair" x1="58" y1="182.8" x2="676" y2="182.8"/>
+        <text class="s-dimt" x="51" y="186.8" text-anchor="end">0.5</text>
+        <line class="s-hair" x1="58" y1="129.7" x2="676" y2="129.7"/>
+        <text class="s-dimt" x="51" y="133.7" text-anchor="end">1.0</text>
+        <line class="s-hair" x1="58" y1="76.5" x2="676" y2="76.5"/>
+        <text class="s-dimt" x="51" y="80.5" text-anchor="end">1.5</text>
+        <rect x="72.1" y="49.9" width="28.3" height="186.1" fill="var(--flag)"/>
+        <rect x="103.9" y="149.9" width="28.3" height="86.1" fill="var(--ray)"/>
+        <text class="s-dimt" x="102.1" y="252" text-anchor="middle">63</text>
+        <text class="s-dimt" x="86.3" y="44.9" text-anchor="middle" fill="var(--flag)">1.75</text>
+        <text class="s-dimt" x="118.0" y="144.9" text-anchor="middle" fill="var(--ray)">0.81</text>
+        <rect x="160.4" y="138.2" width="28.3" height="97.8" fill="var(--flag)"/>
+        <rect x="192.2" y="177.5" width="28.3" height="58.5" fill="var(--ray)"/>
+        <text class="s-dimt" x="190.4" y="252" text-anchor="middle">125</text>
+        <text class="s-dimt" x="174.5" y="133.2" text-anchor="middle" fill="var(--flag)">0.92</text>
+        <text class="s-dimt" x="206.3" y="172.5" text-anchor="middle" fill="var(--ray)">0.55</text>
+        <rect x="248.7" y="166.9" width="28.3" height="69.1" fill="var(--flag)"/>
+        <rect x="280.5" y="188.2" width="28.3" height="47.8" fill="var(--ray)"/>
+        <text class="s-dimt" x="278.7" y="252" text-anchor="middle">250</text>
+        <text class="s-dimt" x="262.8" y="161.9" text-anchor="middle" fill="var(--flag)">0.65</text>
+        <text class="s-dimt" x="294.6" y="183.2" text-anchor="middle" fill="var(--ray)">0.45</text>
+        <rect x="337.0" y="195.6" width="28.3" height="40.4" fill="var(--flag)"/>
+        <rect x="368.8" y="205.2" width="28.3" height="30.8" fill="var(--ray)"/>
+        <text class="s-dimt" x="367.0" y="252" text-anchor="middle">500</text>
+        <text class="s-dimt" x="351.1" y="190.6" text-anchor="middle" fill="var(--flag)">0.38</text>
+        <text class="s-dimt" x="382.9" y="200.2" text-anchor="middle" fill="var(--ray)">0.29</text>
+        <rect x="425.3" y="198.8" width="28.3" height="37.2" fill="var(--flag)"/>
+        <rect x="457.1" y="207.3" width="28.3" height="28.7" fill="var(--ray)"/>
+        <text class="s-dimt" x="455.3" y="252" text-anchor="middle">1k</text>
+        <text class="s-dimt" x="439.4" y="193.8" text-anchor="middle" fill="var(--flag)">0.35</text>
+        <text class="s-dimt" x="471.2" y="202.3" text-anchor="middle" fill="var(--ray)">0.27</text>
+        <rect x="513.6" y="204.1" width="28.3" height="31.9" fill="var(--flag)"/>
+        <rect x="545.3" y="210.5" width="28.3" height="25.5" fill="var(--ray)"/>
+        <text class="s-dimt" x="543.6" y="252" text-anchor="middle">2k</text>
+        <text class="s-dimt" x="527.7" y="199.1" text-anchor="middle" fill="var(--flag)">0.30</text>
+        <text class="s-dimt" x="559.5" y="205.5" text-anchor="middle" fill="var(--ray)">0.24</text>
+        <rect x="601.8" y="208.4" width="28.3" height="27.6" fill="var(--flag)"/>
+        <rect x="633.6" y="213.7" width="28.3" height="22.3" fill="var(--ray)"/>
+        <text class="s-dimt" x="631.9" y="252" text-anchor="middle">4k</text>
+        <text class="s-dimt" x="616.0" y="203.4" text-anchor="middle" fill="var(--flag)">0.26</text>
+        <text class="s-dimt" x="647.7" y="208.7" text-anchor="middle" fill="var(--ray)">0.21</text>
+        <text class="s-dimt" x="58" y="24">segundos</text>
+        <text class="s-dimt" x="676" y="24" text-anchor="end">laranja = hoje &#183; verde = depois do projeto revisado</text>
+        <text class="s-dimt" x="58" y="270">Hz</text></svg>
+      <p class="dw__cap">RT60 por banda · medido com 8 varreduras · alvo do projeto revisado</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <p>O alvo deixou de ser um número de RT e passou a ser uma <strong>razão</strong>: que o grave não decaia muito mais devagar que o médio. Hoje 63 Hz demora <strong>5 vezes</strong> o que 1 kHz demora. Abaixo de 2× a sala para de soar embolada.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Banda</th><th class="n">RT hoje</th><th class="n">A hoje</th><th class="n">Falta</th><th class="n">RT depois</th></tr></thead>
+      <tbody>
+        <tr><td>63 Hz</td><td class="n bad">1,75 s</td><td class="n">2,5</td><td class="n">+2,7 sabins</td><td class="n ok">0,81 s</td></tr>
+        <tr><td>125 Hz</td><td class="n bad">0,92 s</td><td class="n">4,7</td><td class="n">+2,2 sabins</td><td class="n ok">0,55 s</td></tr>
+        <tr><td>250 Hz</td><td class="n">0,65 s</td><td class="n">6,7</td><td class="n">+2,0 sabins</td><td class="n ok">0,45 s</td></tr>
+        <tr><td>500 Hz</td><td class="n ok">0,38 s</td><td class="n">11,4</td><td class="n">nada</td><td class="n">0,29 s</td></tr>
+        <tr><td>1 kHz</td><td class="n ok">0,35 s</td><td class="n">12,4</td><td class="n">nada</td><td class="n">0,27 s</td></tr>
+        <tr><td>2 e 4 kHz</td><td class="n ok">0,30 / 0,26</td><td class="n">14,5 / 16,7</td><td class="n">nada</td><td class="n">0,24 / 0,21</td></tr>
+      </tbody>
+    </table></div>
+    <p>Volume da sala <strong>26,96 m³</strong>, então 0,161·V = 4,34. Toda a coluna "falta" está abaixo de 250 Hz, e soma <strong>menos de 7 sabins</strong> — contra os 22 que o projeto antigo perseguia.</p>
+  </div>
+</section>
+
+<section id="dispositivos">
+  <div class="wrap">
+    <div class="head"><span class="head__n">03</span><h2>Os seis dispositivos</h2></div>
+    <p>Dois já estão em obra. Quatro são novos, e três deles são de um tipo que não existia no projeto antigo.</p>
+
+    <div class="dev">
+      <div class="dev__h"><em>1 e 2</em><b>Os dois traps de canto de PET</b><u>em obra · não muda nada</u></div>
+      <div class="dev__b">
+        <p>Continuam como estão: frontal esquerdo e traseiro direito, quatro camadas escalonadas, 2,40 m, as dez placas cortadas sem sobra.</p>
+        <p>A medição mostra que eles entregam <strong>0,43 sabins em 63 Hz e 0,86 em 125</strong> — pouco no grave — mas <strong>2,30 em 500 Hz e 2,45 em 1 kHz</strong>, que é exatamente o que falta para o médio bater 0,29 s. Eles não são a solução do grave; são a peça que fecha o médio.</p>
+      </div>
+    </div>
+
+    <div class="dev">
+      <div class="dev__h"><em>3 e 4</em><b>Os dois cantos parciais</b><u>sobras de material</u></div>
+      <div class="dev__b">
+        <p>O trecho acima da porta, <strong>0,42 × 0,55 m</strong>, e o trecho acima do armário, <strong>0,42 × 1,30 m</strong>. Mesma construção dos outros dois, em escala menor.</p>
+        <p>Somam pouco — 0,17 sabins em 63 Hz — mas ficam nos encontros de canto com o teto, onde a pressão modal é máxima, e custam quase nada porque aproveitam o que sobrar.</p>
+      </div>
+    </div>
+
+    <div class="dev">
+      <div class="dev__h"><em>5</em><b>Membrana de 63 Hz · parede frontal</b><u>o dispositivo novo</u></div>
+      <div class="dev__b">
+        <p>Aqui está a mudança de ferramenta. Para absorver 63 Hz com material poroso você precisaria de <strong>1,36 m de profundidade</strong> — um quarto do comprimento de onda. Não existe nessa sala.</p>
+        <p>Um absorvedor de membrana resolve por outro princípio: uma chapa fina sobre uma caixa selada de ar vibra na frequência em que você a sintonizar, e a lã de dentro transforma essa vibração em calor. A fórmula é <strong>f = 60 / √(m · d)</strong>, com m em kg/m² e d em metros.</p>
+        <div class="cut">MDF de 8 mm = 6,0 kg/m² &#183; c&#226;mara de 0,15 m &#183; f = 60/&#8730;(6,0 &#215; 0,15) = <b>63,2 Hz</b></div>
+        <p>Vai no trecho livre acima da TV, ocupando os <strong>1,50 × 1,20 m</strong> que antes iam receber os quatro módulos de lã. Mesmo lugar, dispositivo diferente, dez vezes mais eficaz na frequência que importa.</p>
+        <div class="spec">
+          <div><dt>Face</dt><dd>MDF 8 mm</dd></div>
+          <div><dt>Câmara</dt><dd>150 mm</dd></div>
+          <div><dt>Área</dt><dd>1,80 m²</dd></div>
+          <div><dt>Sintonia</dt><dd>63 Hz</dd></div>
+          <div><dt>Rende</dt><dd>1,17 sabins</dd></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dev">
+      <div class="dev__h"><em>6</em><b>Duas membranas de 125 Hz · laterais</b><u>onde iam os pontos-espelho</u></div>
+      <div class="dev__b">
+        <p>Mesmo princípio, chapa mais leve e câmara mais rasa, sintonizadas no pico medido de 131 Hz.</p>
+        <div class="cut">MDF de 3 mm = 2,25 kg/m² &#183; c&#226;mara de 0,10 m &#183; f = 60/&#8730;(2,25 &#215; 0,10) = <b>126,5 Hz</b></div>
+        <p>Uma de cada lado, <strong>0,60 × 1,20 m</strong>, centradas em y = 1,20 — exatamente onde iam os módulos de ponto-espelho. Aqueles tratavam uma reflexão que a medição mostrou estar em −31 dB, ou seja, que não precisava de tratamento. Estes tratam o pico de 131 Hz, que está em +8,8 dB.</p>
+        <div class="spec">
+          <div><dt>Face</dt><dd>MDF 3 mm</dd></div>
+          <div><dt>Câmara</dt><dd>100 mm</dd></div>
+          <div><dt>Área</dt><dd>2 × 0,72 m²</dd></div>
+          <div><dt>Sintonia</dt><dd>126 Hz</dd></div>
+          <div><dt>Rende</dt><dd>0,94 sabins</dd></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note"><b>Três regras que decidem se a membrana funciona.</b>
+    <br><br><strong>1 · A caixa tem que ser hermética.</strong> Qualquer fresta e ela vira um painel furado qualquer, sem sintonia. Silicone em todas as juntas, por dentro.
+    <br><strong>2 · A lã não encosta na chapa.</strong> Ela vai no fundo da câmara, ocupando uns dois terços, com ar livre atrás da face. Encostada, ela trava a membrana.
+    <br><strong>3 · A lã aqui não precisa ser boa.</strong> Ela só amortece a ressonância, não absorve o som. Sobra de PET, manta de poliéster barata, até cobertor velho serve. Guarde a lã boa para os cantos.</div>
+  </div>
+</section>
+
+<section id="cortado">
+  <div class="wrap">
+    <div class="head"><span class="head__n">04</span><h2>O que sai da lista</h2></div>
+    <p>Tudo isto foi dimensionado para uma sala que não existe. Não compre:</p>
+    <div class="kill">
+      <div><div><b>Bloco de 4 módulos na parede frontal</b><i>Tratava reflexão de −22 dB. Vira a membrana de 63 Hz, mesmo lugar.</i></div><span>13 placas<br>≈ R$ 900–1.600</span></div>
+      <div><div><b>Módulos dos pontos-espelho laterais</b><i>Reflexão lateral medida em −31 e −33 dB. Viram as membranas de 125 Hz.</i></div><span>−</span></div>
+      <div><div><b>Nuvem de teto porosa</b><i>Reflexão do teto em −20,2 dB. Opcional, e só se virar membrana.</i></div><span>−</span></div>
+      <div><div><b>Gobo móvel de 1,20 × 1,20</b><i>O vidro do fundo chega em −23 dB. Não precisa.</i></div><span>≈ R$ 300–500</span></div>
+      <div><div><b>Os dois skylines</b><i>Já tinham saído: a sala ficou curta demais para campo distante.</i></div><span>−</span></div>
+      <div><div><b>26 das 36 placas de lã de rocha</b><i>O médio já está tratado. Mais lã porosa piora a razão grave/médio.</i></div><span>≈ R$ 1.600–2.900</span></div>
+    </div>
+    <p>Some tudo e o projeto antigo pedia <strong>R$ 3.000 a 5.250</strong>. O revisado pede as dez placas que você já comprou, mais uns <strong>3,3 m² de MDF, 18 m de ripa e material de vedação</strong>.</p>
+  </div>
+</section>
+
+<section id="ordem">
+  <div class="wrap">
+    <div class="head"><span class="head__n">05</span><h2>A ordem</h2></div>
+    <ol class="steps">
+      <li><div><b>Feltro na bancada, hoje.</b> Faixa de 0,40 × 1,20 m entre os monitores, e incline as caixas 5 a 8° para baixo mirando a orelha. É a única reflexão precoce que a medição condenou — <strong>−7,9 dB em 0,32 ms</strong> — e é a correção mais barata do projeto inteiro.</div></li>
+      <li><div><b>Termine os dois traps de canto</b> como já estão desenhados. Eles fecham o médio.</div></li>
+      <li><div><b>Meça de novo.</b> Mesmo microfone, mesmo lugar, mesmos 512k e 8 varreduras. Com dois dispositivos instalados dá para conferir se os sabins que eu calculei aparecem de verdade — e se aparecerem, as membranas ficam dimensionadas em cima de medida, não de tabela.</div></li>
+      <li><div><b>Só então construa a membrana de 63 Hz.</b> É a peça mais difícil de acertar e a que mais depende de o modelo estar certo. Vale esperar a segunda medição.</div></li>
+      <li><div><b>As duas de 125 Hz por último</b>, já sabendo se o pico de 131 Hz cedeu ou não.</div></li>
+      <li><div><b>Cantos parciais e sobras</b> quando sobrar material e vontade.</div></li>
+    </ol>
+
+    <div class="note"><b>Uma coisa que não muda.</b> A geometria. Monitores em x = 0,99 e 1,76, baffle a 0,92 da parede frontal, tweeter e orelha a 1,10, cadeira em 1,375 × 1,59. A medição confirmou que está tudo no lugar: L e R separados por menos de 1,5 dB, o modo de 92,7 Hz apagado pelo baffle como previsto, e o pico modal exatamente onde a conta dizia. <strong>Não mexa em nada disso.</strong></div>
+  </div>
+</section>
+
+</main>
