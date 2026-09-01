@@ -395,3 +395,41 @@ No substitute action manufactured — consistent with "quality/reciprocity over 
 **Next automated step:** r/PromoteYourMusic becomes eligible **2026-09-01** — tomorrow's run should be the first genuinely actionable day since 2026-08-25, and should draft a fresh self-post for "Mind Gone State" at that point. Unless Jhonatan confirms sooner that any unconfirmed draft needs re-drafting or adjustment, that's the next concrete action due.
 
 **Nothing awaiting approval from today's entry.** The most recent ready-to-paste drafts, if not already posted, remain: 2026-08-20 (r/House reciprocity + self-post, approved), 2026-08-25 (r/PromoteYourMusic), 2026-08-27 (r/edmproduction), 2026-08-28 (r/TechnoProduction).
+
+---
+
+## 2026-09-01
+
+**Status check:** Unchanged from the last six entries (2026-08-26 through 2026-08-31) — still only the single "Aprovado" note logged, on the 2026-08-20 entry, covering Steps 1–2 only (r/House reciprocity comments + self-post). No confirmation anywhere in this log for r/edmproduction (2026-08-21, refreshed 2026-08-27), r/TechnoProduction (2026-08-22, refreshed 2026-08-28), or r/PromoteYourMusic's prior repost (2026-08-25). This routine still has no browser/login and cannot verify Reddit-side postings. Not re-explaining the full reasoning again (see 2026-08-26 through 2026-08-31 entries) — the gap is unchanged and already on record.
+
+**Today's step: r/PromoteYourMusic cooldown → CLEARED, fresh self-post drafted**
+
+- **r/PromoteYourMusic:** last posted 2026-08-25 (repost of "Mind Gone State"), ~7-day cooldown → eligible 2026-09-01. **Today is 2026-09-01 — cleared.** This is the first genuinely actionable day since 2026-08-25, exactly as predicted in the 2026-08-31 entry.
+- **r/House repeat self-post:** still no genuinely new material/update since the 2026-08-20 draft (same "Mind Gone State" free-download framing) — repeating this soon would violate the sub's reciprocity/quality norm. Skipped.
+- **r/edmproduction feedback thread:** last refreshed 2026-08-27, 5 days ago. Weekly rotation (~6–7 days per the 08-21 → 08-27 gap) means a new thread is likely close but not confirmed yet. Skipped; next legitimate refresh ~2026-09-03.
+- **r/TechnoProduction feedback thread:** last refreshed 2026-08-28, 4 days ago (same weekly-rotation logic). Skipped; next legitimate refresh ~2026-09-04.
+
+Per the daily volume cap (at most one action/day on this young account) and "quality/reciprocity over volume," today's single action is the r/PromoteYourMusic post. Reworded from the 2026-08-25 draft (same track, same free-download framing, same two feedback questions) so it doesn't read as a copy-paste repeat if both ever end up visible near each other — the same approach used for the r/edmproduction (2026-08-27) and r/TechnoProduction (2026-08-28) refreshes.
+
+### Ready-to-paste post (English — matches the sub's own language; "90'S" and the 2026-08-25 post there were also English)
+
+> **Title:** [Tech House] Free download — Mind Gone State
+>
+> **Body:**
+>
+> Track: Mind Gone State (Tech House)
+>
+> Free, no strings attached — no email/signup wall: https://hypeddit.com/iel6vv
+> Stream: https://soundcloud.com/spectralsunmusic/mind-gone-state
+>
+> Driving groove built for peak-time sets, hypnotic edge through the breakdown. Genuinely curious how the low end holds up outside headphones/studio monitors, and whether the breakdown runs too long before it drops back in — feedback on either welcome.
+
+**Notes:**
+- This is the only Reddit action queued for today per the daily volume cap (one action/day on this account).
+- Kept the sub's "no advertising your brand, JUST MUSIC" house rule in mind — lean copy, no bio/branding push beyond the track credit, consistent with the 2026-08-25 draft.
+- Cover art exists locally on Jhonatan's machine, not in this repo — attach manually if the post format allows an image.
+- **Still unresolved and worth flagging again:** no confirmation yet on which of the prior six drafts (2026-08-20 r/House reciprocity + self-post — approved, 2026-08-21 r/edmproduction, 2026-08-22 r/TechnoProduction, 2026-08-25 r/PromoteYourMusic, 2026-08-27 r/edmproduction refresh, 2026-08-28 r/TechnoProduction refresh) actually went up on Reddit. A one-line confirmation from Jhonatan would let future entries stop repeating this status check.
+
+**Next automated step:** r/edmproduction's feedback thread next legitimate refresh ~2026-09-03; r/TechnoProduction's ~2026-09-04. r/PromoteYourMusic's next cooldown clears ~2026-09-08 (7 days from today, if today's post goes up). A repeat r/House self-post remains held until there's genuinely new material to share.
+
+**Awaiting Jhonatan's approval before this is posted.**
