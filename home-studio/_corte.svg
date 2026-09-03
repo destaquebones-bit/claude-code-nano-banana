@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 940">
+  <text class="s-dimt" x="92.0" y="58.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.6">O TRI&#194;NGULO &#183; COMO CORTAR E COMO PARAFUSAR</text>
+  <text class="s-dimt" x="92.0" y="78.0" text-anchor="start">Tri&#226;ngulo ret&#226;ngulo is&#243;sceles: catetos 42,4 cm, hipotenusa 60 cm. Nenhum transferidor entra nessa obra.</text>
+  <text class="s-dimt" x="92.0" y="140.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.5">1 &#183; O TRUQUE &#183; marque um QUADRADO e corte a diagonal</text>
+  <rect x="110.0" y="190.0" width="272.0" height="272.0" fill="var(--mdf-soft)" stroke="var(--ink)" stroke-width="2"/>
+  <line x1="110.0" y1="462.0" x2="382.0" y2="190.0" stroke="var(--flag)" stroke-width="2.6"/>
+  <text class="s-big" x="191.6" y="385.8" text-anchor="middle" fill="var(--ink)">A</text>
+  <text class="s-big" x="305.8" y="271.6" text-anchor="middle" fill="var(--ink)">B</text>
+  <line x1="110.0" y1="440.0" x2="132.0" y2="440.0" stroke="var(--mute)" stroke-width="1.2"/>
+  <line x1="132.0" y1="440.0" x2="132.0" y2="462.0" stroke="var(--mute)" stroke-width="1.2"/>
+  <text class="s-dimt" x="144.0" y="432.0" text-anchor="start" fill="var(--mute)">90&#176;</text>
+  <polyline points="348.0,462.0 348.0,460.9 348.1,459.8 348.2,458.7 348.3,457.6 348.5,456.5 348.7,455.4 348.9,454.3 349.2,453.2 349.5,452.1 349.8,451.1 350.2,450.0 350.6,449.0 351.0,448.0 351.5,447.0 352.0,446.0 352.6,445.0 353.1,444.0 353.7,443.1 354.4,442.2 355.0,441.3 355.7,440.4 356.4,439.6 357.2,438.8 358.0,438.0" fill="none" stroke="var(--flag)" stroke-width="1.3"/>
+  <text class="s-dimt" x="336.7" y="447.2" text-anchor="middle" fill="var(--flag)">45&#176;</text>
+  <polyline points="144.0,190.0 144.0,191.1 143.9,192.2 143.8,193.3 143.7,194.4 143.5,195.5 143.3,196.6 143.1,197.7 142.8,198.8 142.5,199.9 142.2,200.9 141.8,202.0 141.4,203.0 141.0,204.0 140.5,205.0 140.0,206.0 139.4,207.0 138.9,208.0 138.3,208.9 137.6,209.8 137.0,210.7 136.3,211.6 135.6,212.4 134.8,213.2 134.0,214.0" fill="none" stroke="var(--flag)" stroke-width="1.3"/>
+  <text class="s-dimt" x="155.3" y="212.8" text-anchor="middle" fill="var(--flag)">45&#176;</text>
+  <line x1="110.0" y1="174.0" x2="382.0" y2="174.0" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="110.0" y1="169.0" x2="110.0" y2="179.0" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="382.0" y1="169.0" x2="382.0" y2="179.0" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="246.0" y="166.0" text-anchor="middle" fill="var(--mute)">42,4 cm</text>
+  <line x1="94.0" y1="190.0" x2="94.0" y2="462.0" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="89.0" y1="190.0" x2="99.0" y2="190.0" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="89.0" y1="462.0" x2="99.0" y2="462.0" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="87.0" y="326.0" text-anchor="middle" fill="var(--mute)" transform="rotate(-90 87.0 326.0)">42,4 cm</text>
+  <text class="s-dimt" x="251.4" y="331.4" text-anchor="start" fill="var(--flag)" transform="rotate(-45 251.4 331.4)">60 cm</text>
+  <text class="s-dimt" x="92.0" y="506.0" text-anchor="start">Um quadrado de 42,4 &#215; 42,4 cortado na diagonal d&#225;</text>
+  <text class="s-dimt" x="92.0" y="523.0" text-anchor="start">DOIS tri&#226;ngulos perfeitos, com os 45&#176; de gra&#231;a.</text>
+  <text class="s-dimt" x="92.0" y="540.0" text-anchor="start"></text>
+  <text class="s-dimt" x="92.0" y="557.0" text-anchor="start">Marque o quadrado com esquadro de pedreiro. Confira</text>
+  <text class="s-dimt" x="92.0" y="574.0" text-anchor="start">medindo as duas diagonais: t&#234;m que dar igual.</text>
+  <text class="s-dimt" x="92.0" y="591.0" text-anchor="start"></text>
+  <text class="s-dimt" x="92.0" y="608.0" text-anchor="start">42,4 cm &#233; 42 cm e 4 mm. N&#227;o arredonde para 42 &#8212; o</text>
+  <text class="s-dimt" x="92.0" y="625.0" text-anchor="start">erro se acumula e a hipotenusa n&#227;o fecha em 60.</text>
+  <text class="s-dimt" x="560.0" y="140.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.5">2 &#183; 4 TRI&#194;NGULOS POR CHAPA</text>
+  <rect x="560.0" y="180.0" width="310.0" height="155.0" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/>
+  <polygon points="560.0,289.5 560.0,180.0 669.5,289.5" fill="var(--mdf-soft)" stroke="var(--flag)" stroke-width="1.6"/>
+  <polygon points="669.5,180.0 779.1,180.0 779.1,289.5" fill="var(--mdf-soft)" stroke="var(--flag)" stroke-width="1.6"/>
+  <text class="s-dimt" x="715.0" y="357.0" text-anchor="middle" fill="var(--mute)">chapa 1,20 &#215; 0,60</text>
+  <line x1="560.0" y1="289.5" x2="870.0" y2="289.5" stroke="var(--mute)" stroke-width="1" stroke-dasharray="5 5"/>
+  <text class="s-dimt" x="866.0" y="322.4" text-anchor="end" fill="var(--mute)">sobra 17 cm &#8212; gua&#231;os e cal&#231;os</text>
+  <line x1="546.0" y1="180.0" x2="546.0" y2="289.5" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="541.0" y1="180.0" x2="551.0" y2="180.0" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="541.0" y1="289.5" x2="551.0" y2="289.5" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="539.0" y="234.8" text-anchor="middle" fill="var(--mute)" transform="rotate(-90 539.0 234.8)">42,4</text>
+  <text class="s-dimt" x="560.0" y="383.0" text-anchor="start">Tr&#234;s por chapa, alternando ponta para cima e para</text>
+  <text class="s-dimt" x="560.0" y="400.0" text-anchor="start">baixo. O quarto sai da sobra da chapa seguinte.</text>
+  <text class="s-dimt" x="560.0" y="417.0" text-anchor="start"></text>
+  <text class="s-dimt" x="560.0" y="434.0" text-anchor="start">Voc&#234; precisa de 8 tri&#226;ngulos no total:</text>
+  <text class="s-dimt" x="560.0" y="451.0" text-anchor="start">2 traps &#215; 2 m&#243;dulos &#215; 2 tampas.</text>
+  <text class="s-dimt" x="560.0" y="556.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.5">3 &#183; O M&#211;DULO &#183; onde cada ripa fica</text>
+  <polygon points="576.0,691.2 576.0,600.0 667.2,691.2" fill="var(--mdf-soft)" stroke="var(--ink)" stroke-width="1.8"/>
+  <text class="s-dimt" x="576.0" y="566.0" text-anchor="start" fill="var(--mute)">PLANTA</text>
+  <line x1="576.0" y1="675.2" x2="592.0" y2="675.2" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="592.0" y1="675.2" x2="592.0" y2="691.2" stroke="var(--mute)" stroke-width="1"/>
+  <rect x="576.0" y="673.2" width="18.0" height="18.0" fill="var(--wood)" stroke="var(--ink)" stroke-width="1.4"/>
+  <rect x="576.0" y="600.0" width="18.0" height="18.0" fill="var(--wood)" stroke="var(--ink)" stroke-width="1.4"/>
+  <rect x="658.2" y="673.2" width="18.0" height="18.0" fill="var(--wood)" stroke="var(--ink)" stroke-width="1.4"/>
+  <circle cx="585.0" cy="682.2" r="10.0" fill="var(--wood)" stroke="var(--paper)" stroke-width="2.2"/>
+  <text class="s-tag" x="585.0" y="686.2" text-anchor="middle" fill="var(--paper)">2</text>
+  <circle cx="585.0" cy="609.0" r="10.0" fill="var(--wood)" stroke="var(--paper)" stroke-width="2.2"/>
+  <text class="s-tag" x="585.0" y="613.0" text-anchor="middle" fill="var(--paper)">3</text>
+  <circle cx="658.2" cy="682.2" r="10.0" fill="var(--wood)" stroke="var(--paper)" stroke-width="2.2"/>
+  <text class="s-tag" x="658.2" y="686.2" text-anchor="middle" fill="var(--paper)">3</text>
+  <line x1="576.0" y1="586.0" x2="667.2" y2="586.0" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="576.0" y1="581.0" x2="576.0" y2="591.0" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="667.2" y1="581.0" x2="667.2" y2="591.0" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="621.6" y="578.0" text-anchor="middle" fill="var(--mute)">42,4</text>
+  <line x1="627.0" y1="640.1" x2="707.2" y2="609.1" stroke="var(--flag)" stroke-width="1.1"/>
+  <text class="s-dimt" x="712.2" y="613.1" text-anchor="start" fill="var(--flag)">face da frente</text>
+  <text class="s-dimt" x="712.2" y="629.1" text-anchor="start" fill="var(--mute)">hipotenusa 60 cm</text>
+  <text class="s-dimt" x="576.0" y="725.2" text-anchor="start">Duas ripas encostam nas paredes.</text>
+  <text class="s-dimt" x="576.0" y="742.2" text-anchor="start">A terceira fica no v&#233;rtice do canto.</text>
+  <rect x="810.0" y="600.0" width="129.0" height="221.9" fill="var(--surface)" stroke="var(--mute)" stroke-width="1"/>
+  <rect x="810.0" y="600.0" width="16.0" height="221.9" fill="var(--wood)" stroke="var(--ink)" stroke-width="1.4"/>
+  <rect x="923.0" y="600.0" width="16.0" height="221.9" fill="var(--wood)" stroke="var(--ink)" stroke-width="1.4"/>
+  <rect x="826.0" y="613.3" width="97.0" height="14.0" fill="var(--wood)" stroke="var(--ink)" stroke-width="1.4"/>
+  <rect x="826.0" y="706.5" width="97.0" height="14.0" fill="var(--wood)" stroke="var(--ink)" stroke-width="1.4"/>
+  <rect x="826.0" y="799.7" width="97.0" height="14.0" fill="var(--wood)" stroke="var(--ink)" stroke-width="1.4"/>
+  <circle cx="818.0" cy="662.1" r="10.0" fill="var(--wood)" stroke="var(--paper)" stroke-width="2.2"/>
+  <text class="s-tag" x="818.0" y="666.1" text-anchor="middle" fill="var(--paper)">3</text>
+  <circle cx="874.5" cy="713.5" r="10.0" fill="var(--flag)" stroke="var(--paper)" stroke-width="2.2"/>
+  <text class="s-tag" x="874.5" y="717.5" text-anchor="middle" fill="var(--paper)">4</text>
+  <line x1="810.0" y1="586.0" x2="939.0" y2="586.0" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="810.0" y1="581.0" x2="810.0" y2="591.0" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="939.0" y1="581.0" x2="939.0" y2="591.0" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="874.5" y="578.0" text-anchor="middle" fill="var(--mute)">60 cm</text>
+  <line x1="796.0" y1="600.0" x2="796.0" y2="821.9" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="791.0" y1="600.0" x2="801.0" y2="600.0" stroke="var(--mute)" stroke-width="1"/>
+  <line x1="791.0" y1="821.9" x2="801.0" y2="821.9" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="789.0" y="710.9" text-anchor="middle" fill="var(--mute)" transform="rotate(-90 789.0 710.9)">1,20 m</text>
+  <text class="s-dimt" x="810.0" y="847.9" text-anchor="start" fill="var(--mute)">FRENTE</text>
+  <text class="s-dimt" x="810.0" y="869.9" text-anchor="start">As 3 travessas seguram o tecido</text>
+  <text class="s-dimt" x="810.0" y="886.9" text-anchor="start">e travam o esquadro da face.</text>
+  <text class="s-dimt" x="980.0" y="140.0" text-anchor="start" fill="var(--flag)" letter-spacing="1.5">4 &#183; COMO PARAFUSAR NA PONTA DA RIPA</text>
+  <line x1="980.0" y1="152.0" x2="1310.0" y2="152.0" stroke="var(--mute)" stroke-width="1"/>
+  <rect x="990.0" y="182.0" width="190.0" height="16.0" fill="var(--mdf-soft)" stroke="var(--ink)" stroke-width="1.6"/>
+  <rect x="1048.0" y="198.0" width="74.0" height="150.0" fill="var(--wood)" stroke="var(--ink)" stroke-width="1.6"/>
+  <text class="s-dimt" x="1190.0" y="193.0" text-anchor="start" fill="var(--mute)">tri&#226;ngulo</text>
+  <text class="s-dimt" x="1132.0" y="274.0" text-anchor="start" fill="var(--mute)">ripa em p&#233;</text>
+  <line x1="1068.0" y1="176.0" x2="1068.0" y2="198.0" stroke="var(--flag)" stroke-width="1.4" stroke-dasharray="3 3"/>
+  <line x1="1068.0" y1="198.0" x2="1068.0" y2="250.0" stroke="var(--flag)" stroke-width="1.4" stroke-dasharray="3 3"/>
+  <polygon points="1061.0,182.0 1075.0,182.0 1071.0,189.0 1065.0,189.0" fill="var(--flag)" stroke="var(--flag)" stroke-width="1"/>
+  <line x1="1102.0" y1="176.0" x2="1102.0" y2="198.0" stroke="var(--flag)" stroke-width="1.4" stroke-dasharray="3 3"/>
+  <line x1="1102.0" y1="198.0" x2="1102.0" y2="250.0" stroke="var(--flag)" stroke-width="1.4" stroke-dasharray="3 3"/>
+  <polygon points="1095.0,182.0 1109.0,182.0 1105.0,189.0 1099.0,189.0" fill="var(--flag)" stroke="var(--flag)" stroke-width="1"/>
+  <text class="s-dimt" x="1195.0" y="220.0" text-anchor="start" fill="var(--flag)">furo-guia 2,5 mm</text>
+  <text class="s-dimt" x="1195.0" y="236.0" text-anchor="start" fill="var(--mute)">na ponta da ripa</text>
+  <text class="s-dimt" x="1195.0" y="174.0" text-anchor="start" fill="var(--flag)">escareado &#8212; cabe&#231;a afundada</text>
+  <text class="s-dimt" x="980.0" y="368.0" text-anchor="start">Sempre DOIS parafusos por encontro. Um s&#243; deixa a</text>
+  <text class="s-dimt" x="980.0" y="385.0" text-anchor="start">ripa girar e o esquadro se perde.</text>
+  <text class="s-dimt" x="980.0" y="402.0" text-anchor="start"></text>
+  <text class="s-dimt" x="980.0" y="419.0" text-anchor="start">Fura antes, sempre. Ripa de 2,5 cm racha na ponta se</text>
+  <text class="s-dimt" x="980.0" y="436.0" text-anchor="start">voc&#234; enfiar parafuso seco.</text>
+  <text class="s-dimt" x="980.0" y="453.0" text-anchor="start"></text>
+  <text class="s-dimt" x="980.0" y="470.0" text-anchor="start">Broca 2,5 mm na ripa (furo-guia) e 3,7 mm na chapa</text>
+  <text class="s-dimt" x="980.0" y="487.0" text-anchor="start">(furo passante) &#8212; assim o parafuso PUXA as duas.</text>
+  <text class="s-dimt" x="980.0" y="504.0" text-anchor="start"></text>
+  <text class="s-dimt" x="980.0" y="521.0" text-anchor="start">Escareie a chapa. A cabe&#231;a tem que afundar: o tecido</text>
+  <text class="s-dimt" x="980.0" y="538.0" text-anchor="start">passa por cima e cabe&#231;a saliente marca e rasga.</text>
+  <text class="s-dimt" x="980.0" y="555.0" text-anchor="start"></text>
+  <text class="s-dimt" x="980.0" y="572.0" text-anchor="start">Parafuso 3,5 &#215; 40 mm. Menor que isso n&#227;o pega ponta.</text>
+  <text class="s-leg" x="980.0" y="603.0" text-anchor="start" fill="var(--flag)">COLA &#201; QUEM SEGURA</text>
+  <text class="s-dimt" x="980.0" y="623.0" text-anchor="start">Ponta de ripa &#233; fibra cortada: parafuso ali agarra</text>
+  <text class="s-dimt" x="980.0" y="640.0" text-anchor="start">pouco. Passe cola branca de madeira em toda junta.</text>
+  <text class="s-dimt" x="980.0" y="657.0" text-anchor="start"></text>
+  <text class="s-dimt" x="980.0" y="674.0" text-anchor="start">O parafuso &#233; o grampo que segura enquanto a cola</text>
+  <text class="s-dimt" x="980.0" y="691.0" text-anchor="start">cura. Depois de seca, ela &#233; que faz a for&#231;a.</text>
+  <text class="s-dimt" x="1370.0" y="140.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.5">LISTA POR M&#211;DULO</text>
+  <line x1="1370.0" y1="152.0" x2="1620.0" y2="152.0" stroke="var(--mute)" stroke-width="1"/>
+  <circle cx="1382.0" cy="174.0" r="11.0" fill="var(--ink)" stroke="var(--paper)" stroke-width="2.2"/>
+  <text class="s-tag" x="1382.0" y="178.0" text-anchor="middle" fill="var(--paper)">1</text>
+  <text class="s-leg" x="1404.0" y="171.0" text-anchor="start" fill="var(--ink)">Tri&#226;ngulo de chapa</text>
+  <text class="s-dimt" x="1404.0" y="186.0" text-anchor="start">2 pe&#231;as &#183; 42,4/42,4/60</text>
+  <circle cx="1382.0" cy="214.0" r="11.0" fill="var(--wood)" stroke="var(--paper)" stroke-width="2.2"/>
+  <text class="s-tag" x="1382.0" y="218.0" text-anchor="middle" fill="var(--paper)">2</text>
+  <text class="s-leg" x="1404.0" y="211.0" text-anchor="start" fill="var(--ink)">Longarina do v&#233;rtice</text>
+  <text class="s-dimt" x="1404.0" y="226.0" text-anchor="start">1 &#183; ripa de 1,20 m</text>
+  <circle cx="1382.0" cy="254.0" r="11.0" fill="var(--wood)" stroke="var(--paper)" stroke-width="2.2"/>
+  <text class="s-tag" x="1382.0" y="258.0" text-anchor="middle" fill="var(--paper)">3</text>
+  <text class="s-leg" x="1404.0" y="251.0" text-anchor="start" fill="var(--ink)">Longarinas da frente</text>
+  <text class="s-dimt" x="1404.0" y="266.0" text-anchor="start">2 &#183; ripa de 1,20 m</text>
+  <circle cx="1382.0" cy="294.0" r="11.0" fill="var(--flag)" stroke="var(--paper)" stroke-width="2.2"/>
+  <text class="s-tag" x="1382.0" y="298.0" text-anchor="middle" fill="var(--paper)">4</text>
+  <text class="s-leg" x="1404.0" y="291.0" text-anchor="start" fill="var(--ink)">Travessas da frente</text>
+  <text class="s-dimt" x="1404.0" y="306.0" text-anchor="start">3 &#183; ripa de 0,60 m</text>
+  <line x1="1370.0" y1="346.0" x2="1620.0" y2="346.0" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="1370.0" y="372.0" text-anchor="start" fill="var(--ink)" letter-spacing="1.5">TOTAL DA OBRA</text>
+  <text class="s-dimt" x="1370.0" y="396.0" text-anchor="start">Tri&#226;ngulos de chapa</text>
+  <text class="s-dimt" x="1620.0" y="396.0" text-anchor="end">8</text>
+  <text class="s-dimt" x="1370.0" y="415.0" text-anchor="start">Ripa (longarinas)</text>
+  <text class="s-dimt" x="1620.0" y="415.0" text-anchor="end">14,4 m</text>
+  <text class="s-dimt" x="1370.0" y="434.0" text-anchor="start">Ripa (travessas)</text>
+  <text class="s-dimt" x="1620.0" y="434.0" text-anchor="end">7,2 m</text>
+  <text class="s-dimt" x="1370.0" y="453.0" text-anchor="start">Ripa total</text>
+  <text class="s-dimt" x="1620.0" y="453.0" text-anchor="end">21,6 m</text>
+  <text class="s-dimt" x="1370.0" y="472.0" text-anchor="start">Parafuso 3,5 &#215; 40</text>
+  <text class="s-dimt" x="1620.0" y="472.0" text-anchor="end">~120</text>
+  <text class="s-dimt" x="1370.0" y="491.0" text-anchor="start">Cola branca</text>
+  <text class="s-dimt" x="1620.0" y="491.0" text-anchor="end">1 frasco</text>
+  <line x1="1370.0" y1="530.0" x2="1620.0" y2="530.0" stroke="var(--mute)" stroke-width="1"/>
+  <text class="s-dimt" x="1370.0" y="556.0" text-anchor="start" fill="var(--flag)" letter-spacing="1.5">ORDEM DE MONTAGEM</text>
+  <text class="s-dimt" x="1370.0" y="580.0" text-anchor="start">Corte os 8 tri&#226;ngulos.</text>
+  <text class="s-dimt" x="1370.0" y="597.0" text-anchor="start">Corte as ripas no esquadro (90&#176;).</text>
+  <text class="s-dimt" x="1370.0" y="614.0" text-anchor="start">Deite UM tri&#226;ngulo no ch&#227;o plano.</text>
+  <text class="s-dimt" x="1370.0" y="631.0" text-anchor="start">Fure, cole e parafuse as 3 longarinas</text>
+  <text class="s-dimt" x="1370.0" y="648.0" text-anchor="start">em p&#233; sobre ele.</text>
+  <text class="s-dimt" x="1370.0" y="665.0" text-anchor="start">Ponha o segundo tri&#226;ngulo em cima e</text>
+  <text class="s-dimt" x="1370.0" y="682.0" text-anchor="start">repita. O esquadro sai sozinho.</text>
+  <text class="s-dimt" x="1370.0" y="699.0" text-anchor="start">Por &#250;ltimo as 3 travessas da frente.</text>
+  <text class="s-dimt" x="1370.0" y="730.0" text-anchor="start" fill="var(--flag)">Nenhuma ripa leva corte em 45&#176;. Todas as pontas</text>
+  <text class="s-dimt" x="1370.0" y="747.0" text-anchor="start" fill="var(--flag)">s&#227;o cortadas em 90&#176;. Quem faz o &#226;ngulo &#233; a chapa.</text>
+</svg>
