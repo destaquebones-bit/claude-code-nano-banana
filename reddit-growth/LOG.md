@@ -531,3 +531,22 @@ Per the daily volume cap (at most one action/day on this young account) and "qua
 **Next automated step:** r/PromoteYourMusic's next cooldown clears ~2026-09-08 (assuming the 2026-09-01 post went up). r/edmproduction's next legitimate refresh ~2026-09-10 (7 days from yesterday's 2026-09-03 refresh). A repeat r/House self-post remains held until there's genuinely new material to share.
 
 **Awaiting Jhonatan's approval before this is posted.**
+
+---
+
+## 2026-09-05
+
+**Status check:** Unchanged — still only the single "Aprovado" note logged, on the 2026-08-20 entry, covering Steps 1–2 only (r/House reciprocity comments + self-post). No confirmation anywhere in this log for r/edmproduction (2026-08-21, refreshed 2026-08-27, refreshed again 2026-09-03), r/TechnoProduction (2026-08-22, refreshed 2026-08-28, refreshed again 2026-09-04), or r/PromoteYourMusic's two prior posts (2026-08-25, 2026-09-01). This routine still has no browser/login and cannot verify Reddit-side postings. Not re-explaining the full reasoning again (see 2026-08-26 through 2026-09-04 entries) — the gap is unchanged and already on record.
+
+**Today's step: no new draft — every candidate is still on cooldown per the schedule tracked in this log, so nothing is actionable today.**
+
+- **r/PromoteYourMusic:** last drafted/posted 2026-09-01, ~7-day cooldown → next eligible ~2026-09-08. Today is 2026-09-05 — **not cleared, 3 days remain.**
+- **r/House repeat self-post:** still no genuinely new material/update since the 2026-08-20 draft (same "Mind Gone State" free-download framing) — repeating this soon would violate the sub's reciprocity/quality norm. Skipped.
+- **r/edmproduction feedback thread:** last refreshed 2026-09-03, 2 days ago. Per this log's own tracked weekly-rotation estimate (~7 days), the next legitimate refresh isn't expected until ~2026-09-10 — **5 days short.** Skipped.
+- **r/TechnoProduction feedback thread:** last refreshed 2026-09-04, 1 day ago. Same tracked estimate puts the next legitimate refresh at ~2026-09-11 — **6 days short.** Skipped.
+
+No substitute action manufactured — consistent with "quality/reciprocity over volume" and the daily volume cap (at most one action/day on this young account). The vetted landscape has no other untried, viable destination right now.
+
+**Next automated step:** r/PromoteYourMusic becomes eligible ~2026-09-08 (3 days out) — that's the next concrete action expected to be due, unless Jhonatan confirms sooner that any unconfirmed draft needs re-drafting or adjustment. After that, r/edmproduction's next legitimate refresh ~2026-09-10, then r/TechnoProduction's ~2026-09-11.
+
+**Nothing awaiting approval from today's entry.** The most recent ready-to-paste drafts, if not already posted, remain: 2026-08-20 (r/House reciprocity + self-post, approved), 2026-09-01 (r/PromoteYourMusic), 2026-09-03 (r/edmproduction), 2026-09-04 (r/TechnoProduction).
