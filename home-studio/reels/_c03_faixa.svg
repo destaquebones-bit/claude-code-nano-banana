@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+<defs><filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="14" flood-color="#000" flood-opacity="0.72"/></filter></defs>
+<rect x="90" y="808" width="900" height="216" rx="6" fill="#1a1a18" fill-opacity="0.80"/>
+<line x1="130" y1="856" x2="950" y2="856" stroke="#c2703a" stroke-width="3"/>
+<text class="h2" x="130" y="914" font-size="58">75 a 275 Hz</text>
+<text class="sm" x="130" y="976" font-size="40">O problema não era o agudo.</text>
+</svg>
