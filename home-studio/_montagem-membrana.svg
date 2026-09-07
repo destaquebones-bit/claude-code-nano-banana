@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 850">
+  <text class="s-dimt" x="70.0" y="58.0" text-anchor="start" fill="#1a1a18" letter-spacing="1.6">MEMBRANA &#183; MONTAGEM PASSO A PASSO</text>
+  <text class="s-dimt" x="70.0" y="80.0" text-anchor="start">Quatro caixas iguais, todas sintonizadas em 63 Hz. C&#226;mara de 15 cm, face de MDF 8 mm.</text>
+  <circle cx="84.0" cy="134.0" r="13" fill="#c2703a"/>
+  <text class="s-tag" x="84.0" y="138.0" text-anchor="middle" fill="#faf9f5">1</text>
+  <text class="s-leg" x="106.0" y="139.0" text-anchor="start" fill="#1a1a18">Corte tudo antes de montar</text>
+  <rect x="181.0" y="177.0" width="150.0" height="10.0" rx="0" fill="#7a6a52" stroke="none" stroke-width="1"/>
+  <rect x="181.0" y="239.0" width="150.0" height="12.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <rect x="181.0" y="203.0" width="46.0" height="10.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <rect x="235.0" y="203.0" width="46.0" height="10.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <rect x="289.0" y="203.0" width="46.0" height="10.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <text class="s-dimt" x="256.0" y="165.0" text-anchor="middle" fill="#8a8579">pe&#231;as soltas</text>
+  <text class="s-dimt" x="106.0" y="294.0" text-anchor="start">Face MDF 8 mm e fundo compensado 10 mm no</text>
+  <text class="s-dimt" x="106.0" y="311.0" text-anchor="start">tamanho da caixa. Moldura em t&#225;bua 2,5 &#215; 15 cm,</text>
+  <text class="s-dimt" x="106.0" y="328.0" text-anchor="start">cortada em 90&#176; &#8212; sem ingletes.</text>
+  <line x1="436.0" y1="128.0" x2="436.0" y2="326.0" stroke="#ddd9cd" stroke-width="1"/>
+  <circle cx="476.0" cy="134.0" r="13" fill="#c2703a"/>
+  <text class="s-tag" x="476.0" y="138.0" text-anchor="middle" fill="#faf9f5">2</text>
+  <text class="s-leg" x="498.0" y="139.0" text-anchor="start" fill="#1a1a18">Monte a moldura no ch&#227;o plano</text>
+  <rect x="573.0" y="169.0" width="10.0" height="86.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <rect x="713.0" y="169.0" width="10.0" height="86.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <rect x="573.0" y="169.0" width="150.0" height="10.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <rect x="573.0" y="245.0" width="150.0" height="10.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <circle cx="578.0" cy="174.0" r="3.4" fill="none" stroke="#c2703a" stroke-width="1.6"/>
+  <circle cx="718.0" cy="174.0" r="3.4" fill="none" stroke="#c2703a" stroke-width="1.6"/>
+  <circle cx="578.0" cy="250.0" r="3.4" fill="none" stroke="#c2703a" stroke-width="1.6"/>
+  <circle cx="718.0" cy="250.0" r="3.4" fill="none" stroke="#c2703a" stroke-width="1.6"/>
+  <line x1="583.0" y1="179.0" x2="713.0" y2="245.0" stroke="#8a8579" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="713.0" y1="179.0" x2="583.0" y2="245.0" stroke="#8a8579" stroke-width="1" stroke-dasharray="4 4"/>
+  <text class="s-dimt" x="498.0" y="294.0" text-anchor="start">Ret&#226;ngulo de t&#225;bua em p&#233;. Fure, cole e</text>
+  <text class="s-dimt" x="498.0" y="311.0" text-anchor="start">parafuse 2 parafusos por canto. Confira o</text>
+  <text class="s-dimt" x="498.0" y="328.0" text-anchor="start">esquadro medindo as duas diagonais.</text>
+  <line x1="828.0" y1="128.0" x2="828.0" y2="326.0" stroke="#ddd9cd" stroke-width="1"/>
+  <circle cx="868.0" cy="134.0" r="13" fill="#c2703a"/>
+  <text class="s-tag" x="868.0" y="138.0" text-anchor="middle" fill="#faf9f5">3</text>
+  <text class="s-leg" x="890.0" y="139.0" text-anchor="start" fill="#1a1a18">Parafuse o fundo r&#237;gido</text>
+  <rect x="965.0" y="169.0" width="10.0" height="86.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <rect x="1105.0" y="169.0" width="10.0" height="86.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <rect x="965.0" y="243.0" width="150.0" height="12.0" rx="0" fill="#EADCC4" stroke="#1a1a18" stroke-width="1.4"/>
+  <circle cx="979.0" cy="249.0" r="3.2" fill="none" stroke="#c2703a" stroke-width="1.6"/>
+  <circle cx="1009.0" cy="249.0" r="3.2" fill="none" stroke="#c2703a" stroke-width="1.6"/>
+  <circle cx="1039.0" cy="249.0" r="3.2" fill="none" stroke="#c2703a" stroke-width="1.6"/>
+  <circle cx="1069.0" cy="249.0" r="3.2" fill="none" stroke="#c2703a" stroke-width="1.6"/>
+  <circle cx="1099.0" cy="249.0" r="3.2" fill="none" stroke="#c2703a" stroke-width="1.6"/>
+  <text class="s-dimt" x="890.0" y="294.0" text-anchor="start">Compensado 10 mm por cima da moldura, parafuso</text>
+  <text class="s-dimt" x="890.0" y="311.0" text-anchor="start">a cada 12 cm. &#201; ele que d&#225; rigidez &#8212; a caixa</text>
+  <text class="s-dimt" x="890.0" y="328.0" text-anchor="start">toda depende disso.</text>
+  <line x1="1220.0" y1="128.0" x2="1220.0" y2="326.0" stroke="#ddd9cd" stroke-width="1"/>
+  <circle cx="1260.0" cy="134.0" r="13" fill="#c2703a"/>
+  <text class="s-tag" x="1260.0" y="138.0" text-anchor="middle" fill="#faf9f5">4</text>
+  <text class="s-leg" x="1282.0" y="139.0" text-anchor="start" fill="#1a1a18">SELE POR DENTRO</text>
+  <rect x="1357.0" y="169.0" width="10.0" height="86.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <rect x="1497.0" y="169.0" width="10.0" height="86.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <rect x="1357.0" y="243.0" width="150.0" height="12.0" rx="0" fill="#EADCC4" stroke="#1a1a18" stroke-width="1"/>
+  <circle cx="1367.0" cy="243.0" r="7" fill="none" stroke="#c2703a" stroke-width="2.6"/>
+  <circle cx="1497.0" cy="243.0" r="7" fill="none" stroke="#c2703a" stroke-width="2.6"/>
+  <text class="s-leg" x="1432.0" y="212.0" text-anchor="middle" fill="#c2703a">silicone</text>
+  <text class="s-dimt" x="1282.0" y="294.0" text-anchor="start">Cord&#227;o de silicone neutro em TODAS as juntas</text>
+  <text class="s-dimt" x="1282.0" y="311.0" text-anchor="start">internas, por dentro da caixa. Passe o dedo</text>
+  <text class="s-dimt" x="1282.0" y="328.0" text-anchor="start">molhado. Uma fresta e a mola de ar vaza.</text>
+  <circle cx="84.0" cy="370.0" r="13" fill="#c2703a"/>
+  <text class="s-tag" x="84.0" y="374.0" text-anchor="middle" fill="#faf9f5">5</text>
+  <text class="s-leg" x="106.0" y="375.0" text-anchor="start" fill="#1a1a18">Cole a l&#227; s&#243; no fundo</text>
+  <rect x="181.0" y="405.0" width="10.0" height="86.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <rect x="321.0" y="405.0" width="10.0" height="86.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <rect x="181.0" y="479.0" width="150.0" height="12.0" rx="0" fill="#EADCC4" stroke="#1a1a18" stroke-width="1"/>
+  <rect x="191.0" y="451.0" width="130.0" height="28.0" rx="0" fill="#3f7d5c" stroke="none" stroke-width="1"/>
+  <line x1="191.0" y1="411.0" x2="321.0" y2="411.0" stroke="#8a8579" stroke-width="1" stroke-dasharray="4 4"/>
+  <text class="s-dimt" x="256.0" y="435.0" text-anchor="middle" fill="#8a8579">10 cm de ar</text>
+  <text class="s-dimt" x="106.0" y="530.0" text-anchor="start">50 mm, colada apenas no compensado, ocupando</text>
+  <text class="s-dimt" x="106.0" y="547.0" text-anchor="start">dois ter&#231;os. Sobram 10 cm de ar livre at&#233; a</text>
+  <text class="s-dimt" x="106.0" y="564.0" text-anchor="start">face. Ela n&#227;o pode encostar na face.</text>
+  <line x1="436.0" y1="364.0" x2="436.0" y2="562.0" stroke="#ddd9cd" stroke-width="1"/>
+  <circle cx="476.0" cy="370.0" r="13" fill="#c2703a"/>
+  <text class="s-tag" x="476.0" y="374.0" text-anchor="middle" fill="#faf9f5">6</text>
+  <text class="s-leg" x="498.0" y="375.0" text-anchor="start" fill="#1a1a18">Feche a face</text>
+  <rect x="573.0" y="405.0" width="10.0" height="86.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <rect x="713.0" y="405.0" width="10.0" height="86.0" rx="0" fill="#8a6a3f" stroke="none" stroke-width="1"/>
+  <rect x="573.0" y="479.0" width="150.0" height="12.0" rx="0" fill="#EADCC4" stroke="#1a1a18" stroke-width="1"/>
+  <rect x="583.0" y="451.0" width="130.0" height="28.0" rx="0" fill="#3f7d5c" stroke="none" stroke-width="1"/>
+  <rect x="573.0" y="405.0" width="150.0" height="12.0" rx="0" fill="#7a6a52" stroke="#1a1a18" stroke-width="1.6"/>
+  <circle cx="585.0" cy="411.0" r="3.2" fill="none" stroke="#c2703a" stroke-width="1.6"/>
+  <circle cx="610.0" cy="411.0" r="3.2" fill="none" stroke="#c2703a" stroke-width="1.6"/>
+  <circle cx="635.0" cy="411.0" r="3.2" fill="none" stroke="#c2703a" stroke-width="1.6"/>
+  <circle cx="660.0" cy="411.0" r="3.2" fill="none" stroke="#c2703a" stroke-width="1.6"/>
+  <circle cx="685.0" cy="411.0" r="3.2" fill="none" stroke="#c2703a" stroke-width="1.6"/>
+  <circle cx="710.0" cy="411.0" r="3.2" fill="none" stroke="#c2703a" stroke-width="1.6"/>
+  <text class="s-dimt" x="498.0" y="530.0" text-anchor="start">MDF 8 mm colado e parafusado a cada 10 cm em</text>
+  <text class="s-dimt" x="498.0" y="547.0" text-anchor="start">toda a volta. Silicone na junta antes de</text>
+  <text class="s-dimt" x="498.0" y="564.0" text-anchor="start">fechar. Depois disso a caixa n&#227;o abre mais.</text>
+  <line x1="828.0" y1="364.0" x2="828.0" y2="562.0" stroke="#ddd9cd" stroke-width="1"/>
+  <circle cx="868.0" cy="370.0" r="13" fill="#c2703a"/>
+  <text class="s-tag" x="868.0" y="374.0" text-anchor="middle" fill="#faf9f5">7</text>
+  <text class="s-leg" x="890.0" y="375.0" text-anchor="start" fill="#1a1a18">Acabamento</text>
+  <rect x="965.0" y="405.0" width="150.0" height="86.0" rx="0" fill="#f0eee7" stroke="#ddd9cd" stroke-width="1"/>
+  <rect x="977.0" y="417.0" width="126.0" height="62.0" rx="0" fill="#1a1a18" stroke="none" stroke-width="1"/>
+  <text class="s-dimt" x="1040.0" y="453.0" text-anchor="middle" fill="#faf9f5">face acabada</text>
+  <text class="s-dimt" x="890.0" y="530.0" text-anchor="start">Pintura fosca ou tecido fino esticado. Nada</text>
+  <text class="s-dimt" x="890.0" y="547.0" text-anchor="start">de espuma ou l&#227; NA FRENTE da face &#8212; isso</text>
+  <text class="s-dimt" x="890.0" y="564.0" text-anchor="start">trava a chapa e mata a membrana.</text>
+  <line x1="1220.0" y1="364.0" x2="1220.0" y2="562.0" stroke="#ddd9cd" stroke-width="1"/>
+  <circle cx="1260.0" cy="370.0" r="13" fill="#c2703a"/>
+  <text class="s-tag" x="1260.0" y="374.0" text-anchor="middle" fill="#faf9f5">8</text>
+  <text class="s-leg" x="1282.0" y="375.0" text-anchor="start" fill="#1a1a18">Instala&#231;&#227;o</text>
+  <rect x="1357.0" y="405.0" width="8.0" height="86.0" rx="0" fill="#8a8579" stroke="none" stroke-width="1"/>
+  <rect x="1365.0" y="415.0" width="26.0" height="66.0" rx="0" fill="#f0eee7" stroke="#1a1a18" stroke-width="1.4"/>
+  <line x1="1397.0" y1="448.0" x2="1501.0" y2="448.0" stroke="#c2703a" stroke-width="1.6"/>
+  <text class="s-dimt" x="1403.0" y="440.0" text-anchor="start" fill="#c2703a">press&#227;o m&#225;xima</text>
+  <text class="s-dimt" x="1403.0" y="464.0" text-anchor="start" fill="#8a8579">na parede</text>
+  <text class="s-dimt" x="1282.0" y="530.0" text-anchor="start">Encostada na parede, apoiada no ch&#227;o ou</text>
+  <text class="s-dimt" x="1282.0" y="547.0" text-anchor="start">pendurada. Nunca no meio do v&#227;o: ela precisa</text>
+  <text class="s-dimt" x="1282.0" y="564.0" text-anchor="start">de press&#227;o, e press&#227;o &#233; m&#225;xima na parede.</text>
+  <line x1="70.0" y1="584.0" x2="1630.0" y2="584.0" stroke="#ddd9cd" stroke-width="1"/>
+  <text class="s-dimt" x="70.0" y="610.0" text-anchor="start" fill="#c2703a" letter-spacing="1.5">O ACABAMENTO MUDA A SINTONIA &#8212; ESCOLHA ANTES DE FECHAR A CAIXA</text>
+  <text class="s-dimt" x="70.0" y="640.0" text-anchor="start" fill="#8a8579">acabamento</text>
+  <text class="s-dimt" x="320.0" y="640.0" text-anchor="end" fill="#8a8579">massa</text>
+  <text class="s-dimt" x="460.0" y="640.0" text-anchor="end" fill="#8a8579">cai em</text>
+  <text class="s-dimt" x="630.0" y="640.0" text-anchor="end" fill="#8a8579">corre&#231;&#227;o</text>
+  <text class="s-dimt" x="670.0" y="640.0" text-anchor="start" fill="#8a8579">por que</text>
+  <line x1="70.0" y1="648.0" x2="1630.0" y2="648.0" stroke="#ddd9cd" stroke-width="1"/>
+  <text class="s-leg" x="70.0" y="672.0" text-anchor="start" fill="#1a1a18">Pintura fosca</text>
+  <text class="s-dimt" x="320.0" y="672.0" text-anchor="end">6,0 kg/m&#178;</text>
+  <text class="s-dimt" x="460.0" y="672.0" text-anchor="end">63 Hz</text>
+  <text class="s-dimt" x="630.0" y="672.0" text-anchor="end" fill="#8a8579">nenhuma</text>
+  <text class="s-dimt" x="670.0" y="672.0" text-anchor="start">some na parede; combina com o gesso</text>
+  <text class="s-leg" x="70.0" y="698.0" text-anchor="start" fill="#1a1a18">Tecido esticado</text>
+  <text class="s-dimt" x="320.0" y="698.0" text-anchor="end">6,2 kg/m&#178;</text>
+  <text class="s-dimt" x="460.0" y="698.0" text-anchor="end">62 Hz</text>
+  <text class="s-dimt" x="630.0" y="698.0" text-anchor="end" fill="#8a8579">nenhuma</text>
+  <text class="s-dimt" x="670.0" y="698.0" text-anchor="start">fecha a fam&#237;lia com os traps pretos</text>
+  <text class="s-leg" x="70.0" y="724.0" text-anchor="start" fill="#8a6a3f">Laminado / veneer</text>
+  <text class="s-dimt" x="320.0" y="724.0" text-anchor="end">6,5 kg/m&#178;</text>
+  <text class="s-dimt" x="460.0" y="724.0" text-anchor="end" fill="#c2703a">61 Hz</text>
+  <text class="s-dimt" x="630.0" y="724.0" text-anchor="end" fill="#8a8579">c&#226;mara 14 cm</text>
+  <text class="s-dimt" x="670.0" y="724.0" text-anchor="start">conversa com a bancada e o difusor</text>
+  <text class="s-leg" x="70.0" y="750.0" text-anchor="start" fill="#c2703a">Ripas de madeira</text>
+  <text class="s-dimt" x="320.0" y="750.0" text-anchor="end">8,0 kg/m&#178;</text>
+  <text class="s-dimt" x="460.0" y="750.0" text-anchor="end" fill="#c2703a">55 Hz</text>
+  <text class="s-dimt" x="630.0" y="750.0" text-anchor="end" fill="#8a8579">c&#226;mara 11 cm</text>
+  <text class="s-dimt" x="670.0" y="750.0" text-anchor="start">ecoa o difusor; exige recalcular</text>
+  <text class="s-dimt" x="70.0" y="796.0" text-anchor="start">Qualquer coisa que voc&#234; cole na face vira massa e derruba a frequ&#234;ncia. Pintura e tecido fino s&#227;o desprez&#237;veis;</text>
+  <text class="s-dimt" x="70.0" y="814.0" text-anchor="start">laminado e ripa n&#227;o s&#227;o &#8212; nesses dois a c&#226;mara tem que encolher para compensar. Decida agora, n&#227;o depois.</text>
+</svg>
