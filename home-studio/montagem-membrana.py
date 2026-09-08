@@ -30,7 +30,7 @@ passos=[
  ("SELE POR DENTRO",
   ["Cord&#227;o de silicone neutro em TODAS as juntas","internas, por dentro da caixa. Passe o dedo","molhado. Uma fresta e a mola de ar vaza."]),
  ("Cole a l&#227; s&#243; no fundo",
-  ["50 mm, colada apenas no compensado, ocupando","dois ter&#231;os. Sobram 10 cm de ar livre at&#233; a","face. Ela n&#227;o pode encostar na face."]),
+  ["Uma camada de 50 mm, colada apenas no fundo.","Sobram 100 mm de ar livre at&#233; a face.","Ela n&#227;o pode encostar na face."]),
  ("Feche a face",
   ["MDF 8 mm colado e parafusado a cada 10 cm em","toda a volta. Silicone na junta antes de","fechar. Depois disso a caixa n&#227;o abre mais."]),
  ("Acabamento",

@@ -67,9 +67,9 @@
   <rect x="191.0" y="451.0" width="130.0" height="28.0" rx="0" fill="#3f7d5c" stroke="none" stroke-width="1"/>
   <line x1="191.0" y1="411.0" x2="321.0" y2="411.0" stroke="#8a8579" stroke-width="1" stroke-dasharray="4 4"/>
   <text class="s-dimt" x="256.0" y="435.0" text-anchor="middle" fill="#8a8579">10 cm de ar</text>
-  <text class="s-dimt" x="106.0" y="530.0" text-anchor="start">50 mm, colada apenas no compensado, ocupando</text>
-  <text class="s-dimt" x="106.0" y="547.0" text-anchor="start">dois ter&#231;os. Sobram 10 cm de ar livre at&#233; a</text>
-  <text class="s-dimt" x="106.0" y="564.0" text-anchor="start">face. Ela n&#227;o pode encostar na face.</text>
+  <text class="s-dimt" x="106.0" y="530.0" text-anchor="start">Uma camada de 50 mm, colada apenas no fundo.</text>
+  <text class="s-dimt" x="106.0" y="547.0" text-anchor="start">Sobram 100 mm de ar livre at&#233; a face.</text>
+  <text class="s-dimt" x="106.0" y="564.0" text-anchor="start">Ela n&#227;o pode encostar na face.</text>
   <line x1="436.0" y1="364.0" x2="436.0" y2="562.0" stroke="#ddd9cd" stroke-width="1"/>
   <circle cx="476.0" cy="370.0" r="13" fill="#c2703a"/>
   <text class="s-tag" x="476.0" y="374.0" text-anchor="middle" fill="#faf9f5">6</text>
