@@ -1,0 +1,278 @@
+<title>Bouclé e Ripado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root{
+    --ground:#FCFCFD; --surface:#F3F4F6; --sunk:#EAECEF;
+    --ink:#15181D; --body:#33373E; --muted:#6C7079; --rule:#E1E4E8;
+    --accent:#2E4A5A; --accent-soft:#E7EDF1;
+    /* materiais do quarto, usados como conteudo */
+    --m-boucle:#E4DACA; --m-ripado:#C69C6D; --m-painel:#EFEDE6;
+    --m-piso:#E6E5E1; --m-porta:#4A2B22; --m-cortina:#1C1C1E;
+    --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --max:70ch;
+  }
+  :root:not([data-theme="light"]){}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#101216; --surface:#181B21; --sunk:#1F232A;
+      --ink:#F0F1F3; --body:#C9CCD2; --muted:#8D9199; --rule:#2A2F37;
+      --accent:#8FB6CC; --accent-soft:#1B2830;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#101216; --surface:#181B21; --sunk:#1F232A;
+    --ink:#F0F1F3; --body:#C9CCD2; --muted:#8D9199; --rule:#2A2F37;
+    --accent:#8FB6CC; --accent-soft:#1B2830;
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground); color:var(--body);
+    font-family:var(--serif); font-size:17px; line-height:1.62;
+    padding:0 20px; padding-block:0 72px; margin:0;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto}
+  .wide{max-width:920px; margin:0 auto}
+  h1,h2,h3,.lbl,.num,table,.sw span{font-family:var(--sans)}
+  h1{
+    font-size:clamp(34px,7vw,54px); line-height:1.03; letter-spacing:-.025em;
+    font-weight:700; color:var(--ink); margin:0; text-wrap:balance;
+  }
+  h2{
+    font-size:15px; font-weight:600; letter-spacing:.11em; text-transform:uppercase;
+    color:var(--accent); margin:0 0 6px;
+  }
+  h3{font-size:19px; font-weight:600; color:var(--ink); margin:0 0 4px; letter-spacing:-.01em}
+  p{margin:0 0 14px}
+  a{color:var(--accent)}
+  strong{color:var(--ink); font-weight:600}
+  header{padding-block:64px 30px}
+  .eyebrow{
+    font-family:var(--sans); font-size:12px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--muted); margin:0 0 18px;
+  }
+  .thesis{
+    font-size:clamp(19px,2.6vw,23px); line-height:1.45; color:var(--ink);
+    margin:22px 0 0; text-wrap:pretty;
+  }
+  section{padding-block:34px; border-top:1px solid var(--rule)}
+  section:first-of-type{border-top:none}
+  .lead{color:var(--muted)}
+
+  /* paleta */
+  .sw{display:grid; grid-template-columns:repeat(auto-fit,minmax(122px,1fr)); gap:12px; margin:20px 0 6px}
+  .sw figure{margin:0}
+  .sw i{display:block; height:76px; border-radius:3px; border:1px solid rgba(0,0,0,.08)}
+  .sw span{display:block; font-size:12px; margin-top:7px; color:var(--ink); font-weight:500}
+  .sw small{display:block; font-size:11.5px; color:var(--muted); font-family:var(--sans)}
+
+  /* duas colunas fica / sai */
+  .split{display:grid; grid-template-columns:1fr 1fr; gap:26px; margin-top:18px}
+  @media(max-width:620px){.split{grid-template-columns:1fr; gap:22px}}
+  .split ul{margin:0; padding-left:18px}
+  .split li{margin-bottom:9px}
+  .keep h3{color:var(--accent)}
+
+  /* etapas numeradas */
+  ol.steps{list-style:none; margin:22px 0 0; padding:0; counter-reset:s}
+  ol.steps>li{
+    counter-increment:s; display:grid; grid-template-columns:44px 1fr;
+    gap:16px; padding-block:20px; border-top:1px solid var(--rule);
+  }
+  ol.steps>li:first-child{border-top:none; padding-top:4px}
+  ol.steps>li::before{
+    content:counter(s); font-family:var(--sans); font-size:26px; font-weight:700;
+    color:var(--accent); line-height:1; padding-top:3px; font-variant-numeric:tabular-nums;
+  }
+  .cost{
+    display:inline-block; font-family:var(--sans); font-size:12px; font-weight:600;
+    letter-spacing:.03em; color:var(--accent); background:var(--accent-soft);
+    padding:3px 9px; border-radius:99px; margin-top:8px;
+  }
+
+  /* tabela */
+  .tblwrap{overflow-x:auto; margin-top:18px}
+  table{width:100%; border-collapse:collapse; font-size:14.5px; min-width:440px}
+  th{
+    text-align:left; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--muted); font-weight:600; padding:0 12px 9px 0; border-bottom:1px solid var(--rule);
+  }
+  td{padding:11px 12px 11px 0; border-bottom:1px solid var(--rule); vertical-align:top; color:var(--body)}
+  td:first-child{color:var(--ink); font-weight:500}
+  td.n{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; padding-right:0}
+  tr.tot td{border-bottom:none; padding-top:15px; font-weight:600; color:var(--ink); font-size:15.5px}
+
+  .note{
+    background:var(--surface); border-left:2px solid var(--accent);
+    padding:16px 18px; margin:22px 0 0; font-size:15.5px;
+  }
+  .note p:last-child{margin-bottom:0}
+  .avoid li{margin-bottom:10px}
+  footer{padding-block:38px 0; border-top:1px solid var(--rule); color:var(--muted); font-size:14.5px}
+  @media (prefers-reduced-motion:no-preference){
+    header,section{animation:rise .5s ease-out both}
+    section:nth-of-type(2){animation-delay:.04s}
+    section:nth-of-type(3){animation-delay:.08s}
+  }
+  @keyframes rise{from{opacity:.001;transform:translateY(7px)}to{opacity:1;transform:none}}
+</style>
+
+<div class="wide">
+<header>
+  <p class="eyebrow">Quarto de casal &middot; Jhonatan e Cíntia &middot; conceito</p>
+  <h1>Bouclé e ripado</h1>
+  <p class="thesis">O quarto já escolheu o que quer ser. O guarda-roupa ripado e a cama nova de bouclé falam a mesma língua — madeira clara, off-white, curva macia. <strong>Tudo que sobra no quarto está discutindo com eles.</strong> O projeto não é acrescentar: é tirar o que briga.</p>
+</header>
+</div>
+
+<div class="wrap">
+
+<section>
+  <h2>O que já está resolvido</h2>
+  <p class="lead">Duas peças grandes, compradas, e por acaso perfeitamente combinadas. Elas são a referência — não o problema.</p>
+  <div class="split">
+    <div class="keep">
+      <h3>O guarda-roupa</h3>
+      <p>Madeira clara, ripado vertical nas laterais, painéis off-white de correr. Ocupa uma parede inteira e é o objeto que mais aparece quando você entra.</p>
+    </div>
+    <div class="keep">
+      <h3>A cama nova</h3>
+      <p>Cabeceira curva em bouclé cru, base baixa estofada. A textura do bouclé e o ripado do guarda-roupa são o mesmo gesto: superfície com relevo, cor quase ausente.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>A paleta</h2>
+  <p class="lead">Nada disso é escolha nova. São as cores que as duas peças já trouxeram para dentro do quarto.</p>
+</section>
+</div>
+
+<div class="wide">
+  <div class="sw">
+    <figure><i style="background:var(--m-boucle)"></i><span>Bouclé cru</span><small>a cabeceira</small></figure>
+    <figure><i style="background:var(--m-painel)"></i><span>Off-white</span><small>painéis e parede</small></figure>
+    <figure><i style="background:var(--m-ripado)"></i><span>Madeira clara</span><small>o ripado</small></figure>
+    <figure><i style="background:var(--m-piso)"></i><span>Piso</span><small>cerâmica existente</small></figure>
+    <figure><i style="background:var(--m-porta)"></i><span>Portas hoje</span><small>sai da paleta</small></figure>
+    <figure><i style="background:var(--m-cortina)"></i><span>Cortina hoje</span><small>sai da paleta</small></figure>
+  </div>
+</div>
+
+<div class="wrap">
+<section>
+  <h2>O que está brigando</h2>
+  <div class="split">
+    <div>
+      <h3>O papel floral</h3>
+      <p>Fundo creme com folhas verde-azuladas e flores vinho, contorno escuro. É o elemento mais barulhento do quarto e ainda dobra na parede da porta. Tirar ele é a maior mudança possível.</p>
+    </div>
+    <div>
+      <h3>As portas escuras</h3>
+      <p>Duas folhas de madeira envernizada vermelho-escura, com batente igual. Puxam o quarto para um registro colonial que nada mais no ambiente sustenta.</p>
+    </div>
+    <div>
+      <h3>As cortinas pretas</h3>
+      <p>Absorvem a luz da única janela e criam duas manchas escuras verticais. Num quarto claro, elas viram o assunto.</p>
+    </div>
+    <div>
+      <h3>A cômoda escura</h3>
+      <p>Mesma madeira das portas, mesmo problema. Ou sai, ou é pintada junto com elas.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>As cinco mudanças</h2>
+  <p class="lead">Em ordem de impacto por real gasto. A ordem importa: as duas primeiras sozinhas já mudam o quarto, e são as mais baratas.</p>
+
+  <ol class="steps">
+    <li>
+      <div>
+        <h3>Tirar o papel floral</h3>
+        <p>Pintar a parede de branco é o mais barato e funciona. Se quiserem textura atrás da cabeceira, papel liso com trama de linho off-white, só naquela parede — nunca nas quatro.</p>
+        <p class="lead">Papel adesivo vem em rolo de 10&nbsp;m × 0,53&nbsp;m. Meça a largura da parede e divida por 0,53 para saber quantos rolos.</p>
+        <span class="cost">R$ 150 – 700</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>Pintar as portas e os batentes</h3>
+        <p>Esmalte à base de água, acetinado, no mesmo off-white dos painéis do guarda-roupa. As portas somem na parede e o quarto parece imediatamente maior.</p>
+        <p class="lead">Precisa de fundo preparador antes — verniz não segura tinta sem ele.</p>
+        <span class="cost">R$ 180 – 350</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>Trocar as cortinas</h3>
+        <p>Linho ou voil off-white, do teto até o chão, com o varão bem acima da janela e mais largo que ela. Isso faz a janela parecer maior e a luz entrar espalhada.</p>
+        <p class="lead">Se precisarem escurecer para dormir, forro blackout branco por trás — nunca tecido escuro na frente.</p>
+        <span class="cost">R$ 250 – 600</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>Aquecer o piso</h3>
+        <p>A cerâmica clara é fria e dura. Um tapete de pelo baixo em bege ou cru, saindo pelos três lados da cama, resolve o toque e o som do quarto ao mesmo tempo.</p>
+        <p class="lead">Regra de tamanho: pelo menos 60&nbsp;cm de tapete para fora de cada lado da cama.</p>
+        <span class="cost">R$ 250 – 700</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>Os dois lados da cama</h3>
+        <p>Criados-mudos iguais, claros ou de madeira clara, e duas luminárias iguais. Simetria é o que faz um quarto de casal parecer intencional em vez de montado aos poucos.</p>
+        <p class="lead">Se a parede permitir, arandelas presas na parede liberam a superfície do criado e ficam mais limpas.</p>
+        <span class="cost">R$ 500 – 1.400</span>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>Lista de compras</h2>
+  <p class="lead">Faixas de ordem de grandeza no mercado brasileiro, para vocês dimensionarem a conta. Confirmem o preço do dia no anúncio — isso oscila muito com promoção e frete.</p>
+  <div class="tblwrap">
+  <table>
+    <thead><tr><th>Item</th><th>Quantidade</th><th class="n">Faixa</th></tr></thead>
+    <tbody>
+      <tr><td>Papel de parede texturizado ou tinta</td><td>1 parede</td><td class="n">R$ 150 – 700</td></tr>
+      <tr><td>Esmalte à base de água + fundo</td><td>2 portas e batentes</td><td class="n">R$ 180 – 350</td></tr>
+      <tr><td>Cortina linho ou voil off-white</td><td>3 m de largura</td><td class="n">R$ 150 – 400</td></tr>
+      <tr><td>Varão longo</td><td>1</td><td class="n">R$ 80 – 200</td></tr>
+      <tr><td>Tapete claro de pelo baixo</td><td>2,00 × 1,40 m</td><td class="n">R$ 250 – 700</td></tr>
+      <tr><td>Criado-mudo claro</td><td>2</td><td class="n">R$ 400 – 1.000</td></tr>
+      <tr><td>Luminária de cabeceira</td><td>2</td><td class="n">R$ 160 – 400</td></tr>
+      <tr><td>Almofadas com textura</td><td>4</td><td class="n">R$ 120 – 320</td></tr>
+      <tr><td>Manta de tricô ou bouclé</td><td>1</td><td class="n">R$ 80 – 200</td></tr>
+      <tr><td>Quadros ou espelho</td><td>2</td><td class="n">R$ 100 – 300</td></tr>
+      <tr class="tot"><td>Total</td><td></td><td class="n">R$ 1.700 – 4.600</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note">
+    <p><strong>Onde economizar sem estragar:</strong> tapete, almofadas e quadros aceitam versão barata sem que ninguém perceba. <strong>Onde não economizar:</strong> a cortina, porque tecido ruim cai mal e aparece todo dia, e a tinta das portas, porque esmalte barato amarela.</p>
+  </div>
+</section>
+
+<section class="avoid">
+  <h2>O que não comprar</h2>
+  <ul>
+    <li><strong>Papel de parede estampado.</strong> Vocês estão tirando um justamente por isso. Se voltar estampa, volta o barulho.</li>
+    <li><strong>Móvel de madeira escura.</strong> Qualquer peça nova nesse tom recria o conflito que a pintura das portas vai resolver.</li>
+    <li><strong>Um terceiro tom de madeira.</strong> O quarto já tem o claro do guarda-roupa. Tudo que for madeira deve chegar perto dele ou ser pintado.</li>
+    <li><strong>Muitos objetos pequenos.</strong> Clean não é minimalismo vazio, é pouca coisa e cada uma grande o suficiente para ser vista. Três objetos de bom tamanho valem mais que doze pequenos.</li>
+    <li><strong>Luz branca fria.</strong> Lâmpada de 2700&nbsp;K nas cabeceiras. Luz fria mata bouclé, madeira clara e off-white de uma vez só.</li>
+  </ul>
+</section>
+
+<footer>
+  <p><strong>Falta para fechar:</strong> as medidas do quarto — largura, comprimento, pé-direito, e a que distância a porta e a janela ficam dos cantos. Com elas eu marco onde cada peça entra e conferimos se o tapete e os criados cabem antes de comprar.</p>
+  <p>Depois disso, geramos as imagens do quarto pronto.</p>
+</footer>
+
+</div>
