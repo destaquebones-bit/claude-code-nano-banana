@@ -93,6 +93,14 @@
     padding:3px 9px; border-radius:99px; margin-top:8px;
   }
 
+  /* planta */
+  .plan{margin:24px 0 0}
+  .plan svg{width:100%; height:auto; display:block; max-width:520px; margin:0 auto}
+  .plan figcaption{
+    font-family:var(--sans); font-size:13px; color:var(--muted);
+    max-width:60ch; margin:14px auto 0; line-height:1.5;
+  }
+
   /* tabela */
   .tblwrap{overflow-x:auto; margin-top:18px}
   table{width:100%; border-collapse:collapse; font-size:14.5px; min-width:440px}
@@ -136,7 +144,7 @@
   <div class="split">
     <div class="keep">
       <h3>O guarda-roupa</h3>
-      <p>Madeira clara, ripado vertical nas laterais, painéis off-white de correr. Ocupa uma parede inteira e é o objeto que mais aparece quando você entra.</p>
+      <p>Madeira clara, ripado vertical nas laterais, painéis off-white de correr. Ele sai da parede que ocupa hoje para a cama entrar — mas o ripado dele fica, virado em linguagem para a parede da cabeceira.</p>
     </div>
     <div class="keep">
       <h3>A cama nova</h3>
@@ -168,7 +176,7 @@
   <div class="split">
     <div>
       <h3>O papel floral</h3>
-      <p>Fundo creme com folhas verde-azuladas e flores vinho, contorno escuro. É o elemento mais barulhento do quarto e ainda dobra na parede da porta. Tirar ele é a maior mudança possível.</p>
+      <p>Fundo creme com folhas verde-azuladas e flores vinho, contorno escuro. É o elemento mais barulhento do quarto e cobre justamente a parede das duas portas, que já é a mais recortada. Tirar ele é a maior mudança possível.</p>
     </div>
     <div>
       <h3>As portas escuras</h3>
@@ -180,80 +188,283 @@
     </div>
     <div>
       <h3>A cômoda escura</h3>
-      <p>Mesma madeira das portas, mesmo problema. Ou sai, ou é pintada junto com elas.</p>
+      <p>Mesma madeira das portas, mesmo problema. Ou sai, ou é pintada junto com elas — e o lugar dela agora é a parede das portas, não o canto.</p>
     </div>
   </div>
 </section>
 
 <section>
-  <h2>A mudança que custa zero</h2>
-  <p class="lead">Quarto de 4,00 × 4,00 m, pé-direito 2,65. São 16 m² — bem mais folga do que parece nas fotos.</p>
-  <p><strong>A cama está na pior parede do quarto.</strong> Ela divide a parede da cabeceira com as duas portas: a do banheiro e a do corredor. Isso significa tráfego passando rente à cabeceira, folhas de porta abrindo ao lado do travesseiro, e nenhuma chance de simetria — não existe espaço para dois criados iguais.</p>
-  <p>E existe uma <strong>parede inteira vazia</strong>, entre a porta do banheiro e o guarda-roupa. Branca, sem papel, sem móvel, sem nada.</p>
-  <p>Com 4 metros de parede e uma cama Queen de 1,58, a conta fecha com sobra:</p>
+  <h2>A planta que a medida real pede</h2>
+  <p class="lead">Quarto de 3,80 × 3,80 m, pé-direito 2,65. São 14,4 m² — quadrado perfeito, o que ajuda: qualquer parede aceita a cama.</p>
+  <p><strong>A cama vai para a parede onde hoje está o guarda-roupa.</strong> É a única parede inteira, sem porta, sem janela e sem interruptor no meio. Com isso a parede das duas portas sai da cabeceira e vira o que ela sempre foi: passagem.</p>
+  <p>O guarda-roupa desce para a parede branca vazia, entre a porta do corredor e o canto da cabeceira. A janela e o ar-condicionado não se mexem.</p>
+</section>
+</div>
 
+<div class="wide">
+  <figure class="plan">
+    <svg viewBox="0 0 470 452" role="img" aria-label="Planta do quarto de 3,80 por 3,80 metros com a cama na parede do antigo guarda-roupa">
+      <defs>
+        <pattern id="rip" width="6" height="6" patternUnits="userSpaceOnUse">
+          <rect x="0" y="0" width="3.5" height="6" fill="var(--m-ripado)"/>
+        </pattern>
+      </defs>
+      <!-- piso -->
+      <rect x="64" y="44" width="342" height="342" fill="var(--surface)"/>
+      <!-- tapete 2,50 x 2,00 -->
+      <rect x="145" y="107" width="225" height="180" fill="var(--m-piso)" stroke="var(--rule)" stroke-width="1"/>
+      <!-- ripado na parede da cabeceira -->
+      <rect x="64" y="34" width="342" height="9" fill="url(#rip)"/>
+      <!-- cama Queen deslocada 25 cm para o lado da janela -->
+      <rect x="186" y="56" width="142" height="175" fill="var(--m-boucle)" stroke="var(--ink)" stroke-width="1"/>
+      <rect x="186" y="44" width="142" height="12" fill="var(--m-painel)" stroke="var(--ink)" stroke-width="1"/>
+      <!-- criados 0,45 -->
+      <rect x="145" y="44" width="41" height="41" fill="var(--m-ripado)" opacity=".5" stroke="var(--ink)" stroke-width=".8"/>
+      <rect x="328" y="44" width="41" height="41" fill="var(--m-ripado)" opacity=".5" stroke="var(--ink)" stroke-width=".8"/>
+      <!-- guarda-roupa 2,30 x 0,60 -->
+      <rect x="64" y="98" width="54" height="207" fill="var(--m-ripado)" opacity=".5" stroke="var(--ink)" stroke-width="1"/>
+      <!-- comoda 1,30 x 0,40 -->
+      <rect x="270" y="350" width="117" height="36" fill="var(--m-ripado)" opacity=".5" stroke="var(--ink)" stroke-width="1"/>
+      <!-- janela e ar-condicionado na parede da direita -->
+      <rect x="400" y="152" width="10" height="126" fill="var(--accent)"/>
+      <rect x="398" y="52" width="8" height="30" fill="none" stroke="var(--muted)" stroke-width="1"/>
+      <!-- portas -->
+      <rect x="68" y="381" width="72" height="9" fill="var(--ground)" stroke="var(--muted)" stroke-width="1"/>
+      <path d="M68 385 a72 72 0 0 0 72 -72" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="176" y="381" width="72" height="9" fill="var(--ground)" stroke="var(--muted)" stroke-width="1"/>
+      <path d="M248 385 a72 72 0 0 1 -72 -72" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 3"/>
+      <!-- paredes -->
+      <rect x="64" y="44" width="342" height="342" fill="none" stroke="var(--ink)" stroke-width="2"/>
+      <!-- rotulos -->
+      <g font-family="Archivo, sans-serif" font-size="10.5" fill="var(--muted)">
+        <text x="235" y="24" text-anchor="middle">cabeceira &#183; ripado &#183; 3,80 m</text>
+        <text x="235" y="414" text-anchor="middle">duas portas &#183; circula&#231;&#227;o &#183; 3,80 m</text>
+        <text x="50" y="215" text-anchor="middle" transform="rotate(-90 50 215)">parede livre</text>
+        <text x="426" y="215" text-anchor="middle" transform="rotate(90 426 215)">janela</text>
+      </g>
+      <g font-family="Archivo, sans-serif" font-size="10" fill="var(--ink)" font-weight="500">
+        <text x="257" y="148" text-anchor="middle">cama Queen</text>
+        <text x="91" y="205" text-anchor="middle" transform="rotate(-90 91 205)">guarda-roupa</text>
+        <text x="328" y="372" text-anchor="middle">c&#244;moda</text>
+        <text x="257" y="279" text-anchor="middle" font-size="9" fill="var(--muted)" font-weight="400">tapete 2,50 &#215; 2,00</text>
+      </g>
+      <g font-family="Archivo, sans-serif" font-size="9.5" fill="var(--accent)" font-weight="600">
+        <text x="152" y="152" text-anchor="middle">0,76</text>
+        <text x="367" y="152" text-anchor="middle">0,86</text>
+        <text x="257" y="322" text-anchor="middle">1,32 m livre at&#233; a c&#244;moda</text>
+      </g>
+    </svg>
+    <figcaption>Planta na escala real. A cama está 25&nbsp;cm deslocada para o lado da janela — é o que abre 76&nbsp;cm de passagem na frente do guarda-roupa; com o ripado cobrindo a parede inteira, esse deslocamento não aparece. O retângulo vazado na parede da direita é o ar-condicionado, que fica onde está.</figcaption>
+  </figure>
+</div>
+
+<div class="wrap">
+<section>
+  <h2>As contas de cada parede</h2>
   <div class="tblwrap">
   <table>
-    <thead><tr><th>Na parede livre</th><th class="n">Largura</th></tr></thead>
+    <thead><tr><th>Parede da cabeceira &middot; 3,80 m</th><th class="n">Medida</th></tr></thead>
     <tbody>
       <tr><td>Cama Queen</td><td class="n">1,58 m</td></tr>
-      <tr><td>Dois criados-mudos</td><td class="n">0,90 m</td></tr>
-      <tr><td>Sobra livre nas pontas</td><td class="n">1,52 m</td></tr>
-      <tr class="tot"><td>Parede</td><td class="n">4,00 m</td></tr>
+      <tr><td>Dois criados-mudos de 0,45</td><td class="n">0,90 m</td></tr>
+      <tr><td>Sobra livre nas pontas</td><td class="n">1,32 m</td></tr>
+      <tr class="tot"><td>Parede</td><td class="n">3,80 m</td></tr>
     </tbody>
   </table>
   </div>
-
-  <p style="margin-top:16px">Com a cama nessa parede, a cabeceira curva de bouclé fica centralizada e vista de frente por quem entra, os dois criados cabem iguais, e a parede das portas vira circulação — que é a função dela.</p>
+  <p style="margin-top:18px">A cama avança 2,08&nbsp;m para dentro do quarto (1,98 de colchão + a cabeceira). Sobram <strong>1,72&nbsp;m</strong> até a parede das portas — passagem folgada, mesmo com a cômoda de 40&nbsp;cm encostada lá.</p>
 
   <div class="note">
-    <p><strong>Confiram antes:</strong> meçam a parede livre de canto a canto e vejam se nenhuma tomada ou interruptor cai atrás da cabeceira. Se cair, dá para deslocar a cama 20 ou 30 cm sem perder a simetria.</p>
+    <p><strong>O único aperto do projeto:</strong> o guarda-roupa tem 60&nbsp;cm de profundidade e fica ao lado da cama. Com a cama centralizada sobram 51&nbsp;cm de passagem, que é pouco para abrir porta de correr. <strong>Desloquem a cama 25&nbsp;cm para o lado da janela</strong> e a passagem vai para 76&nbsp;cm, sem perder o criado do outro lado (ainda sobram 86&nbsp;cm ali). Custa zero e resolve.</p>
+    <p>Se quiserem folga total: <strong>inverter a abertura da porta do corredor</strong> para fora. Hoje a folha abre para dentro e come 90&nbsp;cm da parede livre. Invertida, o guarda-roupa desce para o canto da porta e a frente dele fica inteiramente aberta. Um marceneiro faz por R$&nbsp;80 – 150 se o corredor permitir.</p>
   </div>
 </section>
 
 <section>
-  <h2>As cinco mudanças</h2>
-  <p class="lead">Em ordem de impacto por real gasto. A ordem importa: as duas primeiras sozinhas já mudam o quarto, e são as mais baratas.</p>
+  <h2>A parede das duas portas</h2>
+  <p class="lead">A parede mais difícil do quarto, e a que vocês pediram para eu olhar direito. Ela tem 3,80&nbsp;m e três coisas já ocupadas.</p>
+  <div class="tblwrap">
+  <table>
+    <thead><tr><th>De canto a canto</th><th class="n">Largura</th><th>O que fazer</th></tr></thead>
+    <tbody>
+      <tr><td>Porta do corredor</td><td class="n">≈ 0,80 m</td><td>Pintar de off-white, folha e batente</td></tr>
+      <tr><td>Pilar entre as portas</td><td class="n">≈ 0,40 m</td><td>Manter a faixa de espelho que já existe</td></tr>
+      <tr><td>Porta do banheiro</td><td class="n">≈ 0,80 m</td><td>Pintar igual</td></tr>
+      <tr class="tot"><td>Trecho livre até o canto</td><td class="n">≈ 1,75 m</td><td>Cômoda baixa + trio de quadros</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:18px">Esse trecho de 1,75&nbsp;m é onde a cabeceira está hoje. Ele vira o <strong>único ponto de apoio do quarto</strong>: uma cômoda de 1,30 × 0,40, altura 75&nbsp;cm, madeira clara, pés finos, sem puxador aparente. Sobram 22&nbsp;cm de cada lado — o móvel respira e não fica entalado.</p>
+  <p>Acima dela, um trio de quadros. Não pendurem nada nas duas portas nem no pilar: com as portas pintadas de off-white elas somem, e é exatamente isso que a parede precisa.</p>
+  <div class="note">
+    <p><strong>Três coisas que só essa parede resolve:</strong> lugar de largar chave e relógio, um espelho de corpo inteiro sem ocupar chão (a faixa do pilar já faz isso), e o ponto onde o olho descansa quando vocês estão deitados olhando para frente. Por isso os quadros vão aqui e não sobre a cama.</p>
+  </div>
+</section>
+
+<section>
+  <h2>O ripado</h2>
+  <p class="lead">É a peça que amarra o projeto: repete o ripado que o guarda-roupa já tem, na parede que a cama vai ocupar. Também é o item mais caro da lista — por isso, três níveis.</p>
+  <div class="tblwrap">
+  <table>
+    <thead><tr><th>Ripa</th><th class="n">Vão</th><th class="n">Passo</th><th class="n">Ripas em 3,80 m</th><th>Efeito</th></tr></thead>
+    <tbody>
+      <tr><td>4 cm</td><td class="n">2 cm</td><td class="n">6 cm</td><td class="n">63</td><td>Riscado fino, mais nervoso</td></tr>
+      <tr class="tot"><td>5 cm</td><td class="n">3 cm</td><td class="n">8 cm</td><td class="n">47</td><td>O equilíbrio — é o que eu faria</td></tr>
+      <tr><td>7 cm</td><td class="n">3 cm</td><td class="n">10 cm</td><td class="n">37</td><td>Mais robusto, puxa para rústico</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:18px">Com pé-direito de 2,65&nbsp;m, <strong>ripa de 3&nbsp;m corta uma peça inteira por ripa, sem emenda</strong> — e sobra 35&nbsp;cm de ponta. Nunca emendem ripa no meio da parede: a linha da emenda aparece de longe.</p>
 
   <ol class="steps">
     <li>
       <div>
-        <h3>Tirar o papel floral</h3>
-        <p>Pintar a parede de branco é o mais barato e funciona. Se quiserem textura atrás da cabeceira, papel liso com trama de linho off-white, só naquela parede — nunca nas quatro.</p>
-        <p class="lead">Papel adesivo vem em rolo de 10&nbsp;m × 0,53&nbsp;m. Meça a largura da parede e divida por 0,53 para saber quantos rolos.</p>
-        <span class="cost">R$ 150 – 700</span>
+        <h3>Painel ripado pronto, parede inteira</h3>
+        <p>Réguas já coladas em manta ou base de MDF, vem em módulo de 2,70 × 0,50 m. Cola direto na parede, acabamento perfeito, um fim de semana de trabalho.</p>
+        <p class="lead">10,07 m² de parede. Buscar por <em>“painel ripado MDF 2,70”</em> ou <em>“painel ripado acústico”</em>.</p>
+        <span class="cost">R$ 1.300 – 2.000</span>
       </div>
     </li>
     <li>
       <div>
+        <h3>Painel pronto só atrás da cama</h3>
+        <p>Faixa de 2,50&nbsp;m de largura, do chão ao teto, centralizada na cama e nos criados. São 6,6 m². O resto da parede fica pintado no mesmo off-white.</p>
+        <p class="lead">É o melhor custo-benefício e visualmente quase idêntico ao anterior, porque os criados escondem as bordas.</p>
+        <span class="cost">R$ 850 – 1.300</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>Ripa maciça de pinus, parede inteira</h3>
+        <p>47 ripas de 5 × 2 cm com 3 m, parafusadas sobre dois sarrafos horizontais (um a 40 cm do chão, outro a 2,10 m). Lixar, aplicar óleo ou verniz incolor acetinado.</p>
+        <p class="lead">Mais barato em material, muito mais trabalhoso. O erro clássico é o vão irregular: marquem o passo de 8 cm no sarrafo antes de parafusar qualquer ripa, e usem um espaçador de 3 cm cortado em sobra.</p>
+        <span class="cost">R$ 600 – 950</span>
+      </div>
+    </li>
+  </ol>
+
+  <div class="note">
+    <p><strong>Dois detalhes que fazem o ripado parecer caro:</strong> pintem o fundo entre as ripas de um tom bem mais escuro — taupe ou grafite fosco — antes de fixar; as sombras ficam profundas em vez de mostrarem a parede branca. E parem o ripado no rodapé, não em cima dele: a ripa descendo até o chão é o que dá a leitura de painel inteiro.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Papéis de parede</h2>
+  <p class="lead">O floral sai — nisso não há discussão. A pergunta é o que entra, e a resposta muda conforme a parede.</p>
+  <div class="split">
+    <div class="keep">
+      <h3>Trama de linho off-white</h3>
+      <p>Textura tecida, sem desenho. É o que eu colocaria na parede das duas portas: dá relevo sem virar assunto e some atrás da cômoda e dos quadros.</p>
+      <p class="lead">Rolo de 0,53 × 10 m &middot; 10 m² pedem 3 rolos &middot; <strong>R$ 150 – 260</strong></p>
+    </div>
+    <div class="keep">
+      <h3>Cimento queimado claro</h3>
+      <p>Microtextura irregular em areia ou cru. Mais contemporâneo que o linho, combina com o piso de madeira e com o bouclé. Cuidado só para não escolher um tom acinzentado — o quarto ficaria frio.</p>
+      <p class="lead"><strong>R$ 160 – 300</strong></p>
+    </div>
+    <div>
+      <h3>Ripado impresso</h3>
+      <p>Papel que imita ripado de madeira. Resolve a parede da cabeceira por 250 reais em vez de mil. A perda é real: não tem sombra, e de perto se vê que é impresso. Mas de pé, na parede toda, engana bem.</p>
+      <p class="lead">Plano B do ripado &middot; <strong>R$ 200 – 320</strong></p>
+    </div>
+    <div>
+      <h3>Boiserie impressa</h3>
+      <p>Frisado falso, em molduras retangulares. É a alternativa mais clássica ao ripado e a mais barata de todas. Não combina tão bem com o guarda-roupa ripado — os dois desenhos competem.</p>
+      <p class="lead">Só se desistirem do ripado &middot; <strong>R$ 150 – 250</strong></p>
+    </div>
+  </div>
+  <div class="note">
+    <p><strong>Antes de comprar:</strong> o floral atual é texturizado e pode ser vinílico. Puxem uma ponta num canto escondido — se sair em folha inteira, o papel novo vai direto por cima da parede limpa. Se sair em pedaços e levar reboco junto, vai precisar de massa corrida e lixa antes, e aí pintar sai mais barato que colar.</p>
+    <p>E confiram se o papel é <strong>adesivo</strong> ou <strong>não-adesivo</strong>. O não-adesivo custa metade mas exige cola própria e uma segunda pessoa segurando a folha.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Os abajures</h2>
+  <p class="lead">Dois iguais, um em cada criado. Simetria aqui é o que separa quarto de casal montado de propósito de quarto montado aos poucos. Todos com lâmpada de <strong>2700&nbsp;K</strong> — luz fria mata bouclé e madeira clara de uma vez.</p>
+  <div class="split">
+    <div class="keep">
+      <h3>Cerâmica cru + cúpula de linho</h3>
+      <p>Base gorda de cerâmica fosca em off-white ou areia, cúpula cilíndrica de linho natural. É o par que eu compraria: a cerâmica repete o off-white dos painéis e a cúpula repete a textura do bouclé.</p>
+      <p class="lead">Altura ideal 40 – 45 cm &middot; <strong>R$ 90 – 180 cada</strong></p>
+    </div>
+    <div class="keep">
+      <h3>Madeira clara torneada</h3>
+      <p>Base de madeira torneada com cúpula off-white. Rima com o ripado em vez de contrastar. Segunda melhor opção, e a mais fácil de achar barata.</p>
+      <p class="lead"><strong>R$ 80 – 160 cada</strong></p>
+    </div>
+    <div>
+      <h3>Arandela articulada</h3>
+      <p>Braço articulado preto ou latão, parafusado direto no ripado, a 55 – 60 cm acima do colchão. Libera o criado inteiro e é a solução mais limpa que existe.</p>
+      <p class="lead">Precisa de ponto de luz ou fio aparente com plugue &middot; <strong>R$ 120 – 260 cada</strong></p>
+    </div>
+    <div>
+      <h3>Pendente descendo do teto</h3>
+      <p>Um de cada lado, parando a 60 cm do criado. Fica lindo e é o mais caro dos quatro, porque precisa passar fio pelo teto — obra que o resto do projeto não tem.</p>
+      <p class="lead">Só se já houver ponto no teto &middot; <strong>R$ 150 – 350 cada</strong></p>
+    </div>
+  </div>
+  <div class="note">
+    <p><strong>Detalhe que quase todo mundo erra:</strong> a base do abajur não pode ser mais alta que o topo da cabeceira, senão a silhueta briga com a curva do bouclé. Com criado de 55 cm e cabeceira de 1,10 m do chão, abajur de até 45 cm está certo.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Os quadros</h2>
+  <p class="lead">Um lugar só: acima da cômoda, na parede das duas portas. Sobre a cama não vai nada — o ripado já é o quadro daquela parede, e dois assuntos na mesma parede anulam os dois.</p>
+  <div class="tblwrap">
+  <table>
+    <thead><tr><th>Arranjo</th><th class="n">Medidas</th><th>Quando escolher</th></tr></thead>
+    <tbody>
+      <tr class="tot"><td>Trio</td><td class="n">3 × 30 × 40 cm</td><td>Com a cômoda de 1,30 m. Vão de 6 a 8 cm entre molduras, conjunto de 1,04 m centralizado</td></tr>
+      <tr><td>Par</td><td class="n">2 × 40 × 60 cm</td><td>Mais calmo e mais fácil de acertar. Vão de 8 cm</td></tr>
+      <tr><td>Um só</td><td class="n">70 × 100 cm</td><td>Se quiserem uma peça forte. Aqui vale gastar num só bom</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:18px"><strong>Altura:</strong> borda inferior a 25 – 30 cm acima do tampo da cômoda. Se fosse parede vazia, o centro do conjunto ficaria a 1,55 m do chão — mas aqui o móvel manda, e a distância curta é o que faz cômoda e quadro lerem como uma peça só.</p>
+  <p><strong>Moldura:</strong> madeira clara fina, 2 cm, com passe-partout branco largo. O passe-partout é o que dá cara de coisa cara — moldura sem ele parece pôster. Evitem preto e evitem dourado: os dois trazem um terceiro assunto para um quarto que está tentando ter dois.</p>
+  <p><strong>Conteúdo:</strong> abstrato nos tons que o quarto já tem — areia, off-white, terracota queimada, um verde-oliva. Ou botânico em traço fino. Ou fotografia em preto e branco de textura, não de paisagem. O critério é simples: <em>se o quadro tem uma cor que não existe em nenhum outro lugar do quarto, ele está errado</em>.</p>
+  <div class="note">
+    <p><strong>Como economizar de verdade aqui:</strong> comprem só as molduras (R$ 30 – 60 cada em 30 × 40) e mandem imprimir as artes numa gráfica local em papel fotográfico fosco 230 g — sai R$ 8 a R$ 15 a folha. O trio inteiro fecha em R$ 130 – 220 em vez de R$ 400. Kit pronto de três peças também serve, mas confiram se a moldura é madeira e não plástico imitando.</p>
+  </div>
+</section>
+
+<section>
+  <h2>O resto do quarto</h2>
+  <p class="lead">Quatro mudanças que não dependem de nenhuma decisão acima e que sozinhas já mudam o quarto. As duas primeiras são as mais baratas da lista inteira.</p>
+
+  <ol class="steps">
+    <li>
+      <div>
         <h3>Pintar as portas e os batentes</h3>
-        <p>Esmalte à base de água, acetinado, no mesmo off-white dos painéis do guarda-roupa. As portas somem na parede e o quarto parece imediatamente maior.</p>
-        <p class="lead">Precisa de fundo preparador antes — verniz não segura tinta sem ele.</p>
-        <span class="cost">R$ 180 – 350</span>
+        <p>Esmalte à base de água, acetinado, no mesmo off-white dos painéis do guarda-roupa. As duas folhas somem na parede e o quarto parece imediatamente maior — é o maior efeito por real gasto do projeto todo.</p>
+        <p class="lead">Precisa de fundo preparador antes. Verniz não segura tinta sem ele: descasca em seis meses.</p>
+        <span class="cost">R$ 180 &ndash; 350</span>
       </div>
     </li>
     <li>
       <div>
         <h3>Trocar as cortinas</h3>
-        <p>Linho ou voil off-white, do teto até o chão, com o varão bem acima da janela e mais largo que ela. Isso faz a janela parecer maior e a luz entrar espalhada.</p>
-        <p class="lead">Se precisarem escurecer para dormir, forro blackout branco por trás — nunca tecido escuro na frente.</p>
-        <span class="cost">R$ 250 – 600</span>
+        <p>Linho ou voil off-white, do teto até o chão, varão fixado logo abaixo da laje e mais largo que o vão, para a cortina aberta ficar fora do vidro. A janela parece maior e a luz entra espalhada em vez de recortada.</p>
+        <p class="lead">Para escurecer, forro blackout branco por trás — nunca tecido escuro na frente. As cortinas pretas de hoje são duas manchas verticais num quarto que quer ser claro.</p>
+        <span class="cost">R$ 250 &ndash; 600</span>
       </div>
     </li>
     <li>
       <div>
-        <h3>Aquecer o piso</h3>
-        <p>A cerâmica clara é fria e dura. Um tapete de pelo baixo em bege ou cru, saindo pelos três lados da cama, resolve o toque e o som do quarto ao mesmo tempo.</p>
-        <p class="lead">Para a Queen num quarto de 4&nbsp;×&nbsp;4, o tamanho certo é <strong>2,50 × 3,00 m</strong>, encostado na parede da cabeceira e passando por baixo dos dois criados. Sobram 46&nbsp;cm de tapete de cada lado da cama e ainda 1 metro livre até a parede oposta. Um 2,00 × 3,00 deixaria só 21&nbsp;cm por lado e ficaria apertado.</p>
-        <span class="cost">R$ 250 – 700</span>
+        <h3>O tapete</h3>
+        <p>Pelo baixo, bege ou cru, saindo pelos três lados da cama. Aquece a cerâmica fria e ainda abafa o eco do quarto vazio.</p>
+        <p class="lead">Com 3,80 de parede o tamanho certo é <strong>2,50 × 2,00 m</strong>: começa a 70 cm da parede, logo à frente dos criados, sobra 46 cm de cada lado da cama e ainda deixa 30 cm de folga até o guarda-roupa. O 2,50 × 3,00 que caberia num quarto de 4 × 4 aqui encosta na parede das portas.</p>
+        <span class="cost">R$ 250 &ndash; 700</span>
       </div>
     </li>
     <li>
       <div>
-        <h3>Os dois lados da cama</h3>
-        <p>Criados-mudos iguais, claros ou de madeira clara, e duas luminárias iguais. Simetria é o que faz um quarto de casal parecer intencional em vez de montado aos poucos.</p>
-        <p class="lead">Se a parede permitir, arandelas presas na parede liberam a superfície do criado e ficam mais limpas.</p>
-        <span class="cost">R$ 500 – 1.400</span>
+        <h3>Se um dia trocarem o piso</h3>
+        <p>Não é para agora e não está no orçamento. Mas nas imagens ele aparece: porcelanato amadeirado claro, régua longa, assentado no sentido da janela. É o que faz o quarto inteiro sair do registro de cerâmica de sala e entrar no registro de quarto.</p>
+        <p class="lead">14,4 m² &middot; porcelanato amadeirado a partir de R$ 55/m² + assentamento. Tapete resolve 80% disso por 5% do preço.</p>
+        <span class="cost">R$ 1.400 &ndash; 2.600</span>
       </div>
     </li>
   </ol>
@@ -261,27 +472,40 @@
 
 <section>
   <h2>Lista de compras</h2>
-  <p class="lead">Faixas de ordem de grandeza no mercado brasileiro, para vocês dimensionarem a conta. Confirmem o preço do dia no anúncio — isso oscila muito com promoção e frete.</p>
+  <p class="lead">Faixas de ordem de grandeza no mercado brasileiro, para dimensionarem a conta. Confirmem o preço do dia no anúncio — isso oscila muito com promoção e frete. Os itens marcados como opcionais é onde vocês decidem o tamanho do projeto.</p>
   <div class="tblwrap">
   <table>
     <thead><tr><th>Item</th><th>Quantidade</th><th class="n">Faixa</th></tr></thead>
     <tbody>
-      <tr><td>Papel de parede texturizado ou tinta</td><td>1 parede</td><td class="n">R$ 150 – 700</td></tr>
-      <tr><td>Esmalte à base de água + fundo</td><td>2 portas e batentes</td><td class="n">R$ 180 – 350</td></tr>
-      <tr><td>Cortina linho ou voil off-white</td><td>3 m de largura</td><td class="n">R$ 150 – 400</td></tr>
-      <tr><td>Varão longo</td><td>1</td><td class="n">R$ 80 – 200</td></tr>
-      <tr><td>Tapete claro de pelo baixo</td><td>2,00 × 1,40 m</td><td class="n">R$ 250 – 700</td></tr>
-      <tr><td>Criado-mudo claro</td><td>2</td><td class="n">R$ 400 – 1.000</td></tr>
-      <tr><td>Luminária de cabeceira</td><td>2</td><td class="n">R$ 160 – 400</td></tr>
-      <tr><td>Almofadas com textura</td><td>4</td><td class="n">R$ 120 – 320</td></tr>
-      <tr><td>Manta de tricô ou bouclé</td><td>1</td><td class="n">R$ 80 – 200</td></tr>
-      <tr><td>Quadros ou espelho</td><td>2</td><td class="n">R$ 100 – 300</td></tr>
-      <tr class="tot"><td>Total</td><td></td><td class="n">R$ 1.700 – 4.600</td></tr>
+      <tr><td>Esmalte à base de água + fundo preparador</td><td>2 portas e batentes</td><td class="n">R$ 180 &ndash; 350</td></tr>
+      <tr><td>Papel liso texturizado</td><td>parede das portas, 3 rolos</td><td class="n">R$ 150 &ndash; 300</td></tr>
+      <tr><td>Cortina linho ou voil off-white</td><td>3 m de largura</td><td class="n">R$ 150 &ndash; 400</td></tr>
+      <tr><td>Varão longo até o teto</td><td>1</td><td class="n">R$ 80 &ndash; 200</td></tr>
+      <tr><td>Tapete claro de pelo baixo</td><td>2,50 × 2,00 m</td><td class="n">R$ 250 &ndash; 700</td></tr>
+      <tr><td>Criado-mudo claro</td><td>2</td><td class="n">R$ 400 &ndash; 1.000</td></tr>
+      <tr><td>Abajur cerâmica + cúpula de linho</td><td>2</td><td class="n">R$ 180 &ndash; 360</td></tr>
+      <tr><td>Lâmpada 2700 K, 6 W</td><td>2</td><td class="n">R$ 30 &ndash; 60</td></tr>
+      <tr><td>Cômoda baixa 1,30 × 0,40</td><td>1</td><td class="n">R$ 550 &ndash; 1.400</td></tr>
+      <tr><td>Molduras 30 × 40 + impressão</td><td>3</td><td class="n">R$ 130 &ndash; 220</td></tr>
+      <tr><td>Almofadas com textura</td><td>4</td><td class="n">R$ 120 &ndash; 320</td></tr>
+      <tr><td>Manta de tricô ou bouclé</td><td>1</td><td class="n">R$ 80 &ndash; 200</td></tr>
+      <tr class="tot"><td>Sem o ripado</td><td></td><td class="n">R$ 2.300 &ndash; 5.510</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="tblwrap">
+  <table>
+    <thead><tr><th>Opcional &middot; a parede da cabeceira</th><th>Escolher um</th><th class="n">Faixa</th></tr></thead>
+    <tbody>
+      <tr><td>Ripa maciça de pinus, parede inteira</td><td>47 ripas de 3 m + sarrafo + óleo</td><td class="n">R$ 600 &ndash; 950</td></tr>
+      <tr><td>Painel ripado pronto, faixa de 2,50 m</td><td>6,6 m²</td><td class="n">R$ 850 &ndash; 1.300</td></tr>
+      <tr><td>Painel ripado pronto, parede inteira</td><td>10,07 m²</td><td class="n">R$ 1.300 &ndash; 2.000</td></tr>
+      <tr class="tot"><td>Papel de ripado impresso</td><td>plano B</td><td class="n">R$ 200 &ndash; 320</td></tr>
     </tbody>
   </table>
   </div>
   <div class="note">
-    <p><strong>Onde economizar sem estragar:</strong> tapete, almofadas e quadros aceitam versão barata sem que ninguém perceba. <strong>Onde não economizar:</strong> a cortina, porque tecido ruim cai mal e aparece todo dia, e a tinta das portas, porque esmalte barato amarela.</p>
+    <p><strong>Onde economizar sem estragar:</strong> tapete, almofadas e quadros aceitam versão barata sem que ninguém perceba — e o ripado em ripa de pinus fica igual ao painel pronto se o passo for constante. <strong>Onde não economizar:</strong> a cortina, porque tecido ruim cai mal e vocês veem isso todo dia; a tinta das portas, porque esmalte barato amarela; e os dois abajures, porque são os únicos objetos do quarto que ficam à altura dos olhos.</p>
   </div>
 </section>
 
@@ -297,8 +521,8 @@
 </section>
 
 <footer>
-  <p><strong>Falta para fechar:</strong> a largura exata da parede livre e o tamanho da cama nova — Casal, Queen ou King. As contas desta página usam Queen (1,58 × 1,98); se for King, a cama cresce 35&nbsp;cm e o tapete precisa ir para 3,00 × 3,00.</p>
-  <p>Com isso confirmado, geramos as imagens do quarto pronto sobre as fotos reais.</p>
+  <p><strong>As contas desta página:</strong> quarto de 3,80 × 3,80 m, pé-direito 2,65, cama Queen de 1,58 × 1,98, criados de 0,45, guarda-roupa de 0,60 de profundidade. Se algum desses números mudar na hora de medir, a passagem ao lado do guarda-roupa é a primeira coisa a reconferir — é a folga mais apertada do projeto.</p>
+  <p><strong>Confiram antes de comprar:</strong> se alguma tomada ou interruptor cai atrás da cabeceira nova; se o floral sai em folha inteira ou em pedaços; e se a porta do corredor pode passar a abrir para fora.</p>
 </footer>
 
 </div>
