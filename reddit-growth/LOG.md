@@ -628,3 +628,43 @@ No substitute action manufactured — consistent with "quality/reciprocity over 
 **Next automated step:** r/edmproduction's feedback thread becomes eligible ~2026-09-10 (tomorrow) — that's the next concrete action expected to be due. After that, r/TechnoProduction's ~2026-09-11, then r/PromoteYourMusic's ~2026-09-15.
 
 **Nothing awaiting approval from today's entry.** The most recent ready-to-paste drafts, if not already posted, remain: 2026-08-20 (r/House reciprocity + self-post, approved), 2026-09-01 (r/PromoteYourMusic refresh), 2026-09-03 (r/edmproduction refresh), 2026-09-04 (r/TechnoProduction refresh), 2026-09-08 (r/PromoteYourMusic refresh).
+
+---
+
+## 2026-09-10
+
+**Status check:** Unchanged — still only the single "Aprovado" note logged, on the 2026-08-20 entry, covering Steps 1–2 only (r/House reciprocity comments + self-post). No confirmation anywhere in this log for r/edmproduction (2026-08-21, refreshed 2026-08-27, refreshed again 2026-09-03), r/TechnoProduction (2026-08-22, refreshed 2026-08-28, refreshed again 2026-09-04), or r/PromoteYourMusic's three prior posts (2026-08-25, 2026-09-01, 2026-09-08). This routine still has no browser/login and cannot verify Reddit-side postings. Not re-explaining the full reasoning again (see 2026-08-26 through 2026-09-09 entries) — the gap is unchanged and already on record.
+
+**Today's step: r/edmproduction feedback thread — next cycle refresh, right on schedule**
+
+- **r/edmproduction feedback thread:** last refreshed 2026-09-03, **7 days ago today.** Per this log's own tracked weekly-rotation estimate (carried since 2026-08-29, and predicted as due "~2026-09-10" as far back as the 2026-09-03 and 2026-09-04 entries), this is now due. **Actionable today.**
+- **r/TechnoProduction feedback thread:** last refreshed 2026-09-04, 6 days ago. Weekly-rotation estimate puts the next legitimate refresh at ~2026-09-11 — **1 day short.** Skipped.
+- **r/PromoteYourMusic:** last posted 2026-09-08, ~7-day cooldown → next eligible ~2026-09-15. Today is 2026-09-10 — **not cleared, 5 days remain.** Skipped.
+- **r/House repeat self-post:** still no genuinely new material/update since the 2026-08-20 draft (same "Mind Gone State" free-download framing) — repeating this soon would violate the sub's reciprocity/quality norm. Skipped.
+
+Per the daily volume cap (at most one action/day on this young account) and "quality/reciprocity over volume," today's single action is a fresh r/edmproduction feedback-thread comment. Reworded again from the 2026-08-21, 2026-08-27, and 2026-09-03 versions (same two specific, answerable questions — low-end translation, breakdown length — for voice consistency) so it doesn't read as a copy-paste repeat if multiple end up visible near each other.
+
+### How to find the current thread (rotates weekly — no fixed URL, re-locate each time)
+1. Open r/edmproduction, check the sidebar/"About"/community highlights for a pinned link to the feedback thread, or look for a stickied/pinned post at the top of the sub (pin icon).
+2. If nothing's pinned, search within the sub for "feedback thread" or "feedback friday," sorted by **New**, restricted to the last 7 days — these are typically auto-posted on a fixed weekday by AutoModerator or a mod account.
+3. Confirm the post date is from the current week before commenting — replying in an old thread gets little visibility and can read as necro-posting.
+4. Self-promo is banned on r/edmproduction's main feed — this comment is only appropriate inside that week's feedback thread, never as a standalone post.
+
+### Ready-to-paste comment (English — matches the sub's own language)
+
+> Track: **Mind Gone State** (Tech House) — free download, no email/signup wall: https://hypeddit.com/iel6vv
+> Stream: https://soundcloud.com/spectralsunmusic/mind-gone-state
+>
+> Bringing the same one back around this week — two things I'd still love an honest read on: whether the low end holds up once you're off headphones/monitors (phone speaker, car, whatever's on hand), and whether the breakdown sits too long before it drops back in. Open to any other notes too.
+>
+> Glad to give feedback on other tracks posted here in return.
+
+**Notes:**
+- This is the only Reddit action queued for today per the daily volume cap (one action/day on this account).
+- Free-download framing stays front-loaded, no bare "check out my SoundCloud" phrasing, consistent with every prior feedback-thread draft in this log.
+- Cover art / video not applicable — feedback-thread comments are text + links only.
+- **Still unresolved and worth flagging again:** no confirmation yet on which of the prior ten drafts (2026-08-20 r/House reciprocity + self-post — approved, 2026-08-21 r/edmproduction, 2026-08-22 r/TechnoProduction, 2026-08-25 r/PromoteYourMusic, 2026-08-27 r/edmproduction refresh, 2026-08-28 r/TechnoProduction refresh, 2026-09-01 r/PromoteYourMusic refresh, 2026-09-03 r/edmproduction refresh, 2026-09-04 r/TechnoProduction refresh, 2026-09-08 r/PromoteYourMusic refresh) actually went up on Reddit. A one-line confirmation from Jhonatan would let future entries stop repeating this status check.
+
+**Next automated step:** r/TechnoProduction's feedback thread next legitimate refresh ~2026-09-11 (tomorrow); r/PromoteYourMusic's next cooldown clears ~2026-09-15. A repeat r/House self-post remains held until there's genuinely new material to share.
+
+**Awaiting Jhonatan's approval before this is posted.**
