@@ -39,6 +39,9 @@ medição como julgamento estético. Nenhum número diz se a música é boa.
     mainstream, com estética de master oposta. Avisar antes de usar como alvo.
 - **Ableton Live**, plugins **Waves**, **FabFilter** (Pro-Q 4, Pro-C 2, Pro-L 2,
   Saturn 2) + nativos
+  - Waves confirmados por uso: F6, C6, L2, WLM Plus, Scheps 73, Smack Attack,
+    C1, H-Delay, R-Verb. **Não tem** SSL G-Master Buss Comp — para cola de bus
+    usar o Glue Compressor nativo (mesmo modelo SSL, feito pela Cytomic).
 - Escreve em português, em caixa alta, direto ao ponto. Responda em português.
 
 ### Como ele trabalha
