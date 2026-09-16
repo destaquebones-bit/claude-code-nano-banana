@@ -31,6 +31,10 @@ medição como julgamento estético. Nenhum número diz se a música é boa.
 - **Spectral Sun** (nome artístico) · créditos como **Andrez Marquez**
 - **Tech house / minimal deep tech**, tipicamente **126 BPM**
 - Alvo declarado: **Solid Grooves, Hot Creations, Hellbent**
+  - Segundo alvo, trazido depois: **Hot Since 82 / Knee Deep In Sound** — house
+    mais fundo, quente e atmosférico que o lado seco. **Nenhuma referência desse
+    lado foi medida ainda**; a biblioteca de três só calibra o lado Solid
+    Grooves. Pedir uma faixa do Knee Deep antes de dar número para esse alvo.
   - Defected foi trazido uma vez como referência e **não serve** — é house vocal
     mainstream, com estética de master oposta. Avisar antes de usar como alvo.
 - **Ableton Live**, plugins **Waves**, **FabFilter** (Pro-Q 4, Pro-C 2, Pro-L 2,
@@ -241,6 +245,7 @@ rejeitar o que não se comprova.
 - Bandas de tolerância dos três — `.../488e96cf-438c-4bd5-bd20-27655fb51dc4`
 - THAT'S FREE v1, análise completa — `.../bf0af573-48c4-46f3-ae57-66fe1cf50ad9`
 - THAT'S FREE, arp seco (sintetizador, patch, lugar no espectro) — `.../19c4f463-435c-400a-b0bf-e716c9e263c1`
+- Racks por grupo, Waves + FabFilter, alvo Knee Deep (craft, sem medição) — `claude.ai/artifact/6Up6uKTbKMhGqxe3WSX2p9`
 
 Ao publicar revisão de um desses, **republicar no mesmo caminho de arquivo** para
 manter a URL, em vez de criar artefato novo.
