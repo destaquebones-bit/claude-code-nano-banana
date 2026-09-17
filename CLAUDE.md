@@ -180,6 +180,49 @@ F4 (349 Hz) e A#4 (466 Hz) caem exatamente nos dois buracos.
 Limitar só depois de resolver os 126 Hz — limitar antes é gastar headroom
 levantando o excesso.
 
+## Estado da faixa PAIN (test, 2026-09-17)
+
+6:04, **128,4 BPM** medido (confirmar se a sessão está em 128,0), ~195
+compassos — não fecha na grade de 8; provável 192 + rabo. Faixa mais percussiva
+que as anteriores: alinhamento tonal 0,009, o mais fraco já medido.
+
+| Medida | Valor | Referências |
+|---|---|---|
+| LUFS integrado | −13,31 | −7,6 a −8,9 |
+| True peak | **−0,34** | alvo −1,0 — acima |
+| PSR | 14,00 | 8,1 a 9,6 |
+| f0 do baixo | 53–54 Hz (A1 −35 c ou G#1 +65 c) | 41,7 a 51,0 |
+| Kick, pico espectral | 53,8 Hz | mesma nota do baixo |
+| 2f0 / 3f0 | −9,0 / **−2,6** | perfil Joshwa |
+| Ducking | 2,3 dB | dentro |
+| Bandas dentro | 10 de 29 | TF 12, HISTORY 6 |
+
+**Resolvido:** toda a região 50–160 Hz dentro da faixa (6 de 6 bandas). O
+problema de 2f0 da THAT'S FREE não existe aqui. Kick e baixo na mesma nota,
+separados por dinâmica — como as referências.
+
+**Fora, por tamanho:**
+
+| Região | Fora por | Natureza |
+|---|---|---|
+| 635 Hz | **−8,4** (504 −3,1, 800 −4,2) | **arranjo**: nada mora em 500–800 Hz |
+| 40 Hz | **−11,7** (31 −9,4, 25 −7,8) | **nota**: baixo em 54 Hz, refs em 42–51 |
+| 317 Hz | **+4,9** (252 +3,2, 200 +2,5) | lama; fonte desconhecida pela mixdown |
+| 12,8 kHz | **+6,1** (3–16 kHz todo +2 a +3,5) | contra os três, não só o Detlef |
+| Outro | 4 s | sem outro — regressão vs. TF (40 s) |
+
+Formato "V": estufado 200–400, cavado 500–800, brilhante em cima. Hipótese
+(não medida): mixagem em monitor pequeno/fone.
+
+**Afinação do sub: ressalva.** Leitura de 53–54 Hz fica 35 cents abaixo de A1.
+Pode ser o rabo do kick (−20 dB em 151 ms, janela de análise começa em 130 ms)
+contaminando o YIN, ou detune real. Pedir para conferir o MIDI antes de
+afirmar. Se a tônica for Mi (r=0,51, fraco), E1 = 41,2 Hz cairia na faixa das
+referências e resolveria o sub — decisão musical dele, não minha.
+
+Estrutura: intro filtrada ~16 c., quebra 16 c. em 2:14, quebra **24 c.** em
+3:45 (bloco a −24,7 dBFS), fim em 6:04 sem outro.
+
 ## Como corrigir a si mesmo
 
 Este projeto já teve várias conclusões derrubadas pela medição seguinte. Isso é o
@@ -219,6 +262,11 @@ Descobertas por teste, não por suposição:
   Alternativa que funciona aqui: HPSS por filtragem de mediana (sem modelo),
   boa o bastante para diferenças acima de ~10 dB.
 - Não há acesso ao disco da máquina dele. Só arquivos enviados pela conversa.
+- **O scratchpad e os uploads não sobrevivem a reinício de sessão.** As três
+  referências em áudio se perderam; a faixa de tolerância (min/max por terço
+  de oitava) foi recuperada do relatório THAT'S FREE publicado e está no
+  array `D` daquele artefato (colunas: fc, valor, min, max). Para reanalisar
+  referências em áudio, pedir os arquivos de novo.
 - Para caber no limite de upload: **FLAC mono 16 bits, 60 s do groove
   principal** ≈ 2 MB e não perde nada relevante.
 - Stems em MP3 **não somam de volta à mixdown** (correlação 0,718 medida). Para
@@ -250,6 +298,7 @@ rejeitar o que não se comprova.
 - THAT'S FREE v1, análise completa — `.../bf0af573-48c4-46f3-ae57-66fe1cf50ad9`
 - THAT'S FREE, arp seco (sintetizador, patch, lugar no espectro) — `.../19c4f463-435c-400a-b0bf-e716c9e263c1`
 - Racks por grupo, Waves + FabFilter, alvo Knee Deep (craft, sem medição) — `claude.ai/artifact/6Up6uKTbKMhGqxe3WSX2p9`
+- PAIN (test), análise completa — `claude.ai/artifact/Hcb7pMJy1mQ9JvwxoGLUSV`
 
 Ao publicar revisão de um desses, **republicar no mesmo caminho de arquivo** para
 manter a URL, em vez de criar artefato novo.
