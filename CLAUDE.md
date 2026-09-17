@@ -42,6 +42,13 @@ medição como julgamento estético. Nenhum número diz se a música é boa.
   - Waves confirmados por uso: F6, C6, L2, WLM Plus, Scheps 73, Smack Attack,
     C1, H-Delay, R-Verb. **Não tem** SSL G-Master Buss Comp — para cola de bus
     usar o Glue Compressor nativo (mesmo modelo SSL, feito pela Cytomic).
+- **Mixa em fone** (visto em captura de tela, 2026-09-17): Sonarworks/SoundID com
+  Sennheiser HD 600, Audio-Technica ATH-M40x e AirPods Pro. Explica o formato
+  em "V" da PAIN (200–400 estufado, 500–800 cavado, topo brilhante) e o sub
+  ausente abaixo de 45 Hz — fone não entrega 40 Hz no corpo. Ao analisar,
+  apontar sub e médio-grave como as regiões em que o monitoramento dele mente.
+- **WLM Plus** configurado com True Peak Max −2,0, Target −24, Short Max −16
+  (padrões de TV). Já sugeri −1,0 / −9 / −8.
 - Escreve em português, em caixa alta, direto ao ponto. Responda em português.
 
 ### Como ele trabalha
