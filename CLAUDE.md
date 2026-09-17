@@ -210,8 +210,9 @@ faixa, nunca um valor com casa decimal fingindo precisão.
 
 Descobertas por teste, não por suposição:
 
-- O proxy bloqueia **Spotify, Beatport, ccrma.stanford.edu, dsprelated.com,
-  huggingface.co, dl.fbaipublicfiles.com** e os hosts da Artlist.
+- O proxy bloqueia **Spotify, Beatport, SoundCloud (soundcloud.com, api-v2,
+  sndcdn.com — testado 2026-09-17, link privado inclusive), ccrma.stanford.edu,
+  dsprelated.com, huggingface.co, dl.fbaipublicfiles.com** e os hosts da Artlist.
   `pypi.org` e `api.github.com` funcionam.
 - **Demucs instala mas não roda** — os pesos não baixam. Separação por IA precisa
   ser feita na máquina dele (Moises, Demucs local) ou por stems do Ableton.
