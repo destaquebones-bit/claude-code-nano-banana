@@ -187,7 +187,32 @@ F4 (349 Hz) e A#4 (466 Hz) caem exatamente nos dois buracos.
 Limitar só depois de resolver os 126 Hz — limitar antes é gastar headroom
 levantando o excesso.
 
-## Estado da faixa PAIN (test, 2026-09-17)
+## Estado da faixa PAIN → TAKE YOUR TIME
+
+A faixa foi renomeada: v1 = "PAIN test" (6:04), v2 = "Take Your Time test 1"
+(6:45, masterizada, **216 compassos exatos**). Tabela abaixo é da v1; o que
+mudou na v2:
+
+| | v1 | v2 | Refs |
+|---|---|---|---|
+| LUFS | −13,31 | **−9,80** | −7,6 a −8,9 |
+| PSR | 14,00 | **10,25** | 8,1 a 9,6 |
+| True peak | −0,34 | **−0,18** (WLM na sessão dava −0,9: **MP3 somou 0,7 dB**) | −1,0 |
+| Contraste drops 1/2/3 | 2,8 / 1,4 / 9,6 dB | **4,7 / 5,9 / 6,0** | alvo 4–6 (craft) |
+| Outro | 4 s | 30 s (16 c.) **sem kick** — grave −9 dB | — |
+| 635 Hz | −8,4 | −6,6 | ainda o maior desvio |
+| 40 Hz | −11,7 | −10,5 | nota não decidida |
+| 317 Hz | +4,9 | +3,7 | |
+| 12,8 kHz | +6,1 | +3,5 | |
+| Kick −6 dB | 109 ms | **51 ms** | mudou o kick ou transient shaper |
+| Sub 20–60 | 24,3% | 30,3% | 34–54% |
+
+Bandas dentro 10 → 9, mas as distâncias encolheram. Em 1:12–1:27 o grave cai
+a −30 dBFS antes do drop — a técnica de contraste foi aplicada. Ceiling
+recomendado: **−1,2 dBTP** por causa da inflação do MP3. Próximos: 500–650 Hz
+(o que entrou está em 630–800), kick no outro, decisão do sub.
+
+### v1 (PAIN test) — medição original
 
 6:04, **128 BPM** (confirmado por ele; autocorrelação deu 128,4), **192
 compassos + 4,5 s de rabo** — a grade fecha. Faixa mais percussiva
@@ -314,7 +339,8 @@ rejeitar o que não se comprova.
 - THAT'S FREE v1, análise completa — `.../bf0af573-48c4-46f3-ae57-66fe1cf50ad9`
 - THAT'S FREE, arp seco (sintetizador, patch, lugar no espectro) — `.../19c4f463-435c-400a-b0bf-e716c9e263c1`
 - Racks por grupo, Waves + FabFilter, alvo Knee Deep (craft, sem medição) — `claude.ai/artifact/6Up6uKTbKMhGqxe3WSX2p9`
-- PAIN (test), análise completa — `claude.ai/artifact/Hcb7pMJy1mQ9JvwxoGLUSV`
+- PAIN (test), análise completa + ideias de sound design — `claude.ai/artifact/Hcb7pMJy1mQ9JvwxoGLUSV`
+- Take Your Time, v1 vs v2 — `claude.ai/artifact/CwfbRQfPRQR4Yf9AAJwGzA`
 
 Ao publicar revisão de um desses, **republicar no mesmo caminho de arquivo** para
 manter a URL, em vez de criar artefato novo.
