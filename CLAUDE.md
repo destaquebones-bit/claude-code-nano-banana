@@ -182,8 +182,8 @@ levantando o excesso.
 
 ## Estado da faixa PAIN (test, 2026-09-17)
 
-6:04, **128,4 BPM** medido (confirmar se a sessão está em 128,0), ~195
-compassos — não fecha na grade de 8; provável 192 + rabo. Faixa mais percussiva
+6:04, **128 BPM** (confirmado por ele; autocorrelação deu 128,4), **192
+compassos + 4,5 s de rabo** — a grade fecha. Faixa mais percussiva
 que as anteriores: alinhamento tonal 0,009, o mais fraco já medido.
 
 | Medida | Valor | Referências |
@@ -221,7 +221,9 @@ afirmar. Se a tônica for Mi (r=0,51, fraco), E1 = 41,2 Hz cairia na faixa das
 referências e resolveria o sub — decisão musical dele, não minha.
 
 Estrutura: intro filtrada ~16 c., quebra 16 c. em 2:14, quebra **24 c.** em
-3:45 (bloco a −24,7 dBFS), fim em 6:04 sem outro.
+3:45 (bloco a −24,7 dBFS), fim em 6:04 sem outro. **A voz mora nos dois
+breaks** (2:10–2:45 e ~4:20–4:35); fora deles a transcrição não acha fala.
+Letra transcrita com confiança parcial (ver relatório).
 
 ## Como corrigir a si mesmo
 
@@ -267,6 +269,13 @@ Descobertas por teste, não por suposição:
   de oitava) foi recuperada do relatório THAT'S FREE publicado e está no
   array `D` daquele artefato (colunas: fc, valor, min, max). Para reanalisar
   referências em áudio, pedir os arquivos de novo.
+- **Transcrição de voz funciona** — `pip install sherpa-onnx` e pesos do Whisper
+  pelos releases do GitHub (que passam no proxy):
+  `github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-whisper-small.tar.bz2`
+  (640 MB; o base de 200 MB alucina em loop). O que funcionou melhor em mixdown:
+  canal mid, passa-banda 250 Hz–5 kHz, janelas de 14 s com passo de 7, idioma
+  fixo. HPSS antes da transcrição **piorou**. `openaipublic.azureedge.net`
+  (pesos do openai-whisper) e alphacephei (Vosk) estão bloqueados.
 - Para caber no limite de upload: **FLAC mono 16 bits, 60 s do groove
   principal** ≈ 2 MB e não perde nada relevante.
 - Stems em MP3 **não somam de volta à mixdown** (correlação 0,718 medida). Para
