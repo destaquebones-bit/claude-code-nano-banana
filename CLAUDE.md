@@ -209,8 +209,16 @@ mudou na v2:
 
 Bandas dentro 10 → 9, mas as distâncias encolheram. Em 1:12–1:27 o grave cai
 a −30 dBFS antes do drop — a técnica de contraste foi aplicada. Ceiling
-recomendado: **−1,2 dBTP** por causa da inflação do MP3. Próximos: 500–650 Hz
-(o que entrou está em 630–800), kick no outro, decisão do sub.
+recomendado: **−1,2 dBTP** por causa da inflação do MP3.
+
+**v3 = "Take your Time v2" (18/09)**, mesmo comprimento e loudness. Subtração
+direta test 1 → v2: 400–900 Hz **+1 a +2,5 dB** em quase toda a faixa (picos em
+1:15, 2:45, 4:00–4:15); 250–320 Hz −1; 1,6–4 kHz −0,7; outro ganhou chimbal
+(+2,3 dB >3 kHz) mas **kick continua fora** (grave −22,7); break 3 ganhou
+grave (+2,2). Resultado vs faixa: 635 Hz −8,4 → −6,6 → **−5,2**; 504 Hz
+**−1,3**; 317 Hz **+2,8**; 40 Hz **−10,5 igual**; TP **−0,11** (piorou de novo,
+ceiling não foi mexido). 10 de 29 dentro. Pendentes: ceiling −1,2, sub, kick
+no outro, mais 3 dB em 500–650.
 
 ### v1 (PAIN test) — medição original
 
