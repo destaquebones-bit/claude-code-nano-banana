@@ -1,0 +1,498 @@
+<title>Som na Axozee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap">
+<style>
+  :root{
+    --ground:#F5F4F1; --surface:#ECEAE4; --sunk:#E2DFD7;
+    --ink:#17191C; --body:#3A3D42; --muted:#74777D; --rule:#DCD9D2;
+    --accent:#125C66; --accent-soft:#DCE9EA;
+    --signal:#B2531D; --signal-soft:#F2E3D7;
+    --grid:#C9C5BC;
+    --cond:"IBM Plex Sans Condensed","Helvetica Neue",Arial,sans-serif;
+    --mono:"IBM Plex Mono","SF Mono",ui-monospace,monospace;
+    --serif:"IBM Plex Serif",Georgia,"Times New Roman",serif;
+    --max:68ch;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#121316; --surface:#1B1D21; --sunk:#23262B;
+      --ink:#EFEEEB; --body:#C5C7CC; --muted:#8B8E95; --rule:#2C2F35;
+      --accent:#6FBCC4; --accent-soft:#12262A;
+      --signal:#DC8F55; --signal-soft:#2B1E15;
+      --grid:#383C42;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#121316; --surface:#1B1D21; --sunk:#23262B;
+    --ink:#EFEEEB; --body:#C5C7CC; --muted:#8B8E95; --rule:#2C2F35;
+    --accent:#6FBCC4; --accent-soft:#12262A;
+    --signal:#DC8F55; --signal-soft:#2B1E15;
+    --grid:#383C42;
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground); color:var(--body);
+    font-family:var(--serif); font-size:16.5px; line-height:1.62;
+    margin:0; padding:0 20px; padding-block:0 76px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto}
+  .wide{max-width:940px; margin:0 auto}
+  h1,h2,h3{font-family:var(--cond); color:var(--ink); margin:0}
+  h1{font-size:clamp(38px,8vw,64px); line-height:.98; letter-spacing:-.02em; font-weight:700; text-wrap:balance}
+  h2{
+    font-size:13px; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:10px;
+  }
+  h3{font-size:20px; font-weight:600; margin-bottom:5px; letter-spacing:-.005em}
+  p{margin:0 0 14px}
+  strong{color:var(--ink); font-weight:600}
+  em{font-style:italic}
+  header{padding-block:60px 28px}
+  .eyebrow{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); margin:0 0 20px;
+  }
+  .thesis{font-size:clamp(18px,2.5vw,22px); line-height:1.45; color:var(--ink); margin:24px 0 0; text-wrap:pretty}
+  section{padding-block:36px; border-top:1px solid var(--rule)}
+  .lead{color:var(--muted)}
+  .num{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+  /* faixa de numeros da sala */
+  .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(104px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:22px}
+  .stats div{background:var(--ground); padding:14px 14px 13px}
+  .stats b{display:block; font-family:var(--mono); font-size:21px; font-weight:600; color:var(--ink); letter-spacing:-.02em}
+  .stats span{display:block; font-family:var(--cond); font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin-top:5px}
+
+  /* planta */
+  .plan{margin:26px 0 0}
+  .plan svg{width:100%; height:auto; display:block; max-width:660px; margin:0 auto}
+  .plan figcaption{font-family:var(--cond); font-size:13.5px; color:var(--muted); max-width:62ch; margin:16px auto 0; line-height:1.5}
+
+  /* tabelas */
+  .tbl{overflow-x:auto; margin-top:20px}
+  table{width:100%; border-collapse:collapse; font-family:var(--cond); font-size:14.5px; min-width:470px}
+  th{
+    text-align:left; font-size:11px; letter-spacing:.11em; text-transform:uppercase;
+    color:var(--muted); font-weight:600; padding:0 14px 9px 0; border-bottom:1px solid var(--rule);
+  }
+  td{padding:11px 14px 11px 0; border-bottom:1px solid var(--rule); vertical-align:top}
+  td:first-child{color:var(--ink); font-weight:500}
+  td.n,th.n{text-align:right; font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap; padding-right:0}
+  th.n{font-family:var(--cond)}
+  tr.hit td{background:var(--signal-soft)}
+  tr.hit td:first-child{color:var(--signal)}
+  tr.pick td{border-bottom:none; padding-top:14px; font-weight:600; color:var(--ink); font-size:15.5px}
+
+  /* caixas de nota */
+  .note{background:var(--surface); border-left:2px solid var(--accent); padding:16px 18px; margin:22px 0 0; font-size:15.5px}
+  .note.warn{border-left-color:var(--signal)}
+  .note p:last-child{margin-bottom:0}
+  .note h3{font-size:15px; font-family:var(--cond); letter-spacing:.02em; margin-bottom:6px}
+
+  /* niveis de sistema */
+  .tiers{display:grid; grid-template-columns:1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:22px}
+  @media(min-width:760px){.tiers{grid-template-columns:repeat(3,1fr)}}
+  .tier{background:var(--ground); padding:20px 18px}
+  .tier.best{background:var(--accent-soft)}
+  .tier .lbl{font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:9px}
+  .tier.best .lbl{color:var(--accent)}
+  .tier ul{margin:12px 0 0; padding-left:17px; font-family:var(--cond); font-size:14.5px; line-height:1.5}
+  .tier li{margin-bottom:7px}
+  .tier .price{display:block; font-family:var(--mono); font-size:15px; font-weight:600; color:var(--ink); margin-top:14px; padding-top:12px; border-top:1px solid var(--rule)}
+
+  /* passos */
+  ol.steps{list-style:none; margin:22px 0 0; padding:0; counter-reset:s}
+  ol.steps>li{counter-increment:s; display:grid; grid-template-columns:38px 1fr; gap:15px; padding-block:18px; border-top:1px solid var(--rule)}
+  ol.steps>li:first-child{border-top:none; padding-top:4px}
+  ol.steps>li::before{
+    content:counter(s); font-family:var(--mono); font-size:19px; font-weight:600;
+    color:var(--accent); line-height:1; padding-top:5px;
+  }
+  .split{display:grid; grid-template-columns:1fr 1fr; gap:26px; margin-top:20px}
+  @media(max-width:620px){.split{grid-template-columns:1fr; gap:22px}}
+  .avoid li{margin-bottom:11px}
+  footer{padding-block:38px 0; border-top:1px solid var(--rule); color:var(--muted); font-size:14.5px}
+  @media (prefers-reduced-motion:no-preference){
+    header,section{animation:rise .5s ease-out both}
+    section:nth-of-type(2){animation-delay:.04s}
+    section:nth-of-type(3){animation-delay:.08s}
+  }
+  @keyframes rise{from{opacity:.001;transform:translateY(7px)}to{opacity:1;transform:none}}
+</style>
+
+<div class="wide">
+<header>
+  <p class="eyebrow">Axozee &middot; Ambiente 1 &middot; projeto de som</p>
+  <h1>Som na Axozee</h1>
+  <p class="thesis">Uma loja de 39&nbsp;m², estreita e comprida, com piso duro e vitrine de vidro. <strong>O que vai limitar o som aqui não é a potência das caixas — é a sala.</strong> Um sistema modesto bem colocado vai soar muito melhor que um sistema grande mal colocado, e custa um terço.</p>
+</header>
+</div>
+
+<div class="wrap">
+
+<section>
+  <h2>A sala em números</h2>
+  <p class="lead">Direto da planta do Ambiente 1. O pé-direito está assumido em 3,00&nbsp;m — é o único número que eu não tenho e o que mais muda as contas.</p>
+  <div class="stats">
+    <div><b>39,3</b><span>m² de piso</span></div>
+    <div><b>118</b><span>m³ de volume</span></div>
+    <div><b>8,94</b><span>m de comprimento</span></div>
+    <div><b>4,47</b><span>m na frente</span></div>
+    <div><b>4,32</b><span>m no fundo</span></div>
+    <div><b>45&ndash;65</b><span>pessoas em pé</span></div>
+  </div>
+  <p style="margin-top:20px">Tirando o balcão e a gôndola central sobram <strong>33&nbsp;m² de piso livre</strong>. A 0,7&nbsp;m² por pessoa isso dá 47 pessoas confortáveis; apertando para 0,5&nbsp;m² chega a 66. <strong>Dimensionem o sistema para 50 pessoas</strong>, não para 200 — é o erro mais caro que dá para cometer aqui.</p>
+  <p>A loja é quase o dobro de comprida do que larga: <strong>2,03 : 1</strong>. Guardem esse número, porque ele é a origem do único problema acústico sério do espaço.</p>
+</section>
+</div>
+
+<div class="wide">
+  <figure class="plan">
+    <svg viewBox="0 0 470 456" role="img" aria-label="Planta da loja de 4,47 por 8,94 metros com as duas caixas principais e o subwoofer no fundo, junto ao balcão, disparando no comprimento em direção à vitrine">
+      <defs>
+        <clipPath id="sala"><path d="M120 40 L292 40 L289 386 L123 386 Z"/></clipPath>
+        <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/>
+        </marker>
+      </defs>
+
+      <!-- piso -->
+      <rect x="120" y="40" width="172" height="346" fill="var(--surface)" opacity=".5"/>
+
+      <!-- cones de cobertura, recortados pela sala -->
+      <g clip-path="url(#sala)" fill="var(--accent)" opacity=".08">
+        <path d="M160 386 L6 120 L314 120 Z"/>
+        <path d="M249 386 L95 120 L403 120 Z"/>
+      </g>
+
+      <!-- gondola -->
+      <rect x="134" y="110" width="40" height="167" fill="none" stroke="var(--grid)" stroke-width="1.5"/>
+      <text x="154" y="197" text-anchor="middle" transform="rotate(-90 154 197)" font-family="IBM Plex Sans Condensed" font-size="9.5" fill="var(--muted)">g&#244;ndola</text>
+
+      <!-- balcao -->
+      <rect x="121" y="298" width="92" height="33" fill="var(--sunk)" stroke="var(--grid)" stroke-width="1"/>
+      <text x="167" y="319" text-anchor="middle" font-family="IBM Plex Sans Condensed" font-size="10" fill="var(--muted)">balc&#227;o</text>
+
+      <!-- vitrine -->
+      <rect x="120" y="40" width="91" height="51" fill="none" stroke="var(--grid)" stroke-width="1" stroke-dasharray="4 3"/>
+      <text x="165" y="70" text-anchor="middle" font-family="IBM Plex Sans Condensed" font-size="9.5" fill="var(--muted)">vitrine?</text>
+
+      <!-- portal -->
+      <rect x="289" y="50" width="6" height="108" fill="var(--ground)"/>
+      <text x="302" y="108" font-family="IBM Plex Sans Condensed" font-size="9.5" fill="var(--muted)">portal 2,80</text>
+
+      <!-- DJ -->
+      <rect x="150" y="338" width="90" height="22" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
+      <text x="195" y="353" text-anchor="middle" font-family="IBM Plex Sans Condensed" font-size="10.5" font-weight="600" fill="var(--ink)">DJ</text>
+
+      <!-- sub, centralizado na largura -->
+      <rect x="193" y="366" width="26" height="19" fill="var(--signal)" opacity=".85"/>
+
+      <!-- tops -->
+      <g fill="var(--accent)">
+        <rect x="151" y="375" width="18" height="12"/>
+        <rect x="240" y="375" width="18" height="12"/>
+      </g>
+      <line x1="160" y1="373" x2="160" y2="210" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#ar)"/>
+      <line x1="249" y1="373" x2="249" y2="210" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#ar)"/>
+
+      <!-- paredes -->
+      <path d="M120 40 L292 40 L289 386 L123 386 Z" fill="none" stroke="var(--ink)" stroke-width="2"/>
+
+      <!-- cotas -->
+      <g font-family="IBM Plex Mono" font-size="10" fill="var(--muted)">
+        <text x="206" y="28" text-anchor="middle">4,47 m</text>
+        <text x="206" y="401" text-anchor="middle">4,32 m</text>
+        <text x="106" y="213" text-anchor="middle" transform="rotate(-90 106 213)">8,94 m</text>
+      </g>
+
+      <!-- anotacoes -->
+      <g font-family="IBM Plex Sans Condensed" font-size="10.5">
+        <text x="330" y="52" fill="var(--signal)" font-weight="600">parede da frente</text>
+        <text x="330" y="66" fill="var(--muted)">volta em 52 ms</text>
+        <text x="330" y="80" fill="var(--muted)">&#8594; cortina pesada</text>
+        <line x1="326" y1="60" x2="296" y2="52" stroke="var(--signal)" stroke-width="1" stroke-dasharray="2 3"/>
+        <text x="330" y="250" fill="var(--muted)">pista</text>
+        <text x="330" y="264" fill="var(--muted)">2 a 7 m das caixas</text>
+        <text x="330" y="352" fill="var(--muted)">fundo da loja</text>
+      </g>
+
+      <!-- legenda -->
+      <g font-family="IBM Plex Sans Condensed" font-size="10.5" fill="var(--body)">
+        <rect x="120" y="418" width="15" height="10" fill="var(--accent)"/>
+        <text x="141" y="427">2 tops de 10&#8221; em suporte de parede, a 2,3 m de altura</text>
+        <rect x="120" y="436" width="15" height="10" fill="var(--signal)" opacity=".85"/>
+        <text x="141" y="445">1 sub de 15&#8221; no ch&#227;o, centralizado na largura da loja</text>
+      </g>
+    </svg>
+    <figcaption>O sistema fica no <strong>fundo da loja</strong>, na ponta do balcão, e dispara no comprimento em direção à vitrine. Os dois tops vão em suporte de parede a 2,3&nbsp;m, o sub no chão entre eles, centralizado na largura. A parede lá na frente, a 8,94&nbsp;m, devolve tudo em 52&nbsp;ms — é ela que mais vai sujar o som, e é lá que vai a cortina pesada.</figcaption>
+  </figure>
+</div>
+
+<div class="wrap">
+
+<section>
+  <h2>O que a sala vai fazer com o grave</h2>
+  <p class="lead">Aqui está o problema real, e ele não se resolve comprando caixa maior.</p>
+  <p>8,94 dividido por 4,47 dá exatamente <strong>2,00</strong>. Isso significa que o segundo modo do comprimento cai em cima do primeiro modo da largura. E se o pé-direito for mesmo 3,00&nbsp;m, o terceiro do comprimento cai em cima do primeiro da altura. <strong>Os modos empilham em três frequências.</strong></p>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>Dimensão</th><th class="n">1ª</th><th class="n">2ª</th><th class="n">3ª</th><th class="n">4ª</th></tr></thead>
+    <tbody>
+      <tr><td>Comprimento 8,94</td><td class="n">19,2</td><td class="n">38,3</td><td class="n">57,5</td><td class="n">76,7</td></tr>
+      <tr><td>Largura 4,47 / 4,32</td><td class="n">38,4 / 39,7</td><td class="n">76,7</td><td class="n">115</td><td class="n">153</td></tr>
+      <tr><td>Altura 3,00 (assumida)</td><td class="n">57,2</td><td class="n">114</td><td class="n">172</td><td class="n">229</td></tr>
+      <tr class="hit"><td>Empilhamento</td><td class="n">38&ndash;40 Hz</td><td class="n">57,5 Hz</td><td class="n">77 Hz</td><td class="n">&mdash;</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:20px">Na prática: num ponto da loja o kick vai parecer enorme e no ponto ao lado ele some. Em <strong>57&nbsp;Hz</strong>, que é onde mora o corpo de um kick de tech house, dois modos se somam. Em <strong>38&nbsp;Hz</strong>, onde mora o sub de deep house, outros dois.</p>
+  <p>A boa notícia é pequena mas real: a loja não é um retângulo perfeito. A frente tem 4,47 e o fundo 4,32, então o modo de largura não é uma frequência só — ele se espalha de 38,4 a 39,7&nbsp;Hz. Quatorze centímetros de torto valem mais que qualquer equalizador.</p>
+  <div class="note warn">
+    <h3>Três ajustes que resolvem 80% disso, e custam zero</h3>
+    <p><strong>1. Corta tudo abaixo de 35&nbsp;Hz no sub.</strong> O modo de 19&nbsp;Hz não é música, é o prédio balançando. Um filtro passa-alta em 35&nbsp;Hz tira isso e ainda sobra excursão de cone para o que interessa.</p>
+    <p><strong>2. Puxa 3 a 4&nbsp;dB em 57&nbsp;Hz e 2 a 3&nbsp;dB em 38&nbsp;Hz</strong> no EQ do sub. É ponto de partida, não verdade — depois vocês medem.</p>
+    <p><strong>3. Não encostem o sub no canto.</strong> Canto excita todos os modos ao mesmo tempo. Centralizado na largura ele já não excita o modo de 38&nbsp;Hz da largura, porque o centro é justamente o ponto morto dele.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Quanto som vocês realmente precisam</h2>
+  <p class="lead">Essa conta é a que evita gastar o dobro do necessário.</p>
+  <p>Alvo razoável numa festa de loja: <strong>98 a 102&nbsp;dBA na pista</strong>, que fica a uns 4&nbsp;m das caixas. Acima disso ninguém conversa e a vizinhança aparece.</p>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>Etapa</th><th class="n">dB</th><th>De onde vem</th></tr></thead>
+    <tbody>
+      <tr><td>Um top ativo de 10&#8221;, contínuo a 1 m</td><td class="n">118</td><td>Especificação típica de caixa ativa de 1000&ndash;1300 W</td></tr>
+      <tr><td>Perda até 4 m, numa sala pequena</td><td class="n">&minus;8</td><td>Menos que os 12 dB de campo livre: a sala devolve energia</td></tr>
+      <tr><td>Segunda caixa</td><td class="n">+3</td><td>Duas fontes somando</td></tr>
+      <tr class="pick"><td>Disponível na pista</td><td class="n">113</td><td>Contra os 100 dBA que vocês vão usar</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:20px"><strong>Sobram 13&nbsp;dB de folga.</strong> Ou seja: um par de caixas de 10&nbsp;polegadas cobre essa loja com margem de sobra, e vocês nunca vão passar de um terço do volume. Caixa de 12&#8221; funciona também e custa pouco mais — mas é conforto, não necessidade.</p>
+  <p>O que vocês <em>vão</em> usar no talo é o sub. Num piso duro com público em pé, o grave é o que faz a festa e é o primeiro a faltar. <strong>É nele que vale colocar o dinheiro</strong>, não no top.</p>
+  <div class="note">
+    <p><strong>Um sub de 15&#8221; bem feito ganha de um 18&#8221; barato.</strong> Como a sala empilha modos em 38&nbsp;Hz, descer abaixo disso não traz benefício nenhum — só alimenta o problema. Um 15&#8221; ativo com sintonia em 40&nbsp;Hz e limitador decente é a escolha certa aqui, e é mais fácil de carregar e guardar.</p>
+  </div>
+</section>
+
+<section>
+  <h2>O sistema</h2>
+  <p class="lead">Três níveis, todos com a mesma arquitetura: dois tops + um sub. Valores em ordem de grandeza no mercado brasileiro — confiram o preço do dia, isso oscila muito.</p>
+  <div class="tiers">
+    <div class="tier">
+      <span class="lbl">Nível 1 &middot; abre a loja</span>
+      <h3>Nacional</h3>
+      <ul>
+        <li>2× top ativo 10&#8221; — Oneal, Frahm, Novik Neo ou Behringer</li>
+        <li>1× sub ativo 15&#8221; da mesma linha</li>
+        <li>Funciona e aguenta a noite</li>
+        <li>Limitador cru, agudo áspero, não gosta de 4 h no talo</li>
+      </ul>
+      <span class="price">R$ 6.000 – 10.000</span>
+    </div>
+    <div class="tier best">
+      <span class="lbl">Nível 2 &middot; o ponto certo</span>
+      <h3>JBL, EV ou Yamaha</h3>
+      <ul>
+        <li>2× JBL EON710/712, EV ZLX-10P G2 ou Yamaha DXR10 mkII</li>
+        <li>1× JBL EON718S, EV ELX200-15SP ou Yamaha DXS15 mkII</li>
+        <li>DSP com presets, limitador de verdade, controle por app</li>
+        <li><strong>Assistência técnica no Brasil</strong> — isso importa mais do que parece</li>
+      </ul>
+      <span class="price">R$ 14.000 – 22.000</span>
+    </div>
+    <div class="tier">
+      <span class="lbl">Nível 3 &middot; soa como clube</span>
+      <h3>RCF</h3>
+      <ul>
+        <li>2× RCF ART 910-A ou 912-A</li>
+        <li>1× RCF SUB 705-AS II (15&#8221;)</li>
+        <li>É o padrão dos clubes pequenos no Brasil, e se ouve na primeira nota</li>
+        <li>Para 39 m² é folga grande — vocês pagam pela qualidade, não pelo volume</li>
+      </ul>
+      <span class="price">R$ 25.000 – 40.000</span>
+    </div>
+  </div>
+  <div class="note">
+    <p><strong>Se o orçamento for o do nível 1, comprem usado do nível 2.</strong> Caixa de locadora de RCF, EV ou JBL com 3 anos de uso sai por perto da metade e continua sendo um equipamento melhor do que qualquer coisa nova nessa faixa. Peçam para ligar e ouvir antes, e olhem o cone e a tela.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Monitor de estúdio: a resposta honesta</h2>
+  <p class="lead">Vocês perguntaram qual seria o tamanho e o modelo ideal. A resposta muda conforme para que é o monitor — e para o público, a resposta é não.</p>
+  <p>Monitor de estúdio é projetado para <strong>uma pessoa, a 1,5&nbsp;m, na linha do tweeter</strong>. Um 8&#8221; bom faz uns 104&nbsp;dB de pico a 1&nbsp;m. A 4&nbsp;m isso vira 92&nbsp;dB — <em>abaixo do barulho de 50 pessoas conversando</em>. E ele não tem limitador pensado para quatro horas de tech house: o que acontece é o woofer batendo no fim de curso e o amplificador ceifando o agudo até o tweeter queimar.</p>
+  <p>Some a isso a dispersão: um monitor de estúdio joga o agudo numa janela estreita, mirada numa cadeira. Numa pista de 33&nbsp;m² isso significa que quem está de lado não ouve chimbal nenhum.</p>
+  <div class="split">
+    <div>
+      <h3>Onde monitor de estúdio serve aqui</h3>
+      <p><strong>Som ambiente do dia a dia.</strong> Um par de 5&#8221; ou 6&#8221; no alto da loja, em volume de conversa, soa melhor que qualquer caixa de PA em volume baixo — porque PA em volume baixo soa magro.</p>
+      <p><strong>Retorno do DJ, com ressalva.</strong> Só se o PA não estiver alto. Numa festa de verdade ele some.</p>
+    </div>
+    <div>
+      <h3>Se for comprar mesmo assim</h3>
+      <p><strong>8&#8221; é o teto útil.</strong> Acima disso vocês estão pagando por grave que a sala vai bagunçar de qualquer jeito.</p>
+      <p>Yamaha HS8, Adam T8V, KRK Rokit 8 G5, JBL 308P MkII ou PreSonus Eris E8 XT — todos servem, todos custam de R$ 2.000 a R$ 4.000 o par. <strong>Nenhum deles substitui o PA.</strong></p>
+    </div>
+  </div>
+  <div class="note warn">
+    <p><strong>A arquitetura que eu montaria:</strong> dois tops ativos de 10&#8221; fixos em suporte de parede, ligados o dia inteiro em volume baixo como som ambiente, e um sub que só entra na tomada quando tem festa. Isso resolve os dois usos com um sistema só, tira os tripés do caminho numa loja de 4,47&nbsp;m de largura, e ninguém derruba uma caixa dançando.</p>
+  </div>
+</section>
+
+<section>
+  <h2>O retorno do DJ</h2>
+  <p>Com o DJ na mesma ponta que as caixas, numa loja de 9&nbsp;m de comprimento, <strong>muitas vezes não precisa de retorno nenhum</strong> — ele ouve o PA de costas e isso basta. Testem antes de comprar.</p>
+  <p>Se precisar, o certo é uma caixa de PA pequena e não um monitor de estúdio: <strong>RCF ART 708-A MK5</strong>, <strong>EV ZLX-8P G2</strong> ou <strong>Yamaha DBR10</strong>, na altura da orelha, a 1 ou 1,5&nbsp;m, apontada para o rosto. De R$ 3.000 a R$ 6.000.</p>
+  <div class="note">
+    <p><strong>Cuidado com a mesa do DJ.</strong> Balcão de loja costuma ser de MDF oco e vibra com o sub a meio metro. Se for usar o balcão, coloquem um tapete de borracha ou espuma densa embaixo do controlador — senão o prato treme e o DJ perde a referência de grave.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Onde colocar cada caixa</h2>
+  <ol class="steps">
+    <li>
+      <div>
+        <h3>Os tops, na parede, a 2,3 m</h3>
+        <p>Nos dois lados da ponta do balcão, afastados <strong>2,3 a 2,6&nbsp;m um do outro</strong>, o que deixa cerca de 1&nbsp;m de cada parede lateral. Inclinados 10 a 15° para baixo, mirando a metade da pista — não o fundo da loja.</p>
+        <p class="lead">Suporte de parede tipo garra resolve melhor que tripé: numa largura de 4,47&nbsp;m, dois tripés comem a passagem e alguém derruba.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>O sub, no chão, centralizado na largura</h3>
+        <p>Entre os dois tops, encostado na parede do fundo. Centralizado na largura ele não excita o modo de 38&nbsp;Hz da largura, porque o centro da sala é o ponto morto desse modo.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>Depois façam o <em>sub crawl</em></h3>
+        <p>Toquem uma faixa com linha de baixo constante. Ponham o sub <strong>no lugar onde vai ficar o DJ</strong> e andem de quatro pela loja, ouvindo na altura do sub. Marquem o ponto onde o grave soa mais parelho — nem enorme nem ausente. <strong>Troquem o sub para esse ponto.</strong></p>
+        <p class="lead">Parece besteira e é a coisa mais eficaz que existe. Leva quinze minutos e vale mais que mil reais de equalizador.</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h3>Cortina pesada na parede da frente</h3>
+        <p>A 8,94&nbsp;m de distância, a parede da vitrine devolve o som em <strong>52&nbsp;ms</strong> — atraso suficiente para o ouvido perceber como eco separado, e é o que mais embola a batida. Uma cortina de blackout franzida a 10&nbsp;cm da parede, ou dois painéis de lã de PET, resolvem.</p>
+        <p class="lead">Como essa é justamente a parede da vitrine, a cortina ainda segura o som que vai para a rua. Dois problemas, uma peça.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>O ajuste do dia</h2>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>Parâmetro</th><th class="n">Valor</th><th>Por quê</th></tr></thead>
+    <tbody>
+      <tr><td>Passa-alta nos tops</td><td class="n">100&ndash;120 Hz</td><td>Tira do top o que ele não faz bem e sobra excursão para o médio</td></tr>
+      <tr><td>Passa-baixa no sub</td><td class="n">100&ndash;120 Hz</td><td>Mesmo ponto do corte dos tops</td></tr>
+      <tr><td>Passa-alta no sub</td><td class="n">35 Hz</td><td>Mata o modo de 19 Hz e protege o cone</td></tr>
+      <tr><td>Corte em 57 Hz</td><td class="n">&minus;3 a &minus;4 dB</td><td>Empilhamento comprimento + altura</td></tr>
+      <tr><td>Corte em 38 Hz</td><td class="n">&minus;2 a &minus;3 dB</td><td>Empilhamento comprimento + largura</td></tr>
+      <tr class="pick"><td>Master da mesa do DJ</td><td class="n">&minus;6 dB</td><td>Toda a folga fica no sistema, não no mixer</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note warn">
+    <h3>Estrutura de ganho: a regra que salva a noite</h3>
+    <p>Deixem o <strong>volume das caixas fixo e travado</strong> num ponto que já é alto demais para o DJ chegar. O DJ controla só o mixer, e o mixer nunca passa de &minus;6&nbsp;dB no master. Assim ninguém sobe o sistema no meio da festa, e o limitador da caixa nunca precisa trabalhar.</p>
+    <p>Usem <strong>cabo XLR balanceado</strong> da mesa até as caixas, nunca P10 ou RCA esticado. Zumbido de loop de terra é o problema número 1 em evento de loja, e cabo balanceado resolve antes de acontecer.</p>
+  </div>
+</section>
+
+<section>
+  <h2>A reverberação é o gargalo</h2>
+  <p class="lead">Este é o cálculo que mais muda o resultado, e a parte mais barata do projeto inteiro.</p>
+  <p>Com piso duro, paredes pintadas e vitrine de vidro, a loja vazia tem <strong>RT60 de cerca de 1,5&nbsp;s</strong>. Isso é reverberação de igreja. Discurso de inauguração nesse ambiente é ininteligível, e qualquer música acima de 100 BPM vira lama.</p>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>Situação</th><th class="n">Absorção</th><th class="n">RT60</th><th>Como soa</th></tr></thead>
+    <tbody>
+      <tr class="hit"><td>Loja vazia, como está</td><td class="n">12,7</td><td class="n">1,50 s</td><td>Eco, discurso ininteligível</td></tr>
+      <tr><td>Vazia, com tratamento</td><td class="n">24,4</td><td class="n">0,78 s</td><td>Certo para fala e som ambiente</td></tr>
+      <tr><td>Cheia, sem tratamento</td><td class="n">35,2</td><td class="n">0,54 s</td><td>O público absorve sozinho</td></tr>
+      <tr class="pick"><td>Cheia, com tratamento</td><td class="n">46,9</td><td class="n">0,41 s</td><td>Batida seca, dá para conversar</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:20px">Repare no terceiro caso: <strong>cinquenta pessoas tratam a sala quase tão bem quanto o tratamento.</strong> O problema não é a festa cheia — é o começo da festa, o discurso de inauguração e a loja no dia a dia. É para esses momentos que o tratamento existe.</p>
+  <div class="note">
+    <h3>O que comprar, em ordem de eficiência</h3>
+    <p><strong>8 a 12 nuvens no teto</strong>, painéis de lã de PET de 1,20 × 0,60 × 5&nbsp;cm, penduradas por cabo de aço a 20&nbsp;cm do forro. Penduradas absorvem pelos dois lados e rendem o dobro de um painel colado. De R$ 80 a R$ 150 cada.</p>
+      <p><strong>Cortina pesada na parede da vitrine</strong>, franzida ao dobro da largura — cortina esticada não absorve quase nada. R$ 400 a R$ 900.</p>
+    <p><strong>Um tapete grande na área do DJ.</strong> Barato, imediato, e ainda marca visualmente onde é o booth.</p>
+    <p class="lead">Total: R$ 1.500 a R$ 2.800 — menos de 10% do sistema de som, e muda mais o resultado do que subir um nível de caixa.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Energia e o barulho que vai para a rua</h2>
+  <div class="split">
+    <div>
+      <h3>Elétrica</h3>
+      <p>Dois tops + um sub puxam de <strong>400 a 600&nbsp;W médios</strong> e picos de 1,5&nbsp;kW. Isso não é muito, mas precisa de <strong>circuito próprio</strong> — não dividam disjuntor com o ar-condicionado nem com a iluminação, porque o pico do compressor derruba o som na hora errada.</p>
+      <p>Circuito separado também para o equipamento do DJ, e tudo na mesma fase. Fases diferentes entre mesa e caixas é receita de zumbido.</p>
+    </div>
+    <div>
+      <h3>Vizinhança</h3>
+      <p>Vitrine de vidro comum isola uns <strong>25 a 28&nbsp;dB</strong>. Com 100&nbsp;dBA dentro, sobra perto de <strong>73&nbsp;dBA na calçada</strong> — acima do limite da maioria das cidades brasileiras à noite.</p>
+      <p>Na prática: porta fechada durante o set, cortina na vitrine, e encerrar às 22h. Meçam com um app de decibelímetro na calçada, do outro lado da rua — leva dois minutos e evita a visita que estraga a inauguração.</p>
+    </div>
+  </div>
+  <div class="note">
+    <p><strong>O portal de 2,80&nbsp;m na lateral</strong> liga o Ambiente 1 ao espaço vizinho. Testem a festa com ele aberto e fechado: aberto, o grave escapa e a sala fica mais limpa, mas o barulho vai junto para o outro ambiente. Fechado, o grave volta e empilha mais. Não dá para decidir isso no papel — dá para decidir em cinco minutos com música tocando.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Lista de compras</h2>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>Item</th><th class="n">Qtd</th><th class="n">Faixa</th></tr></thead>
+    <tbody>
+      <tr><td>Top ativo 10&#8221; com DSP</td><td class="n">2</td><td class="n">R$ 8.000 – 14.000</td></tr>
+      <tr><td>Sub ativo 15&#8221;</td><td class="n">1</td><td class="n">R$ 6.000 – 11.000</td></tr>
+      <tr><td>Suporte de parede tipo garra</td><td class="n">2</td><td class="n">R$ 300 – 700</td></tr>
+      <tr><td>Cabo XLR balanceado 10 m</td><td class="n">3</td><td class="n">R$ 180 – 400</td></tr>
+      <tr><td>Régua filtrada / estabilizador</td><td class="n">1</td><td class="n">R$ 200 – 500</td></tr>
+      <tr><td>Nuvem acústica de lã de PET 1,20 × 0,60</td><td class="n">8 – 12</td><td class="n">R$ 800 – 1.600</td></tr>
+      <tr><td>Cortina blackout franzida, parede da vitrine</td><td class="n">1</td><td class="n">R$ 400 – 900</td></tr>
+      <tr><td>Tapete da área do DJ</td><td class="n">1</td><td class="n">R$ 250 – 600</td></tr>
+      <tr class="pick"><td>Sistema completo, nível 2</td><td class="n"></td><td class="n">R$ 16.100 – 30.200</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:18px">Fora da lista, porque depende de vocês: mesa ou controlador do DJ, e o retorno — que pode não ser necessário.</p>
+  <div class="note">
+    <p><strong>Antes de comprar qualquer coisa, aluguem.</strong> Um par de tops e um sub de locadora para a inauguração sai por R$ 600 a R$ 1.200 a diária. Vocês descobrem em uma noite quanto grave a sala aguenta, onde o sub soa melhor, e se 10&#8221; basta — e aí compram sabendo, em vez de comprando para descobrir.</p>
+  </div>
+</section>
+
+<section class="avoid">
+  <h2>O que não fazer</h2>
+  <ul>
+    <li><strong>Comprar um sistema de 2.000 W &#8220;para garantir&#8221;.</strong> Em 39 m² isso não vira festa melhor, vira distorção e reclamação. A conta de SPL já mostrou 13 dB de folga com caixas de 10&#8221;.</li>
+    <li><strong>Usar monitor de estúdio para o público.</strong> Ele não tem SPL, não tem dispersão e não tem proteção. Queima na segunda festa.</li>
+    <li><strong>Dois subs numa sala de 4,47 m de largura.</strong> Eles vão se cancelar em metade da pista. Um só, bem posicionado, é melhor.</li>
+    <li><strong>Encostar o sub no canto.</strong> Parece que dá mais grave, e dá — mas dá grave em uma nota só.</li>
+    <li><strong>Deixar o volume das caixas na mão do DJ.</strong> Trave o sistema e entregue só o mixer.</li>
+    <li><strong>Caixa em tripé no meio da passagem.</strong> Numa loja de 4,47 m de largura, com 50 pessoas dançando, é questão de tempo.</li>
+    <li><strong>Ignorar a reverberação.</strong> É o item mais barato da lista e o que mais muda o resultado. Sistema caro em sala de 1,5 s soa pior que sistema simples em sala de 0,8 s.</li>
+  </ul>
+</section>
+
+<footer>
+  <p><strong>O que esta página assume:</strong> pé-direito de 3,00&nbsp;m, piso duro, paredes de alvenaria pintada e uma vitrine de vidro na frente. Área calculada como trapézio, com 4,47 na frente e 4,32 no fundo. As contas de modo usam 343&nbsp;m/s, e o RT60 é Sabine com coeficiente médio de 0,08 para a sala crua.</p>
+  <p><strong>Três coisas que mudam o projeto se vocês me disserem:</strong> o pé-direito real; de que lado fica a entrada e a vitrine; e se tem alguém morando em cima ou ao lado. O pé-direito muda o empilhamento de 57&nbsp;Hz — se for 2,70&nbsp;m ele sobe para 63&nbsp;Hz e deixa de coincidir com o modo do comprimento, o que seria uma boa notícia.</p>
+</footer>
+
+</div>
