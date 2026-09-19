@@ -220,6 +220,18 @@ grave (+2,2). Resultado vs faixa: 635 Hz −8,4 → −6,6 → **−5,2**; 504 H
 ceiling não foi mexido). 10 de 29 dentro. Pendentes: ceiling −1,2, sub, kick
 no outro, mais 3 dB em 500–650.
 
+**V4 (19/09) — 14 de 29 dentro, recorde de qualquer faixa dele.** Subtração
+direta v2 → V4: sub de 25–48 Hz entrou **só nos builds** (+15,6 dB em
+1:15–1:30, +8 em 4:00–4:30), não no groove — 40 Hz −10,5 → **−6,5**, 31 Hz
+**−4,6**; elemento de 400–900 Hz agora por seção (+4 dB em 1:45, 2:30–3:15,
+5:15–5:30) — 504 Hz **dentro**, 635 **−4,3**, 500–630 ocupação −8,1 (era
+−16,8); topo 4–16 kHz −1,5 em tudo — 5–10 kHz **dentro** (+0,1 a +0,6),
+sobra 3–4 kHz +2 e 12,8/16 kHz +2; kick/baixo −0,8 dB geral; break 3 encheu
+(−16,9 dBFS); contrastes dos drops 4,0 / 4,8 / 4,1; TP **−0,27**; LUFS −9,94,
+PSR 10,67; 2f0/3f0 −6,2/−1,0. **Kick no outro continua fora (3ª vez).**
+Pendentes por tamanho: 635 Hz, 40 Hz no groove, 3–4 kHz, 317–400, kick no
+outro, ceiling.
+
 ### v1 (PAIN test) — medição original
 
 6:04, **128 BPM** (confirmado por ele; autocorrelação deu 128,4), **192
