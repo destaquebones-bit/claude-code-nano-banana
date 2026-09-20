@@ -1,0 +1,429 @@
+<title>Medição 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<style>
+:root{
+  --paper:#EDEEEA; --surface:#F8F8F5; --sunk:#E3E4DE;
+  --ink:#16181C; --body:#2E3138; --mute:#6F7169; --rule:#D3D4CD;
+  --mdf:#B5762F; --mdf-soft:#EADCC4;
+  --felt:#1D1F24; --felt-line:#1D1F24;
+  --flag:#A2372E; --flag-soft:#F0DBD7;
+  --ray:#2C6B69; --ray-soft:#D8E6E4;
+  --glass:#7FA7A8; --glass-fill:#DCE9E9;
+  --wood:#8A5A32;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+:root:not([data-theme="light"]){ @media (prefers-color-scheme:dark){
+  --paper:#0F1114; --surface:#171A1E; --sunk:#101317;
+  --ink:#EAEAE4; --body:#C4C7C1; --mute:#8B8E86; --rule:#2B2F35;
+  --mdf:#D4964F; --mdf-soft:#4B3A22;
+  --felt:#3F434B; --felt-line:#5A5F69;
+  --flag:#DE7264; --flag-soft:#43231E;
+  --ray:#65AFA9; --ray-soft:#1E3634;
+  --glass:#5E8E90; --glass-fill:#1E3436;
+  --wood:#A5734A;
+}}
+:root[data-theme="dark"]{
+  --paper:#0F1114; --surface:#171A1E; --sunk:#101317;
+  --ink:#EAEAE4; --body:#C4C7C1; --mute:#8B8E86; --rule:#2B2F35;
+  --mdf:#D4964F; --mdf-soft:#4B3A22;
+  --felt:#3F434B; --felt-line:#5A5F69;
+  --flag:#DE7264; --flag-soft:#43231E;
+  --ray:#65AFA9; --ray-soft:#1E3634;
+  --glass:#5E8E90; --glass-fill:#1E3436;
+  --wood:#A5734A;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--body);
+  font-family:var(--serif); font-size:17px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--display); font-variation-settings:"wdth" 112; color:var(--ink); text-wrap:balance; margin:0; line-height:1.06}
+p{margin:0}
+strong{font-weight:600; color:var(--ink)}
+em{font-style:italic}
+a{color:var(--mdf)}
+:focus-visible{outline:2px solid var(--mdf); outline-offset:3px}
+
+.wrap{max-width:66ch; margin:0 auto; padding:0 24px}
+.plate{max-width:1160px; margin:0 auto; padding:0 24px}
+
+/* ---- title block ---- */
+.stamp{border-bottom:1px solid var(--rule); background:var(--surface)}
+.stamp__in{max-width:1160px; margin:0 auto; padding:56px 24px 0}
+.eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--mdf); margin:0 0 18px}
+.stamp h1{font-size:clamp(2.6rem,8vw,4.6rem); font-weight:800; font-variation-settings:"wdth" 118; letter-spacing:-.02em}
+.lede{font-size:1.22rem; line-height:1.5; color:var(--body); max-width:52ch; margin-top:20px}
+.specs{display:grid; grid-template-columns:repeat(auto-fit,minmax(148px,1fr)); gap:0; margin:44px 0 0; border-top:1px solid var(--rule)}
+.specs>div{padding:14px 16px 16px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule)}
+.specs>div:last-child{border-right:none}
+.specs dt{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--mute)}
+.specs dd{margin:5px 0 0; font-family:var(--display); font-variation-settings:"wdth" 108; font-weight:600; font-size:1.22rem; color:var(--ink); font-variant-numeric:tabular-nums}
+.specs dd .q{font-size:.72em; font-weight:500; color:var(--mute)}
+
+/* ---- sections ---- */
+section{padding:64px 0 0}
+section:last-child{padding-bottom:96px}
+.head{display:flex; align-items:baseline; gap:16px; border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:28px}
+.head__n{font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--mdf); white-space:nowrap; padding-bottom:3px}
+.head h2{font-size:clamp(1.5rem,3.4vw,2.1rem); font-weight:700; letter-spacing:-.01em}
+.wrap p + p{margin-top:1.05em}
+.wrap h3{font-family:var(--display); font-variation-settings:"wdth" 104; font-size:1.02rem; font-weight:700; letter-spacing:.01em; margin:2.1em 0 .5em}
+
+/* ---- drawings ---- */
+.dw{background:var(--surface); border:1px solid var(--rule); border-radius:2px; padding:18px 18px 12px; margin:0}
+.dw svg{display:block; width:100%; height:auto}
+.dw__cap{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-top:12px; border-top:1px solid var(--rule); padding-top:9px}
+.grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px}
+.stack{display:grid; gap:18px}
+.side{display:grid; grid-template-columns:minmax(320px,1.35fr) minmax(240px,1fr); gap:26px; align-items:start}
+@media (max-width:860px){ .side{grid-template-columns:1fr} }
+
+/* ---- key legend ---- */
+.key{font-family:var(--mono); font-size:12.5px; line-height:1.5; margin:0; display:grid; gap:7px}
+.key div{display:grid; grid-template-columns:22px 1fr; gap:9px; align-items:start}
+.key b{display:flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; background:var(--ink); color:var(--surface); font-size:10.5px; font-weight:600; font-family:var(--mono)}
+.key span{color:var(--body); padding-top:1px}
+.key .sw{width:20px; height:20px; border-radius:2px; border:1px solid var(--rule)}
+.keyhead{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute); margin:0 0 12px; border-bottom:1px solid var(--rule); padding-bottom:7px}
+.key + .keyhead{margin-top:26px}
+
+/* ---- tables ---- */
+.tw{overflow-x:auto; border:1px solid var(--rule); border-radius:2px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-family:var(--mono); font-size:12.5px; font-variant-numeric:tabular-nums}
+th,td{text-align:left; padding:9px 14px; border-bottom:1px solid var(--rule); white-space:nowrap}
+thead th{font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); font-weight:500; background:var(--sunk)}
+tbody tr:last-child td{border-bottom:none}
+td.n{text-align:right}
+td:first-child{white-space:normal; color:var(--ink)}
+.bad{color:var(--flag); font-weight:600}
+.ok{color:var(--ray); font-weight:600}
+
+/* ---- callout ---- */
+.note{border-left:3px solid var(--mdf); background:var(--surface); padding:16px 20px; font-size:.95rem; margin:1.6em 0}
+.note b{font-family:var(--display); font-variation-settings:"wdth" 104; font-weight:700}
+
+/* ---- action list ---- */
+.acts{display:grid; gap:2px; margin:0; counter-reset:act}
+.act{display:grid; grid-template-columns:52px 1fr; gap:20px; background:var(--surface); border:1px solid var(--rule); padding:20px 22px; align-items:start}
+.act__n{font-family:var(--display); font-variation-settings:"wdth" 118; font-weight:800; font-size:2rem; line-height:.9; color:var(--mdf); font-variant-numeric:tabular-nums}
+.act h4{font-size:1.06rem; font-weight:700; margin-bottom:6px}
+.act p{font-size:.95rem}
+.act__meta{font-family:var(--mono); font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--mute); margin-top:10px; display:flex; gap:16px; flex-wrap:wrap}
+.act__meta i{font-style:normal; color:var(--flag)}
+.act__meta i.g{color:var(--ray)}
+
+ul.plain{margin:1.1em 0; padding-left:1.15em}
+ul.plain li{margin-bottom:.5em}
+ul.plain li::marker{color:var(--mdf)}
+
+/* ---- chart ---- */
+.chart{position:relative}
+.chart .tip{
+  position:absolute; pointer-events:none; opacity:0; transform:translate(-50%,-100%);
+  background:var(--ink); color:var(--surface); border-radius:3px; padding:8px 11px;
+  font-family:var(--mono); font-size:11px; line-height:1.5; white-space:nowrap; z-index:5;
+  transition:opacity .09s linear;
+}
+.chart .tip[data-on="1"]{opacity:1}
+.chart .tip b{display:block; color:var(--surface); font-weight:600; margin-bottom:4px; opacity:.7; letter-spacing:.08em}
+.chart .tip i{font-style:normal; display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:7px; vertical-align:1px}
+.chart .tip u{text-decoration:none; float:right; padding-left:18px; font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){ .chart .tip{transition:none} }
+:root{ --a1:#3E9C97; --a2:#1F6E6B; --a3:#0B3E3C; }
+:root:not([data-theme="light"]){ @media (prefers-color-scheme:dark){ --a1:#2E8F8A; --a2:#4FBDB5; --a3:#9AE3DC; }}
+:root[data-theme="dark"]{ --a1:#2E8F8A; --a2:#4FBDB5; --a3:#9AE3DC; }
+
+/* ---- svg shared ---- */
+svg text{font-family:var(--mono); fill:var(--mute)}
+.s-wall{fill:none; stroke:var(--ink); stroke-width:9}
+.s-wall-e{fill:none; stroke:var(--ink); stroke-width:6}
+.s-hair{fill:none; stroke:var(--rule); stroke-width:1}
+.s-dim{fill:none; stroke:var(--mute); stroke-width:.9}
+.s-dimt{font-size:10px; fill:var(--mute)}
+.s-lbl{font-size:10px; fill:var(--body)}
+.s-felt{fill:var(--felt); stroke:var(--felt-line); stroke-width:.8}
+.s-mdf{fill:var(--mdf); opacity:.92}
+.s-mdf-l{fill:var(--mdf-soft); stroke:var(--mdf); stroke-width:.9}
+.s-wood{fill:none; stroke:var(--wood); stroke-width:2.4}
+.s-woodf{fill:var(--wood); opacity:.22}
+.s-glass{fill:var(--glass-fill); stroke:var(--glass); stroke-width:1.4}
+.s-ray{fill:none; stroke:var(--ray); stroke-width:1.5; stroke-linejoin:round}
+.s-rayd{fill:none; stroke:var(--ray); stroke-width:1.2; stroke-dasharray:5 3.5}
+.s-raypt{fill:var(--ray)}
+.s-flag{fill:none; stroke:var(--flag); stroke-width:1.3; stroke-dasharray:6 4}
+.s-flagf{fill:var(--flag)}
+.s-flagt{font-size:10px; fill:var(--flag); font-weight:600}
+.s-axis{fill:none; stroke:var(--mute); stroke-width:1; stroke-dasharray:12 4 2 4}
+.s-obj{fill:var(--sunk); stroke:var(--mute); stroke-width:1}
+.s-dark{fill:var(--felt); stroke:var(--felt-line); stroke-width:.8}
+.s-ghost{fill:none; stroke:var(--mute); stroke-width:1; stroke-dasharray:4 3}
+.s-fill-surf{fill:var(--surface)}
+.s-key circle{fill:var(--ink)}
+.s-key text{fill:var(--surface); font-size:10px; font-weight:600; text-anchor:middle}
+.s-kn circle{fill:var(--mdf)}
+.s-kn text{fill:var(--surface); font-size:10px; font-weight:600; text-anchor:middle}
+@media (prefers-reduced-motion:no-preference){}
+</style>
+<style>
+.phase{border-top:2px solid var(--ink); padding-top:14px; margin-top:12px}
+.phase__tag{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap}
+.phase__n{font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--mdf)}
+.phase h3{font-family:var(--display); font-variation-settings:"wdth" 108; font-size:1.35rem; font-weight:700; color:var(--ink); margin:0}
+.phase__cost{font-family:var(--mono); font-size:11px; color:var(--mute); margin-left:auto; letter-spacing:.06em}
+ol.steps{list-style:none; counter-reset:st; margin:20px 0 0; padding:0; display:grid; gap:14px}
+ol.steps>li{counter-increment:st; display:grid; grid-template-columns:30px 1fr; gap:16px; align-items:start}
+ol.steps>li::before{
+  content:counter(st); font-family:var(--mono); font-size:11px; font-weight:600;
+  width:26px; height:26px; border-radius:50%; border:1px solid var(--rule);
+  display:flex; align-items:center; justify-content:center; color:var(--mdf); background:var(--surface);
+}
+ol.steps>li>div{padding-top:2px}
+ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-weight:700; color:var(--ink)}
+.cut{font-family:var(--mono); font-size:12px; background:var(--sunk); border-left:3px solid var(--mdf); padding:11px 14px; margin-top:9px; line-height:1.65}
+.cut span{color:var(--mute)}
+.tot{display:flex; justify-content:space-between; align-items:baseline; gap:16px; border-top:2px solid var(--ink); padding:14px 16px 0; margin-top:2px; font-family:var(--mono); font-size:13px}
+.tot b{font-family:var(--display); font-variation-settings:"wdth" 112; font-weight:800; font-size:1.5rem; color:var(--ink); font-variant-numeric:tabular-nums}
+.warn{border-left:3px solid var(--flag); background:var(--flag-soft); padding:16px 20px; font-size:.95rem; margin:1.6em 0}
+.warn b{font-family:var(--display); font-variation-settings:"wdth" 104; font-weight:700; color:var(--ink)}
+.backlink{font-family:var(--mono); font-size:12px; color:var(--mute); margin-top:16px}
+.backlink a{color:var(--mdf)}
+</style>
+<style>
+.rig{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:2px; margin:26px 0 0}
+.rig div{background:var(--surface); border:1px solid var(--rule); padding:16px 18px}
+.rig dt{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--mute); margin-bottom:6px}
+.rig dd{margin:0; font-family:var(--display); font-variation-settings:"wdth" 106; font-weight:600; font-size:1.02rem; color:var(--ink)}
+.rig p{font-size:.86rem; color:var(--mute); margin-top:6px; line-height:1.45}
+.panel{border:1px solid var(--rule); background:var(--surface); margin:1.6em 0; overflow:hidden}
+.panel__h{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--surface); background:var(--ink); padding:9px 16px}
+.panel dl{margin:0; display:grid; grid-template-columns:minmax(160px,auto) 1fr; font-family:var(--mono); font-size:12.5px}
+.panel dt{padding:9px 16px; border-bottom:1px solid var(--rule); color:var(--mute); border-right:1px solid var(--rule)}
+.panel dd{padding:9px 16px; border-bottom:1px solid var(--rule); margin:0; color:var(--ink); font-weight:500}
+.panel dt:last-of-type,.panel dd:last-of-type{border-bottom:none}
+.panel dd em{font-style:normal; color:var(--mute); font-weight:400}
+@media (max-width:560px){ .panel dl{grid-template-columns:1fr} .panel dt{border-right:none; padding-bottom:0; border-bottom:none} }
+.field{border:2px solid var(--ink); background:var(--surface); padding:22px 24px; margin:1.8em 0}
+.field h4{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--mdf); margin:0 0 14px}
+.field ol{margin:0; padding-left:1.3em; font-family:var(--mono); font-size:12.5px; line-height:1.9; color:var(--ink)}
+.field ol li::marker{color:var(--mute)}
+.look{display:grid; gap:2px; margin:22px 0 0}
+.look>div{display:grid; grid-template-columns:104px 1fr; gap:18px; background:var(--surface); border:1px solid var(--rule); padding:15px 18px; align-items:start}
+.look b{font-family:var(--mono); font-size:12.5px; color:var(--mdf); font-variant-numeric:tabular-nums; padding-top:2px}
+.look p{font-size:.93rem}
+.look p+p{margin-top:.5em}
+@media (max-width:560px){ .look>div{grid-template-columns:1fr; gap:6px} }
+</style><header class="stamp">
+  <div class="stamp__in">
+    <p class="eyebrow">Medição · Home studio 2,75 × 3,70 × 2,65 m</p>
+    <h1>Medição 2</h1>
+    <p class="lede">A primeira medição existia para <em>descobrir</em> o problema. Esta existe para <em>provar</em> se o que você construiu resolveu — e isso muda o método inteiro: tudo tem de ser igual à vez passada, menos o que foi construído.</p>
+    <dl class="specs">
+      <div><dt>Alvo</dt><dd>63 <span class="q">Hz</span></dd></div>
+      <div><dt>Antes</dt><dd>1,66 <span class="q">s</span></dd></div>
+      <div><dt>Acima de 250</dt><dd>0,35 <span class="q">s</span></dd></div>
+      <div><dt>Tempo</dt><dd>40 <span class="q">min</span></dd></div>
+      <div><dt>Arquivos</dt><dd>4 <span class="q">mdat</span></dd></div>
+      <div><dt>Custo</dt><dd>R$ 0</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main>
+
+<section id="mudou">
+  <div class="wrap">
+    <div class="head"><span class="head__n">00</span><h2>O que mudou desde a medição 1</h2></div>
+    <p>Nas fotos de hoje eu conto <strong>sete painéis pretos e um difusor de madeira</strong>. Na medição de agosto havia <strong>dois</strong>. Isso muda o sentido desta medição: ela não é o "depois das membranas" — é uma medição intermediária, e é justamente por isso que vale fazer.</p>
+    <p>A pergunta que ela responde é de orçamento, não de curiosidade: <strong>as quatro membranas ainda precisam ser quatro?</strong> Painel poroso não faz muito em 63 Hz, mas sete deles fazem mais que dois. Se o RT de 63 Hz já tiver caído de 1,66 para, digamos, 1,3 s, talvez três membranas cheguem lá — e três caixas custam menos, pesam menos e ocupam menos parede que quatro.</p>
+    <div class="note"><b>Isto também vira o novo "antes".</b> Depois desta medição, qualquer coisa que você mudar na sala tem de ser comparada com ela, não com a de agosto. Guarde os quatro arquivos com data no nome.</div>
+  </div>
+</section>
+
+<section id="arrumar">
+  <div class="plate">
+    <div class="head"><span class="head__n">01</span><h2>Arrume a sala antes, não depois</h2></div>
+    <div class="wrap" style="padding:0">
+      <p>Tem quatro coisas visíveis nas fotos que vão sujar o resultado. Três são de graça e levam uma manhã. <strong>Faça antes de medir</strong> — senão você gasta a tarde medindo o erro, e depois precisa medir tudo de novo.</p>
+    </div>
+    <div class="acts" style="margin-top:26px">
+
+      <div class="act">
+        <div class="act__n">1</div>
+        <div>
+          <h4>Afaste os painéis da parede</h4>
+          <p>Todos eles estão colados rente ao reboco. Absorvedor poroso trabalha sobre a <strong>velocidade</strong> da partícula de ar, e a velocidade é <em>zero</em> encostada na parede. O painel está no pior lugar possível para a parte baixa da faixa dele.</p>
+          <p class="cut">painel de 5 cm colado na parede &#8594; funciona bem só acima de <span>1.715 Hz</span><br>
+          mesmo painel com 5 cm de sarrafo atrás &#8594; desce para <span>858 Hz</span><br>
+          com 10 cm de sarrafo &#8594; desce para <span>572 Hz</span></p>
+          <p>Dois sarrafos de 5 × 2,5 cm atrás de cada painel, na vertical. Vinte reais de madeira dobram o que eles fazem no médio-grave. <strong>É a melhoria mais barata que existe nesta sala.</strong></p>
+        </div>
+      </div>
+
+      <div class="act">
+        <div class="act__n">2</div>
+        <div>
+          <h4>Acerte a simetria dos dois monitores</h4>
+          <p>O monitor da direita está encostado no batente da porta e no canto; o da esquerda está mais aberto. Os dois suportes não parecem ter a mesma altura. Isso produz uma diferença real de grave entre os canais — e nós já perdemos uma rodada inteira atrás de uma diferença L/R que no fim era o microfone fora de posição.</p>
+          <p class="cut">meça de cada tweeter até: a parede lateral <span>· a parede da frente ·</span> a sua orelha<br>
+          os três pares têm de bater dentro de <span>2 cm</span></p>
+          <p>Se o da direita não tem como sair do canto, então a assimetria é da sala e não do ajuste — e aí ela precisa aparecer na medição de propósito, para a gente saber o tamanho dela.</p>
+        </div>
+      </div>
+
+      <div class="act">
+        <div class="act__n">3</div>
+        <div>
+          <h4>Tire os monitores da frente da TV</h4>
+          <p>A televisão é uma chapa rígida e lisa entre e atrás dos dois monitores. O agudo bate nela e volta alguns centímetros depois do som direto — é comb filter no meio e no agudo, e imagem central embaralhada.</p>
+          <p>Não dá para tirar a TV, ela é o seu monitor de vídeo. Dá para <strong>trazer os monitores para a frente</strong>, de modo que a face deles fique claramente à frente do plano da tela, e <strong>angular</strong> os dois para a sua orelha. Uma manta dobrada sobre a base da TV, entre os monitores, também ajuda e custa nada.</p>
+        </div>
+      </div>
+
+      <div class="act">
+        <div class="act__n">4</div>
+        <div>
+          <h4>Deixe a porta como ela vai ficar</h4>
+          <p>A porta é uma superfície dura logo ao lado do monitor da direita. Não vede o perímetro agora e não pendure nada nela hoje — <strong>meça com a porta exatamente como ela fica quando você trabalha</strong>, fechada. Vedação e tratamento de porta entram depois, como uma mudança isolada, para dar para medir o efeito.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="julgar">
+  <div class="wrap">
+    <div class="head"><span class="head__n">02</span><h2>O que julgar, e o que ignorar</h2></div>
+    <p>Esta é a lição mais cara que essa sala já nos deu, e ela vale repetir antes de cada medição.</p>
+    <table style="width:100%; border-collapse:collapse; margin:1.4em 0; font-size:.95rem">
+      <tr><td style="padding:12px 14px 12px 0; border-bottom:1px solid var(--rule); vertical-align:top"><span class="ok">Use para decidir</span></td>
+          <td style="padding:12px 0; border-bottom:1px solid var(--rule)"><strong>RT60 por banda</strong>, e o waterfall como leitura visual. O decaimento é propriedade da sala: mover o microfone 20 cm muda pouco.</td></tr>
+      <tr><td style="padding:12px 14px 12px 0; border-bottom:1px solid var(--rule); vertical-align:top"><span class="bad">Não use para decidir</span></td>
+          <td style="padding:12px 0; border-bottom:1px solid var(--rule)"><strong>Resposta em frequência abaixo de 300 Hz.</strong> Mover o microfone 20 cm muda até 15 dB. Foi exatamente isso que nos fez construir duas teorias erradas na medição passada — um buraco de 15 dB no canal esquerdo que era o mic fora do lugar, não a sala.</td></tr>
+      <tr><td style="padding:12px 14px 12px 0; vertical-align:top"><span class="ok">Use, mas com cuidado</span></td>
+          <td style="padding:12px 0"><strong>Comparar L com R.</strong> Só vale se o microfone estiver <em>exatamente</em> no mesmo ponto nas duas varreduras — e é por isso que a posição vai marcada com fita no chão.</td></tr>
+    </table>
+    <div class="warn"><b>A frequência de Schroeder desta sala é 496 Hz.</b> Abaixo disso a sala é modal, não estatística — quer dizer que "RT60" em 63 Hz é uma aproximação grosseira de um decaimento que na verdade é um punhado de modos batendo. O número serve para comparar antes e depois <em>da mesma sala</em>, e não serve para comparar com sala nenhuma do YouTube.</div>
+  </div>
+</section>
+
+<section id="mic">
+  <div class="wrap">
+    <div class="head"><span class="head__n">03</span><h2>A posição do microfone</h2></div>
+    <ol class="steps">
+      <li><div><b>Marque o chão com fita crepe.</b> Um X onde ficam os pés do tripé. Se você não marcou em agosto, esta medição vira a referência e esta é a última chance de fixar isso. Fotografe a marca.</div></li>
+      <li><div><b>Cápsula na posição da sua orelha</b> quando você está sentado trabalhando — altura e profundidade. Não "mais ou menos": sente, peça para alguém marcar, levante, ponha o mic ali.</div></li>
+      <li><div><b>Apontado para o ponto entre os dois monitores</b>, não para o teto. O arquivo de calibração que a gente achou é de incidência frontal.</div></li>
+      <li><div><b>Cadeira fora do caminho.</b> Encosto alto na frente do mic é um refletor. Empurre as duas cadeiras para trás, para fora do triângulo.</div></li>
+      <li><div><b>Sala no estado de trabalho.</b> Porta fechada, janela fechada, cortina como fica normalmente, ar-condicionado e ventilador <strong>desligados</strong>, celular em modo avião e longe da mesa.</div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="ganho">
+  <div class="plate">
+    <div class="head"><span class="head__n">04</span><h2>Ganho e ruído de fundo</h2></div>
+    <div class="wrap" style="padding:0">
+      <p>Aqui foi onde a medição de agosto quase se perdeu: piso de ruído em &minus;45 dBFS com só 2,3 dB de folga até o pico, o que dá <strong>8,5 dB de relação sinal-ruído</strong>. Com isso não dá para medir decaimento nenhum. Trocar o cabo XLR levou o piso para &minus;70 dBFS.</p>
+    </div>
+    <ol class="steps" style="margin-top:22px">
+      <li><div><b>Meça o piso primeiro, sem tocar nada.</b> RTA aberto, phantom ligado, ganho no ponto de trabalho. Anote o valor em dBFS e tire print. Em 63 Hz o ruído é pior que no resto — geladeira, rua, compressor do prédio.</div></li>
+      <li><div><b>Meça à noite,</b> ou no horário mais quieto que existir. O 63 Hz é justamente onde a rua entra.</div></li>
+      <li><div><b>Pico da varredura entre &minus;12 e &minus;6 dBFS.</b> Nunca &minus;2. Se estourar, abaixa a saída do REW, não o ganho do mic.</div></li>
+      <li><div><b>Alvo de SNR: 40 dB ou mais.</b> O REW mostra isso na tela depois da varredura. Abaixo de 30 dB, o RT60 em 63 Hz é chute.</div></li>
+      <li><div><b>Marque a posição do knob de ganho</b> com fita ou foto. Ele precisa estar no mesmo ponto na próxima vez.</div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="config">
+  <div class="wrap">
+    <div class="head"><span class="head__n">05</span><h2>As configurações</h2></div>
+    <p>Todas têm de bater com as de agosto. Se você não anotou, use estas e <strong>anote agora</strong> — daqui para frente é esta a receita.</p>
+    <div class="tw" style="margin:1.4em 0">
+    <table style="width:100%; border-collapse:collapse; font-size:.92rem; font-family:var(--mono)">
+      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">Taxa de amostragem</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule); text-align:right">48 kHz</td></tr>
+      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">Comprimento da varredura</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule); text-align:right">512 k</td></tr>
+      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">Faixa</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule); text-align:right">15 Hz – 20 kHz</td></tr>
+      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">Repetitions</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule); text-align:right">4</td></tr>
+      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">Use acoustic timing reference</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule); text-align:right">desligado</td></tr>
+      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">Calibração do ECM8000</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule); text-align:right">carregada</td></tr>
+      <tr><td style="padding:11px 14px">Nível na cadeira</td><td style="padding:11px 14px; text-align:right">~80 dB SPL</td></tr>
+    </table>
+    </div>
+    <div class="warn"><b>A armadilha:</b> no REW, <em>Repetitions</em> e <em>Use acoustic timing reference</em> são mutuamente exclusivos — ligar um apaga o outro. Para medir decaimento a referência de tempo não serve para nada, e a média de 4 varreduras rende <strong>+6 dB de sinal-ruído de graça</strong> (10·log<sub>10</sub>4). Desligue a referência e use as repetições.</div>
+  </div>
+</section>
+
+<section id="seq">
+  <div class="plate">
+    <div class="head"><span class="head__n">06</span><h2>A sequência</h2></div>
+    <div class="wrap" style="padding:0">
+      <p>Quatro varreduras, nesta ordem, <strong>sem tocar no microfone nem no ganho entre elas</strong>.</p>
+    </div>
+    <div class="acts" style="margin-top:24px">
+      <div class="act"><div class="act__n">1</div><div><h4>Esquerdo sozinho</h4><p>Nome: <code>2026-09-20 L</code></p></div></div>
+      <div class="act"><div class="act__n">2</div><div><h4>Direito sozinho</h4><p>Nome: <code>2026-09-20 R</code></p></div></div>
+      <div class="act"><div class="act__n">3</div><div><h4>Os dois juntos</h4><p>Nome: <code>2026-09-20 LR</code></p></div></div>
+      <div class="act"><div class="act__n">4</div><div><h4>Esquerdo de novo — o teste de sanidade</h4>
+        <p>Repita a varredura 1, sem mexer em <em>nada</em>. Nome: <code>2026-09-20 L bis</code>.</p>
+        <p>Sobreponha as duas no gráfico. Abaixo de 300 Hz elas têm de coincidir dentro de <strong>1 dB</strong>, e o RT de 63 Hz dentro de <strong>0,05 s</strong>. Se não coincidirem, tem coisa se mexendo — ganho instável, ruído entrando, mic frouxo no tripé — e todo o resto da tarde é lixo.</p>
+        <p class="cut">este é o passo que faltou em agosto. <span>ele custa quatro minutos e salva a medição inteira.</span></p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="olhar">
+  <div class="wrap">
+    <div class="head"><span class="head__n">07</span><h2>O que olhar na hora</h2></div>
+    <p>Aba <strong>RT60</strong>, filtro de <strong>1/3 de oitava</strong>, parâmetro <strong>T20</strong>. Olhe a coluna de 63 Hz e compare com 1,66 s.</p>
+    <div class="note"><b>Por que T20 e não T30.</b> O T30 precisa de 35 dB de decaimento limpo acima do ruído para ajustar a reta. Em 63 Hz, numa sala de 27 m³, você quase nunca tem isso — e quando não tem, o REW ajusta a reta em cima do ruído e devolve um número bonito e falso. O T20 precisa de 25 dB. Confira também se a curva de Schroeder está <em>reta</em> no trecho ajustado; se ela dobrar, o número não vale.</div>
+    <p>A previsão do projeto, por Sabine, com os 3,46 m² de face das quatro membranas:</p>
+    <div class="tw" style="margin:1.4em 0">
+    <table style="width:100%; border-collapse:collapse; font-size:.92rem; font-family:var(--mono)">
+      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">T20 de 63 Hz até 1,05 s</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule)"><span class="ok">funcionou dentro da previsão</span></td></tr>
+      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">de 1,05 a 1,30 s</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">funcionou em parte — dá para ganhar mais mexendo na posição</td></tr>
+      <tr><td style="padding:11px 14px">acima de 1,30 s</td><td style="padding:11px 14px"><span class="bad">alguma coisa está errada na construção</span></td></tr>
+    </table>
+    </div>
+    <p class="lede" style="font-size:1rem; margin-top:0">Como <strong>as membranas ainda não estão na parede</strong>, o número de hoje é o dos sete painéis sozinhos. Qualquer coisa abaixo de 1,5 s já mostra que os painéis novos fizeram algo em 63 Hz — e aí a conta das membranas se refaz com o número real.</p>
+  </div>
+</section>
+
+<section id="falhou">
+  <div class="wrap">
+    <div class="head"><span class="head__n">08</span><h2>Quando as membranas entrarem e o 63 Hz não cair</h2></div>
+    <p>Guarde esta lista para o dia. Na ordem de probabilidade:</p>
+    <ul class="plain">
+      <li><strong>A caixa vazou.</strong> É de longe o mais comum. Teste: empurre a face com a palma da mão no centro. Ela tem de ceder um pouco e voltar <em>rápido</em>. Se afunda mole e volta devagar, a mola de ar escapou por alguma junta — abra, passe silicone de novo por dentro, feche.</li>
+      <li><strong>A lã encostou na face.</strong> Ela trava a chapa e mata a membrana. São 50 mm colados <em>só no fundo</em>, com 100 mm de ar livre até a face. Se a lã inchou e encostou, tire e recorte.</li>
+      <li><strong>A caixa não está encostada na parede.</strong> Membrana trabalha sobre <strong>pressão</strong>, e pressão é máxima na parede e mínima no meio do vão. Encostada, sempre — no chão, na parede ou pendurada rente.</li>
+      <li><strong>A massa saiu errada.</strong> Se o MDF que você comprou não for exatamente 8 mm, a sintonia sai do lugar: <code>f = 60/&radic;(m·d)</code>. Pese uma sobra da chapa, calcule o kg/m² de verdade e refaça a conta antes de culpar a sala.</li>
+      <li><strong>Área de menos.</strong> Quatro caixas podem não bastar. Isso não é erro de construção — é dimensionamento, e é exatamente o que a medição serve para responder.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="fim">
+  <div class="wrap">
+    <div class="head"><span class="head__n">09</span><h2>Me mande</h2></div>
+    <ul class="plain">
+      <li>Os <strong>quatro arquivos .mdat</strong>, com a data no nome.</li>
+      <li>Um <strong>print do SNR</strong> que o REW mostrou depois da primeira varredura.</li>
+      <li>Uma <strong>foto da marca de fita no chão</strong> com o tripé em cima.</li>
+      <li>Se você afastou os painéis da parede, <strong>quanto</strong> afastou.</li>
+    </ul>
+    <p>Eu leio os arquivos direto, calculo o RT60 por banda com integração de Schroeder e filtros Butterworth, e devolvo a prancha comparando agosto com hoje.</p>
+    <p class="backlink">Faz parte do conjunto: <a href="https://claude.ai/code/artifact/56852314-77af-49cf-a071-86d65d416694">Sala 3 × 4,8</a> · <a href="https://claude.ai/code/artifact/37f67936-c761-4d7e-a3c3-4b1e9efe1d20">Caderno de Obra</a></p>
+  </div>
+</section>
+
+</main>
