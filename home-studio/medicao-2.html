@@ -219,7 +219,15 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 .look p{font-size:.93rem}
 .look p+p{margin-top:.5em}
 @media (max-width:560px){ .look>div{grid-template-columns:1fr; gap:6px} }
-</style><header class="stamp">
+</style>
+<style>
+  .exp td{white-space:normal}
+  .exp td:nth-child(2){font-family:var(--mono); color:var(--ink)}
+  .exp td:first-child{font-family:var(--mono); color:var(--mute)}
+  .plate ol.steps{max-width:66ch; margin-left:auto; margin-right:auto}
+  code{font-family:var(--mono); font-size:.88em; background:var(--sunk); padding:1px 5px; border-radius:2px}
+</style>
+<header class="stamp">
   <div class="stamp__in">
     <p class="eyebrow">Medição · Home studio 2,75 × 3,70 × 2,65 m</p>
     <h1>Medição 2</h1>
@@ -302,7 +310,7 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
   <div class="wrap">
     <div class="head"><span class="head__n">02</span><h2>O que julgar, e o que ignorar</h2></div>
     <p>Esta é a lição mais cara que essa sala já nos deu, e ela vale repetir antes de cada medição.</p>
-    <table style="width:100%; border-collapse:collapse; margin:1.4em 0; font-size:.95rem">
+    <table class="exp" style="width:100%; border-collapse:collapse; margin:1.4em 0; font-size:.95rem">
       <tr><td style="padding:12px 14px 12px 0; border-bottom:1px solid var(--rule); vertical-align:top"><span class="ok">Use para decidir</span></td>
           <td style="padding:12px 0; border-bottom:1px solid var(--rule)"><strong>RT60 por banda</strong>, e o waterfall como leitura visual. O decaimento é propriedade da sala: mover o microfone 20 cm muda pouco.</td></tr>
       <tr><td style="padding:12px 14px 12px 0; border-bottom:1px solid var(--rule); vertical-align:top"><span class="bad">Não use para decidir</span></td>
@@ -344,51 +352,142 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 </section>
 
 <section id="config">
-  <div class="wrap">
-    <div class="head"><span class="head__n">05</span><h2>As configurações</h2></div>
-    <p>Todas têm de bater com as de agosto. Se você não anotou, use estas e <strong>anote agora</strong> — daqui para frente é esta a receita.</p>
+  <div class="plate">
+    <div class="head"><span class="head__n">05</span><h2>O REW, clique a clique</h2></div>
+    <div class="wrap" style="padding:0">
+      <p>Escrito para quem nunca configurou o programa. Faça na ordem. Onde eu disser "mais ou menos com esse nome", é porque o rótulo muda um pouco de versão para versão — mas o campo está sempre no mesmo lugar.</p>
+    </div>
+
+    <div class="wrap" style="padding:0">
+      <div class="head" style="border-bottom-width:1px; margin-top:38px"><span class="head__n">A</span><h2 style="font-size:1.25rem">Antes de abrir o programa</h2></div>
+    </div>
+    <ol class="steps">
+      <li><div><b>Cabo XLR do ECM8000 na entrada 1</b> da MiniFuse. Sempre a mesma entrada, todas as vezes.</div></li>
+      <li><div><b>Ligue o phantom +48 V.</b> Sem ele o ECM8000 não dá sinal nenhum — é um mic de condensador. Se você ligar tudo e não aparecer sinal, 90% das vezes é isso.</div></li>
+      <li><div><b>Ligue os monitores</b> e deixe o volume no ponto em que você trabalha. Marque o knob com fita.</div></li>
+      <li><div><b>Desligue o SoundID Reference</b> — e qualquer outro EQ de sistema. Se o SoundID estiver ativo, você vai medir a correção dele e não a sala. Esse é o erro que mais atrapalha nesta casa.
+        <p class="cut">no Mac: feche o app do SoundID <span>e confira que a saída de som do sistema é a MiniFuse, não um dispositivo virtual</span></p></div></li>
+      <li><div><b>Autorize o microfone.</b> No Mac: Ajustes do Sistema → Privacidade e Segurança → Microfone → REW ligado. Se isso estiver desligado o REW abre normal e simplesmente não escuta nada.</div></li>
+    </ol>
+
+    <div class="wrap" style="padding:0">
+      <div class="head" style="border-bottom-width:1px; margin-top:44px"><span class="head__n">B</span><h2 style="font-size:1.25rem">As preferências, uma vez só</h2></div>
+    </div>
+    <ol class="steps">
+      <li><div><b>Abra as preferências.</b> É o ícone de engrenagem no canto superior direito da janela principal. Vai abrir uma janela com várias abas em cima.</div></li>
+      <li><div><b>Aba <em>Soundcard</em>.</b> Preencha assim, de cima para baixo:
+        <p class="cut">Output Device <span>····</span> MiniFuse 2<br>
+        Output <span>····</span> a saída onde estão os monitores<br>
+        Input Device <span>····</span> MiniFuse 2<br>
+        Input <span>····</span> In 1 (onde está o mic)<br>
+        Sample rate <span>····</span> 48000</p>
+        <p>Se aparecer uma opção de driver, deixe no padrão. Não mexa em "Calibrate soundcard" — você não precisa disso para medir decaimento.</p></div></li>
+      <li><div><b>Aba <em>Mic/Meter</em>.</b> É onde entra o arquivo de calibração do microfone. Procure o botão que abre um arquivo — costuma se chamar <em>Cal file</em> ou <em>Browse</em> — e escolha o <code>ECM8000_generico.cal</code>.
+        <p class="cut">lembre: <span>essa curva é de outra unidade do mesmo modelo, não da sua.</span> ela corrige a tendência do modelo, não o seu mic individual — e para comparar antes e depois isso não faz diferença nenhuma, porque o erro é o mesmo nas duas medições.</p></div></li>
+      <li><div><b>Feche as preferências.</b> Pronto, isso não se mexe mais.</div></li>
+    </ol>
+
+    <div class="wrap" style="padding:0">
+      <div class="head" style="border-bottom-width:1px; margin-top:44px"><span class="head__n">C</span><h2 style="font-size:1.25rem">Ver se o microfone está vivo</h2></div>
+      <p>Trinta segundos que evitam uma hora de confusão.</p>
+    </div>
+    <ol class="steps">
+      <li><div><b>Clique na aba <em>RTA</em></b>, na fileira de abas em cima do gráfico. RTA é só um analisador ao vivo: mostra o que está entrando pelo microfone, agora.</div></li>
+      <li><div><b>Aperte o botão de iniciar</b> do RTA — a setinha no canto superior esquerdo do painel.</div></li>
+      <li><div><b>Fale perto do microfone.</b> A curva tem de pular. Se não pular: phantom desligado, entrada errada na aba Soundcard, ou permissão de microfone negada no sistema.</div></li>
+    </ol>
+
+    <div class="wrap" style="padding:0">
+      <div class="head" style="border-bottom-width:1px; margin-top:44px"><span class="head__n">D</span><h2 style="font-size:1.25rem">Medir o ruído de fundo</h2></div>
+      <p>Este passo não mede a sala — mede se dá para medir a sala. Faça antes de qualquer varredura.</p>
+    </div>
+    <ol class="steps">
+      <li><div><b>Com o RTA rodando, faça silêncio de verdade.</b> Saia de perto, não respire em cima do mic, geladeira e ar desligados, celular longe.</div></li>
+      <li><div><b>Olhe onde a curva está parada</b>, principalmente na região de 50 a 100 Hz. Tire um print da tela inteira.</div></li>
+      <li><div><b>O número que importa</b> é a distância entre esse piso e o pico da varredura que você vai tocar daqui a pouco. Em agosto o piso estava em &minus;45 dBFS e o pico em &minus;2,3 — sobravam 8,5 dB, e com isso não se mede decaimento nenhum. Depois da troca do cabo o piso foi para &minus;70.
+        <p class="cut">piso muito alto? <span>procure um zumbido: cabo ruim, cabo passando junto da fonte, ou laptop na tomada</span> — teste com o notebook só na bateria</p></div></li>
+    </ol>
+
+    <div class="wrap" style="padding:0">
+      <div class="head" style="border-bottom-width:1px; margin-top:44px"><span class="head__n">E</span><h2 style="font-size:1.25rem">A janela de medição, campo a campo</h2></div>
+      <p>Clique no botão <strong>Measure</strong>, no canto superior esquerdo. Abre a janela da varredura. Preencha assim:</p>
+    </div>
+    <div class="wrap" style="padding:0">
     <div class="tw" style="margin:1.4em 0">
-    <table style="width:100%; border-collapse:collapse; font-size:.92rem; font-family:var(--mono)">
-      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">Taxa de amostragem</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule); text-align:right">48 kHz</td></tr>
-      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">Comprimento da varredura</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule); text-align:right">512 k</td></tr>
-      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">Faixa</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule); text-align:right">15 Hz – 20 kHz</td></tr>
-      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">Repetitions</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule); text-align:right">4</td></tr>
-      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">Use acoustic timing reference</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule); text-align:right">desligado</td></tr>
-      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">Calibração do ECM8000</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule); text-align:right">carregada</td></tr>
-      <tr><td style="padding:11px 14px">Nível na cadeira</td><td style="padding:11px 14px; text-align:right">~80 dB SPL</td></tr>
+    <table class="exp" style="width:100%; border-collapse:collapse; font-size:.9rem">
+      <tr><td style="padding:12px 14px; border-bottom:1px solid var(--rule); font-family:var(--mono); white-space:nowrap">Method</td><td style="padding:12px 14px; border-bottom:1px solid var(--rule); font-family:var(--mono)">Sweep</td><td style="padding:12px 14px; border-bottom:1px solid var(--rule)">varredura, não ruído</td></tr>
+      <tr><td style="padding:12px 14px; border-bottom:1px solid var(--rule); font-family:var(--mono)">Start / End</td><td style="padding:12px 14px; border-bottom:1px solid var(--rule); font-family:var(--mono)">15 Hz / 20 kHz</td><td style="padding:12px 14px; border-bottom:1px solid var(--rule)">precisa ir abaixo de 63 para o filtro pegar a banda inteira</td></tr>
+      <tr><td style="padding:12px 14px; border-bottom:1px solid var(--rule); font-family:var(--mono)">Length</td><td style="padding:12px 14px; border-bottom:1px solid var(--rule); font-family:var(--mono)">512 k</td><td style="padding:12px 14px; border-bottom:1px solid var(--rule)">varredura mais longa = mais energia = mais sinal-ruído</td></tr>
+      <tr><td style="padding:12px 14px; border-bottom:1px solid var(--rule); font-family:var(--mono)">Level</td><td style="padding:12px 14px; border-bottom:1px solid var(--rule); font-family:var(--mono)">&minus;12 dBFS</td><td style="padding:12px 14px; border-bottom:1px solid var(--rule)">ponto de partida; ajuste no Check Levels</td></tr>
+      <tr><td style="padding:12px 14px; border-bottom:1px solid var(--rule); font-family:var(--mono)">Output</td><td style="padding:12px 14px; border-bottom:1px solid var(--rule); font-family:var(--mono)">Left</td><td style="padding:12px 14px; border-bottom:1px solid var(--rule)"><strong>é aqui que se escolhe o monitor</strong> — Left, Right ou L+R</td></tr>
+      <tr class="bad" style="color:inherit"><td style="padding:12px 14px; border-bottom:1px solid var(--rule); font-family:var(--mono)">Use acoustic timing reference</td><td style="padding:12px 14px; border-bottom:1px solid var(--rule); font-family:var(--mono)"><span class="bad">desmarcado</span></td><td style="padding:12px 14px; border-bottom:1px solid var(--rule)">enquanto estiver marcado, o campo Repetitions fica cinza</td></tr>
+      <tr><td style="padding:12px 14px; border-bottom:1px solid var(--rule); font-family:var(--mono)">Repetitions</td><td style="padding:12px 14px; border-bottom:1px solid var(--rule); font-family:var(--mono)">4</td><td style="padding:12px 14px; border-bottom:1px solid var(--rule)">o REW soma quatro varreduras: +6 dB de sinal-ruído de graça</td></tr>
+      <tr><td style="padding:12px 14px; font-family:var(--mono)">Name</td><td style="padding:12px 14px; font-family:var(--mono)">2026-09-20 L</td><td style="padding:12px 14px">data e canal, sempre</td></tr>
     </table>
     </div>
-    <div class="warn"><b>A armadilha:</b> no REW, <em>Repetitions</em> e <em>Use acoustic timing reference</em> são mutuamente exclusivos — ligar um apaga o outro. Para medir decaimento a referência de tempo não serve para nada, e a média de 4 varreduras rende <strong>+6 dB de sinal-ruído de graça</strong> (10·log<sub>10</sub>4). Desligue a referência e use as repetições.</div>
-  </div>
-</section>
-
-<section id="seq">
-  <div class="plate">
-    <div class="head"><span class="head__n">06</span><h2>A sequência</h2></div>
+    </div>
     <div class="wrap" style="padding:0">
-      <p>Quatro varreduras, nesta ordem, <strong>sem tocar no microfone nem no ganho entre elas</strong>.</p>
+      <div class="warn"><b>Não ache o campo Repetitions?</b> Ele está cinza porque o <em>Use acoustic timing reference</em> está marcado. Os dois são mutuamente exclusivos. Desmarque a referência: para medir decaimento ela não serve para nada, e as repetições valem 6 dB.</div>
+    </div>
+    <ol class="steps" style="margin-top:26px">
+      <li><div><b>Clique em <em>Check Levels</em>.</b> O REW toca um ruído no monitor escolhido e mostra o nível que está chegando no microfone.</div></li>
+      <li><div><b>Ajuste até o indicador ficar perto de &minus;12 dBFS.</b> Se estiver baixo demais, suba o <em>ganho do canal 1 da MiniFuse</em>. Se estiver estourando, abaixe o <em>Level</em> do REW — não o ganho do mic, que você vai precisar dele igual na próxima vez.</div></li>
+      <li><div><b>Tire foto da posição do knob de ganho.</b> Sério. É o que permite comparar as medições.</div></li>
+    </ol>
+
+    <div class="wrap" style="padding:0">
+      <div class="head" style="border-bottom-width:1px; margin-top:44px"><span class="head__n">F</span><h2 style="font-size:1.25rem">As quatro varreduras</h2></div>
+      <p>Clique em <strong>Start Measuring</strong>. Vai tocar uma varredura subindo de grave para agudo, quatro vezes seguidas. <strong>Saia da sala ou fique parado atrás do microfone</strong> — seu corpo é um absorvedor e você mexendo é ruído.</p>
+      <p>Entre uma varredura e outra, <em>só</em> troque o campo <strong>Output</strong> e o <strong>Name</strong>. Nada mais.</p>
     </div>
     <div class="acts" style="margin-top:24px">
-      <div class="act"><div class="act__n">1</div><div><h4>Esquerdo sozinho</h4><p>Nome: <code>2026-09-20 L</code></p></div></div>
-      <div class="act"><div class="act__n">2</div><div><h4>Direito sozinho</h4><p>Nome: <code>2026-09-20 R</code></p></div></div>
-      <div class="act"><div class="act__n">3</div><div><h4>Os dois juntos</h4><p>Nome: <code>2026-09-20 LR</code></p></div></div>
-      <div class="act"><div class="act__n">4</div><div><h4>Esquerdo de novo — o teste de sanidade</h4>
-        <p>Repita a varredura 1, sem mexer em <em>nada</em>. Nome: <code>2026-09-20 L bis</code>.</p>
-        <p>Sobreponha as duas no gráfico. Abaixo de 300 Hz elas têm de coincidir dentro de <strong>1 dB</strong>, e o RT de 63 Hz dentro de <strong>0,05 s</strong>. Se não coincidirem, tem coisa se mexendo — ganho instável, ruído entrando, mic frouxo no tripé — e todo o resto da tarde é lixo.</p>
-        <p class="cut">este é o passo que faltou em agosto. <span>ele custa quatro minutos e salva a medição inteira.</span></p>
+      <div class="act"><div class="act__n">1</div><div><h4>Output: Left</h4><p><code>2026-09-20 L</code></p></div></div>
+      <div class="act"><div class="act__n">2</div><div><h4>Output: Right</h4><p><code>2026-09-20 R</code></p></div></div>
+      <div class="act"><div class="act__n">3</div><div><h4>Output: L+R</h4><p><code>2026-09-20 LR</code></p></div></div>
+      <div class="act"><div class="act__n">4</div><div><h4>Output: Left de novo — o teste de sanidade</h4>
+        <p><code>2026-09-20 L bis</code>. Repita a primeira sem tocar em absolutamente nada.</p>
+        <p>Depois vá na aba <strong>Overlays</strong>, marque as duas medições de L na lista da esquerda e olhe a região abaixo de 300 Hz: elas têm de ficar praticamente em cima uma da outra, dentro de <strong>1 dB</strong>.</p>
+        <p class="cut">não coincidiu? <span>tem coisa se mexendo — mic frouxo no tripé, ganho instável, alguém andando na casa.</span> refaça as quatro.</p>
       </div></div>
     </div>
   </div>
 </section>
 
+<section id="ler">
+  <div class="plate">
+    <div class="head"><span class="head__n">06</span><h2>Ler o resultado na tela</h2></div>
+    <ol class="steps">
+      <li><div><b>Selecione a medição <code>LR</code></b> na lista do lado esquerdo.</div></li>
+      <li><div><b>Clique na aba <em>RT60</em></b>, na fileira de abas em cima do gráfico. Vai aparecer um gráfico de barras: uma barra por banda de frequência.</div></li>
+      <li><div><b>Nos controles do RT60, escolha <em>1/3 octave</em></b> em vez de <em>octave</em>, e marque <strong>T20</strong>. Desmarque o resto, para o gráfico não virar sopa.</div></li>
+      <li><div><b>Ache a barra de 63 Hz</b> e leia a altura dela. É esse o número da noite. Compare com <strong>1,66 s</strong>.</div></li>
+      <li><div><b>Confira se o número é confiável.</b> Ainda no RT60, procure a visão de <em>Decay</em> — ela mostra a curva de decaimento daquela banda com a reta que o programa ajustou em cima. A reta tem de acompanhar um trecho <em>reto</em> da curva. Se a curva dobrar para o lado e a reta estiver ajustada em cima da dobra, o número não vale e você precisa de mais sinal-ruído.</div></li>
+      <li><div><b>Olhe também a aba <em>Waterfall</em></b>, só para ver com os olhos. Aquele rabo comprido em 63 Hz é o problema desta sala. Tire print.</div></li>
+    </ol>
+    <div class="note"><b>Por que T20 e não T30.</b> O T30 mede a inclinação usando 30 dB de decaimento e precisa de uns 35 dB limpos acima do ruído para isso. Em 63 Hz, numa sala de 27 m³, você quase nunca tem — e quando não tem, o programa ajusta a reta em cima do ruído e devolve um número bonito e falso. O T20 usa 20 dB e precisa de 25. É o que dá para confiar aqui.</div>
+  </div>
+</section>
+
+<section id="salvar">
+  <div class="wrap">
+    <div class="head"><span class="head__n">07</span><h2>Salvar e mandar</h2></div>
+    <ol class="steps">
+      <li><div><b>Menu <em>File</em> → <em>Save All Measurements</em>.</b> Vai gerar <strong>um</strong> arquivo <code>.mdat</code> com as quatro medições dentro. É esse arquivo que eu leio.</div></li>
+      <li><div><b>Nome do arquivo:</b> <code>2026-09-20 medicao2.mdat</code>.</div></li>
+      <li><div><b>Me mande</b> esse arquivo, o print do RTA com o ruído de fundo, e a foto da fita no chão com o tripé em cima.</div></li>
+    </ol>
+    <div class="warn"><b>Não feche o REW sem salvar.</b> As medições não sobrevivem ao fechamento do programa, e refazer a tarde inteira por causa disso é um jeito ruim de terminar a noite.</div>
+  </div>
+</section>
+
 <section id="olhar">
   <div class="wrap">
-    <div class="head"><span class="head__n">07</span><h2>O que olhar na hora</h2></div>
+    <div class="head"><span class="head__n">08</span><h2>A régua de decisão</h2></div>
     <p>Aba <strong>RT60</strong>, filtro de <strong>1/3 de oitava</strong>, parâmetro <strong>T20</strong>. Olhe a coluna de 63 Hz e compare com 1,66 s.</p>
     <div class="note"><b>Por que T20 e não T30.</b> O T30 precisa de 35 dB de decaimento limpo acima do ruído para ajustar a reta. Em 63 Hz, numa sala de 27 m³, você quase nunca tem isso — e quando não tem, o REW ajusta a reta em cima do ruído e devolve um número bonito e falso. O T20 precisa de 25 dB. Confira também se a curva de Schroeder está <em>reta</em> no trecho ajustado; se ela dobrar, o número não vale.</div>
     <p>A previsão do projeto, por Sabine, com os 3,46 m² de face das quatro membranas:</p>
     <div class="tw" style="margin:1.4em 0">
-    <table style="width:100%; border-collapse:collapse; font-size:.92rem; font-family:var(--mono)">
+    <table class="exp" style="width:100%; border-collapse:collapse; font-size:.92rem">
       <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">T20 de 63 Hz até 1,05 s</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule)"><span class="ok">funcionou dentro da previsão</span></td></tr>
       <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">de 1,05 a 1,30 s</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">funcionou em parte — dá para ganhar mais mexendo na posição</td></tr>
       <tr><td style="padding:11px 14px">acima de 1,30 s</td><td style="padding:11px 14px"><span class="bad">alguma coisa está errada na construção</span></td></tr>
@@ -400,7 +499,7 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 
 <section id="falhou">
   <div class="wrap">
-    <div class="head"><span class="head__n">08</span><h2>Quando as membranas entrarem e o 63 Hz não cair</h2></div>
+    <div class="head"><span class="head__n">09</span><h2>Quando as membranas entrarem e o 63 Hz não cair</h2></div>
     <p>Guarde esta lista para o dia. Na ordem de probabilidade:</p>
     <ul class="plain">
       <li><strong>A caixa vazou.</strong> É de longe o mais comum. Teste: empurre a face com a palma da mão no centro. Ela tem de ceder um pouco e voltar <em>rápido</em>. Se afunda mole e volta devagar, a mola de ar escapou por alguma junta — abra, passe silicone de novo por dentro, feche.</li>
@@ -414,7 +513,7 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 
 <section id="fim">
   <div class="wrap">
-    <div class="head"><span class="head__n">09</span><h2>Me mande</h2></div>
+    <div class="head"><span class="head__n">10</span><h2>O que eu faço com os arquivos</h2></div>
     <ul class="plain">
       <li>Os <strong>quatro arquivos .mdat</strong>, com a data no nome.</li>
       <li>Um <strong>print do SNR</strong> que o REW mostrou depois da primeira varredura.</li>
