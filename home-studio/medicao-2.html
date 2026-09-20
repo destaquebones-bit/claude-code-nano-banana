@@ -459,7 +459,7 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
     <ol class="steps">
       <li><div><b>Selecione a medição <code>LR</code></b> na lista do lado esquerdo.</div></li>
       <li><div><b>Clique na aba <em>RT60</em></b>, na fileira de abas em cima do gráfico. Vai aparecer um gráfico de barras: uma barra por banda de frequência.</div></li>
-      <li><div><b>Nos controles do RT60, escolha <em>1/3 octave</em></b> em vez de <em>octave</em>, e marque <strong>T20</strong>. Desmarque o resto, para o gráfico não virar sopa.</div></li>
+      <li><div><b>Nos controles do RT60, deixe em <em>octave</em></b> — não em 1/3 de oitava — e marque <strong>T20</strong>. Desmarque o resto, para o gráfico não virar sopa.<p class="cut">terço de oitava em 63 Hz tem <span>quase o dobro da dispersão</span> da banda de oitava, e não traz informação que decida nada. terço serve para ver o formato; a oitava é que decide.</p></div></li>
       <li><div><b>Ache a barra de 63 Hz</b> e leia a altura dela. É esse o número da noite. Compare com <strong>1,66 s</strong>.</div></li>
       <li><div><b>Confira se o número é confiável.</b> Ainda no RT60, procure a visão de <em>Decay</em> — ela mostra a curva de decaimento daquela banda com a reta que o programa ajustou em cima. A reta tem de acompanhar um trecho <em>reto</em> da curva. Se a curva dobrar para o lado e a reta estiver ajustada em cima da dobra, o número não vale e você precisa de mais sinal-ruído.</div></li>
       <li><div><b>Olhe também a aba <em>Waterfall</em></b>, só para ver com os olhos. Aquele rabo comprido em 63 Hz é o problema desta sala. Tire print.</div></li>
@@ -468,9 +468,26 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
   </div>
 </section>
 
+<section id="disp">
+  <div class="wrap">
+    <div class="head"><span class="head__n">07</span><h2>Quanto esse número pode variar sozinho</h2></div>
+    <p>Antes de comemorar ou se decepcionar com o valor que aparecer na tela, saiba o tamanho do chão em que ele pisa. Eu rodei o meu próprio código de análise contra 200 decaimentos sintéticos de valor conhecido, de 1,66&nbsp;s, para descobrir quanto ele erra por puro acaso:</p>
+    <div class="tw" style="margin:1.4em 0">
+    <table class="exp" style="width:100%; border-collapse:collapse; font-size:.92rem">
+      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">63 Hz, banda de <strong>oitava</strong></td><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">1,64 s</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule)"><span class="bad">± 15 %</span> &middot; de 1,36 a 1,92</td></tr>
+      <tr><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">63 Hz, <strong>terço de oitava</strong></td><td style="padding:11px 14px; border-bottom:1px solid var(--rule)">1,61 s</td><td style="padding:11px 14px; border-bottom:1px solid var(--rule)"><span class="bad">± 24 %</span> &middot; de 1,16 a 2,06</td></tr>
+      <tr><td style="padding:11px 14px">500 Hz, banda de oitava</td><td style="padding:11px 14px">1,67 s</td><td style="padding:11px 14px"><span class="ok">± 3 %</span> &middot; de 1,60 a 1,74</td></tr>
+    </table>
+    </div>
+    <p>A mediana acerta em cheio nos três casos — o método não é enviesado. O que existe é <strong>dispersão</strong>, e ela é enorme em 63&nbsp;Hz porque a banda tem só 45&nbsp;Hz de largura. Quanto mais estreita a banda e mais curto o decaimento, menos informação existe ali dentro.</p>
+    <div class="note"><b>Isso explica os quatro números de agosto.</b> Aqueles 1,48 · 1,62 · 1,71 · 1,84&nbsp;s que apareceram nas quatro medições não eram medições melhores e piores — <strong>eram a estatística da banda de 63&nbsp;Hz em volta de 1,66</strong>. Nunca trate a variação entre elas como se fosse informação sobre a sala.</div>
+    <div class="warn"><b>A consequência prática:</b> uma queda menor que 15&nbsp;% não prova nada. Se o T20 der 1,45&nbsp;s hoje, isso está dentro do ruído do próprio método e não dá para afirmar que os painéis novos fizeram alguma coisa. A previsão das quatro membranas é cair para ~0,93&nbsp;s, uma queda de <strong>44&nbsp;%</strong> — essa sim sai do ruído com folga. Tirar a média de L, R e LR derruba a dispersão para uns 9&nbsp;%.</div>
+  </div>
+</section>
+
 <section id="salvar">
   <div class="wrap">
-    <div class="head"><span class="head__n">07</span><h2>Salvar e mandar</h2></div>
+    <div class="head"><span class="head__n">08</span><h2>Salvar e mandar</h2></div>
     <ol class="steps">
       <li><div><b>Menu <em>File</em> → <em>Save All Measurements</em>.</b> Vai gerar <strong>um</strong> arquivo <code>.mdat</code> com as quatro medições dentro. É esse arquivo que eu leio.</div></li>
       <li><div><b>Nome do arquivo:</b> <code>2026-09-20 medicao2.mdat</code>.</div></li>
@@ -482,7 +499,7 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 
 <section id="olhar">
   <div class="wrap">
-    <div class="head"><span class="head__n">08</span><h2>A régua de decisão</h2></div>
+    <div class="head"><span class="head__n">09</span><h2>A régua de decisão</h2></div>
     <p>Aba <strong>RT60</strong>, filtro de <strong>1/3 de oitava</strong>, parâmetro <strong>T20</strong>. Olhe a coluna de 63 Hz e compare com 1,66 s.</p>
     <div class="note"><b>Por que T20 e não T30.</b> O T30 precisa de 35 dB de decaimento limpo acima do ruído para ajustar a reta. Em 63 Hz, numa sala de 27 m³, você quase nunca tem isso — e quando não tem, o REW ajusta a reta em cima do ruído e devolve um número bonito e falso. O T20 precisa de 25 dB. Confira também se a curva de Schroeder está <em>reta</em> no trecho ajustado; se ela dobrar, o número não vale.</div>
     <p>A previsão do projeto, por Sabine, com os 3,46 m² de face das quatro membranas:</p>
@@ -499,7 +516,7 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 
 <section id="falhou">
   <div class="wrap">
-    <div class="head"><span class="head__n">09</span><h2>Quando as membranas entrarem e o 63 Hz não cair</h2></div>
+    <div class="head"><span class="head__n">10</span><h2>Quando as membranas entrarem e o 63 Hz não cair</h2></div>
     <p>Guarde esta lista para o dia. Na ordem de probabilidade:</p>
     <ul class="plain">
       <li><strong>A caixa vazou.</strong> É de longe o mais comum. Teste: empurre a face com a palma da mão no centro. Ela tem de ceder um pouco e voltar <em>rápido</em>. Se afunda mole e volta devagar, a mola de ar escapou por alguma junta — abra, passe silicone de novo por dentro, feche.</li>
@@ -513,7 +530,7 @@ ol.steps b{font-family:var(--display); font-variation-settings:"wdth" 104; font-
 
 <section id="fim">
   <div class="wrap">
-    <div class="head"><span class="head__n">10</span><h2>O que eu faço com os arquivos</h2></div>
+    <div class="head"><span class="head__n">11</span><h2>O que eu faço com os arquivos</h2></div>
     <ul class="plain">
       <li>Os <strong>quatro arquivos .mdat</strong>, com a data no nome.</li>
       <li>Um <strong>print do SNR</strong> que o REW mostrou depois da primeira varredura.</li>
