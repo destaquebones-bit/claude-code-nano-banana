@@ -45,9 +45,21 @@ medição como julgamento estético. Nenhum número diz se a música é boa.
     joshgigante) — quarta hora de um all-night-long, horário de pico.
     **Erro meu corrigido:** eu tinha apontado o set "WSA x fabric 05/06/2026"
     e lido 3:45 como minutos; a ligação com Hot Since 82 naquela noite não
-    existe. Clipe de 18 s (captura digital do app) já está aqui; falta o
-    master de "My Things" para correlacionar. Outro lançamento: "Maybe Less"
-    (Otherwise, 2025).
+    existe. **Provado por correlação (21/09):** clipe de 18 s contra o master
+    → NCC 0,843 (controle negativo contra Take Your Time V4: 0,173, razão
+    4,9×); picos secundários em +4/+8/+12/+48/+52/+56 compassos (estrutura
+    de loop da faixa); trecho = **1:15 do master** (primeiro drop); DJ tocou
+    0,6–0,8% mais rápido. Outro lançamento: "Maybe Less" (Otherwise, 2025).
+    Master "My Things" medido: −8,37 LUFS, **+1,67 dBTP** (MP3), PSR 8,31,
+    f0 48,9 Hz, 2f0 +4,5 — 126 BPM. Está dentro da faixa das três referências
+    em loudness e PSR; é a referência interna dele de "faixa que DJ toca".
+- **Capacidade nova (21/09): verificar se um clipe é uma faixa dele.**
+  `scratchpad/match.py`: log-mel 40 bandas (60 Hz–8 kHz), tira timbre médio
+  e nível por quadro, NCC deslizante, varre razão de velocidade 0,975–1,025.
+  Sempre rodar um **controle negativo** (mesmo clipe contra outra faixa no
+  mesmo BPM) e reportar a razão; sem isso o número não vale. Em tech house
+  o offset é ambíguo por múltiplos de 4 compassos — reportar o melhor e a
+  periodicidade, não fingir precisão de compasso.
   - **Andrez Marques NÃO é ele** — é o artista com quem fez a collab THAT'S
     FREE. Eu tinha registrado errado como "créditos como Andrez Marquez";
     corrigido em 21/09. Nunca assinar e-mail ou crédito com esse nome.
