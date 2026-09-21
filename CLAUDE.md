@@ -28,7 +28,17 @@ medição como julgamento estético. Nenhum número diz se a música é boa.
 
 ## O produtor
 
-- **Spectral Sun** (nome artístico) · nome real **Jhonatan Mandato**
+- **Spectral Sun** (nome artístico) · nome real **Jhonatan Mandato** · fundador
+  da **Delírios Records** · formado DJ/produtor 2014, engenheiro de áudio 2016
+  (Beatport). Lançamentos na SNOE: **Dat Beat EP (SNOE096: "Dat Beat",
+  "Alright")** e **"90's" (SNOEflakes #17, SNOE109)**.
+  - Diz que **Hot Since 82 tocou uma faixa dele na Argentina** (17–19/09/2026:
+    Las Palapas/Potrerillos, Metropolitano/Rosário, Mandarine Park/BA Open to
+    Close). Qual faixa: não confirmado. Rastreio em
+    `claude.ai/artifact/UaTuisHWMuAnnzHW3EbZ4d`. Quando chegar clipe,
+    confirmar por correlação contra o arquivo dele — não por ouvido.
+    Sets de setembro com tracklist pública (não abertas daqui): Mixmag Lab
+    03/09, Essential Mix 05/09, Obsessions 09/09, Capital Dance 12/09.
   - **Andrez Marques NÃO é ele** — é o artista com quem fez a collab THAT'S
     FREE. Eu tinha registrado errado como "créditos como Andrez Marquez";
     corrigido em 21/09. Nunca assinar e-mail ou crédito com esse nome.
