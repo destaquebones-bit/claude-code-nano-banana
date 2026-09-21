@@ -39,6 +39,13 @@ medição como julgamento estético. Nenhum número diz se a música é boa.
     confirmar por correlação contra o arquivo dele — não por ouvido.
     Sets de setembro com tracklist pública (não abertas daqui): Mixmag Lab
     03/09, Essential Mix 05/09, Obsessions 09/09, Capital Dance 12/09.
+  - **Registro confirmado por ele: Josh Gigante tocou "My Things" (My Things
+    EP, Otherwise Records, 2023) em 3:45 do set "WSA x fabric London
+    05/06/2026"** (1:42:36, SoundCloud joshgigante) — abertura da Room 1 na
+    noite When Stars Align (CamelPhat), **com Hot Since 82 na Room 2 do mesmo
+    club**. Outros lançamentos dele: "Down" (2023), "Maybe Less" (Otherwise,
+    2025). Vídeo dos 4 primeiros minutos: improvável; o áudio público com
+    timestamp já é registro.
   - **Andrez Marques NÃO é ele** — é o artista com quem fez a collab THAT'S
     FREE. Eu tinha registrado errado como "créditos como Andrez Marquez";
     corrigido em 21/09. Nunca assinar e-mail ou crédito com esse nome.
