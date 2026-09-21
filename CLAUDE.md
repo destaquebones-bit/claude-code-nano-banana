@@ -28,7 +28,10 @@ medição como julgamento estético. Nenhum número diz se a música é boa.
 
 ## O produtor
 
-- **Spectral Sun** (nome artístico) · créditos como **Andrez Marquez**
+- **Spectral Sun** (nome artístico) · nome real **Jhonatan Mandato**
+  - **Andrez Marques NÃO é ele** — é o artista com quem fez a collab THAT'S
+    FREE. Eu tinha registrado errado como "créditos como Andrez Marquez";
+    corrigido em 21/09. Nunca assinar e-mail ou crédito com esse nome.
 - **Tech house / minimal deep tech**, tipicamente **126 BPM**
 - Alvo declarado: **Solid Grooves, Hot Creations, Hellbent**
   - Segundo alvo, trazido depois: **Hot Since 82 / Knee Deep In Sound** — house
