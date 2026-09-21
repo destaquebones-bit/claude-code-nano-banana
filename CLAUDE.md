@@ -36,8 +36,11 @@ medição como julgamento estético. Nenhum número diz se a música é boa.
     lado foi medida ainda**; a biblioteca de três só calibra o lado Solid
     Grooves. Pedir uma faixa do Knee Deep antes de dar número para esse alvo.
   - Terceiro alvo citado (19/09): **masters de Andreas Henneberg / selo SNOE**.
-    Nenhuma faixa da SNOE foi medida; não afirmar nada sobre a cadeia dele —
-    só medir o que ele entrega, se o produtor mandar 2–3 lançamentos.
+    **Ele JÁ LANÇOU na SNOE** (achado por busca, 21/09): "90's" abre a
+    SNOEflakes #17 (SNOE109), e há um SNOE Affairs com DJ set e entrevista
+    dele. Henneberg já masterizou uma faixa dele — pedir o pré-master e a
+    versão lançada da "90's" para medir a cadeia dele por subtração.
+    Nenhuma faixa da SNOE foi medida ainda; não afirmar nada sobre a cadeia.
   - Defected foi trazido uma vez como referência e **não serve** — é house vocal
     mainstream, com estética de master oposta. Avisar antes de usar como alvo.
 - **Ableton Live**, plugins **Waves**, **FabFilter** (Pro-Q 4, Pro-C 2, Pro-L 2,
@@ -314,6 +317,10 @@ Descobertas por teste, não por suposição:
   sndcdn.com — testado 2026-09-17, link privado inclusive), ccrma.stanford.edu,
   dsprelated.com, huggingface.co, dl.fbaipublicfiles.com** e os hosts da Artlist.
   `pypi.org` e `api.github.com` funcionam.
+- **WebSearch funciona; WebFetch não** (21/09): a busca roda do lado do
+  servidor e devolve resumos; abrir páginas (snoemusic.com, labelradar.com,
+  labelsbase.net, findmylabels.com, technoairlines.com) é bloqueado pelo
+  proxy. Para pesquisa de selos/mercado, usar só a busca e marcar a fonte.
 - **Demucs instala mas não roda** — os pesos não baixam. Separação por IA precisa
   ser feita na máquina dele (Moises, Demucs local) ou por stems do Ableton.
   Alternativa que funciona aqui: HPSS por filtragem de mediana (sem modelo),
@@ -365,6 +372,7 @@ rejeitar o que não se comprova.
 - PAIN (test), análise completa + ideias de sound design — `claude.ai/artifact/Hcb7pMJy1mQ9JvwxoGLUSV`
 - Take Your Time, todas as versões (PAIN → test 1 → v2 → V4) — `claude.ai/artifact/CwfbRQfPRQR4Yf9AAJwGzA`
 - Take Your Time, plano da V4 até a entrega (fases, plugins, alvos, formato) — `claude.ai/artifact/Hifg1ZmuC6qmoAUVjQYZDX`
+- Selos para a demo (canais, fontes, ondas de envio, e-mail) — `claude.ai/artifact/1NmeMHNifJ9qbDn4CcpSPi`
 
 Ao publicar revisão de um desses, **republicar no mesmo caminho de arquivo** para
 manter a URL, em vez de criar artefato novo.
