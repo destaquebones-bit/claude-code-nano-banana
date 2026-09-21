@@ -50,6 +50,11 @@ medição como julgamento estético. Nenhum número diz se a música é boa.
     4,9×); picos secundários em +4/+8/+12/+48/+52/+56 compassos (estrutura
     de loop da faixa); trecho = **1:15 do master** (primeiro drop); DJ tocou
     0,6–0,8% mais rápido. Outro lançamento: "Maybe Less" (Otherwise, 2025).
+    Outros sets públicos do Josh para varrer: Arodes b2b Josh @ Pacha
+    24/09/2024 (SoundCloud arodes10, tracklist na 1001TL e set79), Diynamic
+    Festival 07/06/2025, WSA x fabric 05/06/2026; playlist "What's On My USB"
+    (Spotify, 56 faixas) — conferir se "My Things" está nela. Para varrer um
+    set inteiro: pedir MP3 mono 32 kbps (≈14 MB/h) e deslizar o master.
     Master "My Things" medido: −8,37 LUFS, **+1,67 dBTP** (MP3), PSR 8,31,
     f0 48,9 Hz, 2f0 +4,5 — 126 BPM. Está dentro da faixa das três referências
     em loudness e PSR; é a referência interna dele de "faixa que DJ toca".
