@@ -39,13 +39,15 @@ medição como julgamento estético. Nenhum número diz se a música é boa.
     confirmar por correlação contra o arquivo dele — não por ouvido.
     Sets de setembro com tracklist pública (não abertas daqui): Mixmag Lab
     03/09, Essential Mix 05/09, Obsessions 09/09, Capital Dance 12/09.
-  - **Registro confirmado por ele: Josh Gigante tocou "My Things" (My Things
-    EP, Otherwise Records, 2024 — corrigido por ele; a busca dizia 2023 e
-    "Down" 2023 é outra faixa) em 3:45 do set "WSA x fabric London
-    05/06/2026"** (1:42:36, SoundCloud joshgigante) — abertura da Room 1 na
-    noite When Stars Align (CamelPhat), **com Hot Since 82 na Room 2 do mesmo
-    club**. Outro lançamento: "Maybe Less" (Otherwise, 2025). Vídeo dos 4
-    primeiros minutos: improvável; o áudio público com timestamp já é registro.
+  - **Registro confirmado por gravação de tela (21/09): Josh Gigante tocou
+    "My Things" (My Things EP, Otherwise Records, 2024) em 3:45:00 do set
+    "All Night Long at fabric London — 02.02.24"** (5:05:08, SoundCloud
+    joshgigante) — quarta hora de um all-night-long, horário de pico.
+    **Erro meu corrigido:** eu tinha apontado o set "WSA x fabric 05/06/2026"
+    e lido 3:45 como minutos; a ligação com Hot Since 82 naquela noite não
+    existe. Clipe de 18 s (captura digital do app) já está aqui; falta o
+    master de "My Things" para correlacionar. Outro lançamento: "Maybe Less"
+    (Otherwise, 2025).
   - **Andrez Marques NÃO é ele** — é o artista com quem fez a collab THAT'S
     FREE. Eu tinha registrado errado como "créditos como Andrez Marquez";
     corrigido em 21/09. Nunca assinar e-mail ou crédito com esse nome.
@@ -87,6 +89,48 @@ medição como julgamento estético. Nenhum número diz se a música é boa.
 - **A referência é calibração, não alvo.** Ele deixou claro: a faixa dele não
   precisa ficar igual à referência, é questão de qualidade. Use referência para
   dimensionar o quanto algo está fora, nunca para propor clonagem.
+
+### As outras frentes dele (outros branches deste repositório — lidos em 21/09)
+
+Não existe skill "carreira"; o que existe está espalhado nestes branches.
+Quando ele disser "veja a skill de carreira", é isto:
+
+- **`origin/main` → `reddit-growth/LOG.md`** (866 linhas, entradas diárias
+  18/08–17/09 de uma rotina automática de pesquisa e rascunho, sem postar).
+  Faixa em promoção: **"Mind Gone State"** (free download Hypeddit
+  `hypeddit.com/iel6vv`, SoundCloud). Subs: r/PromoteYourMusic (usado, 1×/sem),
+  r/House (reciprocidade obrigatória), r/edmproduction e r/TechnoProduction
+  (só feedback thread); r/Techhouse morto; r/TechHouseBrasil fundado por ele e
+  **banido em horas** (conta de 0 dias). Regra 90/10, 1 ação/dia.
+  **Fila de vídeos de fã do Hot Since 82 tocando "90'S":** 1) Illusions
+  Audio-Visual Festival, Hangar, Belgrado (13–15/03/2026); 2) Space of Sound,
+  LAB theCLUB, Madri; 3) UNVRS, Ibiza (data incerta); 4) Toronto (evento não
+  identificado). **Ou seja: o Hot Since 82 toca "90'S" há meses — a faixa da
+  Argentina é quase certamente "90'S".** Só uma aprovação dele registrada
+  (20/08); a rotina nunca soube o que foi postado de fato.
+- **`origin/main` → `plugins/audio-analyzer/`**: plugin de marketplace com
+  Essentia (chave/BPM/loudness), **modelos MusiCNN de danceability e mood**
+  (`models/*.pb`, ~5 MB, no repo), Demucs, espectrograma, `compare.py`,
+  `critique_gemini.py`, e **snapshots do Beatport Top 100** (`reference/
+  tech-house-2026.md`, `house-2026.md`, 01/08/2026): tech house 128–130 BPM,
+  52% menor, labels em alta Black Book, Hellbent, Nu Moda, Defected, After
+  Midnight, Nervous, Toolroom. Item 5 do roadmap (danceability) já tem modelo
+  pronto ali — testar antes de escrever outro.
+- **`origin/claude/home-studio-structure-analysis-0wfzwn` →
+  `home-studio/BRIEFING.md`**: acústica do estúdio dele. Sala 2,75 × 3,70 ×
+  2,65 m; **modos de largura e altura empilham em 62–65 Hz; RT em 63 Hz =
+  1,66 s** contra 0,24–0,47 acima de 250 Hz. Dois bass traps feitos; quatro
+  membranas sintonizadas em 63 Hz projetadas, não construídas. Yamaha HS,
+  MiniFuse 2, ECM8000, REW, SoundID. **Explica por que ele mixa em fone** — e
+  por que o grave dele (kick e baixo em 54–58 Hz) mora bem abaixo do modo da
+  sala: nos monitores, 63 Hz ressoa 1,66 s. Ele **tem um EP saindo pela
+  Elevation**. Mesmo branch: `loja/` (PA da loja AXOZEE) e `quarto/`.
+- **`origin/claude/axozee-shirt-designs-o8vshs` → `axozee/`**: marca de
+  streetwear **AXOZEE** dele ("Asfalto × Selva"), sócio da **Destaque Bonés e
+  Confecções** (daí o usuário GitHub destaquebones-bit). Rotina diária
+  "Compradores de Bonés e Brindes" ainda ativa (10h UTC, Sonnet).
+- **`origin/claude/claude-md-docs-tlf8ml`**: CLAUDE.md do marketplace
+  (documentação técnica do plugin), sem contexto do produtor.
 
 ## Biblioteca de referência
 
