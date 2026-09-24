@@ -364,6 +364,53 @@ Estrutura: intro filtrada ~16 c., quebra 16 c. em 2:14, quebra **24 c.** em
 breaks** (2:10–2:45 e ~4:20–4:35); fora deles a transcrição não acha fala.
 Letra transcrita com confiança parcial (ver relatório).
 
+## Estado da faixa FEEL SO RIGHT
+
+6:06, **126 BPM**, **192 compassos exatos**. Faixa nova, perfil diferente de
+tudo medido até agora — **primeira vez com pico de confiança real na
+tonalidade**: afinação +0 cents, score 0,052 (as outras davam 0,008–0,023,
+fraco demais pra confiar). **D menor**, r=0,846 — a correlação mais forte já
+vista. Kick e baixo convergem em 37–38 Hz, D1, o próprio tom da faixa.
+
+| Medida | Valor | Referências |
+|---|---|---|
+| LUFS integrado | −10,75 | −7,6 a −8,9 |
+| True peak | −0,24 | alvo −1,0 — acima |
+| PSR | 11,75 | 8,1 a 9,6 |
+| Bandas dentro | **8 de 29** | HISTORY 6 · PAIN v1 10 · THAT'S FREE 12 · TYT V4 14 |
+| Sub 20–60 Hz | **15,3%** | 34,2–53,7% — **muito abaixo**, padrão novo |
+| 250–500 Hz | **34,8%** | maior desvio de qualquer faixa medida |
+| Ducking | **8,8 dB, 80% do beat** | refs 1,5–5,1 — bem mais fundo, craft não erro |
+
+**Perfil é o espelho do que as faixas anteriores mostravam:** ali sobrava
+grave, aqui falta (25–200 Hz consistentemente 3–9 dB abaixo da faixa,
+50 Hz em −9,3). 250–500 Hz +5,2 (317 Hz) e +2,7 (400 Hz) acima — maior
+excesso já medido nessa região. 2–4 kHz −7 a −8 dB abaixo (buraco de
+presença); 5–16 kHz **dentro** quase todo — o topo, problema recorrente
+antes, aqui está certo.
+
+**Harmônicos do baixo** (leitura agregada, a linha troca de nota o tempo
+todo): 2f0 +11,4 dB, 6f0 +15,1 dB acima da "fundamental" — mas o excesso em
+250–500 Hz é confirmado por medida de banda bruta, independente de nota,
+então é real mesmo sem certeza da causa (baixo, pad, ou kick empilhados).
+
+**Notas do baixo, 517 detectadas:** cluster dominante D1 36,7 Hz (42%), F1
+43,7 (22%), G1 49,0 (18%), D#1 38,9 (5%) — bassline real, não erro de
+oitava (confirmado testando energia em f0/2). Cluster secundário 90–110 Hz
+aparece só em dois trechos (fim do intro ~17–30s, break 1 ~1:31–2:00) —
+parece um padrão de baixo diferente (arpejo/riser) nos buildups, não erro.
+
+**Kick some no outro — 3ª faixa seguida com o mesmo padrão** (já pedido três
+vezes na Take Your Time). De 5:37 ao fim (6:05, 15 compassos), kick cai de
+−17 dB (nível do groove) para **−30 dB**, praticamente silenciado.
+
+Estrutura: intro 16c (0:00–0:30), break 16c (1:31–2:01), break grande 24c
+(3:18–4:03) com reconstrução em três estágios (~20s), dip curto 7c
+(4:35–4:49), outro 15c. Contraste dos três drops: 2,5–3,5 dB total, **6–9 dB
+no grave** — bom.
+
+Relatório completo — `claude.ai/artifact/42MCR9S6CnEN3JLpPHPksL`.
+
 ## Como corrigir a si mesmo
 
 Este projeto já teve várias conclusões derrubadas pela medição seguinte. Isso é o
@@ -454,6 +501,7 @@ rejeitar o que não se comprova.
 - Take Your Time, todas as versões (PAIN → test 1 → v2 → V4) — `claude.ai/artifact/CwfbRQfPRQR4Yf9AAJwGzA`
 - Take Your Time, plano da V4 até a entrega (fases, plugins, alvos, formato) — `claude.ai/artifact/Hifg1ZmuC6qmoAUVjQYZDX`
 - Selos para a demo (canais, fontes, ondas de envio, e-mail) — `claude.ai/artifact/1NmeMHNifJ9qbDn4CcpSPi`
+- Feel So Right, análise completa — `claude.ai/artifact/42MCR9S6CnEN3JLpPHPksL`
 
 Ao publicar revisão de um desses, **republicar no mesmo caminho de arquivo** para
 manter a URL, em vez de criar artefato novo.
