@@ -411,6 +411,17 @@ no grave** — bom.
 
 Relatório completo — `claude.ai/artifact/42MCR9S6CnEN3JLpPHPksL`.
 
+**Renomeada "So Right" (v2, 25/09).** Mesmo arranjo, 365,7s, D menor — revisão
+de mixagem. **13 de 29 dentro** (era 8). Bass 60–120 Hz subiu +0,6 a +2,0 dB
+em toda a faixa (mais em breaks/outro); 79/100 Hz quase dentro (−0,9/−1,4,
+era −3,3/−3,4). 2,5–6,4 kHz subiu +0,5 a +0,7, buraco de presença encolheu.
+250–500 Hz caiu um pouco (share 34,8%→30,3%) mas **continua o maior desvio**
+(317 Hz +4,9, 400 Hz +2,8). **Sub piorou** — 25 Hz −10,2 (era −9,1), share
+20–60 Hz caiu de 15,3% para 12,6%. TP −0,30 (melhorou), LUFS/PSR quase
+iguais, ducking igual (7,9 dB/82%). **Kick no outro: −28,9 dB, praticamente
+sem mudança — 4ª faixa seguida com esse padrão exato**, agora claramente um
+hábito de processo, não acidente. Comparação completa na mesma URL acima.
+
 ## Como corrigir a si mesmo
 
 Este projeto já teve várias conclusões derrubadas pela medição seguinte. Isso é o
