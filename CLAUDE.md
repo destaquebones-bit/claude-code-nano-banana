@@ -298,6 +298,14 @@ Bandas dentro 10 → 9, mas as distâncias encolheram. Em 1:12–1:27 o grave ca
 a −30 dBFS antes do drop — a técnica de contraste foi aplicada. Ceiling
 recomendado: **−1,2 dBTP** por causa da inflação do MP3.
 
+**Correção (25/09): o kick não "sai" do outro.** Medido pico a pico na V4 —
+presente e regular até o fim (6:44), **−8,8 a −9,4 dB** abaixo do groove de
+forma bem uniforme (dois blips curtos de −26 a −28 dB são preenchimento
+rítmico entre batidas, não o kick principal). O que eu chamei de "kick
+continua fora" nas três entradas abaixo (v2/v3/V4) era leitura de RMS de
+bloco, que mistura o kick mais baixo com o resto caindo junto — reduz, não
+apaga. Ver "Como corrigir a si mesmo".
+
 **v3 = "Take your Time v2" (18/09)**, mesmo comprimento e loudness. Subtração
 direta test 1 → v2: 400–900 Hz **+1 a +2,5 dB** em quase toda a faixa (picos em
 1:15, 2:45, 4:00–4:15); 250–320 Hz −1; 1,6–4 kHz −0,7; outro ganhou chimbal
@@ -400,9 +408,9 @@ oitava (confirmado testando energia em f0/2). Cluster secundário 90–110 Hz
 aparece só em dois trechos (fim do intro ~17–30s, break 1 ~1:31–2:00) —
 parece um padrão de baixo diferente (arpejo/riser) nos buildups, não erro.
 
-**Kick some no outro — 3ª faixa seguida com o mesmo padrão** (já pedido três
-vezes na Take Your Time). De 5:37 ao fim (6:05, 15 compassos), kick cai de
-−17 dB (nível do groove) para **−30 dB**, praticamente silenciado.
+**Kick no outro (corrigido em 25/09, ver "Como corrigir a si mesmo"): não
+some.** Presente e regular até o fim, ~13 dB abaixo do groove por RMS de
+bloco — mas pico a pico ele está lá o tempo todo, só mais baixo.
 
 Estrutura: intro 16c (0:00–0:30), break 16c (1:31–2:01), break grande 24c
 (3:18–4:03) com reconstrução em três estágios (~20s), dip curto 7c
@@ -418,9 +426,16 @@ era −3,3/−3,4). 2,5–6,4 kHz subiu +0,5 a +0,7, buraco de presença encolhe
 250–500 Hz caiu um pouco (share 34,8%→30,3%) mas **continua o maior desvio**
 (317 Hz +4,9, 400 Hz +2,8). **Sub piorou** — 25 Hz −10,2 (era −9,1), share
 20–60 Hz caiu de 15,3% para 12,6%. TP −0,30 (melhorou), LUFS/PSR quase
-iguais, ducking igual (7,9 dB/82%). **Kick no outro: −28,9 dB, praticamente
-sem mudança — 4ª faixa seguida com esse padrão exato**, agora claramente um
-hábito de processo, não acidente. Comparação completa na mesma URL acima.
+iguais, ducking igual (7,9 dB/82%).
+
+**V3 (25/09).** Ele corrigiu: o kick **não some** no outro — pico a pico,
+presente e regular até 6:05, ~9 a 13 dB abaixo do groove, controlado e
+uniforme (ver "Como corrigir a si mesmo"). **13 de 29 dentro** (igual à v2).
+Subtração v2→v3: **1 a 1,8 kHz acima subiu +1 a +1,8 dB em quase tudo** —
+buraco de presença de 2–6 kHz **praticamente fechado**, quase tudo "dentro"
+agora; sub 31,5–63 Hz subiu +1 a +1,5; 79/100 Hz desceram −1,3/−1,7 (bom,
+estavam acima da faixa). **317 Hz continua o maior desvio** (+7,4, quase
+sem mudar) — ainda não resolvido. Comparação completa na mesma URL acima.
 
 ## Como corrigir a si mesmo
 
@@ -434,6 +449,17 @@ Casos reais, para não repetir:
   morando ali. Cortar teria apagado o grave. O problema era registro, não EQ.
 - Estimei o **ducking em 5,1 dB** pela mixdown. Com o stem isolado eram **22,4**.
 - Estimei o **decaimento do kick em 29 ms** pela mixdown. Isolado, **106 ms**.
+- Repeti quatro vezes ("kick sumiu/ausente/praticamente silenciado no outro")
+  que o kick desaparecia no final da Take Your Time e da Feel So Right/So
+  Right, baseado em **RMS médio por bloco de 4–16 compassos** numa banda
+  passa-faixa. Ele apontou o erro (25/09): medi pico a pico, sincronizado na
+  batida, e o kick **está presente o tempo todo até o fim**, com espaçamento
+  regular — só **9 a 13 dB mais baixo** que no groove principal, uma redução
+  controlada e uniforme (não some, não é ruído de fundo). Confirmado nas
+  duas faixas com o método certo. **RMS de bloco conflita "mais baixo" com
+  "sumiu"** — para presença de kick, sempre checar pico a pico com
+  `find_peaks` na envelope, sincronizado à batida, e comparar a altura
+  mediana dos picos, não a média de energia do bloco.
 - Escrevi **alvos numéricos de balanço tonal inventados por mim**. Removidos.
 - Reportei **mascaramento kick↔baixo como problema grave**. O modelo perceptivo
   mostrou **zero** bandas críticas mascaradas. Colisão espectral e mascaramento
