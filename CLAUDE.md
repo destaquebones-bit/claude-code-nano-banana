@@ -539,6 +539,8 @@ rejeitar o que não se comprova.
 - Take Your Time, plano da V4 até a entrega (fases, plugins, alvos, formato) — `claude.ai/artifact/Hifg1ZmuC6qmoAUVjQYZDX`
 - Selos para a demo (canais, fontes, ondas de envio, e-mail) — `claude.ai/artifact/1NmeMHNifJ9qbDn4CcpSPi`
 - Feel So Right, análise completa — `claude.ai/artifact/42MCR9S6CnEN3JLpPHPksL`
+- Guia: medir frequência ao vivo com Pro-Q 4 (Reference Track), tabela de
+  notas do baixo, rotina por fase — `claude.ai/artifact/MYjf6kkQLrLAX7peorU8xs`
 
 Ao publicar revisão de um desses, **republicar no mesmo caminho de arquivo** para
 manter a URL, em vez de criar artefato novo.
