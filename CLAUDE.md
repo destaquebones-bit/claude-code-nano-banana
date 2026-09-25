@@ -456,6 +456,25 @@ ainda não foi limitada, mas o headroom bruto encolheu. Kick no outro
 (pico a pico, método corrigido): confirmado de novo, −12,5 dB mediana
 abaixo do groove, presente e regular até 364,8 s de 365,8 s.
 
+**V5 (25/09) — 12 de 29 dentro, primeira queda desde a v1** (era 15).
+Subtração v4→v5 reverte duas tendências que vinham melhorando há quatro
+versões seguidas: sub 20–60 Hz **caiu** (17,0%→15,1%, −1,9pp) e 250–500 Hz
+**subiu** (22,5%→23,5%, +1,0pp, primeira alta depois de 34,8→30,3→25,5→
+22,5). Não é só volume: a curva tonal normalizada (que descarta ganho
+geral) mostra 31,5/50/63 Hz caindo −0,5 a −0,9 dB relativo ao resto do
+espectro — o grave perdeu peso justo onde já estava abaixo da faixa de
+tolerância, e 250–500 ganhou peso de volta justo onde já era o maior
+excesso. Harmônicos do baixo (2f0/3f0/5f0/6f0) todos um pouco mais altos
+que na v4, combina com a subida em 250–500. **LUFS caiu 1,0 LU** (−10,64→
+−11,64, faixa ficou mais quieta) e PSR subiu (11,86→12,78, condizente com
+menos limitação). **True peak melhorou** (−0,09→−0,19, mais perto do alvo
+−1,0). Ducking igual em profundidade (10,0 dB) mas o vale passou a cobrir
+88% do beat (era 82%) — segue se afastando das referências. Kick no outro:
+sem mudança, confirmado de novo pelo método corrigido, −12,1 dB mediana,
+presente até 364,8 s de 365,8 s. **Se algo novo entrou nesta revisão (EQ,
+automação, plugin), vale conferir — o padrão é o oposto do que as quatro
+versões anteriores vinham corrigindo.**
+
 ## Como corrigir a si mesmo
 
 Este projeto já teve várias conclusões derrubadas pela medição seguinte. Isso é o
