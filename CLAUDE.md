@@ -437,6 +437,25 @@ agora; sub 31,5–63 Hz subiu +1 a +1,5; 79/100 Hz desceram −1,3/−1,7 (bom,
 estavam acima da faixa). **317 Hz continua o maior desvio** (+7,4, quase
 sem mudar) — ainda não resolvido. Comparação completa na mesma URL acima.
 
+**V4 (25/09) — 15 de 29 dentro, novo recorde de qualquer faixa dele** (o
+anterior era Take Your Time V4, com 14). Subtração v3→v4: 250–500 Hz caiu de
+novo (share 25,5%→22,5%, quarta versão seguida melhorando: 34,8→30,3→25,5→
+22,5%); harmônicos do baixo (2f0 a 6f0) todos um pouco mais baixos relativo à
+fundamental, combina com a queda em 250–500; topo/presença (630 Hz–8 kHz)
+subiu +0,2 a +0,5 dB quase uniforme; sub 20–60 Hz subiu +0,6pp (17,0%, segue
+melhorando). Por blocos de 8 compassos: o topo subiu de forma uniforme do
+início ao fim (inclusive nos breaks); o médio caiu mais no groove principal
+e ficou quase parado nos breaks; o grave ficou estável em toda a faixa —
+a mudança não foi no grave, foi tirar médio e dar mais topo. **317 Hz
+continua o maior desvio isolado** (+3,9 acima da faixa, melhorou de +4,4
+mas não resolvido). **Ducking subiu de novo** — trajetória 8,8→7,9→9,5→
+10,0 dB/82%, se afastando ainda mais das referências (1,5–5,1 dB); decidir
+se é intenção ou deriva não percebida entre revisões. **True peak piorou**
+(−0,22→−0,09, mais perto de 0 dBTP) — sem problema agora porque a faixa
+ainda não foi limitada, mas o headroom bruto encolheu. Kick no outro
+(pico a pico, método corrigido): confirmado de novo, −12,5 dB mediana
+abaixo do groove, presente e regular até 364,8 s de 365,8 s.
+
 ## Como corrigir a si mesmo
 
 Este projeto já teve várias conclusões derrubadas pela medição seguinte. Isso é o
