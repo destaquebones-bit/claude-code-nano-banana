@@ -526,6 +526,25 @@ curto. Confundi forma de envelope com identidade da fonte.
   provavelmente pegando os trechos de arpejo/riser sem vazamento de outros
   elementos atrapalhando o YIN.
 
+**Terceiro round (26/09) — baixo sozinho, com EQ novo dele (BASS_V3).**
+Confirma de vez e destrava um detalhe novo: isolado, o degrau em 317 Hz é
+**ainda mais forte** que no stem combinado — 250–320 Hz em −26,6 dB caindo
+pra −46,5 dB em 320–500 Hz (degrau de **20 dB**, era 10 dB no stem com
+kick junto). Curva normalizada: 317,5 Hz em **+20,87 dB**, segundo ponto
+mais alto de toda a curva. **O pico é fixo em ~317 Hz enquanto a
+fundamental do baixo varia nota a nota (36–52 Hz nessa faixa)** — isso não
+combina com harmônico (que se moveria com a nota), combina com
+**ressonância de filtro** no patch/sample do baixo (low-pass com Q alto
+travado ali). Ajustar a recomendação: Pro-Q 4 dinâmico em 317 Hz, **Q mais
+estreito (2–3, não 1,2)**, −4 a −6 dB; se não resolver, checar o filtro do
+synth/sample direto, pode não ser corrigível só por EQ de fora.
+**O EQ que ele aplicou nessa V3 não tocou o 317** — o que mudou foi um
+reforço forte em ~100 Hz (virou o ponto mais alto da curva, +22,96 dB).
+**Ducking impresso no baixo sozinho: 5,3 dB, vale em 56% do beat — dentro
+da faixa das três referências (1,5–5,1 dB) pela primeira vez.** Se isso
+já reflete o ajuste pedido no Pro-C2 (Range/Knee), funcionou; aguardando
+confirmação dele.
+
 ## Como corrigir a si mesmo
 
 Este projeto já teve várias conclusões derrubadas pela medição seguinte. Isso é o
