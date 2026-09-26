@@ -475,29 +475,42 @@ presente até 364,8 s de 365,8 s. **Se algo novo entrou nesta revisão (EQ,
 automação, plugin), vale conferir — o padrão é o oposto do que as quatro
 versões anteriores vinham corrigindo.**
 
-## O mistério dos 317 Hz — quase resolvido (26/09)
+## O mistério dos 317 Hz — testado e CORRIGIDO (26/09)
 
 317 Hz é o desvio mais repetido de todo o projeto (PAIN, THAT'S FREE, Feel So
 Right v1→v5, todos com +3 a +9 dB nessa região). Eu sempre disse "não sei se é
-baixo, pad ou kick sem stem". **Ele mandou um stem de bass+kick isolado** (sem
-mais nada, energia zero acima de 500 Hz) e isso mudou o quadro:
+baixo, pad ou kick sem stem".
 
-- Curva tonal do stem: **317,5 Hz em +15,78 dB**, no mesmo patamar do núcleo
-  do grave (60–120 Hz). Nível absoluto: 250–320 Hz no mesmo nível que
-  120–250 Hz, caindo ~10 dB logo depois (320–500 Hz). Pico real, não gradual.
-- **Teste de comportamento temporal**: filtrei 280–360 Hz, dobrei o envelope
-  sobre uma batida a 126 BPM — o pico ataca forte em 0–24 ms e desaba mais de
-  20 dB em 50–70 ms. É decaimento de transiente, não sustentação de nota de
-  baixo. Segundo bump parecido em 260–450 ms na mesma batida.
-- **Conclusão provisória: é o kick, não o baixo**, que carrega o 317 Hz —
-  provavelmente corpo/caixa do sample de kick ressoando nessa região. Ataque
-  e decaimento rápido não combinam com uma nota de baixo sustentada.
-- **Não fechado 100%**: falta o kick sozinho (sem baixo) pra confirmar que o
-  pico sobrevive sem o baixo tocando junto. Pedido feito.
-- **Recomendação atualizada**: o corte dinâmico de 317 Hz (Pro-Q 4, bell
-  dinâmico, −3 a −4 dB, Q 1,2) deve ir no canal do **kick**, não no baixo —
-  contradiz o que eu vinha sugerindo desde os relatórios anteriores (aplicar
-  no bus ou "no elemento que estiver morando ali" sem saber qual).
+**Primeiro round (stem bass+kick):** curva tonal mostrou 317,5 Hz em
++15,78 dB, no mesmo patamar do núcleo do grave, com nível absoluto em
+250–320 Hz igual a 120–250 Hz e caindo ~10 dB logo depois (320–500 Hz) —
+um pico real. O teste de envelope (280–360 Hz dobrado sobre a batida)
+mostrou ataque forte em 0–24 ms decaindo 20+ dB em 50–70 ms — parecia
+transiente de kick, não nota sustentada. **Concluí (errado): é o kick.**
+
+**Segundo round (kick sozinho, pedido pra confirmar) — DERRUBOU a
+conclusão.** No kick isolado, 250–320 Hz (−34,1 dB) e 320–500 Hz
+(−34,4 dB) ficam **praticamente iguais — sem degrau nenhum**. E o nível
+absoluto do kick em 250–320 Hz está **~10 dB mais baixo** que no stem
+combinado (−34,1 vs −24,5). Se o pico fosse do kick, ele apareceria no
+kick sozinho — não aparece. **A energia do degrau está no baixo, não no
+kick.** Meu erro: o decaimento rápido em 280–360 Hz que medi no stem
+combinado não é assinatura exclusiva de kick — uma linha de baixo tocada
+"plucada"/gated (comum em tech house) produz o mesmo tipo de envelope
+curto. Confundi forma de envelope com identidade da fonte.
+
+- **Correção final: 317 Hz é provavelmente o baixo**, não o kick. O corte
+  dinâmico (Pro-Q 4, bell dinâmico, 317 Hz, −3 a −4 dB, Q 1,2) volta a ser
+  recomendado **no canal do baixo**, como nos relatórios anteriores a
+  25/09 — a mudança "vai pro kick" de ontem está revertida.
+- **Bônus confirmado no kick sozinho**: fundamental travado em **36,3 Hz**
+  (faixa 36–36 Hz, 643 notas, o mais consistente já medido) — quase em
+  cima de D1 (36,7 Hz), o tom da faixa. Reforça o achado antigo de kick e
+  baixo convergindo na tônica.
+- **Nota sobre a ferramenta**: `bass_notas()` aplicada no kick sozinho
+  devolveu "ducking 66,2 dB, vale em 1% do beat" — não é dado real, é
+  artefato: a função assume nota de baixo sustentada entre picos, e um
+  kick puro só tem silêncio entre hits. Não usar esse número pra nada.
 - **Ducking medido direto no stem (mais confiável que estimativa por
   mixdown): 11,8 dB, vale em 75% do beat.** Confirmado por ele (26/09): este
   stem **é a V5**, com o Pro-C2 como estava no print (ainda sem os ajustes
@@ -545,6 +558,11 @@ Casos reais, para não repetir:
   Detlef sozinho.
 - Disse que o topo estava **"5 a 8 dB brilhante demais"**. Contra os três é
   **+0,2 a +4,0 dB**. O Detlef é só o mais escuro dos três.
+- Concluí que o 317 Hz persistente era **o kick**, baseado num stem de
+  bass+kick combinado onde o pico tinha decaimento rápido de transiente.
+  Pedindo o kick sozinho (26/09), o pico **não aparece** — a energia estava
+  no baixo. Decaimento rápido não prova kick: um baixo tocado plucado tem
+  o mesmo formato de envelope. Ver "O mistério dos 317 Hz".
 
 **A estimativa de f0 do baixo varia ~10 Hz** conforme o janelamento (87,8 Hz
 medindo pelos picos do próprio baixo, 98,5 Hz pelos picos do kick). Reporte a
