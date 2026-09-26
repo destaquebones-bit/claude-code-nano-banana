@@ -216,8 +216,21 @@ faixas dele (ver "O mistério dos 317 Hz").
 único daqui** — mesma lição da biblioteca de três: usar múltiplas
 referências, nunca uma só, e aqui nem duas bastam pra fixar número de sub.
 
-**Pendente:** pedir o pré-master da "90's" pra medir a cadeia do Henneberg
-por subtração direta, como já estava anotado antes.
+**Resolvido (26/09): pré-master recebido, cadeia isolada por subtração
+direta.** LUFS −22,72→−12,51 (**+10,2 LU**), TP −5,98→+0,50, **PSR só
+−1,18** (14,64→13,46) — ganho enorme com quase nenhuma perda de crest
+factor, não é brickwall. Curva de EQ isolada: **corte no subsônico abaixo
+de ~32 Hz** (25 Hz −7,81, 31,5 Hz −2,31, mas a fundamental do baixo em
+40–63 Hz quase intocada, −0,5 a −1,2) + **shelf/tilt de agudo subindo a
+partir de 4 kHz**, pico **+4,33 dB em ~10 kHz**, suavizando no 16 kHz
+(+3,08). **O meio (40 Hz–2,5 kHz) não leva EQ de peso** — variação de
+−0,1 a −1,2 dB, resíduo de nível, não corte/boost real. **317 Hz não muda
+nada (+0,33)** — mais uma confirmação de que não é coisa de master.
+Isso é a assinatura medida da cadeia do Henneberg, não uma suposição —
+pode ser usada como referência de forma (HP suave <32Hz + shelf de agudo
+até +4dB em 8–12kHz), nunca como alvo pra clonar.
+**Próximo passo, já combinado:** ele vai mandar os plugins/parâmetros da
+própria master pra comparar contra essa assinatura.
 
 ## Estado da faixa HISTORY (v2, "NEW MIX TEST 2")
 
