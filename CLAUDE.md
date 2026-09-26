@@ -475,6 +475,38 @@ presente até 364,8 s de 365,8 s. **Se algo novo entrou nesta revisão (EQ,
 automação, plugin), vale conferir — o padrão é o oposto do que as quatro
 versões anteriores vinham corrigindo.**
 
+## O mistério dos 317 Hz — quase resolvido (26/09)
+
+317 Hz é o desvio mais repetido de todo o projeto (PAIN, THAT'S FREE, Feel So
+Right v1→v5, todos com +3 a +9 dB nessa região). Eu sempre disse "não sei se é
+baixo, pad ou kick sem stem". **Ele mandou um stem de bass+kick isolado** (sem
+mais nada, energia zero acima de 500 Hz) e isso mudou o quadro:
+
+- Curva tonal do stem: **317,5 Hz em +15,78 dB**, no mesmo patamar do núcleo
+  do grave (60–120 Hz). Nível absoluto: 250–320 Hz no mesmo nível que
+  120–250 Hz, caindo ~10 dB logo depois (320–500 Hz). Pico real, não gradual.
+- **Teste de comportamento temporal**: filtrei 280–360 Hz, dobrei o envelope
+  sobre uma batida a 126 BPM — o pico ataca forte em 0–24 ms e desaba mais de
+  20 dB em 50–70 ms. É decaimento de transiente, não sustentação de nota de
+  baixo. Segundo bump parecido em 260–450 ms na mesma batida.
+- **Conclusão provisória: é o kick, não o baixo**, que carrega o 317 Hz —
+  provavelmente corpo/caixa do sample de kick ressoando nessa região. Ataque
+  e decaimento rápido não combinam com uma nota de baixo sustentada.
+- **Não fechado 100%**: falta o kick sozinho (sem baixo) pra confirmar que o
+  pico sobrevive sem o baixo tocando junto. Pedido feito.
+- **Recomendação atualizada**: o corte dinâmico de 317 Hz (Pro-Q 4, bell
+  dinâmico, −3 a −4 dB, Q 1,2) deve ir no canal do **kick**, não no baixo —
+  contradiz o que eu vinha sugerindo desde os relatórios anteriores (aplicar
+  no bus ou "no elemento que estiver morando ali" sem saber qual).
+- **Ducking medido direto no stem (mais confiável que estimativa por
+  mixdown): 11,8 dB, vale em 75% do beat.** Diferente da V5 estimada por
+  mixdown (10,0 dB / 88%) — versão do stem não confirmada, perguntar antes
+  de atualizar o histórico da V5/V6.
+- **Fundamental do baixo isolado: mediana 43,2 Hz, faixa 35–129 Hz (472
+  notas)** — bem mais ampla que qualquer estimativa por mixdown (48–74 Hz),
+  provavelmente pegando os trechos de arpejo/riser sem vazamento de outros
+  elementos atrapalhando o YIN.
+
 ## Como corrigir a si mesmo
 
 Este projeto já teve várias conclusões derrubadas pela medição seguinte. Isso é o
