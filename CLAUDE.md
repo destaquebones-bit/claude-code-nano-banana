@@ -499,9 +499,15 @@ mais nada, energia zero acima de 500 Hz) e isso mudou o quadro:
   contradiz o que eu vinha sugerindo desde os relatórios anteriores (aplicar
   no bus ou "no elemento que estiver morando ali" sem saber qual).
 - **Ducking medido direto no stem (mais confiável que estimativa por
-  mixdown): 11,8 dB, vale em 75% do beat.** Diferente da V5 estimada por
-  mixdown (10,0 dB / 88%) — versão do stem não confirmada, perguntar antes
-  de atualizar o histórico da V5/V6.
+  mixdown): 11,8 dB, vale em 75% do beat.** Confirmado por ele (26/09): este
+  stem **é a V5**, com o Pro-C2 como estava no print (ainda sem os ajustes
+  de Range/Knee/Ext que sugeri). Isso **substitui** a estimativa por
+  mixdown da V5 (10,0 dB / 88%) — mesmo padrão da HISTORY (stem sempre mais
+  confiável que mixdown). Real: profundidade um pouco maior (11,8 vs 10,0)
+  mas o vale cobre menos beat do que a mixdown sugeria (75% vs 88%). Ainda
+  bem mais fundo que as três referências (1,5–5,1 dB) — os ajustes de
+  Range/Knee no Pro-C2 (pedidos, ainda não confirmados como aplicados)
+  devem mexer nesse número na próxima versão.
 - **Fundamental do baixo isolado: mediana 43,2 Hz, faixa 35–129 Hz (472
   notas)** — bem mais ampla que qualquer estimativa por mixdown (48–74 Hz),
   provavelmente pegando os trechos de arpejo/riser sem vazamento de outros
