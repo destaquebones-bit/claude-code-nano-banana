@@ -545,6 +545,19 @@ da faixa das três referências (1,5–5,1 dB) pela primeira vez.** Se isso
 já reflete o ajuste pedido no Pro-C2 (Range/Knee), funcionou; aguardando
 confirmação dele.
 
+**Quarto round (26/09) — a master está inocentada.** Ele perguntou se o
+317 Hz podia estar vindo da cadeia da master (o EQ dele já estava em
+317). Testei: BASS_V4 é o mesmo baixo, mesmo bounce, **com o rack da
+master desligado**. Nível absoluto caiu ~12,5 dB uniforme em toda a banda
+(250–320 e 320–500 igual) — é só o ganho da master saindo (LUFS −19,76→
+−31,83, mesma diferença). Mas a **curva normalizada, que cancela ganho e
+mostra só a forma, praticamente não mudou**: 317,5 Hz +20,87→+20,04 dB
+(Δ−0,83, dentro do ruído de medição). **Se a master estivesse causando o
+pico, ele teria que cair relativo ao resto sem ela — não caiu.** O
+problema está no canal do baixo (synth/sample/filtro), não na master.
+Ducking igual também (5,4 dB/55%, era 5,3/56%) — confirma que o Pro-C2 do
+canal do baixo está fazendo o trabalho, não algo na master.
+
 ## Como corrigir a si mesmo
 
 Este projeto já teve várias conclusões derrubadas pela medição seguinte. Isso é o
