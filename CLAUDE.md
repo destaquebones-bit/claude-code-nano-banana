@@ -180,6 +180,45 @@ alvo continua −1,0 dBTP por causa da conversão com perda do Beatport/Spotify.
 - **Topo.** Detlef é bem mais escuro que os outros dois. A faixa é larga.
 - **Distribuição sub/bass.** 20–60 Hz varia de 34,2% a 53,7%.
 
+## Biblioteca SNOE / Henneberg (26/09)
+
+Ele mandou os dois lançamentos próprios já masterizados no selo: **"90's"**
+(SNOEflakes #17, SNOE109) e **"Alright"** (Dat Beat EP, SNOE096). **Só duas
+faixas — mais fina que a biblioteca de três, use com cautela extra**, e
+ainda **não é o pré-master**: isso mede o master publicado, não a cadeia do
+Henneberg por subtração (isso segue pendente, precisa do antes/depois).
+
+| | 90's | Alright |
+|---|---|---|
+| LUFS integrado | −12,51 | −11,52 |
+| True peak | +0,50 dBTP | +0,17 dBTP |
+| PSR | 13,46 | 12,52 |
+| f0 do baixo | 49,4 Hz (faixa 49–50, nota única) | 54,9 Hz (faixa 37–56, bassline variada) |
+| Ducking | 2,4 dB / 56% do beat | **descartar** — algoritmo deu 173,7dB/1%, artefato de silêncio no vale, mesmo problema já visto com kick isolado |
+| Sub 20–60 Hz | 51,2% | 18,8% |
+| 317 Hz (curva normalizada) | +2,04 | +1,93 |
+| BPM | 127,6 | 130,0 |
+
+**Achado que já muda alguma coisa:** o **LUFS das duas fica 3 a 4 LU mais
+baixo** que a biblioteca de três (−7,6 a −8,9) e o **PSR fica 3 a 5 dB mais
+alto** (8,1–9,6) — a estética de master do SNOE/Henneberg claramente não
+persegue o mesmo loudness agressivo do lado Solid Grooves/rip de DJ. É um
+alvo genuinamente diferente, não uma versão "mais fraca" do mesmo objetivo —
+não comparar loudness dessas duas contra a biblioteca de três como se fosse
+erro.
+
+**317 Hz não aparece nem de longe como problema nessas duas** (+2,04 e
++1,93, dentro do nível de ruído da curva) — reforça que o pico persistente
+do produtor não é característica do gênero nem do selo, é específico das
+faixas dele (ver "O mistério dos 317 Hz").
+
+**Sub 20–60% varia demais entre as duas (51,2% vs 18,8%) pra tirar um alvo
+único daqui** — mesma lição da biblioteca de três: usar múltiplas
+referências, nunca uma só, e aqui nem duas bastam pra fixar número de sub.
+
+**Pendente:** pedir o pré-master da "90's" pra medir a cadeia do Henneberg
+por subtração direta, como já estava anotado antes.
+
 ## Estado da faixa HISTORY (v2, "NEW MIX TEST 2")
 
 Medida contra a faixa dos três. **6 de 29 bandas dentro**, mas a maioria das que
