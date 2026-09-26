@@ -527,6 +527,43 @@ presente até 364,8 s de 365,8 s. **Se algo novo entrou nesta revisão (EQ,
 automação, plugin), vale conferir — o padrão é o oposto do que as quatro
 versões anteriores vinham corrigindo.**
 
+**V6→V9 (26/09, cadeia de master).** Ele passou a trabalhar a master
+inteira: HPF ~30Hz no Pro-Q3, API-550A (+2dB@50Hz/4kHz/5kHz), Saturn2,
+Maserati GRP (motor de loudness real — sozinho já soma +8,65 LU, testado
+isolado), SSL Channel e Pultec EQP-1A (achados flat, sem uso ainda),
+Pro-L2 no fim. Ducking mixdown ficou entre 9,5–11,5dB/70-88% ao longo
+dessas versões — número pouco confiável (estimativa por mixdown), o
+stem isolado do baixo já bateu 5,3-5,4dB (dentro da faixa das três refs)
+em testes separados. V9: 14 de 29 dentro (igual V8), true peak −0,64
+(melhorando mas ainda acima do alvo), sub em 50Hz só +1dB por rodada
+(devagar), 317 parado, shelf de agudo (Pultec) subiu mas passou do ponto
+em 16kHz (saiu da faixa por excesso).
+
+**V10 (26/09) — bass isolado, sub reconvertido pra pitch em D1.** Ele
+tinha uma camada de sub já em áudio (não synth); reafinou por
+transpose+detune no Ableton pra D1 (36,7Hz). Resultado: fundamental do
+bass isolado foi de ~43Hz difuso pra **38,7Hz muito preciso** (quase em
+cima de D1), sub 20-60% do stem saltou de 9,3% pra **62,6%**. 317Hz
+pareceu piorar na curva normalizada (+15,67→+16,78) mas é **artefato de
+medição**: a régua de normalização (média 200Hz-2kHz) caiu porque a
+explosão de sub redistribuiu energia — em nível absoluto o 317 ficou
+igual ou levemente melhor (−1,3dB). Ducking também leu diferente
+(8,1dB/54%, era 5,4/63%) — provavelmente o envelope da nova camada de
+sub entrando na medição do bass_notas(), não o Pro-C2 mudando.
+
+**V11 (26/09) — master completo, novo recorde: 16 de 29 dentro** (o
+anterior era V4, com 15). A camada de sub em D1 se traduziu direto na
+faixa de tolerância geral: 39,7Hz **entrou** na faixa, 50Hz teve o
+déficit cortado mais que pela metade (−7,8→−3,0), 63/79/100Hz também
+encolheram o desvio. O shelf de 13kHz (Pro-Q4) que ele fez pra conter o
+excesso em 16kHz **funcionou quase perfeito** — 16kHz caiu de +1,4 acima
+pra +0,1, praticamente dentro, sem perder o ganho em 8-10kHz. True peak
+−0,88dBTP, bem perto do alvo −1,0. **317 Hz continua parado em +2,5
+acima da faixa** — única peça grande ainda pendente, não foi mexido
+nessa rodada (foco foi sub e shelf). Fundamental detectado em 49Hz com
+só 2 notas — amostra pequena, não confiável, provavelmente a nova
+camada de sub dominando a detecção.
+
 ## O mistério dos 317 Hz — testado e CORRIGIDO (26/09)
 
 317 Hz é o desvio mais repetido de todo o projeto (PAIN, THAT'S FREE, Feel So
