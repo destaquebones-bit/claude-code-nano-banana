@@ -31,7 +31,8 @@ medição como julgamento estético. Nenhum número diz se a música é boa.
 - **Spectral Sun** (nome artístico) · nome real **Jhonatan Mandato** · fundador
   da **Delírios Records** · formado DJ/produtor 2014, engenheiro de áudio 2016
   (Beatport). Lançamentos na SNOE: **Dat Beat EP (SNOE096: "Dat Beat",
-  "Alright")** e **"90's" (SNOEflakes #17, SNOE109)**.
+  "Alright")** e **"90's" (SNOEflakes #17, SNOE109)**. Faixa nova assinada
+  em **NVRDZ Music**: **"First Step"** (29/09, ver seção própria).
   - Diz que **Hot Since 82 tocou uma faixa dele na Argentina** (17–19/09/2026:
     Las Palapas/Potrerillos, Metropolitano/Rosário, Mandarine Park/BA Open to
     Close). Qual faixa: não confirmado. Rastreio em
@@ -563,6 +564,37 @@ acima da faixa** — única peça grande ainda pendente, não foi mexido
 nessa rodada (foco foi sub e shelf). Fundamental detectado em 49Hz com
 só 2 notas — amostra pequena, não confiável, provavelmente a nova
 camada de sub dominando a detecção.
+
+## Estado da faixa FIRST STEP (NVRDZ Music, 29/09)
+
+Faixa nova, assinada num selo novo: **NVRDZ Music**. V1 do master, 7:00,
+127,6 BPM. **12 de 29 dentro** — fundamentos muito bons: f0 do baixo
+47,8 Hz (faixa 36–49) cai **direto dentro** da faixa das três referências
+(41,7–51,0), melhor alinhamento de nota já medido; ducking 2,2 dB/28% do
+beat, **dentro** da faixa (1,5–5,1). Correlação mono 0,999.
+
+**317 Hz de novo: +3,7 dB acima da faixa** (400 Hz também +1,3). Terceira
+faixa DIFERENTE com esse mesmo padrão (PAIN, THAT'S FREE, Feel So
+Right/So Right, agora First Step) — deixa de parecer coincidência de uma
+mixagem e passa a parecer **assinatura do processamento de baixo que ele
+reaproveita entre sessões** (patch/chain/preset). Vale ele investigar se
+usa o mesmo preset de baixo em vários projetos.
+
+**Topo brilhante numa faixa larga — padrão novo, diferente do que já
+vimos.** 2–6,4 kHz inteiro acima da faixa (+1,5 a +3,2dB) e 12,8/16kHz
+também acima (+2,0/+2,7) — não é pico estreito, é excesso amplo,
+sugerindo shelf de brilho/exciter puxado no master, não EQ pontual.
+
+**Buraco em 635–800 Hz** (−4,9/−1,2 abaixo) — mesmo padrão de "nada mora
+em 500-800Hz" já visto na PAIN. Arranjo, não erro técnico.
+
+**True peak +0,03 dBTP**, acima do alvo −1,0/−1,2. Corrigir por último,
+depois do EQ.
+
+Pendente: ele quer uma "versão rádio" — perguntei se é (a) edit mais
+curto de arranjo ou (b) master pra padrão broadcast (ele já tem WLM Plus
+configurado em True Peak Max −2,0/Target −24/Short Max −16, padrões de
+TV, reaproveitável pra isso). Aguardando resposta.
 
 ## O mistério dos 317 Hz — testado e CORRIGIDO (26/09)
 
