@@ -23,6 +23,8 @@ para gerar a cápsula 02 sem refazer formatação à mão.
 - **Kg previstos** por grade = quantidade ÷ rendimento da malha.
 - **Rendimento real** = peças cortadas ÷ kg realmente consumidos, com desvio contra o previsto.
 - Listas suspensas em malha, modelagem, tamanho e responsável; bloqueio de quantidade negativa.
+- A malha aparece pelo nome e cor ("Algodão Pima Preta", "Peruana Off White"); a coluna
+  "Nome usado no plano de corte" da aba MALHAS é a chave que liga as duas abas.
 - Barras de progresso, cores por status, filtro no cabeçalho, painéis congelados.
 - Impressão já configurada: paisagem, uma página de largura, cabeçalho repetido, rodapé com data.
 

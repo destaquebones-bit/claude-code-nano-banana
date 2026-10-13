@@ -87,14 +87,14 @@ ajuda = wb.create_sheet("COMO USAR")
 # =====================================================================
 # ABA MALHAS
 # =====================================================================
-titulo(malhas, "A1", "MALHAS  ·  ESTOQUE E RENDIMENTO", "M1",
+titulo(malhas, "A1", "MALHAS  ·  ESTOQUE E RENDIMENTO", "N1",
        "Linhas em amarelo são preenchidas por você. O resto é calculado.")
 
 MAL_H = ["Código", "Malha", "Cor", "Kg disponível", "Rendimento previsto (pç/kg)",
          "Capacidade prevista (pç)", "Peças planejadas", "Kg previsto p/ o plano",
          "Peças cortadas", "Kg real consumido", "Rendimento real (pç/kg)",
-         "Desvio vs previsto", "Saldo de malha (kg)"]
-MAL_W = [9, 20, 12, 12, 14, 13, 12, 13, 11, 13, 13, 12, 13]
+         "Desvio vs previsto", "Saldo de malha (kg)", "Nome usado no plano de corte"]
+MAL_W = [9, 18, 12, 12, 14, 13, 12, 13, 11, 13, 13, 12, 13, 24]
 cabecalho(malhas, 4, 1, MAL_H, MAL_W)
 
 MALHA_DADOS = [
@@ -109,9 +109,10 @@ for cod, nome, cor, kg, rend in MALHA_DADOS:
     malhas[f"D{r}"] = kg
     malhas[f"E{r}"] = rend
     malhas[f"F{r}"] = f"=D{r}*E{r}"
-    malhas[f"G{r}"] = f"=SUMIFS('PLANO DE CORTE'!$F$7:$F$22,'PLANO DE CORTE'!$B$7:$B$22,$A{r})"
+    malhas[f"N{r}"] = f"=B{r}&\" \"&C{r}"
+    malhas[f"G{r}"] = f"=SUMIFS('PLANO DE CORTE'!$F$7:$F$22,'PLANO DE CORTE'!$B$7:$B$22,$N{r})"
     malhas[f"H{r}"] = f"=IFERROR(G{r}/E{r},0)"
-    malhas[f"I{r}"] = f"=SUMIFS('PLANO DE CORTE'!$G$7:$G$22,'PLANO DE CORTE'!$B$7:$B$22,$A{r})"
+    malhas[f"I{r}"] = f"=SUMIFS('PLANO DE CORTE'!$G$7:$G$22,'PLANO DE CORTE'!$B$7:$B$22,$N{r})"
     malhas[f"J{r}"] = None                       # input
     malhas[f"K{r}"] = f"=IFERROR(I{r}/J{r},0)"
     malhas[f"L{r}"] = f'=IF(J{r}=0,"—",IFERROR(K{r}/E{r}-1,0))'
@@ -127,6 +128,7 @@ style(malhas, f"J5:J{ULT_MAL}", size=10, align="center", bg=INPUT_BG, fmt="#,##0
 style(malhas, f"K5:K{ULT_MAL}", size=10, align="center", fmt="#,##0.00", bold=True)
 style(malhas, f"L5:L{ULT_MAL}", size=10, align="center", fmt="+0.0%;-0.0%;0.0%")
 style(malhas, f"M5:M{ULT_MAL}", size=10, align="center", fmt="#,##0.00")
+style(malhas, f"N5:N{ULT_MAL}", bold=True, size=10, align="left", color=OLIVA)
 for rr in range(5, ULT_MAL + 1):
     malhas.row_dimensions[rr].height = 24
 
@@ -137,18 +139,18 @@ malhas.merge_cells(f"A{tr}:C{tr}")
 for col in "DFGHIJM":
     malhas[f"{col}{tr}"] = f"=SUM({col}5:{col}{ULT_MAL})"
 malhas[f"K{tr}"] = f"=IFERROR(I{tr}/J{tr},0)"
-style(malhas, f"A{tr}:M{tr}", bold=True, size=10, color=AREIA, bg=GRAFITE, align="center",
+style(malhas, f"A{tr}:N{tr}", bold=True, size=10, color=AREIA, bg=GRAFITE, align="center",
       fmt="#,##0.0")
 malhas[f"A{tr}"].alignment = Alignment(horizontal="left", vertical="center")
 
 malhas[f"J{ULT_MAL+3}"] = ("Preencha 'Kg real consumido' depois do corte: é ele que revela o "
                            "rendimento real da malha e o desvio contra o previsto.")
-malhas.merge_cells(f"A{ULT_MAL+3}:M{ULT_MAL+3}")
+malhas.merge_cells(f"A{ULT_MAL+3}:N{ULT_MAL+3}")
 malhas[f"A{ULT_MAL+3}"] = ("Preencha 'Kg real consumido' depois do corte — é ele que revela o "
                            "rendimento real e o desvio contra o previsto. "
                            "Kg disponível e rendimento previsto vieram de você (12 kg a 5 pç/kg; "
                            "18 kg a 4,5 pç/kg).")
-style(malhas, f"A{ULT_MAL+3}:M{ULT_MAL+3}", size=9, italic=True, color=CINZA,
+style(malhas, f"A{ULT_MAL+3}:N{ULT_MAL+3}", size=9, italic=True, color=CINZA,
       bg=AREIA_CL, align="left", wrap=True, border=False)
 malhas.row_dimensions[ULT_MAL+3].height = 30
 
@@ -241,26 +243,26 @@ plano.row_dimensions[3].height = 28
 PL_H = ["Item", "Malha", "Modelagem", "Tamanho", "Gola no corte", "Qtd planejada",
         "Qtd cortada", "Falta", "% cortado", "Status", "Kg previstos",
         "Data do corte", "Responsável", "Observações"]
-PL_W = [8, 11, 15, 9, 21, 11, 11, 8, 10, 15, 11, 12, 15, 26]
+PL_W = [8, 20, 15, 9, 21, 11, 11, 8, 10, 15, 11, 12, 14, 22]
 cabecalho(plano, 6, 1, PL_H, PL_W)
 
 GRADE = [
-    ("M1", "Axozee Slim", "P", 5),
-    ("M1", "Axozee Slim", "M", 10),
-    ("M1", "Axozee Slim", "G", 20),
-    ("M1", "Axozee Slim", "GG", 15),
-    ("M1", "Axozee Over", "P", 0),
-    ("M1", "Axozee Over", "M", 0),
-    ("M1", "Axozee Over", "G", 10),
-    ("M1", "Axozee Over", "GG", 0),
-    ("M2", "Axozee Slim", "P", 0),
-    ("M2", "Axozee Slim", "M", 0),
-    ("M2", "Axozee Slim", "G", 5),
-    ("M2", "Axozee Slim", "GG", 5),
-    ("M2", "Axozee Over", "P", 10),
-    ("M2", "Axozee Over", "M", 20),
-    ("M2", "Axozee Over", "G", 20),
-    ("M2", "Axozee Over", "GG", 20),
+    ("Algodão Pima Preta", "Axozee Slim", "P", 5),
+    ("Algodão Pima Preta", "Axozee Slim", "M", 10),
+    ("Algodão Pima Preta", "Axozee Slim", "G", 20),
+    ("Algodão Pima Preta", "Axozee Slim", "GG", 15),
+    ("Algodão Pima Preta", "Axozee Over", "P", 0),
+    ("Algodão Pima Preta", "Axozee Over", "M", 0),
+    ("Algodão Pima Preta", "Axozee Over", "G", 10),
+    ("Algodão Pima Preta", "Axozee Over", "GG", 0),
+    ("Peruana Off White", "Axozee Slim", "P", 0),
+    ("Peruana Off White", "Axozee Slim", "M", 0),
+    ("Peruana Off White", "Axozee Slim", "G", 5),
+    ("Peruana Off White", "Axozee Slim", "GG", 5),
+    ("Peruana Off White", "Axozee Over", "P", 10),
+    ("Peruana Off White", "Axozee Over", "M", 20),
+    ("Peruana Off White", "Axozee Over", "G", 20),
+    ("Peruana Off White", "Axozee Over", "GG", 20),
 ]
 r = 7
 for i, (mal, mod, tam, qtd) in enumerate(GRADE, start=1):
@@ -275,7 +277,7 @@ for i, (mal, mod, tam, qtd) in enumerate(GRADE, start=1):
     plano[f"I{r}"] = f"=IFERROR(G{r}/F{r},0)"
     plano[f"J{r}"] = (f'=IF(F{r}=0,"SEM PLANO",IF(G{r}=0,"PENDENTE",'
                       f'IF(G{r}<F{r},"EM CORTE",IF(G{r}=F{r},"CORTADO","EXCEDENTE"))))')
-    plano[f"K{r}"] = (f"=IFERROR(F{r}/INDEX(MALHAS!$E$5:$E$6,MATCH($B{r},MALHAS!$A$5:$A$6,0)),0)")
+    plano[f"K{r}"] = (f"=IFERROR(F{r}/INDEX(MALHAS!$E$5:$E$6,MATCH($B{r},MALHAS!$N$5:$N$6,0)),0)")
     r += 1
 ULT = r - 1   # 22
 
@@ -315,8 +317,9 @@ plano[f"K{tr}"].number_format = "#,##0.00"
 plano.row_dimensions[tr].height = 26
 
 # validações
-dv_malha = DataValidation(type="list", formula1='"M1,M2"', allow_blank=True,
-                          prompt="M1 = Algodão Pima Preta · M2 = Peruana Off White",
+dv_malha = DataValidation(type="list", formula1='"Algodão Pima Preta,Peruana Off White"',
+                          allow_blank=True,
+                          prompt="Escolha a malha. Para incluir outra, cadastre na aba MALHAS.",
                           promptTitle="Malha")
 dv_mod = DataValidation(type="list", formula1='"Axozee Slim,Axozee Over"', allow_blank=True)
 dv_tam = DataValidation(type="list", formula1='"P,M,G,GG"', allow_blank=True)
@@ -640,7 +643,7 @@ for ws in (painel, plano, malhas, model, ajuda):
     ws.sheet_properties.tabColor = TERRACOTA
 
 # configuração de impressão (o plano é o que vai impresso para o corte)
-for ws, area in ((plano, f"A1:N{ULT+1}"), (malhas, f"A1:M{ULT_MAL+3}"), (model, f"A1:G{ULT_MOD+2}"), (painel, "A1:L52")):
+for ws, area in ((plano, f"A1:N{ULT+1}"), (malhas, f"A1:N{ULT_MAL+3}"), (model, f"A1:G{ULT_MOD+2}"), (painel, "A1:L52")):
     ws.page_setup.orientation = "landscape"
     ws.page_setup.fitToWidth = 1
     ws.page_setup.fitToHeight = 0
